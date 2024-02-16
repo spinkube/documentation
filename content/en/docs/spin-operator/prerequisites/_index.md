@@ -1,7 +1,7 @@
 ---
 title: Prerequisites
 description: Prerequisites
-weight: 140
+weight: 20
 ---
 
 The following prerequisites are required.
@@ -30,13 +30,13 @@ If running/deploying your Spin application involves the use of k3d, then the Spi
 
 If running/deploying your Spin application involves the use of Helm, then the Spin Operator requires that you have [Helm](https://helm.sh/docs/intro/install/#helm) installed on your system.
 
-## Bombardier
-
-Installing [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) is **not** required to use Spin Operator. Bombardier is used in tutorials like [Scaling Spinapps on k8s With HPA](./scaling-spinapp-on-k8s-with-hpa.md) to generate load to test autoscaling.
-
 ## Spin
 
 Please install the latest version of [Spin](https://developer.fermyon.com/spin/v2/install) on your local machine for creating Spin Apps.
+
+## Bombardier
+
+Installing [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) is **not** required to use Spin Operator. Bombardier is used in tutorials like [Scaling Spinapps on k8s With HPA](./scaling-spinapp-on-k8s-with-hpa.md) to generate load to test autoscaling.
 
 ## Azure CLI
 

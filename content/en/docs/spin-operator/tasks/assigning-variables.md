@@ -2,20 +2,22 @@
 title: Assigning variables to Spin Apps
 description: Configure Spin Apps using values from Kubernetes ConfigMaps and Secrets
 date: 2024-02-16
-weight: 2
+categories: [Spin Operator]
+tags: [Common Tasks]
 ---
+
 
 By using variables, you can alter application behavior without recompiling your SpinApp. When running in Kubernetes (k8s), you can either provide constant values for variables, or reference them from Kubernetes primitives such as `ConfigMaps` and `Secrets`. This tutorial guides your through the process of assigning variables to your `SpinApp`.
 
 ## Prerequisites
 
-Ensure necessary [prerequisites](./prerequisites.md) are installed.
+Ensure necessary [prerequisites]({{< ref "prerequisites" >}}) are installed.
 
-For this tutorial in particular, you should either have the Spin Operator [running locally](./running-locally.md) or [running on your Kubernetes cluster](./running-on-a-cluster.md).
+For this tutorial in particular, you should either have the Spin Operator [running locally]({{< ref "running-locally" >}}) or [running on your Kubernetes cluster]({{< ref "running-on-a-cluster" >}}).
 
 ## Build and Store SpinApp in an OCI Registry
 
-We’re going to build the SpinApp and store it inside of a [ttl.sh](http://ttl.sh) registry. Move into the [apps/variable-explorer](../../apps/variable-explorer) directory and build the SpinApp we’ve provided:
+We’re going to build the SpinApp and store it inside of a [ttl.sh](http://ttl.sh) registry. Move into the [apps/variable-explorer](https://github.com/spinkube/spin-operator/blob/main/apps/variable-explorer) directory and build the SpinApp we’ve provided:
 
 ```bash
 # Build and publish the sample app
@@ -26,7 +28,7 @@ spin registry push ttl.sh/variable-explorer:1h
 
 Note that the tag at the end of [ttl.sh/variable-explorer:1h](http://ttl.sh/variable-explorer:1h) indicates how long the image will last e.g. `1h` (1 hour). The maximum is `24h` and you will need to repush if ttl exceeds 24 hours.
 
-For demonstration purposes, we use the [variable explorer](../../apps/variable-explorer) sample app. It reads three different variables (`log_level`, `platform_name` and `db_password`) and prints their values to the `STDOUT` stream as shown in the following snippet:
+For demonstration purposes, we use the [variable explorer](https://github.com/spinkube/spin-operator/blob/main/apps/variable-explorer) sample app. It reads three different variables (`log_level`, `platform_name` and `db_password`) and prints their values to the `STDOUT` stream as shown in the following snippet:
 
 ```rust
 let log_level = variables::get("log_level")?;

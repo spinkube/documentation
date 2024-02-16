@@ -3,6 +3,8 @@ title: Scaling Spin App With Kubernetes Event-Driven Autoscaling (KEDA)
 description: >
   A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
 date: 2024-02-16
+categories: [Spin Operator]
+tags: [Tutorials]
 ---
 
 [KEDA](https://keda.sh) extends Kubernetes to provide event-driven scaling capabilities, allowing it to react to events from Kubernetes internal and external sources using [KEDA scalers](https://keda.sh/docs/2.13/scalers/). KEDA provides a wide variety of scalers to define scaling behavior base on sources like CPU, Memory, Azure Event Hubs, Kafka, RabbitMQ, and more. We use a `ScaledObject` to dynamically scale the instance count of our SpinApp to meet the demand.
@@ -11,13 +13,13 @@ date: 2024-02-16
 
 > We use k3d to run a k8s cluster locally as part of this tutorial, but you can follow these steps to configure KEDA autoscaling on your desired k8s environment.
 
-Please see the following sections in the [Prerequisites](./prerequisites.md) page and fulfil those prerequisite requirements before continuing:
+Please see the following sections in the [Prerequisites]({{< ref "prerequisites" >}}) page and fulfil those prerequisite requirements before continuing:
 
-- [kubectl](./prerequisites.md#kubectl) - the Kubernetes CLI
-- [k3d](./prerequisites.md#k3d) - a lightweight Kubernetes distribution that runs on Docker
-- [Docker](./prerequisites.md#docker) - for running k3d
-- [Helm](./prerequisites.md#helm) - the package manager for Kubernetes
-- [Bombardier](#prerequisites#bombardier) - cross-platform HTTP benchmarking CLI
+- [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
+- [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
+- [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
+- [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
+- [Bombardier]({{< ref "prerequisites#bombardier" >}}) - cross-platform HTTP benchmarking CLI
 
 ## Fetch Spin Operator (Source Code)
 

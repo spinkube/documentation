@@ -2,16 +2,18 @@
 title: Deploying with Helm
 description:
 date: 2024-02-16
+categories: [Spin Operator]
+tags: [Common Tasks]
 ---
 
 ## Prerequisites
 
-Please ensure that your system has all of the [./prerequisites.md](prerequisites) installed before continuing.
+Please ensure that your system has all of the [prerequisites]({{< ref "prerequisites" >}}) installed before continuing.
 
 For this guide in particular, you will need:
 
-- [kubectl](./prerequisites.md#kubectl) - the Kubernetes CLI
-- [Helm](./prerequisites.md#helm) - the package manager for Kubernetes
+- [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
+- [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
 
 <!-- NOTE: remove this prerequisite when the runtime-class and CRDs can be applied from their release artifacts, i.e. when repo and release are public -->
 
@@ -30,7 +32,7 @@ The following instructions are for installing Spin Operator as a chart (using he
 
 Before installing the chart, you'll need to ensure the following:
 
-The [Custom Resource Definition (CRD)](glossary-of-terms#custom-resource-definition-crd) resources are installed. This includes the SpinApp CRD representing Spin applications to be scheduled on the cluster.
+The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) resources are installed. This includes the SpinApp CRD representing Spin applications to be scheduled on the cluster.
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
@@ -38,7 +40,7 @@ The [Custom Resource Definition (CRD)](glossary-of-terms#custom-resource-definit
 make install
 ```
 
-A [RuntimeClass](glossary-of-terms/#runtime-class) resource for the `wasmtime-spin-v2` container runtime is installed. This is the runtime that Spin applications use.
+A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource for the `wasmtime-spin-v2` container runtime is installed. This is the runtime that Spin applications use.
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 

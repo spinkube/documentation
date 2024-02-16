@@ -7,11 +7,11 @@ tags: [Common Tasks]
 
 ## Prerequisites
 
-Please ensure that your system has all the [./prerequisites.md](prequisites) installed before continuing.
+Please ensure that your system has all the [prerequisites]({{< ref "prerequisites" >}}) installed before continuing.
 
 ## Running on Your Kubernetes Cluster
 
-This is the standard development workflow for when you want to test running Spin Operator on a Kubernetes cluster. This is harder than [running Spin Operator on your local machine](./running-locally.md), but deploying Spin Operator into your cluster lets you test things like webhooks.
+This is the standard development workflow for when you want to test running Spin Operator on a Kubernetes cluster. This is harder than [running Spin Operator on your local machine]({{< ref "running-locally" >}}), but deploying Spin Operator into your cluster lets you test things like webhooks.
 
 > Note that you need to [install cert-manager](https://cert-manager.io/docs/installation/) for webhook support.
 

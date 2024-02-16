@@ -2,7 +2,7 @@
 title: runtime-class-manager
 description: What does your user need to know to try your project?
 categories: [runtime-class-manager]
-tags: [runtime-class-manager]
+tags: []
 weight: 100
 ---
 

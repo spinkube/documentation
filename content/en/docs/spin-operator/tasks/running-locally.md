@@ -7,7 +7,7 @@ tags: [Common Tasks]
 
 ## Prerequisites
 
-Please ensure that your system has all the [prerequisites](./prerequisites.md) installed before continuing.
+Please ensure that your system has all the [prerequisites]({{< ref "prerequisites" >}}) installed before continuing.
 
 ## Fetch Spin Operator (Source Code)
 

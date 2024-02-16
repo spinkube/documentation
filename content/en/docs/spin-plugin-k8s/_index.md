@@ -2,7 +2,7 @@
 title: Spin plugin k8s
 description: What does your user need to know to try your project?
 categories: [Spin plugin k8s]
-tags: [Spin plugin k8s]
+tags: []
 weight: 60
 ---
 

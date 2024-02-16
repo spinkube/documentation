@@ -2,7 +2,7 @@
 title: containerd-shim-spin
 description: What does your user need to know to try your project?
 categories: [containerd-shim-spin]
-tags: [containerd-shim-spin, Concepts]
+tags: []
 weight: 80
 ---
 

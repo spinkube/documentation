@@ -3,6 +3,8 @@ title: Scaling Spin App With Horizontal Pod Autoscaling (HPA)
 description: >
   A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
 date: 2024-02-16
+categories: [Spin Operator]
+tags: [Tutorials]
 ---
 
 Horizontal scaling, in the k8s sense, means deploying more pods to meet demand (different from vertical scaling whereby more memory and CPU resources are assigned to already running pods). In this tutorial, we configure [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to dynamically scale the instance count of our SpinApps to meet the demand.
@@ -11,13 +13,13 @@ Horizontal scaling, in the k8s sense, means deploying more pods to meet demand (
 
 > We use k3d to run a k8s cluster locally as part of this tutorial, but you can follow these steps to configure HPA autoscaling on your desired k8s environment.
 
-Please see the following sections in the [Prerequisites](./prerequisites.md) page and fulfil those prerequisite requirements before continuing:
+Please see the following sections in the [Prerequisites]({{< ref "prerequisites" >}}) page and fulfil those prerequisite requirements before continuing:
 
-- [Go](./prerequisites.md#go)
-- [Docker](./prerequisites.md#docker) - for running k3d
-- [kubectl](./prerequisites.md#kubectl) - the Kubernetes CLI
-- [k3d](./prerequisites.md#k3d) - a lightweight Kubernetes distribution that runs on Docker
-- [Bombardier](#prerequisites#bombardier) - cross-platform HTTP benchmarking CLI
+- [Go]({{< ref "prerequisites#go" >}})
+- [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
+- [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
+- [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
+- [Bombardier]({{< ref "prerequisites#bombardier" >}}) - cross-platform HTTP benchmarking CLI
 
 ## Fetch Spin Operator (Source Code)
 

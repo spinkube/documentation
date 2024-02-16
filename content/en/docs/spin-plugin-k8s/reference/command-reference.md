@@ -2,7 +2,9 @@
 title: Command Reference
 description: >
   A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
-date: 2017-01-05
+date: 2024-02-16
+categories: [Spin plugin k8s]
+tags: [Reference]
 ---
 
 {{% pageinfo %}}

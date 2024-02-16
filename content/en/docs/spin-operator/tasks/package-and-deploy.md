@@ -3,6 +3,8 @@ title: Package and Deploy Spin Apps
 description: A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
 date: 2024-02-16
 weight: 4
+categories: [Spin Operator]
+tags: [Common Tasks]
 ---
 
 This article explains how Spin Apps are packaged and distributed via both public and private registries. You will learn how to:
@@ -13,9 +15,9 @@ This article explains how Spin Apps are packaged and distributed via both public
 
 ## Prerequisites
 
-Ensure the necessary [prerequisites](./prerequisites.md) are installed.
+Ensure the necessary [prerequisites]({{< ref "prerequisites" >}}) are installed.
 
-For this tutorial in particular, you should either have the Spin Operator [running locally](./running-locally.md) or [running on your Kubernetes cluster](./running-on-a-cluster.md).
+For this tutorial in particular, you should either have the Spin Operator [running locally]({{< ref "running-locally" >}}) or [running on your Kubernetes cluster]({{< ref "running-on-a-cluster" >}}).
 
 ## Creating a new Spin App
 

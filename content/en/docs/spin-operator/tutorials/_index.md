@@ -1,7 +1,7 @@
 ---
 title: Tutorials
 description: Compact lessons about Spin Operator
-weight: 60
+weight: 80
 ---
 
 If your project has an API, configuration, or other reference - anything that users need to look up that’s at an even lower level than a single task - put (or link to it) here. You can serve and link to generated reference docs created using Doxygen,

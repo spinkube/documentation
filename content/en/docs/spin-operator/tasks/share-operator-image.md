@@ -2,6 +2,8 @@
 title: Share Spin Operator Image
 description: 
 date: 2024-02-16
+categories: [Spin Operator]
+tags: [Common Tasks]
 ---
 ## To Deploy on the Cluster
 

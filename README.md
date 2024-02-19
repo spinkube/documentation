@@ -18,7 +18,7 @@ The [Spin Operator](https://github.com/spinkube/spin-operator/) enables deployin
 
 # Running Documentation Locally
 
-Check out this repository and run using the `hugo serve` command:
+Check out this repository and run using the `hugo server` command:
 
 ```bash
 $ cd ~
@@ -51,7 +51,11 @@ Web Server is available at //localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 ```
 
+---
+
 View the website at [localhost:1313](http://localhost:1313/docs/overview/)
+
+---
 
 ![Screenshot 2024-02-19 at 14 51 24](https://github.com/spinkube/documentation/assets/9831342/98fef78c-3770-42c4-be1c-88d7282130e7)
 

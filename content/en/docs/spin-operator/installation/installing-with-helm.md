@@ -1,9 +1,9 @@
 ---
-title: Deploying with Helm
-description:
+title: Installing with Helm
+description: This guide walks you through the process of installing Spin Operator using [Helm](https://helm.sh).
 date: 2024-02-16
 categories: [Spin Operator]
-tags: [Common Tasks]
+tags: [Installation]
 ---
 
 ## Prerequisites
@@ -24,15 +24,15 @@ git clone git@github.com:spinkube/spin-operator.git
 cd spin-operator
 ```
 
-## Install Spin Operator Using Helm
+## Install Spin Operator With Helm
 
-The following instructions are for installing Spin Operator as a chart (using helm install).
+The following instructions are for installing Spin Operator using a Helm chart (using `helm install`).
 
 ### Prepare the Cluster
 
 Before installing the chart, you'll need to ensure the following:
 
-The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) resources are installed. This includes the SpinApp CRD representing Spin applications to be scheduled on the cluster.
+The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) resources are installed. This includes the `SpinApp` CRD representing Spin applications to be scheduled on the cluster.
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
@@ -66,7 +66,8 @@ The following installs the chart with the release name `spin-operator`:
 
 <!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
 
-```console
+```shell
+# Install Spin Operator with Helm
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
@@ -89,7 +90,8 @@ To upgrade the `spin-operator` release, run the following:
 
 <!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
 
-```console
+```shell
+# Upgrade Spin Operator using Helm
 helm upgrade spin-operator \
   --namespace spin-operator \
   --devel \
@@ -101,7 +103,8 @@ helm upgrade spin-operator \
 
 To delete the `spin-operator` release, run:
 
-```console
+```shell
+# Uninstall Spin Operator using Helm
 helm delete spin-operator --namespace spin-operator
 ```
 

@@ -3,8 +3,8 @@ title: Concepts
 weight: 60
 description: >
   Enhance Kubernetes with Runtime-Class-Manager; efficient Containerd shim handling.
-categories: []
-tags: []
+categories: [Runtime Class Manager]
+tags: [Concepts]
 ---
 
 The runtime-class-manager is a Kubernetes operator designed to automate and manage the lifecycle of containerd shims. It provides a robust and production-ready solution for installing, updating, and removing shims, as well as managing node labels and runtime classes in a Kubernetes environment. 

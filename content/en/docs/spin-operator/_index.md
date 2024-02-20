@@ -1,7 +1,7 @@
 ---
 title: Spin Operator
 description: What does your user need to know to try your project?
-categories: []
+categories: [Spin Operator]
 tags: []
 weight: 40
 ---

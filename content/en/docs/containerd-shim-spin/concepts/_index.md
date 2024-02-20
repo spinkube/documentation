@@ -3,8 +3,8 @@ title: Concepts
 weight: 60
 description: >
   The Containerd Shim Spin is a project that integrates WebAssembly (Wasm) and WASI workloads into Kubernetes, allowing these workloads to be managed and run as regular container workloads through the implementation of specialized containerd shims.
-categories: []
-tags: []
+categories: [Containerd Shim Spin]
+tags: [Concepts]
 ---
 
 The Containerd Shim Spin, or "contained-shim-spin," is part of a broader initiative to integrate Wasm workloads into Kubernetes using containerd. This project is spearheaded by the Containerd Wasm Shims project, which aims to create containerd shim implementations capable of running Wasm/WASI workloads using runwasi as a library. By installing these shims onto Kubernetes nodes, a runtime class can be added to Kubernetes, enabling the scheduling of Wasm workloads on those nodes. This integration allows Wasm pods and deployments to operate similarly to traditional container workloads.

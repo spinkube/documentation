@@ -2,7 +2,7 @@
 title: Installation
 description: Learn how to install the `k8s` plugin for `spin` 
 weight: 50
-categories: [Spin plugin k8s]
+categories: [Spin Plugin k8s]
 tags: [Installation]
 ---
 
@@ -20,7 +20,7 @@ For this tutorial in particular, you need
 > Prerequisites marked with * are only required if you want to build the `k8s` plugin from source
 
 
-## Install spin plugin k8s
+## Install Spin Plugin k8s
 
 Before you install the `k8s` plugin for `spin`, you should fetch the list of latest Spin plugins from the spin-plugins repository:
 

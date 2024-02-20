@@ -2,15 +2,15 @@
 title: Concepts
 weight: 60
 description: >
-  What does your user need to understand about your project in order to use it - or potentially contribute to it?
-categories: [containerd-shim-spin]
+  The Containerd Shim Spin is a project that integrates WebAssembly (Wasm) and WASI workloads into Kubernetes, allowing these workloads to be managed and run as regular container workloads through the implementation of specialized containerd shims.
+categories: [Containerd Shim Spin]
 tags: [Concepts]
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+The Containerd Shim Spin, or "contained-shim-spin," is part of a broader initiative to integrate Wasm workloads into Kubernetes using containerd. This project is spearheaded by the Containerd Wasm Shims project, which aims to create containerd shim implementations capable of running Wasm/WASI workloads using runwasi as a library. By installing these shims onto Kubernetes nodes, a runtime class can be added to Kubernetes, enabling the scheduling of Wasm workloads on those nodes. This integration allows Wasm pods and deployments to operate similarly to traditional container workloads.
 
-For many projects, users may not need much information beyond the information in the [Overview](/docs/overview/), so this section is **optional**. However if there are areas where your users will need a more detailed understanding of a given term or feature in order to do anything useful with your project (or to not make mistakes when using it) put that information in this section. For example, you may want to add some conceptual pages if you have a large project with many components and a complex architecture.
+The containerd-shim-spin is specifically designed to work with the [Spin](https://www.fermyon.com/spin) framework (a developer tool for building and running serverless Wasm applications). The shim ensures that Wasm workloads can be managed effectively within a Kubernetes environment, leveraging containerd's capabilities.
 
-Remember to focus on what the user needs to know, not just what you think is interesting about your project! If they don’t need to understand your original design decisions to use or contribute to the project, don’t put them in, or include your design docs in your repo and link to them. Similarly, most users will probably need to know more about how features work when in use rather than how they are implemented. Consider a separate architecture page for more detailed implementation and system design information that potential project contributors can consult.
+In a Kubernetes cluster, specific nodes can be bootstrapped with Wasm runtimes and labeled accordingly to facilitate the scheduling of Wasm workloads. RuntimeClasses in Kubernetes are used to schedule Pods to specific nodes and target specific runtimes. By defining a RuntimeClass with the appropriate nodeSelector and handler, Kubernetes can direct Wasm workloads to nodes equipped with the necessary Wasm runtimes and ensure they are executed with the correct runtime handler.
+
+Overall, the Containerd Shim Spin represents a significant advancement in integrating Wasm workloads into Kubernetes clusters, enhancing the versatility and capabilities of container orchestration.

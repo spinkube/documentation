@@ -60,6 +60,8 @@ please read the [README](https://github.com/spinkube/spin-operator). Since most 
 to follow the common Go coding conventions. If applicable, add unit or integration tests to ensure your contribution is
 correct.
 
+> NOTE: Run `make --help` for more information on all potential make targets.
+
 ## Before You Commit
 
 - Format the code (`go fmt ./...`)

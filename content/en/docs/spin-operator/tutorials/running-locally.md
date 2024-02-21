@@ -2,7 +2,7 @@
 title: Running locally
 description: Learn how to run Spin Operator on your local machine
 categories: [Spin Operator]
-tags: [Common Tasks]
+tags: [Tutorials]
 ---
 
 ## Prerequisites

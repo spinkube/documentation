@@ -2,7 +2,7 @@
 title: Uninstall
 description: How to uninstall custom resources and Spin Operator from your Cluster
 categories: [Spin Operator]
-tags: [Common Tasks]
+tags: [Tutorials]
 ---
 
 These are commands to delete, uninstall and undeploy resources.

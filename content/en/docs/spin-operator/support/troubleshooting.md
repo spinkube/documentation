@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: How to troubleshoot Spin Operator
 categories: [Spin Operator]
-tags: [Common Tasks]
+tags: [Support]
 ---
 
 The following is a list of common error messages and potential troubleshooting suggestions that might assist you with your work.

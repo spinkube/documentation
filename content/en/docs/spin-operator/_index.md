@@ -1,5 +1,5 @@
 ---
-title: Spin Operator
+title: Tutorials
 description: What does your user need to know to try your project?
 categories: [Spin Operator]
 tags: []

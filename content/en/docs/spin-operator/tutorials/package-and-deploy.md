@@ -4,7 +4,7 @@ description: A short lead description about this content page. It can be **bold*
 date: 2024-02-16
 weight: 4
 categories: [Spin Operator]
-tags: [Common Tasks]
+tags: [Tutorials]
 ---
 
 This article explains how Spin Apps are packaged and distributed via both public and private registries. You will learn how to:

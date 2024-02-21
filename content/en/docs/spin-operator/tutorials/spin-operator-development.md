@@ -3,7 +3,7 @@ title: Spin Operator Development
 description:
 date: 2024-02-16
 categories: [Spin Operator]
-tags: [Common Tasks]
+tags: [Tutorials]
 ---
 
 ## To Deploy on the Cluster

@@ -82,6 +82,17 @@ make install
 kubectl apply -f spin-runtime-class.yaml
 ```
 
+The following installs [Cert Manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
+
+```
+helm repo add jetstack https://charts.jetstack.io
+helm install cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.13.3 \
+  --set installCRDs=true
+`
+
 The following installs the chart with the release name `spin-operator`:
 
 <!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
@@ -110,13 +121,6 @@ kubectl logs -n spin-operator -l app.kubernetes.io/name=kwasm-operator
 {"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}
 {"level":"info","time":"2024-02-12T11:23:43Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is still Ongoing"}
 {"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
-```
-
-The final step for setting up Spin Operator is creating a `SpinAppExecutor`:
-
-```shell
-# Create a SpinAppExecutor
-kubectl apply -f https://github.com/spinkube/spin-operator/blob/main/config/samples/shim-executor.yaml
 ```
 
 ## Deploying a Spin App to AKS

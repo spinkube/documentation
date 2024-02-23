@@ -48,17 +48,24 @@ A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource for the `wasmtim
 kubectl apply -f spin-runtime-class.yaml
 ```
 
+## Chart prerequisites
+
+- [Cert Manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
+
+```
+helm repo add jetstack https://charts.jetstack.io
+helm install cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.13.3 \
+  --set installCRDs=true
+```
+
 ## Chart dependencies
 
 The spin-operator chart currently includes the following sub-charts:
 
 - [Kwasm Operator](https://github.com/kwasm/kwasm-operator) to install WebAssembly support on Kubernetes nodes
-- [Cert Manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
-  - If you'd like to manage Cert Manager completely separate from spin-operator, you can disable installation via:
-    `--set certmanager.enabled=false` on `helm install`.
-  - Or, if you'd like to install Cert Manager separate from its CRDs, you can opt-out of installing the CRDs via:
-    `--set certmanager.installCRDs=false` on `helm install`.
-  - In either case, Cert Manager must be running and the corresponding CRDs must be present on the cluster before installing the spin-operator chart.
 
 ### Installing the Chart
 

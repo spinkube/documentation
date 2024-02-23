@@ -91,7 +91,7 @@ helm install cert-manager jetstack/cert-manager \
   --create-namespace \
   --version v1.13.3 \
   --set installCRDs=true
-`
+```
 
 The following installs the chart with the release name `spin-operator`:
 

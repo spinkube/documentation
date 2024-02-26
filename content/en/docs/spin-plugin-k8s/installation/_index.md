@@ -49,21 +49,6 @@ k8s 0.1.0 [installed]
 pluginify 0.6.0 [installed]
 ```
 
-## Installing spin plugin k8s from source
-
-# Spin k8s plugin
-
-A [Spin plugin](https://github.com/fermyon/spin-plugins) for interacting with Kubernetes.
-
-## Install
-
-Install the stable release:
-
-```sh
-spin plugins update
-spin plugins install k8s
-```
-
 ### Canary release
 
 For the canary release:
@@ -77,7 +62,7 @@ The canary release may not be stable, with some features still in progress.
 ### Compiling from source
 
 As an alternative to the plugin manager, you can download and manually install the plugin. Manual installation is
-commonly used to test in-flight changes. For a user, it's better to install the plugin using Spin's plugin manager.
+commonly used to test in-flight changes. For a user, installing the plugin using Spin's plugin manager is better.
 
 Ensure the `pluginify` plugin is installed:
 

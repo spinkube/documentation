@@ -51,36 +51,55 @@ pluginify 0.6.0 [installed]
 
 ## Installing spin plugin k8s from source
 
-Alternatively, you can install the `k8s` plugin for spin from source code by following the steps described here. 
+# Spin k8s plugin
 
-First, clone the [spin-plugin-k8s](https://github.com/spinkube/spin-plugin-k8s) repository:
+A [Spin plugin](https://github.com/fermyon/spin-plugins) for interacting with Kubernetes.
 
-```shell
+## Install
+
+Install the stable release:
+
+```sh
+spin plugins update
+spin plugins install k8s
+```
+
+### Canary release
+
+For the canary release:
+
+```sh
+spin plugins install --url https://github.com/spinkube/spin-plugin-k8s/releases/download/canary/k8s.json
+```
+
+The canary release may not be stable, with some features still in progress.
+
+### Compiling from source
+
+As an alternative to the plugin manager, you can download and manually install the plugin. Manual installation is
+commonly used to test in-flight changes. For a user, it's better to install the plugin using Spin's plugin manager.
+
+Ensure the `pluginify` plugin is installed:
+
+```sh
+spin plugins update
+spin plugins install pluginify --yes
+```
+
+Fetch the plugin:
+
+```sh
 git clone git@github.com:spinkube/spin-plugin-k8s.git
-Cloning into 'spin-plugin-k8s'...
-remote: Enumerating objects: 70, done.
-remote: Counting objects: 100% (70/70), done.
-remote: Compressing objects: 100% (54/54), done.
-remote: Total 70 (delta 18), reused 61 (delta 15), pack-reused 0
-Receiving objects: 100% (70/70), 38.68 KiB | 435.00 KiB/s, done.
-Resolving deltas: 100% (18/18), done.
+cd spin-plugin-k8s
 ```
 
-Move into the `spin-plugin-k8s` folder (`cd spin-plugin-k8s`).
+Compile and install the plugin:
 
-Next, you compile the plugin from source code:
-
-```shell
-# Compile spin-plugin-k8s
-make build
-```
-
-Finally, you can install the plugin: 
-
-```shell
-# Install spin-plugin-k8s
+```sh
+make
 make install
 ```
+
 At this point you should see the `k8s` plugin when querying the list of installed Spin plugins:
 
 ```shell

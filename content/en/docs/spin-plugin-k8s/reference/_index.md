@@ -1,12 +1,186 @@
 ---
-title: Reference
-description: Low level reference docs for your project.
+title: CLI Reference
+description: Spin Plugin k8s CLI Reference
 weight: 120
+categories: []
+tags: []
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+## spin k8s completion
 
-If your project has an API, configuration, or other reference - anything that users need to look up that’s at an even lower level than a single task - put (or link to it) here. You can serve and link to generated reference docs created using Doxygen,
-Javadoc, or other doc generation tools by putting them in your `static/` directory. Find out more in [Adding static content](https://docsy.dev/docs/adding-content/content/#adding-static-content). For OpenAPI reference, Docsy also provides a [Swagger UI layout and shortcode](https://www.docsy.dev/docs/adding-content/shortcodes/#swaggerui) that renders [Swagger UI](https://swagger.io/tools/swagger-ui/) using any OpenAPI YAML or JSON file as source.
+```bash
+spin k8s completion --help
+Generate the autocompletion script for k8s for the specified shell.
+See each sub-command's help for details on how to use the generated script.
+
+Usage:
+  k8s completion [command]
+
+Available Commands:
+  bash        Generate the autocompletion script for bash
+  fish        Generate the autocompletion script for fish
+  powershell  Generate the autocompletion script for powershell
+  zsh         Generate the autocompletion script for zsh
+
+Flags:
+  -h, --help   help for completion
+```
+
+### spin k8s completion bash
+
+```bash
+spin k8s completion bash --help
+Generate the autocompletion script for the bash shell.
+
+This script depends on the 'bash-completion' package.
+If it is not installed already, you can install it via your OS's package manager.
+
+To load completions in your current shell session:
+
+	source <(k8s completion bash)
+
+To load completions for every new session, execute once:
+
+#### Linux:
+
+	k8s completion bash > /etc/bash_completion.d/k8s
+
+#### macOS:
+
+	k8s completion bash > $(brew --prefix)/etc/bash_completion.d/k8s
+
+You will need to start a new shell for this setup to take effect.
+
+Usage:
+  k8s completion bash
+
+Flags:
+  -h, --help              help for bash
+      --no-descriptions   disable completion descriptions
+```
+
+### spin k8s completion fish
+
+```bash
+spin k8s completion fish --help
+Generate the autocompletion script for the fish shell.
+
+To load completions in your current shell session:
+
+	k8s completion fish | source
+
+To load completions for every new session, execute once:
+
+	k8s completion fish > ~/.config/fish/completions/k8s.fish
+
+You will need to start a new shell for this setup to take effect.
+
+Usage:
+  k8s completion fish [flags]
+
+Flags:
+  -h, --help              help for fish
+      --no-descriptions   disable completion descriptions
+```
+
+### spin k8s completion powershell
+
+```bash
+spin k8s completion powershell --help
+Generate the autocompletion script for powershell.
+
+To load completions in your current shell session:
+
+	k8s completion powershell | Out-String | Invoke-Expression
+
+To load completions for every new session, add the output of the above command
+to your powershell profile.
+
+Usage:
+  k8s completion powershell [flags]
+
+Flags:
+  -h, --help              help for powershell
+      --no-descriptions   disable completion descriptions
+```
+
+### spin k8s completion zsh
+
+```bash
+spin k8s completion zsh --help       
+Generate the autocompletion script for the zsh shell.
+
+If shell completion is not already enabled in your environment you will need
+to enable it.  You can execute the following once:
+
+	echo "autoload -U compinit; compinit" >> ~/.zshrc
+
+To load completions in your current shell session:
+
+	source <(k8s completion zsh)
+
+To load completions for every new session, execute once:
+
+#### Linux:
+
+	k8s completion zsh > "${fpath[1]}/_k8s"
+
+#### macOS:
+
+	k8s completion zsh > $(brew --prefix)/share/zsh/site-functions/_k8s
+
+You will need to start a new shell for this setup to take effect.
+
+Usage:
+  k8s completion zsh [flags]
+
+Flags:
+  -h, --help              help for zsh
+      --no-descriptions   disable completion descriptions
+```
+
+## spin k8s help
+
+```bash
+spin k8s --help
+Manage apps running on Kubernetes
+
+Usage:
+  k8s [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  scaffold    scaffold SpinApp manifest
+  version     Display version information
+
+Flags:
+  -h, --help                help for k8s
+      --kubeconfig string   the path to the kubeconfig file
+  -n, --namespace string    the namespace scope
+  -v, --version             version for k8s
+```
+
+## spin k8s scaffold
+
+```bash
+spin k8s scaffold --help
+scaffold SpinApp manifest
+
+Usage:
+  k8s scaffold [flags]
+
+Flags:
+      --executor string              The executor used to run the Spin application (default "containerd-shim-spin")
+  -f, --from string                  Reference in the registry of the Spin application
+  -h, --help                         help for scaffold
+  -o, --out string                   path to file to write manifest yaml
+  -r, --replicas int32               Number of replicas for the spin app (default 2)
+  -c, --runtime-config-file string   path to runtime config file
+```
+
+## spin k8s version
+
+```bash
+spin k8s version
+```

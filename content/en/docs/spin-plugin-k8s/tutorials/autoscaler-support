@@ -20,7 +20,7 @@ spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 
 ### Setting min/max replicas
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi --min-replicas 1 --max-replicas 10
+spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi -replicas 1 --max-replicas 10
 ```
 
 ### CPU/memory limits and CPU/memory requests can be set together
@@ -49,10 +49,10 @@ spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 
 
 ## KEDA
 
-Kubernetes Event-driven Autoscaling (KEDA), which allows for scaling based on events from various sources like queues, databases, or streaming platforms, can be enabled by setting the `--autoscaler keda` option.
+Kubernetes Event-driven Autoscaling (KEDA), which allows for scaling based on events from various sources like queues, databases, or streaming platforms, can be enabled by setting the `--autoscaler keda` option:
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler keda --cpu-limit 100m --memory-limit 128Mi
+spin k8s scaffold --from user-name/app-name:latest --autoscaler keda --cpu-limit 100m --memory-limit 128Mi -replicas 1 --max-replicas 10
 ```
 
-There are optional extra configurations that can be set in written configuration, for example, `minReplicaCount` and `maxReplicaCount` values. For more information about scaling with KEDA, please see the Spin Operator's [Scaling with KEDA section](../../spin-operator/tutorials/scaling-with-keda.md)
+This KEDA example implements scaling via the Spin Plugin k8s, for more information about scaling with KEDA in general, please see the Spin Operator's [Scaling with KEDA section](../../spin-operator/tutorials/scaling-with-keda.md)

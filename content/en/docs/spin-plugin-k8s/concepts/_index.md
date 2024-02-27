@@ -1,9 +1,8 @@
 ---
 title: Concepts
-weight: 60
+weight: 100
 description: >
-  What does your user need to understand about your project in order to use it - or potentially contribute to it?
-categories: [Spin Plugin k8s]
+  The Spin Plugins k8s is a Spin plugin for interacting with Kubernetes.
+categories: [Spin Plugins k8s]
 tags: [Concepts]
 ---
-

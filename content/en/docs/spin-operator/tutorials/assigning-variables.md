@@ -4,6 +4,7 @@ description: Configure Spin Apps using values from Kubernetes ConfigMaps and Sec
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 100
 ---
 
 

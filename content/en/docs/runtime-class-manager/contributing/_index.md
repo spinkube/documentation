@@ -1,6 +1,6 @@
 ---
 title: Contributing
-weight: 60
+weight: 100
 description: >
   Contributing to Runtime Class Manager 
 categories: [Runtime Class Manager]

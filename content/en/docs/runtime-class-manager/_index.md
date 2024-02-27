@@ -1,8 +1,8 @@
 ---
 title: runtime-class-manager
 description: Enhance Kubernetes with Runtime-Class-Manager; efficient Containerd shim handling.
-categories: []
-tags: []
+categories: [Runtime Class Manager]
+tags: [runtime-class-manager]
 weight: 100
 ---
 

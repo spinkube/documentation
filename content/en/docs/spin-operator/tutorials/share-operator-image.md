@@ -4,6 +4,7 @@ description: How to build and push the Spin Operator image
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 100
 ---
 
 You can build and push the Spin Operator image using the `docker-build` and `docker-push` targets specified in the `Makefile`.

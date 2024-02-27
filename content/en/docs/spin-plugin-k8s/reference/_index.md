@@ -1,9 +1,9 @@
 ---
 title: CLI Reference
 description: Spin Plugin k8s CLI Reference
-weight: 120
-categories: []
-tags: []
+weight: 100
+categories: [Spin Plugins k8s]
+tags: [CLI Reference]
 ---
 
 ## spin k8s completion

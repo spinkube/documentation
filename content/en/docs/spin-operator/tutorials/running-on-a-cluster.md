@@ -3,6 +3,7 @@ title: Running on a Cluster
 description: Learn how to run Spin Operator on a Kubernetes cluster
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 100
 ---
 
 ## Prerequisites

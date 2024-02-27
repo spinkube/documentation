@@ -1,6 +1,6 @@
 ---
 title: Contributing
-weight: 60
+weight: 100
 description: >
   Contributing to Spin Plugin K8s
 categories: [Spin Plugin K8s]

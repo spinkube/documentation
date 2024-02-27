@@ -5,6 +5,7 @@ date: 2024-02-16
 weight: 4
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 100
 ---
 
 This article explains how Spin Apps are packaged and distributed via both public and private registries. You will learn how to:

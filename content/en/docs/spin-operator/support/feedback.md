@@ -2,7 +2,8 @@
 title: Feedback
 description: How to provide feedback to the Spin Operator project
 categories: [Spin Operator]
-tags: [Support]
+tags: [Feedback]
+weight: 100
 ---
 
 The following is a list of suggestions that might assist you with providing feedback to the Spin Operator project.

@@ -4,6 +4,7 @@ description: In this tutorial you'll learn how to deploy Spin Operator on Azure 
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 100
 ---
 
 In this tutorial, you install Spin Operator on an Azure Kubernetes Service (AKS) cluster and deploy a simple Spin application. You will learn how to:

@@ -1,7 +1,7 @@
 ---
 title: Installation
 description: Learn how to install the `k8s` plugin for `spin` 
-weight: 50
+weight: 100
 categories: [Spin Plugin k8s]
 tags: [Installation]
 ---

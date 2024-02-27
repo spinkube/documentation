@@ -5,6 +5,7 @@ description: >
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 100
 ---
 
 Horizontal scaling, in the k8s sense, means deploying more pods to meet demand (different from vertical scaling whereby more memory and CPU resources are assigned to already running pods). In this tutorial, we configure [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to dynamically scale the instance count of our SpinApps to meet the demand.

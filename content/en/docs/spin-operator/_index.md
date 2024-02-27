@@ -1,6 +1,6 @@
 ---
-title: Tutorials
-description: What does your user need to know to try your project?
+title: Spin Operator
+description: Spin Operator
 categories: [Spin Operator]
 tags: []
 weight: 40

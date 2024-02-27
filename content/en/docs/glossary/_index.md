@@ -10,27 +10,29 @@ The following glossary of terms is in the context of deploying, scaling, automat
 
 ## Chart
 
-Helm packages are known as "charts". The main Spin Operator chart does not include the SpinApp CRD or any non-namespace or cluster-level resources.
+A Helm chart is a package format used in Kubernetes for deploying applications. It contains all the necessary files, configurations, and dependencies required to deploy and manage an application on a Kubernetes cluster. Helm charts provide a convenient way to define, install, and upgrade complex applications in a consistent and reproducible manner.
 
 ## Cluster
 
-TODO
+A Kubernetes cluster is a group of nodes (servers) that work together to run containerized applications. It consists of a control plane and worker nodes. The control plane manages and orchestrates the cluster, while the worker nodes host the containers. The control plane includes components like the API server, scheduler, and controller manager. The worker nodes run the containers using container runtime engines like Docker. Kubernetes clusters provide scalability, high availability, and automated management of containerized applications in a distributed environment.
 
 ## Container Runtime
 
-TODO
+A container runtime is a software that manages the execution of containers. It is responsible for starting, stopping, and managing the lifecycle of containers. Container runtimes interact with the underlying operating system to provide isolation and resource management for containers. They also handle networking, storage, and security aspects of containerization. Popular container runtimes include Docker, containerd, and CRI-O. They enable the deployment and management of containerized applications, allowing developers to package their applications with all the necessary dependencies and run them consistently across different environments.
 
 ## Controller
 
-TODO
+A Controller is a core component responsible for managing the desired state of a specific resource or set of resources. It continuously monitors the cluster and takes actions to ensure that the actual state matches the desired state. Controllers handle tasks such as creating, updating, and deleting resources, as well as reconciling any discrepancies between the current and desired states. They provide automation and self-healing capabilities, ensuring that the cluster remains in the desired state even in the presence of failures or changes. Controllers play a crucial role in maintaining the stability and reliability of Kubernetes deployments.
 
 ## Custom Resource (CR)
 
-A CR facilitates the storage and retrieval of your own API Objects (as structured data). A Spin application can be described as a CR.
+In the context of Kubernetes, a Custom Resource (CR) is an extension mechanism that allows users to define and manage their own API resources. It enables the creation of new resource types that are specific to an application or workload. Custom Resources are defined using Custom Resource Definitions (CRDs) and can be treated and managed like any other Kubernetes resource. They provide a way to extend the Kubernetes API and enable the development of custom controllers to handle the lifecycle and behavior of these resources. Custom Resources allow for greater flexibility and customization in Kubernetes deployments.
 
 ## Custom Resource Definition (CRD)
 
-A CRD defines your Custom Resources (CR). For example, the following `.yaml` file describes a `SpinApp` using CRD syntax:
+A Custom Resource Definition (CRD) is an extension mechanism that allows users to define their own custom resources. It enables the creation of new resource types with specific schemas and behaviors. CRDs define the structure and validation rules for custom resources, allowing users to store and manage additional information beyond the built-in Kubernetes resources. Once a CRD is created, instances of the custom resource can be created, updated, and deleted using the Kubernetes API. CRDs provide a way to extend Kubernetes and tailor it to specific application requirements.
+
+For example, the following `.yaml` file describes a `SpinApp` using CRD syntax:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1
@@ -47,35 +49,35 @@ spec:
 
 ## Helm
 
-TODO
+Helm is a package manager for Kubernetes that simplifies the deployment and management of applications. It uses charts, which are pre-configured templates, to define the structure and configuration of an application. Helm allows users to easily install, upgrade, and uninstall applications on a Kubernetes cluster. It also supports versioning, dependency management, and customization of deployments. Helm charts can be shared and reused, making it a convenient tool for managing complex applications in a Kubernetes environment.
 
 ## Image
 
-TODO
+In the context of Kubernetes, an image refers to a packaged and executable software artifact that contains all the necessary dependencies and configurations to run a specific application or service. It is typically built from a Dockerfile and stored in a container registry. Images are used as the basis for creating containers, which are lightweight and isolated runtime environments. Kubernetes pulls the required images from the registry and deploys them onto the cluster's worker nodes. Images play a crucial role in ensuring consistent and reproducible deployments of applications in Kubernetes.
 
 ## Kubernetes (K8s)
 
-TODO
+Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It provides a framework for running and coordinating containers across a cluster of nodes. Kubernetes abstracts the underlying infrastructure and provides features like load balancing, service discovery, and self-healing capabilities. It enables organizations to efficiently manage and scale their applications, ensuring high availability and resilience.
 
 ## Open Container Initiative (OCI)
 
-TODO
+The Open Container Initiative (OCI) is an open governance structure and project that aims to create industry standards for container formats and runtime. It was formed to ensure compatibility and interoperability between different container technologies. OCI defines specifications for container images and runtime, which are used by container runtimes like Docker and containerd. These specifications provide a common framework for packaging and running containers, allowing users to build and distribute container images that can be executed on any OCI-compliant runtime. OCI plays a crucial role in promoting portability and standardization in the container ecosystem.
 
 ## Pod
 
-A pod is a group of containers that can share resources.
+A Pod is the smallest and most basic unit of deployment. It represents a single instance of a running process in a cluster. A Pod can contain one or more containers that are tightly coupled and share the same resources, such as network and storage. Containers within a Pod are scheduled and deployed together on the same node. Pods are ephemeral and can be created, deleted, or replaced dynamically. They provide a way to encapsulate and manage the lifecycle of containerized applications in Kubernetes.
 
 ## Role Based Access Control (RBAC)
 
-TODO
+Role-Based Access Control (RBAC) is a security mechanism in Kubernetes that provides fine-grained control over access to cluster resources. RBAC allows administrators to define roles and permissions for users or groups, granting or restricting access to specific operations and resources within the cluster. RBAC ensures that only authorized users can perform certain actions, helping to enforce security policies and prevent unauthorized access to sensitive resources. It enhances the overall security and governance of Kubernetes clusters.
 
 ## Runtime Class
 
-A RuntimeClass isn't a namespaced resource. A RuntimeClass is not part of a Helm chart.
+A Runtime Class is a resource that allows users to specify different container runtimes for running their workloads. It provides a way to define and select the runtime environment in which a Pod should be executed. By using Runtime Classes, users can choose between different container runtimes, based on their specific requirements. This flexibility enables the deployment of workloads with different runtime characteristics, allowing for better resource utilization and performance optimization in Kubernetes clusters.
 
 ## Scheduler
 
-TODO
+A scheduler is a component responsible for assigning Pods to nodes in the cluster. It takes into account factors like resource availability, node capacity, and any scheduling constraints or policies defined. The scheduler ensures that Pods are placed on suitable nodes to optimize resource utilization and maintain high availability. It considers factors such as affinity, anti-affinity, and resource requirements when making scheduling decisions. The scheduler continuously monitors the cluster and makes adjustments as needed to maintain the desired state of the workload distribution.
 
 ## Service
 

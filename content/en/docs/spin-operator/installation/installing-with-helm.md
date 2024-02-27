@@ -41,7 +41,10 @@ The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definit
 make install
 ```
 
-A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource for the `wasmtime-spin-v2` container runtime is installed. This is the runtime that Spin applications use.
+A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource class that
+points to the `spin` handler called `wasmtime-spin-v2` will be created. If you
+are deploying to a production cluster that only has a shim on a subset of nodes,
+you'll need to modify the RuntimeClass with a `nodeSelector:`.
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
@@ -51,15 +54,10 @@ kubectl apply -f spin-runtime-class.yaml
 
 ## Chart prerequisites
 
-- [Cert Manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
+- [Cert Manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system). For detailed installation instructions see [the cert-manager documentation](https://cert-manager.io/docs/installation/).
 
-```
-helm repo add jetstack https://charts.jetstack.io
-helm install cert-manager jetstack/cert-manager \
-  --namespace cert-manager \
-  --create-namespace \
-  --version v1.13.3 \
-  --set installCRDs=true
+```console
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
 ```
 
 ## Chart dependencies

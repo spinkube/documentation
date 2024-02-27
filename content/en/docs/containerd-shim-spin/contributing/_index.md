@@ -1,6 +1,6 @@
 ---
 title: Contributing
-weight: 60
+weight: 100
 description: >
   Contributing to Containerd Shim Spin 
 categories: [Containerd Shim Spin]

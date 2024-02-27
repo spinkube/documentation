@@ -1,7 +1,9 @@
 ---
 title: Contributing to Docs
-weight: 120
+weight: 100
 description: How to contribute to the SpinKube documentation
+categories: [SpinKube]
+tags: [Contributing]
 ---
 
 ## Contributing to SpinKube documentation

@@ -5,6 +5,7 @@ description: >
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 100
 ---
 
 [KEDA](https://keda.sh) extends Kubernetes to provide event-driven scaling capabilities, allowing it to react to events from Kubernetes internal and external sources using [KEDA scalers](https://keda.sh/docs/2.13/scalers/). KEDA provides a wide variety of scalers to define scaling behavior base on sources like CPU, Memory, Azure Event Hubs, Kafka, RabbitMQ, and more. We use a `ScaledObject` to dynamically scale the instance count of our SpinApp to meet the demand.

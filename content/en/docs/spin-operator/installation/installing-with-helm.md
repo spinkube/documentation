@@ -2,8 +2,9 @@
 title: Installing with Helm
 description: This guide walks you through the process of installing Spin Operator using [Helm](https://helm.sh).
 date: 2024-02-16
+weight: 100
 categories: [Spin Operator]
-tags: [Installation]
+tags: [Installing with Helm]
 ---
 
 ## Prerequisites

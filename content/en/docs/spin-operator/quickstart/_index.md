@@ -3,7 +3,7 @@ title: Quickstart
 description: What does your user need to know to try your project?
 categories: [Spin Operator]
 tags: [Quickstart]
-weight: 40
+weight: 100
 ---
 
 # Quickstart

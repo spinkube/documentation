@@ -1,7 +1,9 @@
 ---
 title: Reference
 description: Low level reference docs for your project.
-weight: 120
+weight: 100
+categories: [Spin Operator]
+tags: [Reference]
 ---
 
 {{% pageinfo %}}

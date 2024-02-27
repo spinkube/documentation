@@ -1,7 +1,9 @@
 ---
 title: Glossary of Terms
 description: Glossary of Terms
-weight: 120
+weight: 100
+categories: [SpinKube]
+tags: [Glossary]
 ---
 
 The following glossary of terms is in the context of deploying, scaling, automating and managing Spin applications in containerized environments.

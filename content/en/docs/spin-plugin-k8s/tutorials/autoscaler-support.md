@@ -2,14 +2,14 @@
 title: Autoscaler Support
 description: A tutorial to show how autoscaler support can be enabled via the spin k8s command
 date: 2024-02-26
-weight: 4
+weight: 100
 categories: [Spin Plugin k8s]
-tags: [Tutorials]
+tags: [Autoscaler Support]
 ---
 
 ## Autoscaler support
 
-Horizontal Pod Autoscaler (HPA) scales Kubernetes pods based on CPU or memory utilization. This HPA scaling can be implemented via the Spin Plugin k8s by setting the `--autoscaler hpa` option. This page deals exclusively with autoscaling via the Spin Plugin k8s. For more general information about scaling with HPA, please see the Spin Operator's [Scaling with HPA section](../../spin-operator/tutorials/scaling-with-keda.md)
+Horizontal Pod Autoscaler (HPA) scales Kubernetes pods based on CPU or memory utilization. This HPA scaling can be implemented via the Spin Plugin k8s by setting the `--autoscaler hpa` option. This page deals exclusively with autoscaling via the Spin Plugin k8s. For more general information about scaling with HPA, please see the Spin Operator's [Scaling with HPA section](../../spin-operator/tutorials/scaling-with-hpa.md)
 
 ## HPA
 

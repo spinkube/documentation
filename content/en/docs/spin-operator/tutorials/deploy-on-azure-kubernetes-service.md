@@ -70,7 +70,7 @@ kube-system       Active   3m
 
 ## Deploying the Spin Operator
 
-First, the [Custom Resource Definition (CRD)](../../glossary/_index.md#custom-resource-definition-crd) and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be installed.
+First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#custom-resource-definition-crd" >}}) and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be installed.
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->

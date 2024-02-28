@@ -30,7 +30,7 @@ Please see the [Go](./prerequisites.md#go), [Docker](./prerequisites.md#docker),
 Clone the Spin Operator repository:
 
 ```bash
-git clone https://github.com/fermyon/spin-operator.git
+git clone https://github.com/spinkube/spin-operator.git
 ```
 
 Change into the Spin Operator directory:

@@ -60,14 +60,22 @@ languageName ="English"
 weight = 1
 [languages.en.params]
 title = "SpinKube"
-description = "A Docsy example site"
+description = "A new open source project that streamlines the experience of developing, deploying, and operating Wasm workloads on Kubernetes."
 
 [languages.no]
 languageName ="Norsk"
 contentDir = "content/no"
 [languages.no.params]
-title = "Goldydocs"
-description = "Docsy er operativsystem for skyen"
+title = "SpinKube"
+description = "Et nytt åpen kildekode-prosjekt som effektiviserer opplevelsen av å utvikle, distribuere og drifte Wasm-arbeidsbelastninger på Kubernetes."
+
+[languages.de]
+languageName ="Deutsch"
+contentDir = "content/de"
+[languages.de.params]
+title = "SpinKube"
+description = "Ein neues Open-Source-Projekt, das die Erfahrung bei der Entwicklung, Bereitstellung und dem Betrieb von Wasm-Workloads auf Kubernetes optimiert."
+
 time_format_default = "02.01.2006"
 time_format_blog = "02.01.2006"
 
@@ -107,7 +115,7 @@ archived_version = false
 # The version number for the version of the docs represented in this doc set.
 # Used in the "version-banner" partial to display a version number for the
 # current doc set.
-version = "0.0"
+version = "0.0.0"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
@@ -179,7 +187,7 @@ enable = false
   name ="Twitter"
   url = "https://example.org/twitter"
   icon = "fab fa-twitter"
-  desc = "Follow us on Twitter to get the latest news!"
+  desc = "Follow us on Twitter to get the latest Spin framework news!"
 [[params.links.user]]
   name = "Stack Overflow"
   url = "https://example.org/stack"

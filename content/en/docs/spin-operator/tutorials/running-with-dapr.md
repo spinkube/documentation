@@ -67,18 +67,18 @@ Run the following command to install the Custom Resource Definition (CRD) into t
 make install
 ```
 
-## Running the Sample Application
-
 Run the following command to run the Spin Operator locally:
 
 ```bash
 make run
-``` 
+```
+
+## Running the Sample Application
 
 Run the following command, in a different terminal window:
 
 ```bash
-kubectl apply -f ./config/samples/simple.yaml
+kubectl create -f ./config/samples/simple.yaml
 ```
 
 ## Dapr Shared Instance
@@ -99,10 +99,10 @@ For example:
 
 ```bash
 helm install my-shared-instance \
-oci://registry-1.docker.io/daprio/dapr-shared-chart \
---set shared.appId=simple-spinapp \
---set shared.remoteURL=simple-spinapp \
---set shared.remotePort=8083
+  oci://registry-1.docker.io/daprio/dapr-shared-chart \
+  --set shared.appId=simple-spinapp \
+  --set shared.remoteURL=simple-spinapp \
+  --set shared.remotePort=8083
 ```
 
 The above helm command will return something similar to the following:

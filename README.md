@@ -18,13 +18,15 @@ The [Spin Operator](https://github.com/spinkube/spin-operator/) enables deployin
 
 # Running Documentation Locally
 
-Check out this repository and run using the `hugo server` command:
+Check out this repository and run the following commands:
 
 ```bash
 $ cd ~
 $ git clone git@github.com:spinkube/documentation.git
 $ cd documentation
-$ hugo server
+$ npm install
+$ npm run build
+$ npm start
 
 Watching for changes in documentation/{assets,content,layouts,package.json}
 Watching for config changes in documentation/hugo.toml, documentation/go.mod

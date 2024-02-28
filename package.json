@@ -29,6 +29,7 @@
     "postbuild:preview": "npm run _check:links",
     "postbuild:production": "npm run _check:links",
     "serve": "npm run _serve",
+    "start": "npm run serve",
     "test": "npm run check:links",
     "update:pkg:dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest"

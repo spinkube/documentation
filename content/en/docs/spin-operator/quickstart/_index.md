@@ -45,27 +45,17 @@ k3d cluster create wasm-cluster \
 
 > Note: Spin Operator requires a few Kubernetes resources that are installed globally to the cluster. We create these directly through `kubectl` as a best practice, since their lifetimes are usually managed separately from a given Spin Operator installation.
 
-> > For now in private preview, the installation workflow uses `make`. In the future, we will add Helm chart support
+> > For now our quickstart relies on `make` tasks within the repository. We will provide Kustomize and Helm instructions in the future.
 
-2. Build the Spin Operator image.
-
-```console
-make docker-build IMG=ghcr.io/spinkube/spin-operator:dev
-```
-
-3. Import Spin Operator to your k3d cluster.
-
-```console
-k3d image import -c wasm-cluster ghcr.io/spinkube/spin-operator:dev
-```
-
-4. Install cert manager
+2. Install cert manager
 
 ```console
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.2/cert-manager.yaml
 ```
 
-5. Apply the [Runtime Class](https://github.com/spinkube/spin-operator/blob/main/spin-runtime-class.yaml) used for scheduling Spin apps onto nodes running the shim:
+3. Apply the [Runtime Class](https://github.com/spinkube/spin-operator/blob/main/spin-runtime-class.yaml) used for scheduling Spin apps onto nodes running the shim:
+
+> Note: In a production cluster you likely want to customize the runtimeClass with a `nodeSelector:` that matches nodes that have the shim installed. In the K3D example they're installed on every node. 
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
@@ -73,7 +63,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 kubectl apply -f spin-runtime-class.yaml
 ```
 
-6. Apply the [Custom Resource Definitions](../../glossary#custom-resource-definition-crd) used by the Spin Operator:
+4. Apply the [Custom Resource Definitions](../../glossary#custom-resource-definition-crd) used by the Spin Operator:
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
@@ -86,6 +76,8 @@ make install
 Run the following command to run the Spin Operator locally. This will create all of the Kubernetes resources required by Spin Operator under the Kubernetes namespace spin-operator. It may take a moment for the installation to complete as dependencies are installed and pods are spinning up.
 
 ```console
+make docker-build IMG=ghcr.io/spinkube/spin-operator:dev
+k3d image import -c wasm-cluster ghcr.io/spinkube/spin-operator:dev
 make deploy IMG=ghcr.io/spinkube/spin-operator:dev
 ```
 

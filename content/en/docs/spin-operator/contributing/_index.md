@@ -22,13 +22,17 @@ the maintainers before you start working on your feature.
 
 ## Making Code Contributions to spin-operator
 
-The following guide is intended to make sure your contribution can get merged as soon as possible. First, make sure you
-have the following prerequisites configured:
+The following guide is intended to make sure your contribution can get merged as soon as possible.
 
-- `go` version v1.20.0+
+If you have [`nix`](https://nixos.org/download) installed, all dependencies
+aside from docker will be available after running `nix develop`.
+
+Otherwise you'll need to install:
+
+- `go` version v1.22.0+
 - `docker` version 17.03+.
 - `kubectl` version v1.11.3+.
-- Access to a Kubernetes v1.11.3+ cluster (This project is being developed using [`k3d`](https://k3d.io/v5.6.0/))
+- Access to a Kubernetes v1.11.3+ cluster (`microk8s` or `k3s` are commonly used by the maintainers)
 - `make`
 - please ensure you [configure adding a GPG signature to your
   commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
@@ -64,13 +68,11 @@ correct.
 
 ## Before You Commit
 
-- Format the code (`go fmt ./...`)
-- Run Clippy (`go vet ./...`)
 - Run the lint task (`make lint` or `make lint-fix`)
 - Build the project and run the tests (`make test`)
 
 spin-operator enforces lints and tests as part of continuous integration - running them locally will save you a
-round-trip to your pull request!
+round-trip on your pull request!
 
 If everything works locally, you're ready to commit your changes.
 

@@ -2,8 +2,8 @@
 title: CLI Reference
 description: Spin Plugin k8s CLI Reference
 weight: 100
-categories: [Spin Plugins k8s]
-tags: [CLI Reference]
+categories: [reference]
+tags: [plugins]
 ---
 
 ## spin k8s completion
@@ -171,12 +171,21 @@ Usage:
   k8s scaffold [flags]
 
 Flags:
-      --executor string              The executor used to run the Spin application (default "containerd-shim-spin")
-  -f, --from string                  Reference in the registry of the Spin application
-  -h, --help                         help for scaffold
-  -o, --out string                   path to file to write manifest yaml
-  -r, --replicas int32               Number of replicas for the spin app (default 2)
-  -c, --runtime-config-file string   path to runtime config file
+      --autoscaler string                            The autoscaler to use. Valid values are 'hpa' and 'keda'
+      --autoscaler-target-cpu-utilization int32      The target CPU utilization percentage to maintain across all pods (default 60)
+      --autoscaler-target-memory-utilization int32   The target memory utilization percentage to maintain across all pods (default 60)
+      --cpu-limit string                             The maximum amount of CPU resource units the Spin application is allowed to use
+      --cpu-request string                           The amount of CPU resource units requested by the Spin application. Used to determine which node the Spin application will run on
+      --executor string                              The executor used to run the Spin application (default "containerd-shim-spin")
+  -f, --from string                                  Reference in the registry of the Spin application
+  -h, --help                                         help for scaffold
+  -s, --image-pull-secret strings                    secrets in the same namespace to use for pulling the image
+      --max-replicas int32                           Maximum number of replicas for the spin app. Autoscaling must be enabled to use this flag (default 3)
+      --memory-limit string                          The maximum amount of memory the Spin application is allowed to use
+      --memory-request string                        The amount of memory requested by the Spin application. Used to determine which node the Spin application will run on
+  -o, --out string                                   path to file to write manifest yaml
+  -r, --replicas int32                               Minimum number of replicas for the spin app (default 2)
+  -c, --runtime-config-file string                   path to runtime config file
 ```
 
 ## spin k8s version

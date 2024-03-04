@@ -49,7 +49,7 @@ you'll need to modify the RuntimeClass with a `nodeSelector:`.
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
 ```console
-kubectl apply -f spin-runtime-class.yaml
+kubectl apply -f config/samples/spin-runtime-class.yaml
 ```
 
 ## Chart prerequisites
@@ -128,7 +128,7 @@ kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0
 
 ```console
 make uninstall
-kubectl delete -f spin-runtime-class.yaml
+kubectl delete -f config/samples/spin-runtime-class.yaml
 ```
 
 <!-- TODO: list out configuration options? -->

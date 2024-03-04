@@ -2,24 +2,46 @@
 title: Contributing
 weight: 100
 description: >
-  Contributing to Spin Plugin K8s
-categories: [Spin Plugin K8s]
-tags: [Contributing]
+  Contributing to the Kubernetes plugin for Spin
+categories: [contributing]
+tags: [contributing, plugins, kubernetes, spin, go]
 ---
 
 ## Prerequisites
 
-Please install Spin - see [prerequisites](../../spin-operator/prerequisites/_index.md#spin) section.
+To compile the plugin from source, you will need
 
-## Compiling Spin Plugin K8s from source
+- [spin]({{< ref "prerequisites#spin-cli" >}}) - the Spin CLI
+- [Go]({{< ref "prerequisites#go" >}})* - Go programming language
+- [make]({{< ref "prerequisites#make" >}})* - GNU Make
+- [The `pluginify` plugin]({{< ref "prerequisites#spin-pluginify" >}})* - A plugin for Spin that helps with plugin development
 
-```bash
-spin plugins update
-spin plugins install pluginify --yes
+## Compiling the plugin from source
+
+Fetch the source code from GitHub:
+
+```sh
 git clone git@github.com:spinkube/spin-plugin-k8s.git
 cd spin-plugin-k8s
-make 
+```
+
+Compile and install the plugin:
+
+```sh
+make
 make install
+```
+
+At this point you should see the `k8s` plugin when querying the list of installed Spin plugins:
+
+```sh
+# List all installed Spin plugins
+spin plugins list --installed
+
+cloud 0.7.0 [installed]
+cloud-gpu 0.1.0 [installed]
+k8s 0.1.0 [installed]
+pluginify 0.6.0 [installed]
 ```
 
 ## Contributing changes

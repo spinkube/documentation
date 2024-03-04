@@ -12,7 +12,7 @@ Simply put, [Spin Operator](https://github.com/spinkube/spin-operator/) is a [Ku
 
 ### Why Spin Operator? 
 
-By supporting SpinApps, Spin Operator provides application developers and platform engineers with the best of both worlds. For developers, this means being able to easily build portable serverless functions that leverage the power and performance of Wasm via the Spin developer tool. For platform engineers, this looks like being able to use idomatic Kubernetes primatives (secrets, atuoscaling, metrics, etc.) and tooling to manage these workloads at scale in a production environment improving their overall operational efficiency. 
+By supporting SpinApps, Spin Operator provides application developers and platform engineers with the best of both worlds. For developers, this means being able to easily build portable serverless functions that leverage the power and performance of Wasm via the Spin developer tool. For platform engineers, this looks like being able to use idomatic Kubernetes primitives (secrets, autoscaling, metrics, etc.) and tooling to manage these workloads at scale in a production environment, improving their overall operational efficiency. 
 
 >> TODO - once we have examples, this would be a good section to link out to them 
 

@@ -84,7 +84,7 @@ make deploy IMG=ghcr.io/spinkube/spin-operator:dev
 Lastly, create the shim executor:
 
 ```console
-kubectl apply -f config/samples/shim-executor.yaml
+kubectl apply -f config/samples/spin-shim-executor.yaml
 ```
 
 ## Run the Sample Application

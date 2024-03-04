@@ -8,7 +8,7 @@ weight: 100
 
 ### What is Spin Operator
 
-Simply put, [Spin Operator](https://github.com/spinkube/spin-operator/) is a [Kubernetes objector](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) which empowers platform engineers to deploy [Spin applications](https://developer.fermyon.com/spin) as custom resources to their Kubernetes clusters. For platform engineers looking to improve their cluster utilization without compromising on performance all while maintaining workload portability, Spin Operator provides an elegant solution 
+Simply put, [Spin Operator](https://github.com/spinkube/spin-operator/) is a [Kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) which empowers platform engineers to deploy [Spin applications](https://developer.fermyon.com/spin) as custom resources to their Kubernetes clusters. For platform engineers looking to improve their cluster utilization without compromising on performance all while maintaining workload portability, Spin Operator provides an elegant solution. 
 
 ### Why Spin Operator? 
 

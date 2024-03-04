@@ -53,14 +53,14 @@ k3d cluster create wasm-cluster \
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.2/cert-manager.yaml
 ```
 
-3. Apply the [Runtime Class](https://github.com/spinkube/spin-operator/blob/main/spin-runtime-class.yaml) used for scheduling Spin apps onto nodes running the shim:
+3. Apply the [Runtime Class](https://github.com/spinkube/spin-operator/blob/main/config/samples/spin-runtime-class.yaml) used for scheduling Spin apps onto nodes running the shim:
 
 > Note: In a production cluster you likely want to customize the runtimeClass with a `nodeSelector:` that matches nodes that have the shim installed. In the K3D example they're installed on every node. 
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
 ```console
-kubectl apply -f spin-runtime-class.yaml
+kubectl apply -f config/samples/spin-runtime-class.yaml
 ```
 
 4. Apply the [Custom Resource Definitions](../../glossary#custom-resource-definition-crd) used by the Spin Operator:

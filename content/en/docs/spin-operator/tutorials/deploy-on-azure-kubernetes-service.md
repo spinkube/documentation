@@ -80,7 +80,7 @@ First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#
 make install
 
 # Install the RuntimeClass
-kubectl apply -f spin-runtime-class.yaml
+kubectl apply -f config/samples/spin-runtime-class.yaml
 ```
 
 The following installs [Cert Manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)

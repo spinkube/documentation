@@ -18,6 +18,8 @@ The [Spin Operator](https://github.com/spinkube/spin-operator/) enables deployin
 
 # Running Documentation Locally
 
+## Install prerequisites and build the website
+
 Check out this repository and run the following commands:
 
 ```bash
@@ -26,6 +28,13 @@ $ git clone git@github.com:spinkube/documentation.git
 $ cd documentation
 $ npm install
 $ npm run build
+```
+
+## Run via Hugo
+
+To run the website via Hugo, run the following:
+
+```bash
 $ npm start
 
 Watching for changes in documentation/{assets,content,layouts,package.json}
@@ -53,14 +62,60 @@ Web Server is available at //localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 ```
 
----
+You can then view the website at [localhost:1313](http://localhost:1313/docs/overview/)
 
-View the website at [localhost:1313](http://localhost:1313/docs/overview/)
+
+## Run via Spin
+
+To run the website via Spin, first ensure you have [Spin installed](https://developer.fermyon.com/spin/install).
+
+The following command will build and run the Spin application and watch the source files (eg [content/](/content/))
+for any changes. When changes are detected, it will automatically re-build and re-run the app.
+
+```bash
+$ spin watch
+Building component fileserver with `npm run build`
+
+> spinkube-documentation@0.1.0 build
+> npm run _build --
+
+
+> spinkube-documentation@0.1.0 _build
+> npm run _hugo-dev --
+
+
+> spinkube-documentation@0.1.0 _hugo-dev
+> npm run _hugo -- -e dev -DFE
+
+
+> spinkube-documentation@0.1.0 _hugo
+> hugo --cleanDestinationDir -e dev -DFE
+
+Start building sites …
+hugo v0.123.4-21a41003c4633b142ac565c52da22924dc30637a+extended darwin/arm64 BuildDate=2024-02-26T16:33:05Z VendorInfo=gohugoio
+
+
+                   | EN  | DE | NO
+-------------------+-----+----+-----
+  Pages            | 161 |  8 | 95
+  Paginator pages  |   0 |  0 |  0
+  Non-page files   |   3 |  1 |  1
+  Static files     |  30 | 30 | 30
+  Processed images |   6 |  0 |  2
+  Aliases          |   3 |  0 |  0
+  Cleaned          |   0 |  0 |  0
+
+Total in 771 ms
+Finished building all Spin components
+Logging component stdio to "/Users/vdice/code/github.com/spinkube/documentation/.spin/logs/"
+
+Serving http://127.0.0.1:3000
+Available Routes:
+  fileserver: http://127.0.0.1:3000 (wildcard)
+```
+
+You'll be able to access the website at [localhost:3000](http://localhost:3000/docs/overview)
 
 ---
 
 ![Screenshot 2024-02-19 at 14 51 24](https://github.com/spinkube/documentation/assets/9831342/98fef78c-3770-42c4-be1c-88d7282130e7)
-
-
-
-

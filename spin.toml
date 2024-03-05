@@ -1,0 +1,23 @@
+spin_manifest_version = 2
+
+[application]
+name = "spinkube-documentation"
+version = "0.1.0"
+description = "The SpinKube documentation website running on Spin."
+authors = ["SpinKube Maintainers"]
+
+[application.trigger.http]
+base = "/"
+
+[[trigger.http]]
+id = "trigger-fileserver"
+component = "fileserver"
+route = "/..."
+
+[component.fileserver]
+source = "modules/spin_static_fs.wasm"
+files = [{ source = "public/", destination = "/" }]
+
+[component.fileserver.build]
+command = "npm run build"
+watch = ["content/**/*", "assets/**/*", "layouts/**/*"]

@@ -34,6 +34,7 @@ Runtime version: n/a
 Initialize Dapr on your cluster with the following command:
 
 ```sh
+dapr init -k
 ⌛  Making the jump to hyperspace...
 ℹ️  Note: To install Dapr using Helm, see here: https://docs.dapr.io/getting-started/install-dapr-kubernetes/#install-with-helm-advanced
 
@@ -67,10 +68,10 @@ kubectl apply -f - <<EOF
 apiVersion: core.spinoperator.dev/v1
 kind: SpinApp
 metadata:
-  name: my-spinapp
+  name: my-dapr-spin-app
   annotations:
     dapr.io/enabled: "true"
-    dapr.io/app-id: "my-spinapp"
+    dapr.io/app-id: "my-dapr-spin-app"
     dapr.io/app-port: "80"
     dapr.io/enable-api-logging: "true"
 spec:
@@ -80,13 +81,29 @@ spec:
 EOF
 ```
 
-Run the following command, in a different terminal window:
+Check that the application was deployed:
 
-<!-- dapr_host = { default = "http://localhost" }
-dapr_port = { default = "5003" }
-dapr_app_name = { default = "myapp" }
-dapr_pubsub_topic = { default = "orders" } -->
+```sh
+kubectl get spinapp my-dapr-spin-app
+NAME               READY   DESIRED   EXECUTOR
+my-dapr-spin-app   1       1         containerd-shim-spin
+```
 
-```bash
-kubectl create -f ./config/samples/simple.yaml
+```sh
+kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+my-dapr-spin-app-7664677875-nln2m   1/1     Running   0          82s
+```
+
+Connect to the application with the following command:
+
+```sh
+kubectl port-forward my-spinapp-7664677875-nln2m 8083:80
+```
+
+Now you can access the application at `http://localhost:8083`:
+
+```sh
+$ curl localhost:8083/v1-get-item-types
+[{"image":"img/CAPPUCCINO.png","itemType":0,"name":"CAPPUCCINO","price":4.5},{"image":"img/COFFEE_BLACK.png","itemType":1,"name":"COFFEE_BLACK","price":3.0},{"image":"img/COFFEE_WITH_ROOM.png","itemType":2,"name":"COFFEE_WITH_ROOM","price":3.0},{"image":"img/ESPRESSO.png","itemType":3,"name":"ESPRESSO","price":3.5},{"image":"img/ESPRESSO_DOUBLE.png","itemType":4,"name":"ESPRESSO_DOUBLE","price":4.5},{"image":"img/LATTE.png","itemType":5,"name":"LATTE","price":4.5},{"image":"img/CAKEPOP.png","itemType":6,"name":"CAKEPOP","price":2.5},{"image":"img/CROISSANT.png","itemType":7,"name":"CROISSANT","price":3.25},{"image":"img/MUFFIN.png","itemType":8,"name":"MUFFIN","price":3.0},{"image":"img/CROISSANT_CHOCOLATE.png","itemType":9,"name":"CROISSANT_CHOCOLATE","price":3.5}]
 ```

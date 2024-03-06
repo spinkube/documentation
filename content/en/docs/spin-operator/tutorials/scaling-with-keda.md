@@ -122,7 +122,7 @@ We can take a look at the SpinApp and the KEDA ScaledObject definitions in our d
 
 ```yaml
 # config/samples/keda-app.yaml
-apiVapiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: keda-spinapp
@@ -223,4 +223,3 @@ Events:
   Normal  ScalingReplicaSet  39s   deployment-controller  Scaled up replica set hpa-spinapp-76db5d7f9f  to 16 from 8
   Normal  ScalingReplicaSet  24s   deployment-controller  Scaled up replica set hpa-spinapp-76db5d7f9f  to 20 from 16
 ```
-

@@ -73,7 +73,7 @@ created above:
 
 ```console
 kubectl apply -f - <<EOF
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinAppExecutor
 metadata:
   name: containerd-shim-spin

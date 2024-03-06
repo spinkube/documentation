@@ -35,7 +35,7 @@ A Custom Resource Definition (CRD) is an extension mechanism that allows users t
 For example, the following `.yaml` file describes a `SpinApp` using CRD syntax:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: simple-spinapp
@@ -109,4 +109,3 @@ However, the `SpinApp` manifest currently supports configuring options such as:
 ## Spin Operator
 
 Spin Operator is a Kubernetes (K8s) operator in charge of handling the lifecycle of Spin applications based on their SpinApp resources.
-

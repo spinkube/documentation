@@ -11,7 +11,7 @@ tags: [Contributing]
 If you've just spotted something you'd like to change while using the docs, Docsy has a shortcut for you:
 
 1. Click **Edit this page** in the top right-hand corner of the page.
-2. If you don't already have an up-to-date fork of the project repo, you are prompted to get one - click **Fork this repository and propose changes** or **Update your Fork** to get an up-to-date version of the project to edit. 
+2. If you don't already have an up-to-date fork of the project repo, you are prompted to get one - click **Fork this repository and propose changes** or **Update your Fork** to get an up-to-date version of the project to edit.
 
 ### Previewing your changes locally
 
@@ -40,7 +40,6 @@ For information about contributing to the Spin Operator project visit the [runti
 
 For information about contributing to the Spin Operator project visit the [Spin Operator Contributing](../spin-operator/contributing/_index.md) page.
 
-## Contributing to the Spin k8s Plugin project
+## Contributing to the spin kube Plugin project
 
-For information about contributing to the Spin k8s Plugin project visit the [spin-plugin-k8s GitHub repository](https://github.com/spinkube/spin-plugin-k8s).
-
+For information about contributing to the spin kube Plugin project visit the [spin-plugin-kube GitHub repository](https://github.com/spinkube/spin-plugin-kube).

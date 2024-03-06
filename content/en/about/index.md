@@ -32,9 +32,9 @@ The [Runtime Class Manager, also known as the Containerd Shim Lifecycle Operator
 <br />
 <br />
 
-<u>**Spin Kubernetes (k8s) Plugin**</u>
+<u>**Spin Plugin for Kubernetes**</u>
 
-The [Spin k8s plugin](https://github.com/spinkube/spin-plugin-k8s) is designed to enhance Kubernetes by enabling the execution of Wasm modules directly within a Kubernetes cluster. This plugin works by integrating with containerd shims, allowing Kubernetes to manage and run Wasm workloads in a way similar to traditional container workloads.
+The [Spin plugin for Kubernetes](https://github.com/spinkube/spin-plugin-kube) is designed to enhance Kubernetes by enabling the execution of Wasm modules directly within a Kubernetes cluster. This plugin works by integrating with containerd shims, allowing Kubernetes to manage and run Wasm workloads in a way similar to traditional container workloads.
 
 <br />
 <br />

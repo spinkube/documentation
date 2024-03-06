@@ -1,20 +1,20 @@
 ---
 title: CLI Reference
-description: Spin Plugin k8s CLI Reference
+description: Spin Plugin kube CLI Reference
 weight: 100
 categories: [reference]
 tags: [plugins]
 ---
 
-## spin k8s completion
+## spin kube completion
 
 ```bash
-spin k8s completion --help
-Generate the autocompletion script for k8s for the specified shell.
+spin kube completion --help
+Generate the autocompletion script for kube for the specified shell.
 See each sub-command's help for details on how to use the generated script.
 
 Usage:
-  k8s completion [command]
+  kube completion [command]
 
 Available Commands:
   bash        Generate the autocompletion script for bash
@@ -26,10 +26,10 @@ Flags:
   -h, --help   help for completion
 ```
 
-### spin k8s completion bash
+### spin kube completion bash
 
 ```bash
-spin k8s completion bash --help
+spin kube completion bash --help
 Generate the autocompletion script for the bash shell.
 
 This script depends on the 'bash-completion' package.
@@ -37,77 +37,77 @@ If it is not installed already, you can install it via your OS's package manager
 
 To load completions in your current shell session:
 
-	source <(k8s completion bash)
+	source <(kube completion bash)
 
 To load completions for every new session, execute once:
 
 #### Linux:
 
-	k8s completion bash > /etc/bash_completion.d/k8s
+	kube completion bash > /etc/bash_completion.d/kube
 
 #### macOS:
 
-	k8s completion bash > $(brew --prefix)/etc/bash_completion.d/k8s
+	kube completion bash > $(brew --prefix)/etc/bash_completion.d/kube
 
 You will need to start a new shell for this setup to take effect.
 
 Usage:
-  k8s completion bash
+  kube completion bash
 
 Flags:
   -h, --help              help for bash
       --no-descriptions   disable completion descriptions
 ```
 
-### spin k8s completion fish
+### spin kube completion fish
 
 ```bash
-spin k8s completion fish --help
+spin kube completion fish --help
 Generate the autocompletion script for the fish shell.
 
 To load completions in your current shell session:
 
-	k8s completion fish | source
+	kube completion fish | source
 
 To load completions for every new session, execute once:
 
-	k8s completion fish > ~/.config/fish/completions/k8s.fish
+	kube completion fish > ~/.config/fish/completions/kube.fish
 
 You will need to start a new shell for this setup to take effect.
 
 Usage:
-  k8s completion fish [flags]
+  kube completion fish [flags]
 
 Flags:
   -h, --help              help for fish
       --no-descriptions   disable completion descriptions
 ```
 
-### spin k8s completion powershell
+### spin kube completion powershell
 
 ```bash
-spin k8s completion powershell --help
+spin kube completion powershell --help
 Generate the autocompletion script for powershell.
 
 To load completions in your current shell session:
 
-	k8s completion powershell | Out-String | Invoke-Expression
+	kube completion powershell | Out-String | Invoke-Expression
 
 To load completions for every new session, add the output of the above command
 to your powershell profile.
 
 Usage:
-  k8s completion powershell [flags]
+  kube completion powershell [flags]
 
 Flags:
   -h, --help              help for powershell
       --no-descriptions   disable completion descriptions
 ```
 
-### spin k8s completion zsh
+### spin kube completion zsh
 
 ```bash
-spin k8s completion zsh --help       
+spin kube completion zsh --help
 Generate the autocompletion script for the zsh shell.
 
 If shell completion is not already enabled in your environment you will need
@@ -117,36 +117,36 @@ to enable it.  You can execute the following once:
 
 To load completions in your current shell session:
 
-	source <(k8s completion zsh)
+	source <(kube completion zsh)
 
 To load completions for every new session, execute once:
 
 #### Linux:
 
-	k8s completion zsh > "${fpath[1]}/_k8s"
+	kube completion zsh > "${fpath[1]}/_kube"
 
 #### macOS:
 
-	k8s completion zsh > $(brew --prefix)/share/zsh/site-functions/_k8s
+	kube completion zsh > $(brew --prefix)/share/zsh/site-functions/_kube
 
 You will need to start a new shell for this setup to take effect.
 
 Usage:
-  k8s completion zsh [flags]
+  kube completion zsh [flags]
 
 Flags:
   -h, --help              help for zsh
       --no-descriptions   disable completion descriptions
 ```
 
-## spin k8s help
+## spin kube help
 
 ```bash
-spin k8s --help
+spin kube --help
 Manage apps running on Kubernetes
 
 Usage:
-  k8s [command]
+  kube [command]
 
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
@@ -155,20 +155,20 @@ Available Commands:
   version     Display version information
 
 Flags:
-  -h, --help                help for k8s
+  -h, --help                help for kube
       --kubeconfig string   the path to the kubeconfig file
   -n, --namespace string    the namespace scope
-  -v, --version             version for k8s
+  -v, --version             version for kube
 ```
 
-## spin k8s scaffold
+## spin kube scaffold
 
 ```bash
-spin k8s scaffold --help
+spin kube scaffold --help
 scaffold SpinApp manifest
 
 Usage:
-  k8s scaffold [flags]
+  kube scaffold [flags]
 
 Flags:
       --autoscaler string                            The autoscaler to use. Valid values are 'hpa' and 'keda'
@@ -188,8 +188,8 @@ Flags:
   -c, --runtime-config-file string                   path to runtime config file
 ```
 
-## spin k8s version
+## spin kube version
 
 ```bash
-spin k8s version
+spin kube version
 ```

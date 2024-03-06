@@ -8,11 +8,11 @@ tags: [Tutorials]
 weight: 100
 ---
 
-Horizontal scaling, in the k8s sense, means deploying more pods to meet demand (different from vertical scaling whereby more memory and CPU resources are assigned to already running pods). In this tutorial, we configure [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to dynamically scale the instance count of our SpinApps to meet the demand.
+Horizontal scaling, in the Kubernetes sense, means deploying more pods to meet demand (different from vertical scaling whereby more memory and CPU resources are assigned to already running pods). In this tutorial, we configure [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to dynamically scale the instance count of our SpinApps to meet the demand.
 
 ## Prerequisites
 
-> We use k3d to run a k8s cluster locally as part of this tutorial, but you can follow these steps to configure HPA autoscaling on your desired k8s environment.
+> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these steps to configure HPA autoscaling on your desired Kubernetes environment.
 
 Please see the following sections in the [Prerequisites]({{< ref "prerequisites" >}}) page and fulfil those prerequisite requirements before continuing:
 
@@ -31,9 +31,9 @@ git clone https://github.com/spinkube/spin-operator.git
 cd spin-operator
 ```
 
-## Setting Up k8s Cluster
+## Setting Up Kubernetes Cluster
 
-Run the following command to create a k8s k3d cluster that has [the containerd-wasm-shims](https://github.com/deislabs/containerd-wasm-shims) pre-requisites installed: If you have a k3d cluster already, please feel free to use it:
+Run the following command to create a Kubernetes cluster that has [the containerd-wasm-shims](https://github.com/deislabs/containerd-wasm-shims) pre-requisites installed: If you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
 k3d cluster create wasm-cluster-scale --image ghcr.io/deislabs/containerd-wasm-shims/examples/k3d:v0.11.0 -p "8081:80@loadbalancer" --agents 2
@@ -56,7 +56,7 @@ Great, now you have Spin Operator up and running on your cluster. This means you
 
 ## Set Up Ingress
 
-Use the following command to set up ingress on your k8s cluster. This ensures traffic can reach your SpinApp once we’ve created it in future steps:
+Use the following command to set up ingress on your Kubernetes cluster. This ensures traffic can reach your SpinApp once we’ve created it in future steps:
 
 ```console
 # Setup ingress following this tutorial https://k3d.io/v5.4.6/usage/exposing_services/
@@ -146,7 +146,7 @@ spec:
 
 </aside>
 
-The k8s documentation is the place to learn more about [limits and requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) and [other metrics supported by HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics).
+The Kubernetes documentation is the place to learn more about [limits and requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) and [other metrics supported by HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics).
 
 Let’s deploy the SpinApp and the HPA instance onto our cluster with the following command:
 

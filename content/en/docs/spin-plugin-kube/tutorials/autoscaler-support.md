@@ -1,6 +1,6 @@
 ---
 title: Autoscaler Support
-description: A tutorial to show how autoscaler support can be enabled via the spin k8s command
+description: A tutorial to show how autoscaler support can be enabled via the spin kube command
 date: 2024-02-26
 weight: 100
 categories: [guides]
@@ -22,7 +22,7 @@ resource) to scale back down.
 
 The Kubernetes plugin for Spin includes autoscaler support, which allows you to tell Kubernetes when
 to scale your Spin application up or down based on demand. This tutorial will show you how to enable
-autoscaler support via the `spin k8s scaffold` command.
+autoscaler support via the `spin kube scaffold` command.
 
 ### Prerequisites
 
@@ -43,11 +43,11 @@ of your application.
 #### Horizontal Pod Autoscaling (HPA)
 
 Horizontal Pod Autoscaler (HPA) scales Kubernetes pods based on CPU or memory utilization. This HPA
-scaling can be implemented via the Spin Plugin k8s by setting the `--autoscaler hpa` option. This
-page deals exclusively with autoscaling via the Spin Plugin k8s.
+scaling can be implemented via the Kubernetes plugin for Spin by setting the `--autoscaler hpa` option. This
+page deals exclusively with autoscaling via the Kubernetes plugin for Spin.
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi
+spin kube scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi
 ```
 
 Horizontal Pod Autoscaling is built-in to Kubernetes and does not require the installation of a
@@ -63,7 +63,7 @@ from various sources like messages in a queue, or the number of rows in a databa
 KEDA can be enabled by setting the `--autoscaler keda` option:
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler keda --cpu-limit 100m --memory-limit 128Mi -replicas 1 --max-replicas 10
+spin kube scaffold --from user-name/app-name:latest --autoscaler keda --cpu-limit 100m --memory-limit 128Mi -replicas 1 --max-replicas 10
 ```
 
 Using KEDA to autoscale your Spin applications requires the installation of the [KEDA
@@ -78,7 +78,7 @@ replicas for your application. The `--replicas` option defaults to 2 and the `--
 defaults to 3.
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi -replicas 1 --max-replicas 10
+spin kube scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi -replicas 1 --max-replicas 10
 ```
 
 ### Setting CPU/memory limits and CPU/memory requests
@@ -110,7 +110,7 @@ It is important to note the following:
   specified and uses it as the requested value for the resource.
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi --cpu-request 50m --memory-request 64Mi
+spin kube scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi --cpu-request 50m --memory-request 64Mi
 ```
 
 ### Setting target utilization
@@ -127,11 +127,11 @@ the number of instances until all instances are averaging 50% CPU utilization.
 To scale based on CPU utilization, use the `--autoscaler-target-cpu-utilization` option:
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi --autoscaler-target-cpu-utilization 50
+spin kube scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi --autoscaler-target-cpu-utilization 50
 ```
 
 To scale based on memory utilization, use the `--autoscaler-target-memory-utilization` option:
 
 ```sh
-spin k8s scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi --autoscaler-target-memory-utilization 50
+spin kube scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi --autoscaler-target-memory-utilization 50
 ```

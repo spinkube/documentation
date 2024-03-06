@@ -25,7 +25,7 @@ For this tutorial in particular, you need
 - [TinyGo]({{< ref "prerequisites#tinygo" >}}) - for building the Spin app
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
 - [spin]({{< ref "prerequisites#spin-cli" >}}) - the Spin CLI
-- [spin plugin k8s](/docs/spin-plugin-k8s/installation) - the Kubernetes plugin for `spin`
+- [spin kube](/docs/spin-plugin-kube/installation) - the Kubernetes plugin for `spin`
 
 ## Creating a new Spin App
 
@@ -80,21 +80,21 @@ spin registry push --build ttl.sh/hello-spin:24h
 
 ## Deploying Spin Apps
 
-To deploy Spin Apps to a Kubernetes cluster which has Spin Operator running, you use the `k8s` plugin for `spin`. Use the `spin k8s deploy` command as shown here to deploy the `hello-spin` app to your Kubernetes cluster:
+To deploy Spin Apps to a Kubernetes cluster which has Spin Operator running, you use the `kube` plugin for `spin`. Use the `spin kube deploy` command as shown here to deploy the `hello-spin` app to your Kubernetes cluster:
 
 ```shell
 # Deploy the hello-spin app to your Kubernetes Cluster
-spin k8s deploy --from ttl.sh/hello-spin:24h
+spin kube deploy --from ttl.sh/hello-spin:24h
 
 spinapp.core.spinoperator.dev/hello-spin created
 ```
 
 ## Scaffolding Spin Apps
 
-In the previous section, you deployed the `hello-spin` app using the `spin k8s deploy` command. Although this is handy, you may want to inspect, or alter the Kubernetes manifests before applying them. You use the `spin k8s scaffold` command to generate Kubernetes manifests:
+In the previous section, you deployed the `hello-spin` app using the `spin kube deploy` command. Although this is handy, you may want to inspect, or alter the Kubernetes manifests before applying them. You use the `spin kube scaffold` command to generate Kubernetes manifests:
 
 ```shell
-spin k8s scaffold --from ttl.sh/hello-spin:24h
+spin kube scaffold --from ttl.sh/hello-spin:24h
 apiVersion: core.spinoperator.dev/v1
 kind: SpinApp
 metadata:
@@ -108,7 +108,7 @@ By default, the command will print all Kubernetes menifests to `STDOUT`. Alterna
 
 ```shell
 # Scaffold manifests to spinapp.yaml
-spin k8s scaffold --from ttl.sh/hello-spin:24h \
+spin kube scaffold --from ttl.sh/hello-spin:24h \
     --out spinapp.yaml
 
 # Print contents of spinapp.yaml
@@ -161,11 +161,11 @@ kubectl create secret docker-registry ghcr \
 secret/ghcr created
 ```
 
-Scaffold the necessary `SpinApp` Custom Resource (CR) using `spin k8s scaffold`:
+Scaffold the necessary `SpinApp` Custom Resource (CR) using `spin kube scaffold`:
 
 ```shell
 # Scaffold the SpinApp manifest
-spin k8s scaffold --from ghcr.io/$GH_USER/hello-spin:0.0.1 \
+spin kube scaffold --from ghcr.io/$GH_USER/hello-spin:0.0.1 \
     --out spinapp.yaml
 ```
 
@@ -186,7 +186,7 @@ spec:
 
 > `$GH_USER` should match the actual username provided while running through the previous sections of this article
 
-Finally, you can deploy the app using `kubectl apply`: 
+Finally, you can deploy the app using `kubectl apply`:
 
 ```shell
 # Deploy the spinapp.yaml using kubectl

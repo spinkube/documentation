@@ -3,7 +3,7 @@ title: SpinKube
 ---
 
 {{< blocks/cover title="Welcome to SpinKube" image_anchor="top" height="full" >}}
-<a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
+<a class="btn btn-lg btn-primary me-3 mb-4" href="{{< relref "/docs" >}}">
   SpinKube Documentation <i class="fas fa-arrow-alt-circle-right ms-2"></i>
 </a>
 <p class="lead mt-5">A new open source project that streamlines the experience of developing, deploying, and operating Wasm workloads on Kubernetes.</p>

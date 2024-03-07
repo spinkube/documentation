@@ -55,7 +55,7 @@ Helm is a package manager for Kubernetes that simplifies the deployment and mana
 
 In the context of Kubernetes, an image refers to a packaged and executable software artifact that contains all the necessary dependencies and configurations to run a specific application or service. It is typically built from a Dockerfile and stored in a container registry. Images are used as the basis for creating containers, which are lightweight and isolated runtime environments. Kubernetes pulls the required images from the registry and deploys them onto the cluster's worker nodes. Images play a crucial role in ensuring consistent and reproducible deployments of applications in Kubernetes.
 
-## Kubernetes (K8s)
+## Kubernetes
 
 Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It provides a framework for running and coordinating containers across a cluster of nodes. Kubernetes abstracts the underlying infrastructure and provides features like load balancing, service discovery, and self-healing capabilities. It enables organizations to efficiently manage and scale their applications, ensuring high availability and resilience.
 
@@ -108,5 +108,4 @@ However, the `SpinApp` manifest currently supports configuring options such as:
 
 ## Spin Operator
 
-Spin Operator is a Kubernetes (K8s) operator in charge of handling the lifecycle of Spin applications based on their SpinApp resources.
-
+Spin Operator is a Kubernetes operator in charge of handling the lifecycle of Spin applications based on their SpinApp resources.

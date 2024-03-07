@@ -12,7 +12,7 @@ weight: 100
 
 ### Why Spin Operator? 
 
-By bringing the power of the Spin framework to Kubernetes clusters, Spin Operator provides application developers and platform engineers with the best of both worlds. For developers, this means being able to easily build portable serverless functions that leverage the power and performance of Wasm via the Spin developer tool. For platform engineers, this looks like being able to use idomatic Kubernetes primitives (secrets, autoscaling, etc.) and tooling to manage these workloads at scale in a production environment, improving their overall operational efficiency. 
+By bringing the power of the Spin framework to Kubernetes clusters, Spin Operator provides application developers and platform engineers with the best of both worlds. For developers, this means easily building portable serverless functions that leverage the power and performance of Wasm via the Spin developer tool. For platform engineers, this means using idiomatic Kubernetes primitives (secrets, autoscaling, etc.) and tooling to manage these workloads at scale in a production environment, improving their overall operational efficiency. 
 
 ### How Does Spin Operator Work? 
 

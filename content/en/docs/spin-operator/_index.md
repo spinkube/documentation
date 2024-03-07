@@ -16,7 +16,9 @@ By bringing the power of the Spin framework to Kubernetes clusters, Spin Operato
 
 ### How Does Spin Operator Work? 
 
-Built with the [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) framework, Spin Operator is a Kubernetes operator. Kubernetes operators are used to extend Kubernetes automation to new objects, defined as custom resources, without modifying the Kubernetes API. The Spin Operator is composed of two main components: A) A controller that defines and manages B) "SpinApps" Custom Resource Definition (CRD).  
+Built with the [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) framework, Spin Operator is a Kubernetes operator. Kubernetes operators are used to extend Kubernetes automation to new objects, defined as custom resources, without modifying the Kubernetes API. The Spin Operator is composed of two main components: 
+- A controller that defines and manages Wasm workloads on k8s.
+- The "SpinApps" Custom Resource Definition (CRD).  
 
 ![](spin-operator-diagram.png)
 

@@ -122,6 +122,18 @@ $spkb-bg: #F8EFFD;
             color: $primary;
             text-align: left;
         }
+        table {
+            max-width: 72rem;
+            margin: 2rem auto !important;
+
+            th {
+                text-align: center !important;
+
+                img {
+                    margin: 1rem auto !important;
+                }
+            }
+        }
 
     }
 }

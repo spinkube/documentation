@@ -26,6 +26,8 @@ Once an application deployment begins, Spin Operator handles scheduling the work
 
 ## Next Steps
 
-Let's get up and running with your first SpinApp deployment on a local k3d cluster with our [SpinKube quickstart](./quickstart/_index.md). 
+For application developers interested in writing their first Spin App, check out the [`spin kube` plugin](../spin-plugin-kube/) documentation. By the end of the quickstart, you'll have an application ready to deploy to your Kubernetes cluster of choice.
 
->> Curious what to build? Event driven, ephemeral workloads such as ETL pipelines ([order processing example](TODO://link)), and pub/sub messaging ([MQTT subscriber](TODO:://link)) are great fits for Spin Operator. Check out this Order Processing example and MQTT Subscriber examples
+For platform engineers interested in cluster operations and working with Spin Operator, visit our [Spin Operator quickstart](./quickstart/_index.md). We provide you with a simple quickstart SpinApp to use alongside spin operator. 
+
+>> Curious what to build? Event driven, ephemeral workloads such as ETL pipelines ([order processing example](TODO://link)), and pub/sub messaging ([MQTT subscriber](TODO:://link)) are great fits for Spin Operator. 

@@ -30,8 +30,9 @@ To ensure compatibility between the Spin Operator and a specific Kubernetes dist
 3. **Invoke the Spin App**: Once the Spin App is deployed, ensure at least one request was successfully served by the Spin App.
 
 ## Container Runtime Constraints
+The Spin Operator requires the target nodes that would run Spin applications to support containerd version [`1.6.26+`](https://github.com/containerd/containerd/releases/tag/v1.6.26) or [`1.7.7+`](https://github.com/containerd/containerd/releases/tag/v1.7.7).
 
-The Spin Operator requires at least one node of your Kubernetes cluster to run either [`containerd 1.6.26+`](https://github.com/containerd/containerd/releases/tag/v1.6.26) or [`containerd 1.7.7+`](https://github.com/containerd/containerd/releases/tag/v1.7.7). Use the `kubectl get nodes -o wide` command to see which container runtime is installed per node:
+Use the `kubectl get nodes -o wide` command to see which container runtime is installed per node:
 
 ```shell
 # Inspect container runtimes per node

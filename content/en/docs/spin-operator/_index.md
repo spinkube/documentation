@@ -22,7 +22,7 @@ Built with the [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) fra
 
 ![](spin-operator-diagram.png)
 
-SpinApps CRDs can be  [composed manually](../glossary/_index.md/#custom-resource-definition-crd) or generated automatically from an existing Spin application using the [`spin kube scaffold`](../spin-plugin-kube/_index.md) command. The former approach lends itself well to CI/CD systems, whereas the latter is a better fit for local testing as part of a local developer workflow. 
+SpinApps CRDs can be [composed manually](../glossary/_index.md/#custom-resource-definition-crd) or generated automatically from an existing Spin application using the [`spin kube scaffold`](../spin-plugin-kube/_index.md) command. The former approach lends itself well to CI/CD systems, whereas the latter is a better fit for local testing as part of a local developer workflow. 
 
 Once an application deployment begins, Spin Operator handles scheduling the workload on the appropriate node (thanks to the [Runtime Class Manager](../runtime-class-manager/), previously known as Kwasm) and manages the resources lifecycle. No need to fetch the [containerd shim spin]((../containerd-shim-spin/) ) binary or mutate node labels. This is all managed via the Runtime Class Manager, which you will install as a dependency when setting up Spin Operator. 
 

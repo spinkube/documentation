@@ -1,9 +1,9 @@
 ---
-title: Spin Operator
+title: spin-operator
 description: Spin Operator
 categories: [Spin Operator]
 tags: [Spin Operator]
-weight: 100
+weight: 50
 ---
 
 ### What Is Spin Operator?

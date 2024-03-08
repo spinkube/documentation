@@ -1,6 +1,6 @@
 ---
 title: Contributing
-weight: 100
+weight: 5
 description: >
   Contributing to the Spin plugin for Kubernetes
 categories: [contributing]

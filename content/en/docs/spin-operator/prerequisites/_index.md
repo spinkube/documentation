@@ -1,7 +1,7 @@
 ---
 title: Prerequisites
 description: Prerequisites
-weight: 100
+weight: 1
 categories: [Spin Operator]
 tags: [Prerequisites]
 ---

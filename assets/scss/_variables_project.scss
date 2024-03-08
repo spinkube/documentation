@@ -4,3 +4,124 @@ Add styles or override variables from the theme here.
 
 */
 
+$td-enable-google-fonts: true;
+$google_font_name: "Work Sans";
+$google_font_family: "Work+Sans:300,300i,400,400i,700,700i";
+
+
+/* Colors */
+// $primary: #231F21;
+$primary: #0E092D;
+$secondary: #F8EFFD;
+
+$spkb-purple: #9A51FF;
+$spkb-blue: #4140F3;
+$spkb-bg: #F8EFFD;
+
+
+.article-meta,
+.feedback--title {
+    margin-top: 3.67rem;
+}
+
+.td-navbar {
+    .navbar-brand__name {
+        display: none;
+    }
+
+    .navbar-brand {
+        svg {
+            height: 60px !important;
+            width: auto !important;
+        }
+    }
+
+    .navbar-brand__logo {
+
+    }
+
+    .nav-link {
+        color: lighten($spkb-purple, 15%);
+        padding: 0.425rem 0.75rem !important;
+        border-radius: 0.5rem;
+        font-weight: 600 !important;
+
+        &:hover {
+            color: lighten($spkb-blue, 27.5%);
+        }
+        &.active {
+            color: lighten($spkb-blue, 27.5%) !important;
+            background-color: rgba($spkb-purple, 0.25);
+        }
+    }
+
+    .td-search__input {
+        // border: 1px solid $spkb-purple;
+        background-color: lighten($primary, 8.5%) !important;
+
+        &:hover, &:active, &:focus {
+            color: white !important;
+        }
+    }
+}
+
+.td-sidebar {
+    padding-top: 5.5rem !important;
+}
+.td-sidebar-toc,
+.td-main main {
+    padding-top: 7rem !important;
+}
+
+.td-sidebar {
+    h1 {
+        font-weight: 500 !important;
+    }
+}
+
+.td-sidebar {
+    background-color: $spkb-bg !important;
+
+    .td-search__input {
+        background-color: white !important;
+    }
+}
+
+// homepage
+#td-cover-block-0 {
+    background-image: url('/spinkube-hero-bg.jpg') !important;
+
+    h1.display-1 {
+        font-size: 3.333rem;
+        margin: 12vh auto !important;
+        max-width: 66rem;
+    }
+
+    p.lead {
+        font-size: 1.25rem;
+        line-height: 2;
+        margin: 1rem auto 4rem;
+        max-width: 64rem;
+        font-weight: 500;
+    }
+}
+
+.td-home {
+    .td-box--secondary {
+
+        h3 {
+            margin: 5rem auto 3rem !important;
+            color: $spkb-purple;
+            font-weight: 600;
+        }
+
+        p {
+            max-width: 56rem;
+            margin: 2rem auto 3rem;
+            line-height: 2;
+            color: $primary;
+            text-align: left;
+        }
+
+    }
+}

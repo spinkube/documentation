@@ -6,7 +6,7 @@ tags: [Known Issues]
 weight: 100
 ---
 
-To set up Spin on Kubernetes, we use the [Containerd-Shim for Spin](https://github.com/deislabs/containerd-wasm-shims), a great contribution from the community. While Spin mostly works as expected, there are a few important points to note.
+This article describes a list of known limitations with running Spin applications on Kubernetes, using SpinKube.
 
 The project is still evolving, and we anticipate enhancements with each new release of containerd-spin-shim.
 

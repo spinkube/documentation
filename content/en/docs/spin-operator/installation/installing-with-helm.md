@@ -26,7 +26,7 @@ Before installing the chart, you'll need to ensure the following:
 
 The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) resources are installed. This includes the `SpinApp` CRD representing Spin applications to be scheduled on the cluster.
 
-<!-- TODO (WEDNESDAY): replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
+<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
 ```console
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
@@ -65,11 +65,16 @@ helm install \
 
 - [Kwasm Operator](https://github.com/kwasm/kwasm-operator) is required to install WebAssembly support on Kubernetes nodes. Note in the future this will be replaced by [runtime class manager](../../runtime-class-manager/_index.md). 
 
+<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.  
+-->
+
 ```shell
 # Add HELM repository if not already done
 helm repo add kwasm http://kwasm.sh/kwasm-operator/
+
 # Install KWasm operator
 helm install -n kwasm --create-namespace kwasm-operator kwasm/kwasm-operator
+
 # Provision Nodes
 kubectl annotate node --all kwasm.sh/kwasm-node=true
 ```

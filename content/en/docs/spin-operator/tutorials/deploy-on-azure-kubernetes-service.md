@@ -72,20 +72,21 @@ kube-system       Active   3m
 
 First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#custom-resource-definition-crd" >}}) and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be installed.
 
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
 ```shell
-# Install the CRD
-make install
+# Install the CRDs
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
 
 # Install the RuntimeClass
-kubectl apply -f config/samples/spin-runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
+
+# Install the SpinAppExecutor
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.shim-executor.yaml
 ```
 
 The following installs [Cert Manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
 
-```
+```shell
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
@@ -96,13 +97,11 @@ helm install cert-manager jetstack/cert-manager \
 
 The following installs the chart with the release name `spin-operator`:
 
-<!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
-
 ```shell
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --devel \
+  --version 0.0.1 \
   --wait \
   oci://ghcr.io/spinkube/spin-operator
 ```

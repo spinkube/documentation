@@ -106,6 +106,10 @@ However, the `SpinApp` manifest currently supports configuring options such as:
 - volume mounts
 - autoscaling
 
+## Spin App Executor (CRD)
+
+The `SpinAppExecutor` CRD is a [Custom Resource Definition](#custom-resource-definition-crd) utilized by Spin Operator to determine which executor type should be used in running a SpinApp.
+
 ## Spin Operator
 
 Spin Operator is a Kubernetes operator in charge of handling the lifecycle of Spin applications based on their SpinApp resources.

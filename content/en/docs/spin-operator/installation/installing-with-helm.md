@@ -16,15 +16,6 @@ For this guide in particular, you will need:
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
 - [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
 
-<!-- NOTE: remove this prerequisite when the runtime-class and CRDs can be applied from their release artifacts, i.e. when repo and release are public -->
-
-Also, ensure you have cloned this repository and have navigated to the root of the project:
-
-```console
-git clone git@github.com:spinkube/spin-operator.git
-cd spin-operator
-```
-
 ## Install Spin Operator With Helm
 
 The following instructions are for installing Spin Operator using a Helm chart (using `helm install`).
@@ -35,10 +26,8 @@ Before installing the chart, you'll need to ensure the following:
 
 The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) resources are installed. This includes the `SpinApp` CRD representing Spin applications to be scheduled on the cluster.
 
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
-
 ```console
-make install
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
 ```
 
 A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource class that
@@ -46,10 +35,15 @@ points to the `spin` handler called `wasmtime-spin-v2` will be created. If you
 are deploying to a production cluster that only has a shim on a subset of nodes,
 you'll need to modify the RuntimeClass with a `nodeSelector:`.
 
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
+```console
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
+```
+
+The `containerd-spin-shim` [SpinAppExecutor]({{< ref "glossary#spin-app-executor-crd" >}}) custom resource is installed. This
+tells Spin Operator to use the containerd shim executor to run Spin apps:
 
 ```console
-kubectl apply -f config/samples/spin-runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.shim-executor.yaml
 ```
 
 ## Chart prerequisites
@@ -82,14 +76,12 @@ The spin-operator chart currently includes the following sub-charts:
 
 The following installs the chart with the release name `spin-operator`:
 
-<!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
-
 ```shell
 # Install Spin Operator with Helm
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --devel \
+  --version 0.0.1 \
   --wait \
   oci://ghcr.io/spinkube/spin-operator
 ```
@@ -98,21 +90,17 @@ helm install spin-operator \
 
 Note that you may also need to upgrade the spin-operator CRDs in tandem with upgrading the Helm release:
 
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
-
 ```
-make install
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
 ```
 
 To upgrade the `spin-operator` release, run the following:
-
-<!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
 
 ```shell
 # Upgrade Spin Operator using Helm
 helm upgrade spin-operator \
   --namespace spin-operator \
-  --devel \
+  --version 0.0.1 \
   --wait \
   oci://ghcr.io/spinkube/spin-operator
 ```
@@ -130,17 +118,10 @@ This will remove all Kubernetes resources associated with the chart and deletes 
 
 To completely uninstall all resources related to spin-operator, you may want to delete the corresponding CRD resources and, optionally, the RuntimeClass:
 
-<!-- TODO: replace with:
 ```console
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml
-
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml
-```
--->
-
-```console
-make uninstall
-kubectl delete -f config/samples/spin-runtime-class.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.shim-executor.yaml
 ```
 
 <!-- TODO: list out configuration options? -->

@@ -17,6 +17,9 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
 
+env:
+  CANONICAL_DOMAIN: www.spinkube.dev
+
 jobs:
   # TODO: place into separate build.yaml (and add PR support?) and then call here?
   build:
@@ -44,7 +47,7 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "https://${{ env.CANONICAL_DOMAIN }}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

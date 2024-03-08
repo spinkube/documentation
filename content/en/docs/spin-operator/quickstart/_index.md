@@ -1,6 +1,6 @@
 ---
 title: Quickstart 
-description: What does your user need to know to try your project?
+description: This Quickstart guide demonstrates how to set up a new Kubernetes cluster, install the Spin Operator and deploy your first Spin application
 categories: [Spin Operator]
 tags: [Quickstart]
 weight: 100

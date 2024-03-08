@@ -8,7 +8,6 @@ weight: 100
 
 This article describes a list of known limitations with running Spin applications on Kubernetes, using SpinKube.
 
-The project is still evolving, and we anticipate enhancements with each new release of containerd-spin-shim.
 
 - [Specific Configuration of `spin up`](#specific-configuration-of-spin-up)
 - [Limitation in File Mounts for Components](#limitation-in-file-mounts-for-components)

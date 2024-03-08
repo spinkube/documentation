@@ -2,7 +2,7 @@
 title: Contributing
 weight: 100
 description: >
-  Contributing to the Kubernetes plugin for Spin
+  Contributing to the Spin plugin for Kubernetes
 categories: [contributing]
 tags: [contributing, plugins, kubernetes, spin, go]
 ---
@@ -21,8 +21,8 @@ To compile the plugin from source, you will need
 Fetch the source code from GitHub:
 
 ```sh
-git clone git@github.com:spinkube/spin-plugin-k8s.git
-cd spin-plugin-k8s
+git clone git@github.com:spinkube/spin-plugin-kube.git
+cd spin-plugin-kube
 ```
 
 Compile and install the plugin:
@@ -32,7 +32,7 @@ make
 make install
 ```
 
-At this point you should see the `k8s` plugin when querying the list of installed Spin plugins:
+At this point you should see the `kube` plugin when querying the list of installed Spin plugins:
 
 ```sh
 # List all installed Spin plugins
@@ -40,7 +40,7 @@ spin plugins list --installed
 
 cloud 0.7.0 [installed]
 cloud-gpu 0.1.0 [installed]
-k8s 0.1.0 [installed]
+kube 0.1.0 [installed]
 pluginify 0.6.0 [installed]
 ```
 

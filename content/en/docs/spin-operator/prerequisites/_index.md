@@ -38,9 +38,8 @@ Please install the latest version of [Spin](https://developer.fermyon.com/spin/v
 
 ## Bombardier
 
-Installing [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) is **not** required to use Spin Operator. Bombardier is used in tutorials like [Scaling Spinapps on k8s With HPA](./scaling-spinapp-on-k8s-with-hpa.md) to generate load to test autoscaling.
+Installing [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) is **not** required to use Spin Operator. Bombardier is used in tutorials like [Scaling Spin App With Horizontal Pod Autoscaling](./scaling-with-hpa.md) to generate load to test autoscaling.
 
 ## Azure CLI
 
 Installing [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) is **not** required to use Spin Operator. Azure CLI is used to provision Azure Kubernetes Service (AKS) and necessary Azure resources as part of the [Running Spin Operator on Azure Kubernetes Service](./running-on-azure-kubernetes-service.md) tutorial.
-

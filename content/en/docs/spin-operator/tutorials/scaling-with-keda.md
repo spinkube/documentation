@@ -12,7 +12,7 @@ weight: 100
 
 ## Prerequisites
 
-> We use k3d to run a k8s cluster locally as part of this tutorial, but you can follow these steps to configure KEDA autoscaling on your desired k8s environment.
+> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these steps to configure KEDA autoscaling on your desired Kubernetes environment.
 
 Please see the following sections in the [Prerequisites]({{< ref "prerequisites" >}}) page and fulfil those prerequisite requirements before continuing:
 
@@ -36,9 +36,9 @@ Change into the Spin Operator directory:
 cd spin-operator
 ```
 
-## Setting Up k8s Cluster
+## Setting Up Kubernetes Cluster
 
-Run the following command to create a k8s k3d cluster that has [the containerd-wasm-shims](https://github.com/deislabs/containerd-wasm-shims) pre-requisites installed: If you have a k3d cluster already, please feel free to use it:
+Run the following command to create a Kubernetes cluster that has [the containerd-wasm-shims](https://github.com/deislabs/containerd-wasm-shims) pre-requisites installed: If you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
 k3d cluster create wasm-cluster-scale --image ghcr.io/deislabs/containerd-wasm-shims/examples/k3d:v0.11.0 -p "8081:80@loadbalancer" --agents 2
@@ -61,7 +61,7 @@ Great, now you have Spin Operator up and running on your cluster. This means you
 
 ## Setting Up Ingress
 
-Use the following command to set up ingress on your k8s cluster. This ensures traffic can reach your SpinApp once we’ve created it in future steps:
+Use the following command to set up ingress on your Kubernetes cluster. This ensures traffic can reach your SpinApp once we’ve created it in future steps:
 
 ```console
 # Setup ingress following this tutorial https://k3d.io/v5.4.6/usage/exposing_services/
@@ -90,7 +90,7 @@ Hit enter to create the ingress resource.
 
 ## Setting Up KEDA
 
-Use the following command to setup KEDA on your k8s cluster using Helm. Different deployment methods are described at [Deploying KEDA on keda.sh](https://keda.sh/docs/2.13/deploy/):
+Use the following command to setup KEDA on your Kubernetes cluster using Helm. Different deployment methods are described at [Deploying KEDA on keda.sh](https://keda.sh/docs/2.13/deploy/):
 
 ```console
 # Add the Helm repository
@@ -162,7 +162,7 @@ spec:
         value: "50"
 ```
 
-> The k8s documentation is the place to learn more about [limits and requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits). Consult the KEDA documentation to learn more about [ScaledObject](https://keda.sh/docs/2.13/concepts/scaling-deployments/#scaledobject-spec) and [KEDA's built-in scalers](https://keda.sh/docs/2.13/scalers/).
+> The Kubernetes documentation is the place to learn more about [limits and requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits). Consult the KEDA documentation to learn more about [ScaledObject](https://keda.sh/docs/2.13/concepts/scaling-deployments/#scaledobject-spec) and [KEDA's built-in scalers](https://keda.sh/docs/2.13/scalers/).
 
 Let’s deploy the SpinApp and the KEDA ScaledObject instance onto our cluster with the following command:
 

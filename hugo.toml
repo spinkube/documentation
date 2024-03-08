@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://spinkube.dev"
 title = "SpinKube"
 
 # Language settings
@@ -62,20 +62,6 @@ weight = 1
 title = "SpinKube"
 description = "A new open source project that streamlines the experience of developing, deploying, and operating Wasm workloads on Kubernetes."
 
-[languages.no]
-languageName ="Norsk"
-contentDir = "content/no"
-[languages.no.params]
-title = "SpinKube"
-description = "Et nytt åpen kildekode-prosjekt som effektiviserer opplevelsen av å utvikle, distribuere og drifte Wasm-arbeidsbelastninger på Kubernetes."
-
-[languages.de]
-languageName ="Deutsch"
-contentDir = "content/de"
-[languages.de.params]
-title = "SpinKube"
-description = "Ein neues Open-Source-Projekt, das die Erfahrung bei der Entwicklung, Bereitstellung und dem Betrieb von Wasm-Workloads auf Kubernetes optimiert."
-
 time_format_default = "02.01.2006"
 time_format_blog = "02.01.2006"
 
@@ -87,7 +73,7 @@ time_format_blog = "02.01.2006"
       unsafe = true
   [markup.highlight]
     # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
-    style = "tango"
+    style = "rose-pine"
     # Uncomment if you want your chosen highlight style used for code blocks without a specified language
     # guessSyntax = "true"
 
@@ -158,7 +144,7 @@ navbar_translucent_over_cover_disable = false
 sidebar_menu_compact = false
 sidebar_menu_foldable = true
 # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
-sidebar_search_disable = false
+sidebar_search_disable = true
 
 # Adds a H2 section titled "Feedback" to the bottom of each doc. The responses are sent to Google Analytics as events.
 # This feature depends on [services.googleAnalytics] and will be disabled if "services.googleAnalytics.id" is not set.
@@ -179,36 +165,36 @@ enable = false
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.
 [[params.links.user]]
-  name = "User mailing list"
-  url = "https://example.org/mail"
+  name = "Email"
+  url = "mailto:spinkubemaintainers@gmail.com"
   icon = "fa fa-envelope"
-  desc = "Discussion and help from your fellow users"
+  desc = "SpinKube Maintainers email."
 [[params.links.user]]
-  name ="Twitter"
-  url = "https://example.org/twitter"
-  icon = "fab fa-twitter"
-  desc = "Follow us on Twitter to get the latest Spin framework news!"
-[[params.links.user]]
-  name = "Stack Overflow"
-  url = "https://example.org/stack"
-  icon = "fab fa-stack-overflow"
-  desc = "Practical questions and curated answers"
+  name ="Mastodon"
+  url = "https://mastodon.social/@SpinKube"
+  icon = "fab fa-mastodon"
+  desc = "Follow us on Mastodon to get the latest SpinKube news!"
+#[[params.links.user]]
+#  name = "Stack Overflow"
+#  url = "https://example.org/stack"
+#  icon = "fab fa-stack-overflow"
+#  desc = "Practical questions and curated answers"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
   name = "GitHub"
   url = "https://github.com/spinkube"
   icon = "fab fa-github"
   desc = "Development takes place here!"
+#[[params.links.developer]]
+#  name = "Slack"
+#  url = "https://example.org/slack"
+#  icon = "fab fa-slack"
+#  desc = "Chat with other project developers"
 [[params.links.developer]]
-  name = "Slack"
-  url = "https://example.org/slack"
-  icon = "fab fa-slack"
-  desc = "Chat with other project developers"
-[[params.links.developer]]
-  name = "Developer mailing list"
-  url = "https://example.org/mail"
+  name = "Email"
+  url = "mailto:spinkubemaintainers@gmail.com"
   icon = "fa fa-envelope"
-  desc = "Discuss development issues around the project"
+  desc = "SpinKube Maintainers email."
 
 # hugo module configuration
 

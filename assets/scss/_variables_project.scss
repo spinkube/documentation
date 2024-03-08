@@ -122,6 +122,11 @@ $spkb-bg: #F8EFFD;
             color: $primary;
             text-align: left;
         }
+
+        img {
+            max-width: 100% !important;
+        }
+
         table {
             max-width: 72rem;
             margin: 2rem auto !important;
@@ -131,9 +136,13 @@ $spkb-bg: #F8EFFD;
 
                 img {
                     margin: 1rem auto !important;
+                    max-width: auto !important;
                 }
             }
         }
+    }
 
+    .architecture {
+        max-width: 100%;
     }
 }

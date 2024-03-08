@@ -17,6 +17,28 @@ See the following list of compatible Kubernetes distributions and platforms for 
  - [k3d](https://k3d.io)
  - [Scaleway Kubernetes Kapsule](https://www.scaleway.com/en/kubernetes-kapsule/)
 
-## `containerd` compatibility
+> **Disclaimer**: Please note that this is a working list of compatible Kubernetes distributions and platforms. For managed Kubernetes services, it's important to be aware that cloud providers may choose to discontinue support for specific dependencies, such as container runtimes. While we strive to maintain the accuracy of this documentation, it is ultimately your responsibility to verify with your Kubernetes provider whether the required dependencies are still supported.
 
-The [Spin Operator](https://github.com/spinkube/spin-operator/) requires your Kubernetes cluster either having [`containerd 1.6.26+`](https://github.com/containerd/containerd/releases/tag/v1.6.26) or [`containerd 1.7.7+`](https://github.com/containerd/containerd/releases/tag/v1.7.7).
+### How to validate Spin Operator Compatibility
+
+To ensure compatibility between the Spin Operator and a specific Kubernetes distribution or platform, you can follow these steps for validation:
+
+1. **Install the Spin Operator**: Begin by installing the Spin Operator within the Kubernetes cluster. This involves deploying the necessary dependencies and Spin Operator itself. (See [Installing with Helm]({{< ref "installing-with-helm" >}}))
+
+2. **Create, Package, and Deploy a Spin App**: Proceed by creating a Spin App, packaging it, and succesfully deploying it within the Kubernetes environment. (See [Package and Deploy Spin Apps]({{< ref "package-and-deploy" >}}))
+
+3. **Invoke the Spin App**: Once the Spin App is deployed, ensure at least one request was successfully served by the Spin App.
+
+## Container Runtime Constraints
+
+The Spin Operator requires at least one node of your Kubernetes cluster to run either [`containerd 1.6.26+`](https://github.com/containerd/containerd/releases/tag/v1.6.26) or [`containerd 1.7.7+`](https://github.com/containerd/containerd/releases/tag/v1.7.7). Use the `kubectl get nodes -o wide` command to see which container runtime is installed per node:
+
+```shell
+# Inspect container runtimes per node
+kubectl get nodes -o wide
+NAME                    STATUS   VERSION   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+generalnp-vmss000000    Ready    v1.27.9   Ubuntu 22.04.4 LTS   5.15.0-1056-azure   containerd://1.7.7-1
+generalnp-vmss000001    Ready    v1.27.9   Ubuntu 22.04.4 LTS   5.15.0-1056-azure   containerd://1.7.7-1
+generalnp-vmss000002    Ready    v1.27.9   Ubuntu 22.04.4 LTS   5.15.0-1056-azure   containerd://1.7.7-1
+
+```

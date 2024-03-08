@@ -62,20 +62,6 @@ weight = 1
 title = "SpinKube"
 description = "A new open source project that streamlines the experience of developing, deploying, and operating Wasm workloads on Kubernetes."
 
-[languages.no]
-languageName ="Norsk"
-contentDir = "content/no"
-[languages.no.params]
-title = "SpinKube"
-description = "Et nytt åpen kildekode-prosjekt som effektiviserer opplevelsen av å utvikle, distribuere og drifte Wasm-arbeidsbelastninger på Kubernetes."
-
-[languages.de]
-languageName ="Deutsch"
-contentDir = "content/de"
-[languages.de.params]
-title = "SpinKube"
-description = "Ein neues Open-Source-Projekt, das die Erfahrung bei der Entwicklung, Bereitstellung und dem Betrieb von Wasm-Workloads auf Kubernetes optimiert."
-
 time_format_default = "02.01.2006"
 time_format_blog = "02.01.2006"
 

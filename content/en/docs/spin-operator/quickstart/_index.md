@@ -50,7 +50,7 @@ k3d cluster create wasm-cluster \
 2. Install cert manager
 
 ```console
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.2/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
 ```
 
 3. Apply the [Runtime Class](https://github.com/spinkube/spin-operator/blob/main/config/samples/spin-runtime-class.yaml) used for scheduling Spin apps onto nodes running the shim:

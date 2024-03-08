@@ -19,7 +19,7 @@ This is the standard development workflow for when you want to test running Spin
 To install cert-manager with the default config
 
 ```console
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.2/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
 ```
 
 Deploy the Manager to the cluster with the image specified by `IMG`:

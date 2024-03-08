@@ -8,7 +8,7 @@ tags: [Overview]
 
 # Project Overview
 
-[SpinKube](https://github.com/spinkube) is a new open source project that streamlines the experience of developing, deploying, and operating Wasm workloads on Kubernetes, using [Spin](https://github.com/fermyon/spin) in tandem with the `[runwasi](https://github.com/containerd/runwasi)` and [KWasm](https://kwasm.sh/) open source projects.
+[SpinKube](https://github.com/spinkube) is a new open source project that streamlines the experience of developing, deploying, and operating Wasm workloads on Kubernetes, using [Spin](https://github.com/fermyon/spin) in tandem with the [runwasi](https://github.com/containerd/runwasi) and [KWasm](https://kwasm.sh/) open source projects.
 
 With SpinKube, you can leverage the advantages of using WebAssembly (Wasm) for your workloads:
 

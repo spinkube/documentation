@@ -1,5 +1,5 @@
 ---
-date: 2024-02-28
+date: 2024-03-07
 title: The Evolution of Containers - Embracing Faster Startup Times and Efficient Orchestration with Wasm Workloads.
 linkTitle: Introducing SpinKube
 description: >

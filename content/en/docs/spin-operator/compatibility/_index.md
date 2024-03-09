@@ -21,7 +21,7 @@ See the following list of compatible Kubernetes distributions and platforms for 
 
 ### How to validate Spin Operator Compatibility
 
-To ensure compatibility between the Spin Operator and a specific Kubernetes distribution or platform, you can follow these steps for validation:
+If you would like to validate Spin Operator's compatibility with a new specific Kubernetes distribution or platform, or simply test one of the [platforms listed above yourself, follow these steps for validation:
 
 1. **Install the Spin Operator**: Begin by installing the Spin Operator within the Kubernetes cluster. This involves deploying the necessary dependencies and Spin Operator itself. (See [Installing with Helm]({{< ref "installing-with-helm" >}}))
 

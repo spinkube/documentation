@@ -6,8 +6,6 @@ tags: [Quickstart]
 weight: 2
 ---
 
-# Quickstart
-
 This Quickstart guide demonstrates how to set up a new Kubernetes cluster, install the Spin Operator and deploy your first Spin application.
 
 ## Prerequisites

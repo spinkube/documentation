@@ -106,7 +106,7 @@ simple-spinapp-5b8d8d69b4-snscs   1/1     Running   0          3m40s
 
 ```
 
-In a fresh terminal, using the `NAME` from above, run the following `kubectl` command to listen on port 8083 locally and
+Using the `NAME` from above, run the following `kubectl` command to listen on port 8083 locally and
 forward to port 80 in the pod:
 
 ```console

@@ -65,7 +65,6 @@ spec:
     - name: spin-image-secret
   serviceAnnotations:
     key: value
-  deploymentAnnotations:
     key: value
     multiple-keys: are-supported
   podAnnotations:

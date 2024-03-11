@@ -1,6 +1,6 @@
 ---
 title: Quickstart 
-description: What does your user need to know to try your project?
+description: Learn how to setup a Kubernetes cluser, install the Spin Operator and run your first Spin App
 categories: [Spin Operator]
 tags: [Quickstart]
 weight: 2
@@ -12,14 +12,13 @@ This Quickstart guide demonstrates how to set up a new Kubernetes cluster, insta
 
 Ensure necessary [prerequisites]({{< ref "prerequisites" >}}) are installed.
 
-
 For this Quickstart in particular, you will need:
 
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
-- [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
 - [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
+- [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
 
-Also, ensure you have cloned this repository and have navigated to the root of the project:
+Also, ensure you have cloned the Spin Operator repository and have navigated to the root of the project:
 
 ```shell
 git clone git@github.com:spinkube/spin-operator.git
@@ -41,9 +40,9 @@ k3d cluster create wasm-cluster \
 
 > Note: Spin Operator requires a few Kubernetes resources that are installed globally to the cluster. We create these directly through `kubectl` as a best practice, since their lifetimes are usually managed separately from a given Spin Operator installation.
 
-> > For now our quickstart relies on `make` tasks within the repository. We will provide Kustomize and Helm instructions in the future.
+> For now our quickstart relies on `make` tasks within the repository. We will provide Kustomize and Helm instructions in the future.
 
-2. Install cert manager
+2. Install cert-manager
 
 ```console
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
@@ -51,7 +50,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 3. Apply the [Runtime Class](https://github.com/spinkube/spin-operator/blob/main/config/samples/spin-runtime-class.yaml) used for scheduling Spin apps onto nodes running the shim:
 
-> Note: In a production cluster you likely want to customize the runtimeClass with a `nodeSelector:` that matches nodes that have the shim installed. In the K3D example they're installed on every node. 
+> Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector` that matches nodes that have the shim installed. However, in the K3d example, they're installed on every node. 
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
@@ -69,7 +68,7 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 
 ## Deploy the Spin Operator
 
-Run the following command to run the Spin Operator locally. This will create all of the Kubernetes resources required by Spin Operator under the Kubernetes namespace spin-operator. It may take a moment for the installation to complete as dependencies are installed and pods are spinning up.
+Execute the following command to run the Spin Operator locally. This will create all of the Kubernetes resources required by Spin Operator under the Kubernetes namespace `spin-operator`. It may take a moment for the installation to complete as dependencies are installed and pods are spinning up.
 
 ```console
 make docker-build IMG=ghcr.io/spinkube/spin-operator:dev

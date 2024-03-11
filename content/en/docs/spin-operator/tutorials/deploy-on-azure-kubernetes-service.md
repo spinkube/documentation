@@ -104,7 +104,7 @@ helm install spin-operator \
   --create-namespace \
   --devel \
   --wait \
-  oci://ghcr.io/spinkube/spin-operator
+  oci://ghcr.io/spinkube/charts/spin-operator
 ```
 
 The Spin Operator chart has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):

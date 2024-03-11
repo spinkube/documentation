@@ -92,7 +92,7 @@ helm install spin-operator \
   --create-namespace \
   --devel \
   --wait \
-  oci://ghcr.io/spinkube/spin-operator
+  oci://ghcr.io/spinkube/charts/spin-operator
 ```
 
 ### Upgrading the Chart
@@ -115,7 +115,7 @@ helm upgrade spin-operator \
   --namespace spin-operator \
   --devel \
   --wait \
-  oci://ghcr.io/spinkube/spin-operator
+  oci://ghcr.io/spinkube/charts/spin-operator
 ```
 
 ### Uninstalling the Chart

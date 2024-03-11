@@ -69,7 +69,7 @@ helm install \
 -->
 
 ```shell
-# Add HELM repository if not already done
+# Add Helm repository if not already done
 helm repo add kwasm http://kwasm.sh/kwasm-operator/
 
 # Install KWasm operator

@@ -29,7 +29,7 @@ The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definit
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
 ```
 
 A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource class that
@@ -40,7 +40,7 @@ you'll need to modify the RuntimeClass with a `nodeSelector:`.
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
 ```
 
 ## Chart prerequisites
@@ -102,7 +102,7 @@ Note that you may also need to upgrade the spin-operator CRDs in tandem with upg
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
 ```shell
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
 ```
 
 To upgrade the `spin-operator` release, run the following:
@@ -140,8 +140,8 @@ kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0
 -->
 
 ```console
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
 ```
 
 <!-- TODO: list out configuration options? -->

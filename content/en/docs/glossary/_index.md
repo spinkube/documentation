@@ -45,7 +45,7 @@ spec:
   runtime: "containerd-shim-spin"
 ```
 
-> SpinApp CRDs are kept separate from Helm. If using Helm, CustomResourceDefinition (CRD) resources will need to be installed prior to installing the Heml chart.
+> SpinApp CRDs are kept separate from Helm. If using Helm, CustomResourceDefinition (CRD) resources will need to be installed prior to installing the Helm chart.
 
 ## Helm
 
@@ -105,6 +105,10 @@ However, the `SpinApp` manifest currently supports configuring options such as:
 - Spin variables
 - volume mounts
 - autoscaling
+
+## Spin App Executor (CRD)
+
+The `SpinAppExecutor` CRD is a [Custom Resource Definition](#custom-resource-definition-crd) utilized by Spin Operator to determine which executor type should be used in running a SpinApp.
 
 ## Spin Operator
 

@@ -87,7 +87,6 @@ In this updated example, we have added additional customization options:
 
 - `imagePullSecrets`: An optional field that lets you reference a Kubernetes secret that has credentials for you to pull in image from a private registry.
 - `serviceAnnotations`: An optional field that lets you set specific annotations on the underlying service that is created.
-- `deploymentAnnotations`: An optional field that lets you set specific annotations on the underlying deployment that is created.
 - `podAnnotations`: An optional field that lets you set specific annotations on the underlying pods that are created.
 - `resources`: You can specify resource limits and requests for CPU and memory. Adjust the values according to your application's resource requirements.
 - `env`: You can define environment variables for your SpinApp. Add as many environment variables as needed, providing the name and value for each.

@@ -48,7 +48,7 @@ Run the following command to run the Spin Operator locally:
 make run
 ```
 
-In a fresh terminal, run the following command to create a Runtime Class named `wamtime-spin-v2`:
+Run the following command to create a Runtime Class named `wasmtime-spin-v2`:
 
 ```console
 kubectl apply -f - <<EOF

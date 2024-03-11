@@ -122,7 +122,7 @@ We can take a look at the SpinApp and the KEDA ScaledObject definitions in our d
 
 ```yaml
 # config/samples/keda-app.yaml
-apiVapiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: keda-spinapp

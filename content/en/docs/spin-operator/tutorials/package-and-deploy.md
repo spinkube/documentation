@@ -95,7 +95,7 @@ In the previous section, you deployed the `hello-spin` app using the `spin kube 
 
 ```shell
 spin kube scaffold --from ttl.sh/hello-spin:24h
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hello-spin
@@ -113,7 +113,7 @@ spin kube scaffold --from ttl.sh/hello-spin:24h \
 
 # Print contents of spinapp.yaml
 cat spinapp.yaml
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hello-spin
@@ -172,7 +172,7 @@ spin kube scaffold --from ghcr.io/$GH_USER/hello-spin:0.0.1 \
 Before deploying the manifest with `kubectl`, update `spinapp.yaml` and link the `ghcr` secret you previously created using the `imagePullSecrets` property. Your `SpinApp` manifest should look like this:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hello-spin

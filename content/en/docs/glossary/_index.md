@@ -35,7 +35,7 @@ A Custom Resource Definition (CRD) is an extension mechanism that allows users t
 For example, the following `.yaml` file describes a `SpinApp` using CRD syntax:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: simple-spinapp

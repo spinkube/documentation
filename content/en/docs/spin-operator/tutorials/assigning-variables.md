@@ -89,7 +89,7 @@ The deployment manifest (`config/samples/variable-explorer.yaml`) specifies a st
 
 ```yaml
 kind: SpinApp
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 metadata:
   name: variable-explorer
 spec:

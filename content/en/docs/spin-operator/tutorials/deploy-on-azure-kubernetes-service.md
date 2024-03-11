@@ -77,15 +77,15 @@ First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#
 
 ```shell
 # Install the CRD
-make install
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
 
 # Install the RuntimeClass
-kubectl apply -f config/samples/spin-runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
 ```
 
 The following installs [Cert Manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
 
-```
+```shell
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
@@ -109,8 +109,17 @@ helm install spin-operator \
 
 The Spin Operator chart has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):
 
+<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.  
+-->
+
 ```shell
-# Trigger containerd-wasm-shim installation on all nodes
+# Add Helm repository if not already done
+helm repo add kwasm http://kwasm.sh/kwasm-operator/
+
+# Install KWasm operator
+helm install -n kwasm --create-namespace kwasm-operator kwasm/kwasm-operator
+
+# Provision Nodes
 kubectl annotate node --all kwasm.sh/kwasm-node=true
 ```
 

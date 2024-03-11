@@ -16,15 +16,6 @@ For this guide in particular, you will need:
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
 - [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
 
-<!-- NOTE: remove this prerequisite when the runtime-class and CRDs can be applied from their release artifacts, i.e. when repo and release are public -->
-
-Also, ensure you have cloned this repository and have navigated to the root of the project:
-
-```console
-git clone git@github.com:spinkube/spin-operator.git
-cd spin-operator
-```
-
 ## Install Spin Operator With Helm
 
 The following instructions are for installing Spin Operator using a Helm chart (using `helm install`).
@@ -38,7 +29,7 @@ The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definit
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
 ```console
-make install
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
 ```
 
 A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource class that
@@ -49,7 +40,7 @@ you'll need to modify the RuntimeClass with a `nodeSelector:`.
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
 ```console
-kubectl apply -f config/samples/spin-runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
 ```
 
 ## Chart prerequisites
@@ -72,13 +63,23 @@ helm install \
   --version v1.14.3
 ```
 
-## Chart dependencies
+- [Kwasm Operator](https://github.com/kwasm/kwasm-operator) is required to install WebAssembly support on Kubernetes nodes. Note in the future this will be replaced by [runtime class manager](../../runtime-class-manager/_index.md). 
 
-The spin-operator chart currently includes the following sub-charts:
+<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.  
+-->
 
-- [Kwasm Operator](https://github.com/kwasm/kwasm-operator) to install WebAssembly support on Kubernetes nodes
+```shell
+# Add Helm repository if not already done
+helm repo add kwasm http://kwasm.sh/kwasm-operator/
 
-### Installing the Chart
+# Install KWasm operator
+helm install -n kwasm --create-namespace kwasm-operator kwasm/kwasm-operator
+
+# Provision Nodes
+kubectl annotate node --all kwasm.sh/kwasm-node=true
+```
+
+### Installing the Spin Operator Chart
 
 The following installs the chart with the release name `spin-operator`:
 
@@ -100,8 +101,8 @@ Note that you may also need to upgrade the spin-operator CRDs in tandem with upg
 
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
-```
-make install
+```shell
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
 ```
 
 To upgrade the `spin-operator` release, run the following:
@@ -139,8 +140,8 @@ kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0
 -->
 
 ```console
-make uninstall
-kubectl delete -f config/samples/spin-runtime-class.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
 ```
 
 <!-- TODO: list out configuration options? -->

@@ -32,7 +32,12 @@ In the context of Kubernetes, a Custom Resource (CR) is an extension mechanism t
 
 A Custom Resource Definition (CRD) is an extension mechanism that allows users to define their own custom resources. It enables the creation of new resource types with specific schemas and behaviors. CRDs define the structure and validation rules for custom resources, allowing users to store and manage additional information beyond the built-in Kubernetes resources. Once a CRD is created, instances of the custom resource can be created, updated, and deleted using the Kubernetes API. CRDs provide a way to extend Kubernetes and tailor it to specific application requirements.
 
-For example, the following `.yaml` file describes a `SpinApp` using CRD syntax:
+## SpinAppCRD
+
+The SpinApp CRD is a Kubernetes resource that extends the functionality of the Kubernetes API to support Spin applications. It defines a custom resource called "SpinApp" that encapsulates all the necessary information to deploy and manage a Spin application within a Kubernetes cluster. The SpinAppCRD consists of several key fields that define the desired state of a Spin application. 
+
+
+Here's an example of a SpinAppCRD definition:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1alpha1
@@ -45,7 +50,43 @@ spec:
   runtime: "containerd-shim-spin"
 ```
 
-> SpinApp CRDs are kept separate from Helm. If using Helm, CustomResourceDefinition (CRD) resources will need to be installed prior to installing the Heml chart.
+> SpinApp CRDs are kept separate from Helm. If using Helm, CustomResourceDefinition (CRD) resources must be installed prior to installing the Heml chart.
+
+You can modify the example above to customize the SpinAppCRD via a YAML file. Here's an updated YAML file with additional customization options:
+
+```yaml
+apiVersion: core.spinoperator.dev/v1alpha1
+kind: SpinApp
+metadata:
+  name: simple-spinapp
+spec:
+  image: "ghcr.io/deislabs/containerd-wasm-shims/examples/spin-rust-hello:v0.10.0"
+  replicas: 3
+  resources:
+    limits:
+      cpu: '1'
+      memory: 512Mi
+    requests:
+      cpu: '0.5'
+      memory: 256Mi
+  env:
+    - name: ENV_VAR1
+      value: value1
+    - name: ENV_VAR2
+      value: value2
+  # Add any other user-defined values here
+```
+
+In this updated example, we have added additional customization options:
+
+- `resources`: You can specify resource limits and requests for CPU and memory. Adjust the values according to your application's resource requirements.
+- `env`: You can define environment variables for your SpinApp. Add as many environment variables as needed, providing the name and value for each.
+
+To apply the changes, save the YAML file (e.g. `updated-spinapp-crd.yaml`) and then apply it to your Kubernetes cluster using the following command:
+
+```bash
+kubectl apply -f updated-spinapp-crd.yaml
+```
 
 ## Helm
 
@@ -77,7 +118,7 @@ A Runtime Class is a resource that allows users to specify different container r
 
 ## Scheduler
 
-A scheduler is a component responsible for assigning Pods to nodes in the cluster. It takes into account factors like resource availability, node capacity, and any scheduling constraints or policies defined. The scheduler ensures that Pods are placed on suitable nodes to optimize resource utilization and maintain high availability. It considers factors such as affinity, anti-affinity, and resource requirements when making scheduling decisions. The scheduler continuously monitors the cluster and makes adjustments as needed to maintain the desired state of the workload distribution.
+A scheduler is a component responsible for assigning Pods to nodes in the cluster. It takes into account factors like resource availability, node capacity, and any defined scheduling constraints or policies. The scheduler ensures that Pods are placed on suitable nodes to optimize resource utilization and maintain high availability. It considers factors such as affinity, anti-affinity, and resource requirements when making scheduling decisions. The scheduler continuously monitors the cluster and makes adjustments as needed to maintain the desired state of the workload distribution.
 
 ## Service
 

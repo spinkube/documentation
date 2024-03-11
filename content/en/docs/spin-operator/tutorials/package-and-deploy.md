@@ -1,6 +1,6 @@
 ---
 title: Package and Deploy Spin Apps
-description: A short lead description about this content page. It can be **bold** or _italic_ and can be split over multiple paragraphs.
+description: Learn how to package and distribute Spin Apps using either public or private OCI compliant registries
 date: 2024-02-16
 weight: 4
 categories: [Spin Operator]

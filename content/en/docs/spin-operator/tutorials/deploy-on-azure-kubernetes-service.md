@@ -76,14 +76,14 @@ First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
 ```shell
-# Install the CRD
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.crds.yaml
+# Install the CRDs
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
 
-# Install the RuntimeClass
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.1/spin-operator.runtime-class.yaml
+# Install the Runtime Class
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
 ```
 
-The following installs [Cert Manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
+The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by the admission webhook system of Spin Operator)
 
 ```shell
 helm repo add jetstack https://charts.jetstack.io
@@ -94,7 +94,7 @@ helm install cert-manager jetstack/cert-manager \
   --set installCRDs=true
 ```
 
-The following installs the chart with the release name `spin-operator`:
+The following installs the chart with the release name `spin-operator` in the `spin-operator` namespace:
 
 <!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
 
@@ -131,6 +131,14 @@ kubectl logs -n spin-operator -l app.kubernetes.io/name=kwasm-operator
 {"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}
 {"level":"info","time":"2024-02-12T11:23:43Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is still Ongoing"}
 {"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
+```
+
+Lastly, create the shim executor:
+
+<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.executor.yaml' -->
+
+```console
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.shim-executor.yaml
 ```
 
 ## Deploying a Spin App to AKS

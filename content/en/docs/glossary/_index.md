@@ -49,7 +49,7 @@ spec:
   runtime: "containerd-shim-spin"
 ```
 
-> SpinApp CRDs are kept separate from Helm. If using Helm, CustomResourceDefinition (CRD) resources must be installed prior to installing the Heml chart.
+> SpinApp CRDs are kept separate from Helm. If using Helm, CustomResourceDefinition (CRD) resources must be installed prior to installing the Helm chart.
 
 You can modify the example above to customize the SpinApp via a YAML file. Here's an updated YAML file with additional customization options:
 

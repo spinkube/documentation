@@ -36,7 +36,7 @@ A Custom Resource Definition (CRD) is an extension mechanism that allows users t
 
 The SpinApp CRD is a Kubernetes resource that extends the functionality of the Kubernetes API to support Spin applications. It defines a custom resource called "SpinApp" that encapsulates all the necessary information to deploy and manage a Spin application within a Kubernetes cluster. The SpinApp CRD consists of several key fields that define the desired state of a Spin application. 
 
-Here's an example of a SpinAppCRD definition:
+Here's an example of a SpinApp custom resource that uses the SpinApp CRD schema:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1alpha1

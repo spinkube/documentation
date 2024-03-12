@@ -93,7 +93,7 @@ In this updated example, we have added additional customization options:
 To apply the changes, save the YAML file (e.g. `updated-spinapp.yaml`) and then apply it to your Kubernetes cluster using the following command:
 
 ```bash
-kubectl apply -f updated-spinapp-crd.yaml
+kubectl apply -f updated-spinapp.yaml
 ```
 
 ## Helm

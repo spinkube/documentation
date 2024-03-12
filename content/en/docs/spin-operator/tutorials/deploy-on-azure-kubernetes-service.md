@@ -42,6 +42,7 @@ az group create --name rg-spin-operator \
 # Create an AKS cluster
 az aks create --name aks-spin-operator \
     --resource-group rg-spin-operator \
+    --location germanywestcentral \
     --node-count 1 \
     --tier free \
     --generate-ssh-keys
@@ -72,9 +73,6 @@ kube-system       Active   3m
 
 First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#custom-resource-definition-crd" >}}) and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be installed.
 
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
-
 ```shell
 # Install the CRDs
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
@@ -86,28 +84,21 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by the admission webhook system of Spin Operator)
 
 ```shell
+# Install cert-manager CRDs
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml
+
+# Add and update Jetstack repository
 helm repo add jetstack https://charts.jetstack.io
+helm repo update
+
+# Install the cert-manager Helm chart
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.13.3 \
-  --set installCRDs=true
+  --version v1.14.3
 ```
 
-The following installs the chart with the release name `spin-operator` in the `spin-operator` namespace:
-
-<!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
-
-```shell
-helm install spin-operator \
-  --namespace spin-operator \
-  --create-namespace \
-  --devel \
-  --wait \
-  oci://ghcr.io/spinkube/charts/spin-operator
-```
-
-The Spin Operator chart has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):
+The Spin Operator chart also has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):
 
 <!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.  
 -->
@@ -115,27 +106,41 @@ The Spin Operator chart has a dependency on [Kwasm](https://kwasm.sh/), which yo
 ```shell
 # Add Helm repository if not already done
 helm repo add kwasm http://kwasm.sh/kwasm-operator/
+helm repo update
 
 # Install KWasm operator
-helm install -n kwasm --create-namespace kwasm-operator kwasm/kwasm-operator
+helm install \
+  kwasm-operator kwasm/kwasm-operator \
+  --namespace kwasm \
+  --create-namespace \
+  --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.12.0
 
 # Provision Nodes
 kubectl annotate node --all kwasm.sh/kwasm-node=true
 ```
-
 To verify `containerd-wasm-shim` installation, you can inspect the logs from the Kwasm Operator:
 
 ```shell
 # Ispect logs from the Kwasm Operator
-kubectl logs -n spin-operator -l app.kubernetes.io/name=kwasm-operator
+kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
+
 {"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}
 {"level":"info","time":"2024-02-12T11:23:43Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is still Ongoing"}
 {"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
 ```
 
-Lastly, create the shim executor:
+The following installs the chart with the release name `spin-operator` in the `spin-operator` namespace:
 
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.executor.yaml' -->
+```shell
+helm install spin-operator \
+  --namespace spin-operator \
+  --create-namespace \
+  --version 0.0.2 \
+  --wait \
+  oci://ghcr.io/spinkube/charts/spin-operator
+```
+
+Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}})::
 
 ```console
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.shim-executor.yaml

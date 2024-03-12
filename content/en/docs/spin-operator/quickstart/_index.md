@@ -17,30 +17,20 @@ For this Quickstart in particular, you will need:
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
 - [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
 - [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
-
-Also, ensure you have cloned the Spin Operator repository and have navigated to the root of the project:
-
-```shell
-git clone git@github.com:spinkube/spin-operator.git
-cd spin-operator
-```
+- [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
 
 ### Set up Your Kubernetes Cluster
 
 1. Create a Kubernetes cluster with a k3d image that includes the [containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) prerequisite already installed:
 
-<!-- TODO: update below with ghcr.io/spinkube/containerd-shim-spin/examples/k3d:<tag> -->
-
 ```console
 k3d cluster create wasm-cluster \
-  --image ghcr.io/deislabs/containerd-wasm-shims/examples/k3d:v0.11.0 \
+  --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.12.0 \
   --port "8081:80@loadbalancer" \
   --agents 2
 ```
 
 > Note: Spin Operator requires a few Kubernetes resources that are installed globally to the cluster. We create these directly through `kubectl` as a best practice, since their lifetimes are usually managed separately from a given Spin Operator installation.
-
-> For now our quickstart relies on `make` tasks within the repository. We will provide Kustomize and Helm instructions in the future.
 
 2. Install cert-manager
 
@@ -52,15 +42,11 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector` that matches nodes that have the shim installed. However, in the K3d example, they're installed on every node. 
 
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
-
 ```console
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
 ```
 
 4. Apply the [Custom Resource Definitions](../../glossary#custom-resource-definition-crd) used by the Spin Operator:
-
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.crds.yaml' -->
 
 ```console
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
@@ -68,17 +54,19 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 
 ## Deploy the Spin Operator
 
-Execute the following command to run the Spin Operator locally. This will create all of the Kubernetes resources required by Spin Operator under the Kubernetes namespace `spin-operator`. It may take a moment for the installation to complete as dependencies are installed and pods are spinning up.
+Execute the following command to install the Spin Operator on the K3d cluster using Helm. This will create all of the Kubernetes resources required by Spin Operator under the Kubernetes namespace `spin-operator`. It may take a moment for the installation to complete as dependencies are installed and pods are spinning up.
 
 ```console
-make docker-build IMG=ghcr.io/spinkube/spin-operator:dev
-k3d image import -c wasm-cluster ghcr.io/spinkube/spin-operator:dev
-make deploy IMG=ghcr.io/spinkube/spin-operator:dev
+# Install Spin Operator with Helm
+helm install spin-operator \
+  --namespace spin-operator \
+  --create-namespace \
+  --version 0.0.2 \
+  --wait \
+  oci://ghcr.io/spinkube/charts/spin-operator
 ```
 
-Lastly, create the shim executor:
-
-<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.executor.yaml' -->
+Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}):
 
 ```console
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.shim-executor.yaml
@@ -88,11 +76,7 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 
 You are now ready to deploy Spin applications onto the cluster!
 
-<!-- TODO: if/when we have the option and if we wanted to, we could mention that the kwasm operator isn't needed when using k3d, as the containerd-shim-spin is already present. Installation could be skipped via --set kwasm-operator.enabled=false -->
-
 1. Create your first application in the same `spin-operator` namespace that the operator is running:
-
-<!-- Note: the default 'containerd-shim-spin' SpinAppExecutor CR needs to be present on the cluster before apps using this default can run. However, as of writing, it is a namespaced resource. As such, apps can only be deployed in the same namespace(s) that the CR is present. -->
 
 ```console
 kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml

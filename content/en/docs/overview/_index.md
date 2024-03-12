@@ -18,8 +18,8 @@ With SpinKube, you can leverage the advantages of using WebAssembly (Wasm) for y
 
 All of this while being able to integrate with with Kubernetes primitives (DNS, probes, autoscaling, metrics, and a lot more cloud native and CNCF projects) thanks to Spin Operator.
 
-![SpinKube Project Overview Diagram](/static/spinkube-overview-diagram.png)
+![SpinKube Project Overview Diagram](/spinkube-overview-diagram.png)
 
-Spin Operator watches Spin App Custom Resources and realizes the desired state in the Kubernetes cluster. The foundation of this project was built using the kubebuilder framework and contains a Spin App Custom Resource Definition (CRD) and controller.
+Spin Operator watches [Spin App Custom Resources]({{< ref "glossary#spinapp-manifest" >}}) and realizes the desired state in the Kubernetes cluster. The foundation of this project was built using the kubebuilder framework and contains a Spin App Custom Resource Definition (CRD) and controller.
 
 To get started, check out our [Spin Operator quickstart](../spin-operator/quickstart/_index.md). 

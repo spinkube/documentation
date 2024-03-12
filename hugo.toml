@@ -169,6 +169,11 @@ enable = false
   icon = "fa fa-envelope"
   desc = "SpinKube Maintainers email."
 [[params.links.user]]
+  name ="Twitter"
+  url = "https://twitter.com/spinkube"
+  icon = "fab fa-twitter"
+  desc = "Follow us on Twitter for the latest SpinKube news!"
+[[params.links.user]]
   name ="Mastodon"
   url = "https://mastodon.social/@SpinKube"
   icon = "fab fa-mastodon"

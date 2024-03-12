@@ -112,7 +112,7 @@ To upgrade the `spin-operator` release, run the following:
 # Upgrade Spin Operator using Helm
 helm upgrade spin-operator \
   --namespace spin-operator \
-  --verson 0.0.2 \
+  --version 0.0.2 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```

@@ -90,7 +90,7 @@ In this updated example, we have added additional customization options:
 - `resources`: You can specify resource limits and requests for CPU and memory. Adjust the values according to your application's resource requirements.
 - `env`: You can define environment variables for your SpinApp. Add as many environment variables as needed, providing the name and value for each.
 
-To apply the changes, save the YAML file (e.g. `updated-spinapp-crd.yaml`) and then apply it to your Kubernetes cluster using the following command:
+To apply the changes, save the YAML file (e.g. `updated-spinapp.yaml`) and then apply it to your Kubernetes cluster using the following command:
 
 ```bash
 kubectl apply -f updated-spinapp-crd.yaml

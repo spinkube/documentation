@@ -32,7 +32,7 @@ In the context of Kubernetes, a Custom Resource (CR) is an extension mechanism t
 
 A Custom Resource Definition (CRD) is an extension mechanism that allows users to define their own custom resources. It enables the creation of new resource types with specific schemas and behaviors. CRDs define the structure and validation rules for custom resources, allowing users to store and manage additional information beyond the built-in Kubernetes resources. Once a CRD is created, instances of the custom resource can be created, updated, and deleted using the Kubernetes API. CRDs provide a way to extend Kubernetes and tailor it to specific application requirements.
 
-## SpinAppCRD
+## SpinApp CRD
 
 The SpinApp CRD is a Kubernetes resource that extends the functionality of the Kubernetes API to support Spin applications. It defines a custom resource called "SpinApp" that encapsulates all the necessary information to deploy and manage a Spin application within a Kubernetes cluster. The SpinApp CRD consists of several key fields that define the desired state of a Spin application. 
 

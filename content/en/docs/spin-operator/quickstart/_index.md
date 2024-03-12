@@ -17,13 +17,7 @@ For this Quickstart in particular, you will need:
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
 - [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
 - [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
-
-Also, ensure you have cloned the Spin Operator repository and have navigated to the root of the project:
-
-```shell
-git clone git@github.com:spinkube/spin-operator.git
-cd spin-operator
-```
+- [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
 
 ### Set up Your Kubernetes Cluster
 
@@ -37,8 +31,6 @@ k3d cluster create wasm-cluster \
 ```
 
 > Note: Spin Operator requires a few Kubernetes resources that are installed globally to the cluster. We create these directly through `kubectl` as a best practice, since their lifetimes are usually managed separately from a given Spin Operator installation.
-
-> For now our quickstart relies on `make` tasks within the repository. We will provide Kustomize and Helm instructions in the future.
 
 2. Install cert-manager
 
@@ -62,12 +54,16 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 
 ## Deploy the Spin Operator
 
-Execute the following command to run the Spin Operator locally. This will create all of the Kubernetes resources required by Spin Operator under the Kubernetes namespace `spin-operator`. It may take a moment for the installation to complete as dependencies are installed and pods are spinning up.
+Execute the following command to install the Spin Operator on the K3d cluster using Helm. This will create all of the Kubernetes resources required by Spin Operator under the Kubernetes namespace `spin-operator`. It may take a moment for the installation to complete as dependencies are installed and pods are spinning up.
 
 ```console
-make docker-build IMG=ghcr.io/spinkube/spin-operator:dev
-k3d image import -c wasm-cluster ghcr.io/spinkube/spin-operator:dev
-make deploy IMG=ghcr.io/spinkube/spin-operator:dev
+# Install Spin Operator with Helm
+helm install spin-operator \
+  --namespace spin-operator \
+  --create-namespace \
+  --version 0.0.2 \
+  --wait \
+  oci://ghcr.io/spinkube/charts/spin-operator
 ```
 
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}):

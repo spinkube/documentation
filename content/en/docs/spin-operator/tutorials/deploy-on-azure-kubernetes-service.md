@@ -42,6 +42,7 @@ az group create --name rg-spin-operator \
 # Create an AKS cluster
 az aks create --name aks-spin-operator \
     --resource-group rg-spin-operator \
+    --location germanywestcentral \
     --node-count 1 \
     --tier free \
     --generate-ssh-keys
@@ -76,25 +77,60 @@ First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#
 <!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.runtime-class.yaml' -->
 
 ```shell
-# Install the CRD
-make install
+# Install the CRDs
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
 
-# Install the RuntimeClass
-kubectl apply -f config/samples/spin-runtime-class.yaml
+# Install the Runtime Class
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
 ```
 
-The following installs [Cert Manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system)
+The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by the admission webhook system of Spin Operator)
 
-```
+```shell
+# Install cert-manager CRDs
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml
+
+# Add and update Jetstack repository
 helm repo add jetstack https://charts.jetstack.io
+helm repo update
+
+# Install the cert-manager Helm chart
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.13.3 \
-  --set installCRDs=true
+  --version v1.13.3
 ```
 
-The following installs the chart with the release name `spin-operator`:
+The Spin Operator chart also has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):
+
+<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.  
+-->
+
+```shell
+# Add Helm repository if not already done
+helm repo add kwasm http://kwasm.sh/kwasm-operator/
+helm repo update
+
+# Install KWasm operator
+helm install kwasm-operator kwasm/kwasm-operator \
+  --namespace kwasm \
+  --create-namespace 
+
+# Provision Nodes
+kubectl annotate node --all kwasm.sh/kwasm-node=true
+```
+To verify `containerd-wasm-shim` installation, you can inspect the logs from the Kwasm Operator:
+
+```shell
+# Ispect logs from the Kwasm Operator
+kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
+
+{"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}
+{"level":"info","time":"2024-02-12T11:23:43Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is still Ongoing"}
+{"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
+```
+
+The following installs the chart with the release name `spin-operator` in the `spin-operator` namespace:
 
 <!-- TODO: remove '--devel' flag once we have our first non-prerelease chart available, e.g. when v0.1.0 of this project is released and public -->
 
@@ -104,24 +140,15 @@ helm install spin-operator \
   --create-namespace \
   --devel \
   --wait \
-  oci://ghcr.io/spinkube/spin-operator
+  oci://ghcr.io/spinkube/charts/spin-operator
 ```
 
-The Spin Operator chart has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):
+Lastly, create the shim executor:
 
-```shell
-# Trigger containerd-wasm-shim installation on all nodes
-kubectl annotate node --all kwasm.sh/kwasm-node=true
-```
+<!-- TODO: replace with e.g. 'kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0-rc.1/spin-operator.executor.yaml' -->
 
-To verify `containerd-wasm-shim` installation, you can inspect the logs from the Kwasm Operator:
-
-```shell
-# Ispect logs from the Kwasm Operator
-kubectl logs -n spin-operator -l app.kubernetes.io/name=kwasm-operator
-{"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}
-{"level":"info","time":"2024-02-12T11:23:43Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is still Ongoing"}
-{"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
+```console
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.shim-executor.yaml
 ```
 
 ## Deploying a Spin App to AKS

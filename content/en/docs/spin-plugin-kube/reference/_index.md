@@ -1,7 +1,7 @@
 ---
 title: CLI Reference
 description: Spin Plugin kube CLI Reference
-weight: 100
+weight: 3
 categories: [reference]
 tags: [plugins]
 ---

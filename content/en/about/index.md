@@ -34,13 +34,13 @@ The [Runtime Class Manager, also known as the Containerd Shim Lifecycle Operator
 
 <u>**Spin Plugin for Kubernetes**</u>
 
-The [Spin plugin for Kubernetes](https://github.com/spinkube/spin-plugin-kube) is designed to enhance Kubernetes by enabling the execution of Wasm modules directly within a Kubernetes cluster. This plugin works by integrating with containerd shims, allowing Kubernetes to manage and run Wasm workloads in a way similar to traditional container workloads.
+The [Spin plugin for Kubernetes](https://github.com/spinkube/spin-plugin-kube), known as `spin kube`, faciliates the translation of existing [Spin applications](https://developer.fermyon.com/spin) into the Kubernetes custom resource that will be deployed and managed on your cluster. This plugin works by taking your spin application manifest and scaffolding it into a Kubernetes yaml, which can be deployed and managed with `kubectl`. This allows Kubernetes to manage and run Wasm workloads in a way similar to traditional container workloads.
 
 <br />
 <br />
 
 <u>**Spin Operator**</u>
 
-The [Spin Operator](https://github.com/spinkube/spin-operator/) enables deploying Spin applications to Kubernetes. The foundation of this project is built using the [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) framework. Spin Operator defines Spin App Custom Resource Definitions (CRDs). Spin Operator watches SpinApp Custom Resources e.g. Spin app image, replicas, schedulers and other user-defined values and realizes the desired state in the Kubernetes cluster. Spin Operator introduces a host of functionality such as resource-based scaling event-driven scaling and much more.
+The [Spin Operator](https://github.com/spinkube/spin-operator/) enables deploying Spin applications to Kubernetes. The foundation of this project is built using the [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) framework. Spin Operator defines Spin App Custom Resource Definitions (CRDs). Spin Operator watches SpinApp Custom Resources e.g. Spin app image, replicas, schedulers and other user-defined values and realizes the desired state in the Kubernetes cluster. Spin Operator introduces a host of functionality such as resource-based scaling, event-driven scaling, and much more.
 
 {{% /blocks/lead %}}

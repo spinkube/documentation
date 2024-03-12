@@ -48,7 +48,7 @@ Run the following command to run the Spin Operator locally:
 make run
 ```
 
-Run the following command to create a Runtime Class named `wamtime-spin-v2`:
+In a fresh terminal, run the following command to create a Runtime Class named `wasmtime-spin-v2`:
 
 ```console
 kubectl apply -f - <<EOF
@@ -73,7 +73,7 @@ created above:
 
 ```console
 kubectl apply -f - <<EOF
-apiVersion: core.spinoperator.dev/v1
+apiVersion: core.spinoperator.dev/v1alpha1
 kind: SpinAppExecutor
 metadata:
   name: containerd-shim-spin
@@ -120,7 +120,7 @@ Forwarding from 127.0.0.1:8083 -> 80
 Forwarding from [::1]:8083 -> 80
 ```
 
-Run the following command, in a different terminal window:
+In a fresh terminal, run the following command:
 
 ```console
 curl localhost:8083/hello

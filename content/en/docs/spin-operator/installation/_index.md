@@ -1,7 +1,7 @@
 ---
 title: Installation
 description: Learn how to install Spin Operator
-weight: 100
+weight: 3
 categories: [Spin Operator]
 tags: [Installation]
 ---

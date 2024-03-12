@@ -120,7 +120,7 @@ github_project_repo = "https://github.com/spinkube/spin-operator"
 github_branch= "main"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "d72aa9b2712488cc3"
+gcs_engine_id = "d774df95371c74907"
 
 # Enable Lunr.js offline search
 offlineSearch = false

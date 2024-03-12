@@ -23,7 +23,7 @@ Please see the following sections in the [Prerequisites]({{< ref "prerequisites"
 
 ## Setting Up Kubernetes Cluster
 
-Run the following command to create a Kubernetes cluster that has [the containerd-wasm-shims](https://github.com/deislabs/containerd-wasm-shims) pre-requisites installed: If you have a Kubernetes cluster already, please feel free to use it:
+Run the following command to create a Kubernetes cluster that has [the containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed: If you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
 k3d cluster create wasm-cluster-scale \
@@ -68,9 +68,10 @@ Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref "glos
 
 ```console
 # Install Spin Operator
-helm upgrade spin-operator \
+helm install spin-operator \
   --namespace spin-operator \
-  --verson 0.0.2 \
+  --create-namespace \
+  --version 0.0.2 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 
@@ -142,7 +143,6 @@ spec:
   image: ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986
   executor: containerd-shim-spin
   enableAutoscaling: true
-  replicas: 1
   resources:
     limits:
       cpu: 500m

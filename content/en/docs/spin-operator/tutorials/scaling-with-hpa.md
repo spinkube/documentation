@@ -11,44 +11,72 @@ Horizontal scaling, in the Kubernetes sense, means deploying more pods to meet d
 
 ## Prerequisites
 
-> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these steps to configure HPA autoscaling on your desired Kubernetes environment.
-
 Please see the following sections in the [Prerequisites]({{< ref "prerequisites" >}}) page and fulfil those prerequisite requirements before continuing:
 
 - [Go]({{< ref "prerequisites#go" >}})
 - [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
 - [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
+- [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
 - [Bombardier]({{< ref "prerequisites#bombardier" >}}) - cross-platform HTTP benchmarking CLI
 
-## Fetch Spin Operator (Source Code)
-
-If you haven't already, please go ahead and clone the Spin Operator repository and move into the Spin Operator directory:
-
-```console
-git clone https://github.com/spinkube/spin-operator.git
-cd spin-operator
-```
+> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these steps to configure HPA autoscaling on your desired Kubernetes environment.
 
 ## Setting Up Kubernetes Cluster
 
 Run the following command to create a Kubernetes cluster that has [the containerd-wasm-shims](https://github.com/deislabs/containerd-wasm-shims) pre-requisites installed: If you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
-k3d cluster create wasm-cluster-scale --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.12.0 -p "8081:80@loadbalancer" --agents 2
+k3d cluster create wasm-cluster-scale \
+  --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.12.0 \
+  -p "8081:80@loadbalancer" \
+  --agents 2
 ```
 
-Next, from within the `spin-operator` directory, run the following commands to install the Spin runtime class and Spin Operator:
+### Deploying Spin Operator and its dependencies
+
+First, you have to install [cert-manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by Spin Operator's admission webhook system). For detailed installation instructions see [the cert-manager documentation](https://cert-manager.io/docs/installation/).
 
 ```console
-kubectl apply -f config/samples/spin-runtime-class.yaml
-make install
+# Install cert-manager CRDs
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml
+
+# Add and update Jetstack repository
+helm repo add jetstack https://charts.jetstack.io
+helm repo update
+
+# Install the cert-manager Helm chart
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.14.3
 ```
 
-Lastly, start the operator with the following command:
+Next, run the following commands to install the Spin runtime class and Spin Operator CRDs:
+
+> Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector` that matches nodes that have the shim installed. However, in the K3d example, they're installed on every node. 
 
 ```console
-make run
+# Install the RuntimeClass
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
+
+# Install the CRDs
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
+```
+
+Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}) with the following commands:
+
+```console
+# Install Spin Operator
+helm upgrade spin-operator \
+  --namespace spin-operator \
+  --verson 0.0.2 \
+  --wait \
+  oci://ghcr.io/spinkube/charts/spin-operator
+
+# Install the shim executor
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.shim-executor.yaml
 ```
 
 Great, now you have Spin Operator up and running on your cluster. This means you’re set to create and deploy SpinApps later on in the tutorial.
@@ -82,24 +110,9 @@ EOF
 
 Hit enter to create the ingress resource.
 
-## Build and Store Spinapp in an OCI Registry
+## Deploy Spin App and HorizontalPodAutoscaler (HPA)
 
-Next up we’re going to build the SpinApp we will be scaling and storing inside of a [ttl.sh](http://ttl.sh) registry. Change into the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/hpa-tutorial/apps/cpu-load-gen) directory and build the SpinApp we’ve provided:
-
-```console
-# Build and publish the sample app
-cd apps/cpu-load-gen
-spin build
-spin registry push ttl.sh/cpu-load-gen:1h
-```
-
-Note that the tag at the end of [ttl.sh/cpu-load-gen:1h](http://ttl.sh/cpu-load-gen:1h) indicates how long the image will last e.g. `1h` (1 hour). The maximum is `24h` and you will need to repush if ttl exceeds 24 hours.
-
-<aside>
-☁️ In the future, we will be storing this application in an OCI registry (like [ghcr.io](https://docs.github.com/en/packages/learn-github-packages)) for more permanent persistence. For now, we’re making the recommendation to use [ttl.sh](http://ttl.sh) for convenience.
-</aside>
-
-## Deploy SpinApp and HPA
+Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/hpa-tutorial/apps/cpu-load-gen) folder of the Spin Operator repository.
 
 We can take a look at the SpinApp and HPA definitions in our deployment file below/. As you can see, we have set our `resources` -> `limits` to `500m` of `cpu` and `500Mi` of `memory` per Spin application and we will scale the instance count when we’ve reached a 50% utilization in `cpu` and `memory`. We’ve also defined support a maximum [replica](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas) count of 10 and a minimum replica count of 1:
 
@@ -109,8 +122,7 @@ kind: SpinApp
 metadata:
   name: hpa-spinapp
 spec:
-  # TODO: Depend on a ghcr.io version of this image
-  image: "ttl.sh/cpu-load-gen:1h"
+  image: "ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986"
   enableAutoscaling: true
   resources:
     limits:
@@ -142,7 +154,6 @@ spec:
 
 <aside>
 ☁️ TODO - we need to define which metrics we’re supporting with HPA. Is it the [base set used by containers](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics)?
-
 </aside>
 
 The Kubernetes documentation is the place to learn more about [limits and requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) and [other metrics supported by HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics).
@@ -150,7 +161,7 @@ The Kubernetes documentation is the place to learn more about [limits and reques
 Let’s deploy the SpinApp and the HPA instance onto our cluster with the following command:
 
 ```console
-kubectl apply -f config/samples/hpa.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/hpa.yaml
 ```
 
 You can see your running Spin application by running the following command:
@@ -164,6 +175,7 @@ hpa-spinapp   92m
 You can also see your HPA instance with the following command:
 
 ```console
+kubectl get hpa
 NAME                 REFERENCE                TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 spinapp-autoscaler   Deployment/hpa-spinapp   6%/50%    1         10        1          97m
 ```

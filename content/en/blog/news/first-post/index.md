@@ -4,7 +4,7 @@ title: The Evolution of Containers - Embracing Faster Startup Times and Efficien
 linkTitle: Introducing SpinKube
 description: >
   This article discussed streamlining the experience of developing, deploying, and operating Wasm workloads on Kubernetes, through the use of SpinKube.
-author: Fermyon Technologies ([@fermyontech](https://twitter.com/fermyontech))
+author: The SpinKube Maintainers ([@SpinKube](https://twitter.com/spinkube))
 resources:
   - src: "**.{png,jpg}"
     title: "Image #:counter"

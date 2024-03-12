@@ -51,7 +51,7 @@ spec:
 
 > SpinApp CRDs are kept separate from Helm. If using Helm, CustomResourceDefinition (CRD) resources must be installed prior to installing the Heml chart.
 
-You can modify the example above to customize the SpinAppCRD via a YAML file. Here's an updated YAML file with additional customization options:
+You can modify the example above to customize the SpinApp via a YAML file. Here's an updated YAML file with additional customization options:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1alpha1

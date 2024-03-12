@@ -13,7 +13,6 @@ Horizontal scaling, in the Kubernetes sense, means deploying more pods to meet d
 
 Please see the following sections in the [Prerequisites]({{< ref "prerequisites" >}}) page and fulfil those prerequisite requirements before continuing:
 
-- [Go]({{< ref "prerequisites#go" >}})
 - [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
 - [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
@@ -53,7 +52,7 @@ helm install \
   --version v1.14.3
 ```
 
-Next, run the following commands to install the Spin runtime class and Spin Operator CRDs:
+Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class" >}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref "glossary#custom-resource-definition-crd">}}):
 
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector` that matches nodes that have the shim installed. However, in the K3d example, they're installed on every node. 
 
@@ -122,7 +121,7 @@ kind: SpinApp
 metadata:
   name: hpa-spinapp
 spec:
-  image: "ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986"
+  image: ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986
   enableAutoscaling: true
   resources:
     limits:
@@ -161,6 +160,7 @@ The Kubernetes documentation is the place to learn more about [limits and reques
 Let’s deploy the SpinApp and the HPA instance onto our cluster with the following command:
 
 ```console
+# Install SpinApp and HPA
 kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/hpa.yaml
 ```
 

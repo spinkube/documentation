@@ -34,7 +34,7 @@ make install
 **Deploy cert-manager to the cluster:**
 
 ```console
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.3/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
 ```
 
 > **NOTE**: Cert-manager is required to manage the TLS certificates for the admission webhooks.
@@ -86,7 +86,7 @@ make undeploy
 **UnDeploy cert-manager from the cluster:**
 
 ```console
-kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.3/cert-manager.yaml
+kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
 ```
 
 ### Packaging and deployment via Helm

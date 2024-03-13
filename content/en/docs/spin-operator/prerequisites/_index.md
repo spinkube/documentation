@@ -34,7 +34,7 @@ If running/deploying your Spin application involves the use of Helm, then the Sp
 
 ## Spin
 
-Please install the latest version of [Spin](https://developer.fermyon.com/spin/v2/install) on your local machine for creating Spin Apps.
+Please install the latest version ([2.3.1 or newer](https://developer.fermyon.com/spin/v2/upgrade)) of [Spin](https://developer.fermyon.com/spin/v2/install) on your local machine for creating Spin Apps.
 
 ## Bombardier
 

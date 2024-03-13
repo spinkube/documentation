@@ -28,7 +28,7 @@ cd spin-operator
 ## Setting Up Kubernetes Cluster
 
 Run the following command to create a Kubernetes k3d cluster that has [the
-containerd-wasm-shims](https://github.com/deislabs/containerd-wasm-shims) pre-requisites installed:
+containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed:
 
 ```console
 k3d cluster create wasm-cluster --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.13.0 -p "8081:80@loadbalancer" --agents 2

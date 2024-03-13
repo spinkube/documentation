@@ -44,7 +44,7 @@ kind: SpinApp
 metadata:
   name: simple-spinapp
 spec:
-  image: "ghcr.io/deislabs/containerd-wasm-shims/examples/spin-rust-hello:v0.10.0"
+  image: "ghcr.io/spinkube/containerd-shim-spin/examples/spin-rust-hello:v0.13.0"
   replicas: 1
   runtime: "containerd-shim-spin"
 ```
@@ -59,7 +59,7 @@ kind: SpinApp
 metadata:
   name: simple-spinapp
 spec:
-  image: 'ghcr.io/deislabs/containerd-wasm-shims/examples/spin-rust-hello:v0.10.0'
+  image: 'ghcr.io/spinkube/containerd-shim-spin/examples/spin-rust-hello:v0.13.0'
   replicas: 3
   imagePullSecrets:
     - name: spin-image-secret

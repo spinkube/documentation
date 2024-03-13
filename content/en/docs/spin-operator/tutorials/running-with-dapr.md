@@ -7,7 +7,7 @@ tags: [Tutorials]
 weight: 100
 ---
 
-## How to Configure Dapr With a Spin app on Kubernetes
+## How to Configure Dapr With a Spin App on Kubernetes
 
 Dapr is a portable, event-driven runtime that makes it easy for developers to build resilient
 applications. It provides a set of building blocks for building applications, including state
@@ -107,3 +107,17 @@ Now you can access the application at `http://localhost:8083`:
 $ curl localhost:8083/v1-get-item-types
 [{"image":"img/CAPPUCCINO.png","itemType":0,"name":"CAPPUCCINO","price":4.5},{"image":"img/COFFEE_BLACK.png","itemType":1,"name":"COFFEE_BLACK","price":3.0},{"image":"img/COFFEE_WITH_ROOM.png","itemType":2,"name":"COFFEE_WITH_ROOM","price":3.0},{"image":"img/ESPRESSO.png","itemType":3,"name":"ESPRESSO","price":3.5},{"image":"img/ESPRESSO_DOUBLE.png","itemType":4,"name":"ESPRESSO_DOUBLE","price":4.5},{"image":"img/LATTE.png","itemType":5,"name":"LATTE","price":4.5},{"image":"img/CAKEPOP.png","itemType":6,"name":"CAKEPOP","price":2.5},{"image":"img/CROISSANT.png","itemType":7,"name":"CROISSANT","price":3.25},{"image":"img/MUFFIN.png","itemType":8,"name":"MUFFIN","price":3.0},{"image":"img/CROISSANT_CHOCOLATE.png","itemType":9,"name":"CROISSANT_CHOCOLATE","price":3.5}]
 ```
+
+## Dapr Shared
+
+[Dapr Shared](https://github.com/dapr-sandbox/dapr-shared) allows you to create Dapr Applications using the `daprd` Sidecar as a Kubernetes `Daemonset` or `Deployment`. 
+
+### Why Dapr Shared?
+
+While sidecars are the default strategy, some use cases require other approaches. For example, you want to decouple the lifecycle of your workloads from the Dapr APIs. Dapr Shared offers a flexible approach to scenarios where the traditional sidecar model may not be ideal, such as with serverless functions that auto-scale. Allowing `daprd` to run as either a `DaemonSet` for reduced network latency or a `Deployment` for traditional scalability enables more efficient resource use and better lifecycle management of Dapr components across nodes. This adaptability makes Dapr Shared a valuable tool for developers leveraging Dapr in more dynamic, resource-conscious environments. 
+
+### SpinKube and Dapr Shared
+
+Combining the Spin framework and Dapr Shared allows developers to leverage Dapr's distributed system capabilities within a scalable and efficient WebAssembly-based architecture.
+
+### Example

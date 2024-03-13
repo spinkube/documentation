@@ -14,7 +14,7 @@ Ensure the necessary [prerequisites]({{< ref "prerequisites" >}}) are installed.
 
 For this tutorial in particular, you will need
 
-- [spin]({{< ref "prerequisites#spin-cli" >}}) -  the Spin CLI ([version 2.3.1 or newer](https://developer.fermyon.com/spin/v2/upgrade))
+- [spin]({{< ref "prerequisites#spin" >}}) -  the Spin CLI ([version 2.3.1 or newer](https://developer.fermyon.com/spin/v2/upgrade))
 
 ## Install the plugin
 

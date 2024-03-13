@@ -3,7 +3,7 @@ title: Scaling Spin App With Horizontal Pod Autoscaling (HPA)
 description: This tutorial illustrates how one can horizontally scale Spin Apps in Kubernetes using Horizontal Pod Autscaling (HPA)
 date: 2024-02-16
 categories: [Spin Operator]
-tags: [Tutorials]
+tags: [Tutorials, Autoscaling]
 weight: 100
 ---
 

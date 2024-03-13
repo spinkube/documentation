@@ -1,6 +1,6 @@
 ---
 title: Compatibility
-weight: 100
+weight: 98
 description: >
   Spin Operator Compatibility
 categories: [Spin Operator]

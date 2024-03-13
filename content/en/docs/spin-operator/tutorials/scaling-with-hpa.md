@@ -152,13 +152,51 @@ spec:
           averageUtilization: 50
 ```
 
-<aside>
-☁️ TODO - we need to define which metrics we’re supporting with HPA. Is it the [base set used by containers](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics)?
-</aside>
+For more information about HPA, please visit the following links:
+- [Kubernetes Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+- [Kubernetes HorizontalPodAutoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+- [HPA Container Resource Metrics](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics)
 
-The Kubernetes documentation is the place to learn more about [limits and requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) and [other metrics supported by HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics).
+Below is an example of the configuration to scale resources:
 
-Let’s deploy the SpinApp and the HPA instance onto our cluster with the following command:
+```yaml
+apiVersion: core.spinoperator.dev/v1alpha1
+kind: SpinApp
+metadata:
+  name: hpa-spinapp
+spec:
+  image: ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986
+  executor: containerd-shim-spin
+  enableAutoscaling: true
+  resources:
+    limits:
+      cpu: 500m
+      memory: 500Mi
+    requests:
+      cpu: 100m
+      memory: 400Mi
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: spinapp-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpa-spinapp
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+```
+
+Let’s deploy the SpinApp and the HPA instance onto our cluster (using the above `.yaml` configuration). To apply the above configuration we use the following `kubectl apply` command:
 
 ```console
 # Install SpinApp and HPA
@@ -180,6 +218,8 @@ kubectl get hpa
 NAME                 REFERENCE                TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 spinapp-autoscaler   Deployment/hpa-spinapp   6%/50%    1         10        1          97m
 ```
+
+> Please note: The [Kubernetes Plugin for Spin](https://www.spinkube.dev/docs/spin-plugin-kube/installation/) is a tool designed for Kubernetes integration with the Spin command-line interface. The [Kubernetes Plugin for Spin has a scaling tutorial](https://www.spinkube.dev/docs/spin-plugin-kube/tutorials/autoscaler-support/) that demonstrates how to use the `spin kube` command to tell Kubernetes when to scale your Spin application up or down based on demand).
 
 ## Generate Load to Test Autoscale
 

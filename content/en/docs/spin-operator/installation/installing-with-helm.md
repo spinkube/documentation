@@ -27,7 +27,7 @@ Before installing the chart, you'll need to ensure the following:
 The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) resources are installed. This includes the SpinApp CRD representing Spin applications to be scheduled on the cluster.
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
 ```
 
 A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource class that
@@ -36,14 +36,14 @@ are deploying to a production cluster that only has a shim on a subset of nodes,
 you'll need to modify the RuntimeClass with a `nodeSelector:`.
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
 ```
 
 The `containerd-spin-shim` [SpinAppExecutor]({{< ref "glossary#spin-app-executor-crd" >}}) custom resource is installed. This
 tells Spin Operator to use the containerd shim executor to run Spin apps:
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
 ```
 
 ## Chart prerequisites
@@ -93,7 +93,7 @@ The following installs the chart with the release name `spin-operator`:
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.0.2 \
+  --version 0.1.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -103,7 +103,7 @@ helm install spin-operator \
 Note that you may also need to upgrade the spin-operator CRDs in tandem with upgrading the Helm release:
 
 ```shell
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
 ```
 
 To upgrade the `spin-operator` release, run the following:
@@ -112,7 +112,7 @@ To upgrade the `spin-operator` release, run the following:
 # Upgrade Spin Operator using Helm
 helm upgrade spin-operator \
   --namespace spin-operator \
-  --version 0.0.2 \
+  --version 0.1.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -131,9 +131,9 @@ This will remove all Kubernetes resources associated with the chart and deletes 
 To completely uninstall all resources related to spin-operator, you may want to delete the corresponding CRD resources and, optionally, the RuntimeClass:
 
 ```console
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.crds.yaml
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.runtime-class.yaml
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.0.2/spin-operator.shim-executor.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
 ```
 
 <!-- TODO: list out configuration options? -->

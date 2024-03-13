@@ -139,7 +139,6 @@ kind: SpinApp
 metadata:
   name: keda-spinapp
 spec:
-  # TODO: Depend on a ghcr.io version of this image
   image: ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986
   executor: containerd-shim-spin
   enableAutoscaling: true

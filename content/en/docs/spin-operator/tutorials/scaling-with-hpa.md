@@ -219,6 +219,8 @@ NAME                 REFERENCE                TARGETS   MINPODS   MAXPODS   REPL
 spinapp-autoscaler   Deployment/hpa-spinapp   6%/50%    1         10        1          97m
 ```
 
+> Please note: The [Kubernetes Plugin for Spin](https://www.spinkube.dev/docs/spin-plugin-kube/installation/) is a tool designed for Kubernetes integration with the Spin command-line interface. The [Kubernetes Plugin for Spin has a scaling tutorial](https://www.spinkube.dev/docs/spin-plugin-kube/tutorials/autoscaler-support/) that demonstrates how to use the `spin kube` command to tell Kubernetes when to scale your Spin application up or down based on demand).
+
 ## Generate Load to Test Autoscale
 
 Now let’s use Bombardier to generate traffic to test how well HPA scales our SpinApp. The following Bombardier command will attempt to establish 40 connections during a period of 3 minutes (or less). If a request is not responded to within 5 seconds that request will timeout:

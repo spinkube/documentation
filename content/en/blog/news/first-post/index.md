@@ -75,7 +75,7 @@ By combining these technologies, scaling a Wasm application looks more like this
 | --- | --- |
 | Kube init | Kubernetes schedules a Pod to a node, the node then prepares to run the Pod |
 | Image pull (cacheable) | The node pulls the needed container images from a remote repository to a local cache when needed |
-| Wasm Load (cachable) | The shim loads the Wasm and prepares it for execution on the node’s CPU architecture. |
+| Wasm Load (cachable) | The shim loads the Wasm and prepares it for execution on the node’s CPU architecture |
 | Application start | The shim starts listening on the configured port and is ready to serve |
 | Pod ready | The Pod responds to the asynchronous readiness probe and signals that it is now ready |
 | Service ready | The Pod gets added to the list of active endpoints for a Service and can start receiving traffic |

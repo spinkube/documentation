@@ -153,7 +153,7 @@ sidebar_search_disable = true
 [params.ui.feedback]
 enable = true
 # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-yes = 'Glad to hear it! Please <a href="https://github.com/spinkube/documentation/issues/new">tell us how we can improve</a>.'
+yes = 'Glad to hear it!'
 no = 'Sorry to hear that. Please <a href="https://github.com/spinkube/documentation/issues/new">tell us how we can improve</a>.'
 
 # Adds a reading time to the top of each doc.

@@ -45,8 +45,7 @@ jobs:
 
       - name: Generate CRD reference docs
         run: ./generate.sh
-        with:
-          path: ./crd-reference
+        working-directory: ./crd-reference
         env:
           SPIN_OPERATOR_RELEASE: ${{ env.SPIN_OPERATOR_RELEASE }}
 

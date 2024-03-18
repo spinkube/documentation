@@ -1,4 +1,4 @@
-name: Build only
+name: Build
 
 on:
   pull_request:
@@ -9,7 +9,6 @@ permissions:
   contents: read
 
 env:
-  CANONICAL_DOMAIN: www.spinkube.dev
   SPIN_OPERATOR_RELEASE: v0.1.0
 
 jobs:
@@ -42,5 +41,4 @@ jobs:
         run: |
           hugo \
             --gc \
-            --minify \
-            --baseURL "https://${{ env.CANONICAL_DOMAIN }}/"
+            --minify

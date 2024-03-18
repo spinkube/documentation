@@ -19,6 +19,7 @@ concurrency:
 
 env:
   CANONICAL_DOMAIN: www.spinkube.dev
+  SPIN_OPERATOR_RELEASE: v0.1.0
 
 jobs:
   # TODO: place into separate build.yaml (and add PR support?) and then call here?
@@ -41,6 +42,13 @@ jobs:
 
       - name: Install Node.js dependencies
         run: npm install
+
+      - name: Generate CRD reference docs
+        run: ./generate.sh
+        with:
+          path: ./crd-reference
+        env:
+          SPIN_OPERATOR_RELEASE: ${{ env.SPIN_OPERATOR_RELEASE }}
 
       - name: Build
         run: |

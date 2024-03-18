@@ -43,6 +43,9 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
+      - name: Setup Go environment
+        uses: actions/setup-go@v5.0.0
+
       - name: Generate CRD reference docs
         run: ./generate.sh
         working-directory: ./crd-reference

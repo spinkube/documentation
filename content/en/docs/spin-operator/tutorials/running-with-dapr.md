@@ -116,7 +116,21 @@ $ curl localhost:8083/v1-get-item-types
 
 While sidecars are the default strategy, some use cases require other approaches. For example, you want to decouple the lifecycle of your workloads from the Dapr APIs. Dapr Shared offers a flexible approach to scenarios where the traditional sidecar model may not be ideal, such as with serverless functions that auto-scale. Allowing `daprd` to run as either a `DaemonSet` for reduced network latency or a `Deployment` for traditional scalability enables more efficient resource use and better lifecycle management of Dapr components across nodes. This adaptability makes Dapr Shared a valuable tool for developers leveraging Dapr in more dynamic, resource-conscious environments. 
 
-### SpinKube and Dapr Shared
+### Strategy
+
+#### `DaemonSet` Strategy
+
+The `DaemonSet` approach allows you to define workloads per node. An individual application's workloads (microservices) run in the same node and can communicate with local Dapr APIs.
+
+#### `Deployment` Strategy
+
+In a `Deployment` approach, workloads and the Dapr instance can be located in separate nodes (which can introduce network latency).
+
+#### Customizing
+
+Dapr Shared can be [customized using standard Helm values](https://github.com/dapr-sandbox/dapr-shared?tab=readme-ov-file#customize-dapr-shared).
+
+## SpinKube and Dapr Shared
 
 Combining the Spin framework and Dapr Shared allows developers to leverage Dapr's distributed system capabilities within a scalable and efficient WebAssembly-based architecture.
 

@@ -1,6 +1,6 @@
 ---
 title: Contributing
-weight: 6
+weight: 7
 description: >
   Contributing to Spin Operator 
 categories: [Spin Operator]

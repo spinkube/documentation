@@ -1,5 +1,5 @@
 ---
-title: SpinApp CRD Reference
+title: SpinApp
 weight: 1
 description: Custom Resource Definition (CRD) reference for `SpinApp`
 categories: [Spin Operator]

@@ -1,6 +1,6 @@
 metadata:
-  title: "SpinAppExecutor CRD Reference"
-  weight: 1
+  title: "SpinAppExecutor"
+  weight: 2
   description: "Custom Resource Definition (CRD) reference for `SpinAppExecutor`"
   category: Spin Operator
 groups:

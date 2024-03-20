@@ -31,7 +31,7 @@ Run the following command to create a Kubernetes k3d cluster that has [the
 containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed:
 
 ```console
-k3d cluster create wasm-cluster --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.13.0 -p "8081:80@loadbalancer" --agents 2
+k3d cluster create wasm-cluster --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.13.1 -p "8081:80@loadbalancer" --agents 2
 ```
 
 Run the following command to install the Custom Resource Definitions (CRDs) into the cluster:

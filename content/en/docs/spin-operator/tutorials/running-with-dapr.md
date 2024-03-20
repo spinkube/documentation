@@ -69,15 +69,15 @@ apiVersion: core.spinoperator.dev/v1
 kind: SpinApp
 metadata:
   name: my-dapr-spin-app
-  annotations:
-    dapr.io/enabled: "true"
-    dapr.io/app-id: "my-dapr-spin-app"
-    dapr.io/app-port: "80"
-    dapr.io/enable-api-logging: "true"
 spec:
   image: "ghcr.io/thangchung/dapr-labs/product-api-spin:1.0.1"
   executor: containerd-shim-spin
   replicas: 1
+  podAnnotations:
+    dapr.io/enabled: "true"
+    dapr.io/app-id: "my-dapr-spin-app"
+    dapr.io/app-port: "80"
+    dapr.io/enable-api-logging: "true"
 EOF
 ```
 

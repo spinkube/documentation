@@ -21,15 +21,16 @@ See the following list of compatible Kubernetes distributions and platforms for 
 
 ### How to validate Spin Operator Compatibility
 
-If you would like to validate Spin Operator's compatibility with a new specific Kubernetes distribution or platform, or simply test one of the [platforms listed above yourself, follow these steps for validation:
+If you would like to validate Spin Operator's compatibility with a new specific Kubernetes distribution or platform or simply test one of the platforms listed above yourself, follow these steps for validation:
 
-1. **Install the Spin Operator**: Begin by installing the Spin Operator within the Kubernetes cluster. This involves deploying the necessary dependencies and Spin Operator itself. (See [Installing with Helm]({{< ref "installing-with-helm" >}}))
+1. **Install the Spin Operator**: Begin by installing the Spin Operator within the Kubernetes cluster. This involves deploying the necessary dependencies and the Spin Operator itself. (See [Installing with Helm]({{< ref "installing-with-helm" >}}))
 
-2. **Create, Package, and Deploy a Spin App**: Proceed by creating a Spin App, packaging it, and succesfully deploying it within the Kubernetes environment. (See [Package and Deploy Spin Apps]({{< ref "package-and-deploy" >}}))
+2. **Create, Package, and Deploy a Spin App**: Proceed by creating a Spin App, packaging it, and successfully deploying it within the Kubernetes environment. (See [Package and Deploy Spin Apps]({{< ref "package-and-deploy" >}}))
 
 3. **Invoke the Spin App**: Once the Spin App is deployed, ensure at least one request was successfully served by the Spin App.
 
 ## Container Runtime Constraints
+
 The Spin Operator requires the target nodes that would run Spin applications to support containerd version [`1.6.26+`](https://github.com/containerd/containerd/releases/tag/v1.6.26) or [`1.7.7+`](https://github.com/containerd/containerd/releases/tag/v1.7.7).
 
 Use the `kubectl get nodes -o wide` command to see which container runtime is installed per node:

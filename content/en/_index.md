@@ -16,7 +16,7 @@ title: SpinKube
 SpinKube combines the <a href="https://github.com/spinkube/spin-operator">Spin operator</a>, <a href="https://github.com/spinkube/containerd-shim-spin">containerd Spin shim</a>, and the <a href="https://github.com/spinkube/runtime-class-manager">runtime class manager</a> (formerly <a href="https://kwasm.sh/">KWasm</a>) open source projects with contributions from Microsoft, SUSE, Liquid Reply, and Fermyon. By running applications at the Wasm abstraction layer, SpinKube gives developers a more powerful, efficient and scalable way to optimize application delivery on Kubernetes.
 
 
-### Made with Contributons from:
+### Made with Contributions from:
 
 |![Microsoft](logo-microsoft.png)|![Liquid Reply](logo-liquidreply.png)|![SUSE](logo-suse.png)|![Fermyon](logo-fermyon.png)|
 |---|---|---|---|

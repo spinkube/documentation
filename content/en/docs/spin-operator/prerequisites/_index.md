@@ -28,6 +28,10 @@ If you'd like to manage your Spin applications with `kubectl`, then Spin Operato
 
 If running/deploying your Spin application involves the use of k3d, then the Spin Operator requires that you have [k3d](https://k3d.io/v5.6.0/?h=installation#installation) installed and that you have access to a Kubernetes v1.27.0 cluster.
 
+## containerd
+
+If running/deploying your Spin application involves the use of **k3s** or a baremetal host, then the Spin Operator requires that you have [containerD](https://github.com/containerd/containerd/blob/main/docs/getting-started.md) installed.
+
 ## Helm
 
 If running/deploying your Spin application involves the use of Helm, then the Spin Operator requires that you have [Helm](https://helm.sh/docs/intro/install/#helm) installed on your system.

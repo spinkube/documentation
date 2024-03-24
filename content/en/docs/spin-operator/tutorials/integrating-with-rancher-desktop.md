@@ -17,6 +17,8 @@ The prerequisites for this tutorial are Rancher Desktop and assets listed in the
 
 First, install the latest version of [Rancher Desktop](https://rancherdesktop.io/).
 
+### Rancher Desktop Preferences
+
 Check the "Container Engine" section of your "Preferences" to ensure that `containerd` is your runtime and that "Wasm" is enabled. As shown below.
 
 ![Rancher Desktop Preferences Wasm](/rancher-desktop-preferences-wasm.png)

@@ -121,7 +121,7 @@ kubectl annotate node --all kwasm.sh/kwasm-node=true
 To verify `containerd-wasm-shim` installation, you can inspect the logs from the Kwasm Operator:
 
 ```shell
-# Ispect logs from the Kwasm Operator
+# Inspect logs from the Kwasm Operator
 kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
 
 {"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}

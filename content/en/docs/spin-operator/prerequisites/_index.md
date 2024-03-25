@@ -22,7 +22,7 @@ If you’d like to run Spin Operator locally, you have the option of using Ranch
 
 ### Rancher Desktop
 
-If you choose [Rancher Desktop](https://rancherdesktop.io/) it is recommended to install version 1.13.0 or higher. Additionally, you will need to [configure it to support WebAssembly applications](../../spin-operator/tutorials/integrating-with-rancher-desktop.md#rancher-desktop-preferences).
+If you choose [Rancher Desktop](https://rancherdesktop.io/) it is recommended to install version 1.13.0 or higher. Additionally, you will need to [configure it to support WebAssembly applications]({{< ref "integrating-with-rancher-desktop#rancher-desktop-preferences" >}}).
 
 ### Docker Desktop
 

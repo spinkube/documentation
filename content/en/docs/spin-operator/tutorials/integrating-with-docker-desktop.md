@@ -134,6 +134,10 @@ spec:
   replicas: 2
 ```
 
+If we look at the "Images" section of Docker Desktop we see `tpmccallum/hello-docker`:
+
+![Docker Desktop Images](/docker-desktop-images.png)
+
 We can run this using the following command:
 
 ```bash

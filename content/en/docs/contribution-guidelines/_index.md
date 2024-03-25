@@ -38,7 +38,7 @@ For information about contributing to the Spin Operator project visit the [runti
 
 ## Contributing to the Spin Operator project
 
-For information about contributing to the Spin Operator project visit the [Spin Operator Contributing](../spin-operator/contributing/_index.md) page.
+For information about contributing to the Spin Operator project visit the [Spin Operator Contributing]({{< ref "/docs/spin-operator/contributing" >}}) page.
 
 ## Contributing to the spin kube Plugin project
 

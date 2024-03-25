@@ -127,7 +127,7 @@ helm install keda kedacore/keda --namespace keda --create-namespace
 
 ## Deploy Spin App and the KEDA ScaledObject
 
-Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/hpa-tutorial/apps/cpu-load-gen) folder of the Spin Operator repository.
+Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of the Spin Operator repository.
 
 
 We can take a look at the `SpinApp` and the KEDA `ScaledObject` definitions in our deployment files below. As you can see, we have explicitly specified resource limits to `500m` of `cpu` (`spec.resources.limits.cpu`) and `500Mi` of `memory` (`spec.resources.limits.memory`) per `SpinApp`:

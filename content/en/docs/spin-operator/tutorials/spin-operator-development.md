@@ -91,14 +91,14 @@ kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download
 
 ### Packaging and deployment via Helm
 
-The [Spin Operator chart](./charts/spin-operator) is assembled via a combination of
+The [Spin Operator chart](https://github.com/spinkube/spin-operator/tree/main/charts/spin-operator) is assembled via a combination of
 [helmify](https://github.com/arttor/helmify) using the kustomize manifests from the
-[config](./config/) directory as well as other non-kustomize items such as the
-[NOTES.txt](./charts/spin-operator/templates/NOTES.txt) and [Chart.yaml](./charts/spin-operator/Chart.yaml).
+[config](https://github.com/spinkube/spin-operator/tree/main/config) directory as well as other non-kustomize items such as the
+[NOTES.txt](https://github.com/spinkube/spin-operator/blob/main/charts/spin-operator/templates/NOTES.txt) and [Chart.yaml](https://github.com/spinkube/spin-operator/blob/main/charts/spin-operator/Chart.yaml).
 
 > **NOTE**: Manual changes to helmify-generated resources, including the
-> [values.yml](./charts/spin-operator/values.yaml) file and applicable resources in
-> [templates](./charts/spin-operator/templates/) are not persisted across helmify
+> [values.yml](https://github.com/spinkube/spin-operator/blob/main/charts/spin-operator/values.yaml) file and applicable resources in
+> [templates](https://github.com/spinkube/spin-operator/tree/main/charts/spin-operator/templates) are not persisted across helmify
 > invocations.
 
 **Generate the Helm chart:**
@@ -109,7 +109,7 @@ make helm-generate
 
 **Install the Helm chart onto the cluster:**
 
-> **Note**: [CRDs](./config/crd/bases/) and the [wasm-spin-v2](./config/samples/spin-runtime-class.yaml)
+> **Note**: [CRDs](https://github.com/spinkube/spin-operator/tree/main/config/crd/bases) and the [wasm-spin-v2](https://github.com/spinkube/spin-operator/blob/main/config/samples/spin-runtime-class.yaml)
 > RuntimeClass are currently _not_ installed as part of the chart. You'll need to ensure these are
 > present via the method(s) mentioned above.
 

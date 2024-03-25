@@ -129,7 +129,7 @@ TEST SUITE: None
 
 ## error: requires go version
 
-When building apps like the [cpu-load-gen](../../apps/cpu-load-gen/) Spin app, you may get the following error if your TinyGo is not up to date. The error requires go version `1.18` through `1.20` but this is not necessarily the case. It **is** recommended that you have the latest go installed e.g. `1.21` and downgrading is unnecessary. Instead please go ahead and [install the latest version of TinyGo](./prerequisites.md#tinygo) to resolve this error:
+When building apps like the [cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) Spin app, you may get the following error if your TinyGo is not up to date. The error requires go version `1.18` through `1.20` but this is not necessarily the case. It **is** recommended that you have the latest go installed e.g. `1.21` and downgrading is unnecessary. Instead please go ahead and [install the latest version of TinyGo]({{< ref "prerequisites#tinygo" >}}) to resolve this error:
 
 ```console
 user@user:~/spin-operator/apps/cpu-load-gen$ spin build

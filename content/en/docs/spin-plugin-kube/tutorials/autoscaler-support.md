@@ -52,7 +52,7 @@ spin kube scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit
 
 Horizontal Pod Autoscaling is built-in to Kubernetes and does not require the installation of a
 third-party runtime. For more general information about scaling with HPA, please see the Spin
-Operator's [Scaling with HPA section](../../spin-operator/tutorials/scaling-with-hpa.md)
+Operator's [Scaling with HPA section]({{< ref "scaling-with-hpa" >}})
 
 #### Kubernetes Event-driven Autoscaling (KEDA)
 
@@ -69,7 +69,7 @@ spin kube scaffold --from user-name/app-name:latest --autoscaler keda --cpu-limi
 Using KEDA to autoscale your Spin applications requires the installation of the [KEDA
 runtime](https://keda.sh/) into your Kubernetes cluster. For more information about scaling with
 KEDA in general, please see the Spin Operator's [Scaling with KEDA
-section](../../spin-operator/tutorials/scaling-with-keda.md)
+section]({{< ref "scaling-with-keda" >}})
 
 ### Setting min/max replicas
 

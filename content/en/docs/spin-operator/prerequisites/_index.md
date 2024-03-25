@@ -26,7 +26,7 @@ If you choose [Rancher Desktop](https://rancherdesktop.io/) it is recommended to
 
 ### Docker Desktop
 
-If you choose [Docker Desktop](https://docs.docker.com/get-docker/) it is recommended to install version 17.03 or higher. Additionally, you will need to [configure it to support WebAssembly applications](../../spin-operator/tutorials/integrating-with-rancher-desktop.md#rancher-desktop-preferences).
+If you choose [Docker Desktop](https://docs.docker.com/get-docker/) it is recommended to install version 17.03 or higher. Additionally, you will need to [configure it to support WebAssembly applications]({{< ref "integrating-with-docker-desktop#docker-desktop-preferences" >}}).
 
 
 ## Kubectl

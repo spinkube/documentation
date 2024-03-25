@@ -8,6 +8,18 @@ weight: 100
 
 The following is a list of common error messages and potential troubleshooting suggestions that might assist you with your work.
 
+## Error Validating Data: Connection Refused
+
+When trying to run the `kubectl apply -f <URL>` command (for example installing the `cert-manager` etc.) you may encounter an error similar to the following:
+
+```
+$ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
+
+error: error validating "https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml": error validating data: failed to download openapi: Get "https://127.0.0.1:6443/openapi/v2?timeout=32s": dial tcp 127.0.0.1:6443: connect: connection refused; if you choose to ignore these errors, turn validation off with --validate=false
+```
+
+This is because no cluster exists. You can create a cluster using the `k3d` [command](../prerequisites/_index.md#k3d) or install and configure a client like [Rancher Desktop](../../spin-operator/tutorials/integrating-with-rancher-desktop.md) or [Docker Desktop](../../spin-operator/tutorials/integrating-with-docker-desktop.md) to manage Kubernetes clusters on your behalf.
+
 ## Installation Failed
 
 When trying to install a new version of a chart you may get the following error:

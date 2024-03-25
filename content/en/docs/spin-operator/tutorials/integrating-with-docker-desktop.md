@@ -134,15 +134,15 @@ spec:
   replicas: 2
 ```
 
-If we look at the "Images" section of Docker Desktop we see `tpmccallum/hello-docker`:
-
-![Docker Desktop Images](/docker-desktop-images.png)
-
 We can run this using the following command:
 
 ```bash
 spin kube deploy --from docker.io/tpmccallum/hello-docker
 ```
+
+If we look at the "Images" section of Docker Desktop we see `tpmccallum/hello-docker`:
+
+![Docker Desktop Images](/docker-desktop-images.png)
 
 We can test the Wasm-powered Spin app that is running via Docker using the following request:
 

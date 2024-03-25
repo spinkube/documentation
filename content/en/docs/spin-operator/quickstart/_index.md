@@ -15,7 +15,7 @@ Ensure necessary [prerequisites]({{< ref "prerequisites" >}}) are installed.
 For this Quickstart in particular, you will need:
 
 - [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
-- [Docker]({{< ref "prerequisites#docker" >}}) - for running k3d
+- [Rancher Desktop]({{< ref "prerequisites#rancher-desktop" >}}) or [Docker Desktop]({{< ref "prerequisites#docker" >}}) for managing containers and Kubernetes on your desktop
 - [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
 - [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
 

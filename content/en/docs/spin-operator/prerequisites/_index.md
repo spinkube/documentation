@@ -16,9 +16,18 @@ If building the Spin Operator from source or contributing to the development of 
 
 Please also install the latest version of [TinyGo](https://tinygo.org/getting-started/install/)
 
-## Docker
+## Managing Containers and Kubernetes Locally
 
-If you'd like to run Spin Operator locally, then please install [Docker](https://docs.docker.com/get-docker/) version 17.03+.
+If you’d like to run Spin Operator locally, you have the option of using Rancher Desktop or Docker Desktop, as the interface for managing containers and Kubernetes clusters directly from your workstation.
+
+### Rancher Desktop
+
+If you choose [Rancher Desktop](https://rancherdesktop.io/) it is recommended to install version 1.13.0 or higher. Additionally, you will need to [configure it to support WebAssembly applications]({{< ref "integrating-with-rancher-desktop#rancher-desktop-preferences" >}}).
+
+### Docker Desktop
+
+If you choose [Docker Desktop](https://docs.docker.com/get-docker/) it is recommended to install version 17.03 or higher. Additionally, you will need to [configure it to support WebAssembly applications]({{< ref "integrating-with-docker-desktop#docker-desktop-preferences" >}}).
+
 
 ## Kubectl
 

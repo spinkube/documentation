@@ -40,7 +40,11 @@ Click on "Kubernetes" and check the "Enable Kubernetes" box, as shown below.
 
 ![Enable Kubernetes](/docker-desktop-enable-kubernetes.png)
 
-Again, make sure you press "Apply & restart" to save the changes.
+Make sure you press "Apply & restart" to save the changes.
+
+Select docker-desktop from the Kubernetes Contexts configuration in your toolbar.
+
+![Kubernetes Context](/docker-desktop-context.png)
 
 ### SpinKube
 

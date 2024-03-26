@@ -51,5 +51,5 @@ As an alternative to the plugin manager, you can download and manually install t
 installation is commonly used to test in-flight changes. For a user, installing the plugin using
 Spin's plugin manager is better.
 
-Please refer to the [contributing guide](../contributing/_index.md) for instructions on how to
+Please refer to the [contributing guide]({{< ref "/docs/spin-plugin-kube/contributing" >}}) for instructions on how to
 compile the plugin from source.

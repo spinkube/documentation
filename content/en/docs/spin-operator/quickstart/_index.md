@@ -46,7 +46,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
 ```
 
-4. Apply the [Custom Resource Definitions](../../glossary#custom-resource-definition-crd) used by the Spin Operator:
+4. Apply the [Custom Resource Definitions]({{< ref "glossary#custom-resource-definition-crd" >}}) used by the Spin Operator:
 
 ```console
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml

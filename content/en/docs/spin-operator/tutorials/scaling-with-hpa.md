@@ -112,7 +112,7 @@ Hit enter to create the ingress resource.
 
 ## Deploy Spin App and HorizontalPodAutoscaler (HPA)
 
-Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/hpa-tutorial/apps/cpu-load-gen) folder of the Spin Operator repository.
+Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of the Spin Operator repository.
 
 We can take a look at the SpinApp and HPA definitions in our deployment file below/. As you can see, we have set our `resources` -> `limits` to `500m` of `cpu` and `500Mi` of `memory` per Spin application and we will scale the instance count when we’ve reached a 50% utilization in `cpu` and `memory`. We’ve also defined support a maximum [replica](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas) count of 10 and a minimum replica count of 1:
 

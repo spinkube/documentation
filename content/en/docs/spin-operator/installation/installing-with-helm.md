@@ -66,7 +66,7 @@ helm install \
   --version v1.14.3
 ```
 
-- [Kwasm Operator](https://github.com/kwasm/kwasm-operator) is required to install WebAssembly support on Kubernetes nodes. Note in the future this will be replaced by [runtime class manager](../../runtime-class-manager/_index.md). 
+- [Kwasm Operator](https://github.com/kwasm/kwasm-operator) is required to install WebAssembly support on Kubernetes nodes. Note in the future this will be replaced by [runtime class manager]({{< ref "runtime-class-manager" >}}). 
 
 ```shell
 # Add Helm repository if not already done

@@ -16,7 +16,7 @@ With SpinKube, you can leverage the advantages of using WebAssembly (Wasm) for y
 - Artifacts can be quickly fetched over the network and started much faster (\*Note: We are aware of several optimizations that still need to be implemented to enhance the startup time for workloads).
 - Substantially fewer resources are required during idle times.
 
-All of this while being able to integrate with with Kubernetes primitives (DNS, probes, autoscaling, metrics, and a lot more cloud native and CNCF projects) thanks to Spin Operator.
+All of this while being able to integrate with Kubernetes primitives (DNS, probes, autoscaling, metrics, and a lot more cloud native and CNCF projects) thanks to Spin Operator.
 
 ![SpinKube Project Overview Diagram](/spinkube-overview-diagram.png)
 

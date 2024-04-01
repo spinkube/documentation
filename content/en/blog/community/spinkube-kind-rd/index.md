@@ -46,7 +46,7 @@ If it's still "obscure", keep reading and hopefully it will make sense (yes, not
 
 ## KinD configurations
 
-This section and should clarify how the Spin plugin will be leveraged.
+This section should clarify how the Spin plugin will be leveraged.
 
 ### containerD config file
 
@@ -194,9 +194,9 @@ You have now a KinD cluster running with the spin plugin enabled for containerD,
 
 ## Deploy SpinKube
 
-From here, you can reference the [excellent quistart to deploy SpinKube](https://www.spinkube.dev/docs/spin-operator/quickstart/) for a detailed explanation of each step.
+From here, you can reference the [excellent quickstart to deploy SpinKube](https://www.spinkube.dev/docs/spin-operator/quickstart/) for a detailed explanation of each step.
 
-To avoid repetition, and encourage you to go read the quickstart (and the overall SpinKube docs), the steps below will only have a short description.
+To avoid repetition, and to encourage you to go read the quickstart (and the overall SpinKube docs), the steps below will only include short descriptions.
 
 >  **IMPORTANT:** the following commands are "universal", working on both powershell and bash/zsh. The "multiline characters" have been removed on purpose (\` for powershell and \\ for bash).
 
@@ -243,11 +243,11 @@ Congratulations! You have a cluster with SpinKube running.
 
 ## Conclusion
 
-First of all, THANK YOU to all the projects maintainers and contributors! Without you, there won't be blog like this one.
+First of all, THANK YOU to all the projects maintainers and contributors! Without you, there wouldn't be blogs like this one.
 
 Secondly, as you may know or not, this is **highly experimental**, and the main purpose was more a proof-of-concept rather than a real solution.
 
-Lastly, SpinKube on Rancher Desktop has been tested, both by Fermyon and SUSE, and it's suggested that you [follow this howto](https://www.spinkube.dev/docs/spin-operator/tutorials/integrating-with-rancher-desktop/) for a long term environment.
+Lastly, SpinKube on Rancher Desktop has been tested, both by Fermyon and SUSE, and it's suggested that you [follow this howto](https://www.spinkube.dev/docs/spin-operator/tutorials/integrating-with-rancher-desktop/) for a long-term environment.
 
 Special thanks to Fermyon for hosting this (first) blog on SpinKube and thanks to anyone reaching this last line, you mean the world to me.
 
@@ -259,7 +259,7 @@ If you need to build the latest version of KinD, you can follow the steps below:
 
 ### [Optional] Non-intrusive and containerized binaries
 
-Assuming you're already running Rancher Destkop, you can create the "binary shortcuts" as follow:
+Assuming you're already running Rancher Destkop, you can create the "binary shortcuts" as follows:
 
 ***Windows Users ONLY***
 
@@ -287,7 +287,7 @@ alias go='nerdctl run --rm -v $PWD:/work -w /work -e GOOS=$GOOS chainguard/go'
 
 ### Build KinD
 
-With both the `git` and `go` binaries available, you can now build KinD as follow:
+With both the `git` and `go` binaries available, you can now build KinD as follows:
 
 ***Windows Users ONLY***
 

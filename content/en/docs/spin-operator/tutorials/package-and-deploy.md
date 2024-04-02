@@ -130,7 +130,7 @@ For demonstration purposes, you will now distribute the Spin App via GitHub Cont
 
 ```shell
 # Store PAT and GitHub username as environment variables
-export CR_PAT=YOUR_TOKEN
+export GH_PAT=YOUR_TOKEN
 export GH_USER=YOUR_GITHUB_USERNAME
 
 # Authenticate spin CLI with GHCR

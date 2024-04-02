@@ -129,7 +129,7 @@ nodes:
     containerPath: /etc/containerd/config.toml
   - hostPath: /usr/local/containerd-shims/containerd-shim-spin-v2
     containerPath: /usr/local/bin/containerd-shim-spin-v2
-"@ | rdctl shell -- tee -a /root/test.yaml
+"@ | rdctl shell -- tee -a /root/kind-spin.yaml
 ```
 
 **Linux and MacOS Users ONLY**

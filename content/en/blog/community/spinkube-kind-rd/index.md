@@ -3,7 +3,7 @@ date: 2024-04-01
 title: "SpinKube on KinD: Rancher Desktop super powers"
 linkTitle: SpinKube on KinD
 description: >
-  Run SpinKube on KinD thanks to Rancher Desktop WASM implementation.
+  Run SpinKube on KinD thanks to Rancher Desktop Wasm implementation.
 author: Nuno "the Corsair" Do carmo ([@nunixtech](https://twitter.com/nunixtech))
 resources:
   - src: "**.{png,jpg}"
@@ -12,9 +12,9 @@ resources:
 
 The goal of this guide is show a way to bring [SpinKube](https://www.spinkube.dev/) to [KinD](https://kind.sigs.k8s.io/) without the need of a custom image, like the [SpinKube on k3d](https://www.spinkube.dev/docs/spin-operator/quickstart/) example.
 
-Instead, the Rancher Desktop Spin plugin will be used alongside KinD cluster configuration.
+Instead, the Rancher Desktop (RD) Spin plugin will be used alongside KinD cluster configuration.
 
-Finally, this guide will have 3 main sections covering the following:
+Finally, this guide will have three major sections covering the following:
 
 - KinD configurations: contains the different configurations, depending on your OS
 - RD on WSL: targets only Windows users
@@ -24,7 +24,7 @@ Finally, this guide will have 3 main sections covering the following:
 
 In order to follow this guide, the following applications need to be installed:
 
-- Rancher Desktop (RD) v1.13
+- Rancher Desktop v1.13
   - This is the first version with the Spin plugin
   - The following preferences are set:
     - Preferences > Container Engine
@@ -148,11 +148,11 @@ nodes:
 EOF
 ```
 
-#### Connecting the dots (2)
+#### Connecting the dots (two)
 
-Rancher Desktop leverages 2 different technologies depending on the OS its installed.
+Rancher Desktop leverages two different technologies depending on the OS its installed.
 
-On Windows, WSL2 will be used and for Linux and MacOS, Lima is the preferred choice.
+On Windows, [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) will be used and for Linux and MacOS, [Lima](https://lima-vm.io/docs/) is the preferred choice.
 
 While both technologies run Linux in a microVM, the behaviors differ in some parts. And the mountpoints with the host system are one of these differences.
 
@@ -190,7 +190,7 @@ kind create cluster --config=$HOME/kind-spin.yaml
 
 ![KinD create cluster on *nix](lima-kind-create-cluster.png)
 
-You have now a KinD cluster running with the spin plugin enabled for containerD, but not yet used by Kubernetes (runtimeClass). This will be done on the next section.
+Now that you have a KinD cluster running with the spin plugin enabled for `containerD`. However, it is not yet used by Kubernetes (`runtimeClass`). This will be done on the next section.
 
 ## Deploy SpinKube
 

@@ -141,7 +141,7 @@ apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
   extraMounts:
-  - hostPath: /home/${USER}/config.toml
+  - hostPath: ${HOME}/config.toml
     containerPath: /etc/containerd/config.toml
   - hostPath: /usr/local/containerd-shims/containerd-shim-spin-v2
     containerPath: /usr/local/bin/containerd-shim-spin-v2
@@ -158,13 +158,13 @@ While both technologies run Linux in a microVM, the behaviors differ in some par
 
 In the case of RD on WSL, the file generated is created **inside** the microVM, as nerdctl will need to have acceess to the file's path. Technically speaking, the mountpoint `/mnt/c` could also be used, however sometimes it's not available due to WSL main configuration. This way should be a bit more generic.
 
-Concerning RD on Lima, `$HOME/$USER` is mounted inside the microVM, therefore nerdctl will already see the files, and there's not need on copying the files over like it's done for WSL.
+Concerning RD on Lima, `$HOME` is mounted inside the microVM, therefore nerdctl will already see the files, and there's not need on copying the files over like it's done for WSL.
 
 Finally, on both cases, the binary `containerd-shim-spin-v2` is already accessible inside the microVMs.
 
 ## Create KinD cluster
 
-With all the preparations done, you can now create a new KinD cluster as follow:
+With all the preparations done, you can now create a new KinD cluster as follows:
 
 **Windows Users ONLY**
 
@@ -259,7 +259,7 @@ If you need to build the latest version of KinD, you can follow the steps below:
 
 ### [Optional] Non-intrusive and containerized binaries
 
-Assuming you're already running Rancher Destkop, you can create the "binary shortcuts" as follows:
+Assuming you're already running Rancher Desktop, you can create the "binary shortcuts" as follows:
 
 ***Windows Users ONLY***
 

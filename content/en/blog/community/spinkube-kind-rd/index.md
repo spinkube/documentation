@@ -50,7 +50,7 @@ This section should clarify how the Spin plugin will be leveraged.
 
 ### Containerd Configuration File
 
-The first configuration is related to `containerD`, and more precisely the one running inside the KinD container(s):
+The first configuration is related to `containerd`, and more precisely, the one running inside the KinD container(s):
 
 - Create a file in your `$HOME` directory called `config.toml`
   - You can create it inside a directory, however it still should be located in your `$HOME` directory

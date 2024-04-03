@@ -38,7 +38,7 @@ In order to follow this guide, the following applications need to be installed:
 
 Concerning the Kubernetes tooling, Rancher Desktop already covers it.
 
-#### Connecting the dots
+### Connecting the Dots
 
 The reason KinD v0.23 is needed with the `nerdctl` provider is because the Spin plugin only works on Rancher Desktop when `containerD` runtime is selected, instead of `docker`.
 

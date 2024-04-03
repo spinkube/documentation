@@ -190,7 +190,7 @@ kind create cluster --config=$HOME/kind-spin.yaml
 
 ![KinD create cluster on *nix](lima-kind-create-cluster.png)
 
-Now that you have a KinD cluster running with the spin plugin enabled for `containerD`. However, it is not yet used by Kubernetes (`runtimeClass`). This will be done on the next section.
+Now that you have a KinD cluster running with the spin plugin enabled for `containerd`. However, it is not yet used by Kubernetes (`runtimeClass`). This will be done on the next section.
 
 ## Deploy SpinKube
 

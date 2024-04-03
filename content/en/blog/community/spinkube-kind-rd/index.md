@@ -219,7 +219,7 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 
 SpinKube is now deployed and you can run your first application as described below.
 
-### Sample application
+### Sample Application
 
 Same as the SpinKube deployment, you can follow the quickstart:
 

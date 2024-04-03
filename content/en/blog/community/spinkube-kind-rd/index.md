@@ -196,7 +196,7 @@ Now that you have a KinD cluster running with the spin plugin enabled for `conta
 
 From here, you can reference the [excellent quickstart to deploy SpinKube](https://www.spinkube.dev/docs/spin-operator/quickstart/) for a detailed explanation of each step.
 
-To avoid repetition, and to encourage you to go read the quickstart (and the overall SpinKube docs), the steps below will only include short descriptions.
+To avoid repetition, and to encourage you to go read the quickstart (and the overall SpinKube docs), the steps below will only include short descriptions:
 
 >  **IMPORTANT:** the following commands are "universal", working on both powershell and bash/zsh. The "multiline characters" have been removed on purpose (\` for powershell and \\ for bash).
 

@@ -48,7 +48,7 @@ If it's still "obscure", keep reading and hopefully it will make sense (yes, not
 
 This section should clarify how the Spin plugin will be leveraged.
 
-### containerD config file
+### Containerd Configuration File
 
 The first configuration is related to `containerD`, and more precisely the one running inside the KinD container(s):
 

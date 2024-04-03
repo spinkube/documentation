@@ -257,7 +257,7 @@ Special thanks to Fermyon for hosting this (first) blog on SpinKube and thanks t
 
 If you need to build the latest version of KinD, you can follow the steps below:
 
-### [Optional] Non-intrusive and containerized binaries
+### [Optional] Non-intrusive and Containerized Binaries
 
 Assuming you're already running Rancher Desktop, you can create the "binary shortcuts" as follows:
 

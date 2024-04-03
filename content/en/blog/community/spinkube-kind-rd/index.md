@@ -40,7 +40,7 @@ Concerning the Kubernetes tooling, Rancher Desktop already covers it.
 
 ### Connecting the Dots
 
-The reason KinD v0.23 is needed with the `nerdctl` provider is because the Spin plugin only works on Rancher Desktop when `containerD` runtime is selected, instead of `docker`.
+The reason KinD v0.23 is needed with the `nerdctl` provider is because the Spin plugin only works on Rancher Desktop when `containerd` runtime is selected, instead of `docker`.
 
 If it's still "obscure", keep reading and hopefully it will make sense (yes, not yet spoiling how the Spin plugin will be leveraged).
 

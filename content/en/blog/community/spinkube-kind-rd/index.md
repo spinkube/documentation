@@ -44,7 +44,7 @@ The reason KinD v0.23 is needed with the `nerdctl` provider is because the Spin 
 
 If it's still "obscure", keep reading and hopefully it will make sense (yes, not yet spoiling how the Spin plugin will be leveraged).
 
-## KinD configurations
+## KinD Configurations
 
 This section should clarify how the Spin plugin will be leveraged.
 

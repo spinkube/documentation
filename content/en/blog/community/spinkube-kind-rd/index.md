@@ -148,7 +148,7 @@ nodes:
 EOF
 ```
 
-#### Connecting the dots (two)
+#### Connecting the Dots (Two)
 
 Rancher Desktop leverages two different technologies depending on the OS its installed.
 

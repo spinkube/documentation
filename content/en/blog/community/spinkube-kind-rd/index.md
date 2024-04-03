@@ -108,7 +108,7 @@ version = 2
 
 > NOTE: this file is a copy of the original one that can be found inside the KinD container. The only addition to the file is the declaration of the `spin` plugin (the last 2 lines)
 
-### KinD config file
+### KinD Configuration File
 
 The second configuration file is related to KinD and will be used when creating a new cluster:
 

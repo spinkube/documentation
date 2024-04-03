@@ -1,6 +1,6 @@
 ---
 date: 2024-04-01
-title: "SpinKube on KinD: Rancher Desktop super powers"
+title: "SpinKube on KinD: Rancher Desktop Super Powers"
 linkTitle: SpinKube on KinD
 description: >
   Run SpinKube on KinD thanks to Rancher Desktop Wasm implementation.

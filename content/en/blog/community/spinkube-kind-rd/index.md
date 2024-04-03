@@ -162,7 +162,7 @@ Concerning RD on Lima, `$HOME` is mounted inside the microVM, therefore nerdctl 
 
 Finally, on both cases, the binary `containerd-shim-spin-v2` is already accessible inside the microVMs.
 
-## Create KinD cluster
+## Create KinD Cluster
 
 With all the preparations done, you can now create a new KinD cluster as follows:
 

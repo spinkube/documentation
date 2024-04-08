@@ -152,7 +152,7 @@ To validate the Spin Operator deployment, you will deploy a simple Spin App to t
 
 ```shell
 # Deploy a sample Spin app
-kubectl apply -f https://github.com/spinkube/spin-operator/blob/main/config/samples/simple.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
 ```
 
 ## Verifying the Spin App

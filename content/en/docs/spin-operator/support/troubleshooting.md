@@ -8,6 +8,56 @@ weight: 100
 
 The following is a list of common error messages and potential troubleshooting suggestions that might assist you with your work.
 
+## No endpoints available for service "spin-operator-webhook-service"
+
+When following the quickstart guide the following error can occur when running the `kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml` command:
+
+```console
+Error from server (InternalError): error when creating "https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml": Internal error occurred: failed calling webhook "mspinappexecutor.kb.io": failed to call webhook: Post "https://spin-operator-webhook-service.spin-operator.svc:443/mutate-core-spinoperator-dev-v1alpha1-spinappexecutor?timeout=10s": no endpoints available for service "spin-operator-webhook-service"
+```
+
+To address the error above, first look to see if Spin Operator is running:
+
+```console
+get pods -n spin-operator
+NAME                                                READY   STATUS              RESTARTS   AGE
+spin-operator-controller-manager-5bdcdf577f-htshb   0/2     ContainerCreating   0          26m
+```
+
+If the above result (ready 0/2) is returned, then use the name from the above result to `kubectl describe pod` of the spin-operator:
+
+```console
+kubectl describe pod spin-operator-controller-manager-5bdcdf577f-htshb -n spin-operator
+```
+
+In addition, we can check the certificate (the desired output is as follows):
+
+```console
+kubectl get certificate -n spin-operator
+NAME                         READY   SECRET                AGE
+spin-operator-serving-cert   True    webhook-server-cert   11m
+```
+
+You may be getting the `No resources found in spin-operator namespace.` response from the command:
+
+```console
+kubectl get certificate -n spin-operator
+No resources found in spin-operator namespace.
+```
+
+To resolve this issue, please try to install the Spin Operator again. Except this time, use the `helm upgrade --install` syntax instead of just `helm install`:
+
+```console
+helm upgrade --install spin-operator \
+  --namespace spin-operator \
+  --create-namespace \
+  --version 0.1.0 \
+  --wait \
+  oci://ghcr.io/spinkube/charts/spin-operator
+```
+
+Once the Spin Operator is installed you can try and run the `kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml` command again. The issue should be resolved now.
+
 ## Error Validating Data: Connection Refused
 
 When trying to run the `kubectl apply -f <URL>` command (for example installing the `cert-manager` etc.) you may encounter an error similar to the following:

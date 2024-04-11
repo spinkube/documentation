@@ -30,7 +30,9 @@ If the above result (ready 0/2) is returned, then use the name from the above re
 kubectl describe pod spin-operator-controller-manager-5bdcdf577f-htshb -n spin-operator
 ```
 
-In addition, we can check the certificate (the desired output is as follows):
+If the above command's response includes the message `SetUp failed for volume "cert" : secret "webhook-server-cert" not found`, please check the certificate. The spin operator requires this certificate to serve webhooks, and the missing certificate could be one reason why the spin operator is failing to start.
+
+The command to check the certificate and the desired output is as follows:
 
 ```console
 kubectl get certificate -n spin-operator
@@ -38,7 +40,7 @@ NAME                         READY   SECRET                AGE
 spin-operator-serving-cert   True    webhook-server-cert   11m
 ```
 
-You may be getting the `No resources found in spin-operator namespace.` response from the command:
+Instead of the desired output shown above you may be getting the `No resources found in spin-operator namespace.` response from the command. For example:
 
 ```console
 kubectl get certificate -n spin-operator

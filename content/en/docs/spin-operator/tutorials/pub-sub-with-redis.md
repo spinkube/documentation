@@ -1,6 +1,6 @@
 ---
 title: Publish-Subscribe With Redis
-description: Learn how to create a Spin application that responds to messages on pub-sub Redis channels and runs in Kubernetes
+description: Learn how to create a Spin App that responds to messages on pub-sub Redis channels and runs in Kubernetes
 categories: [Spin Operator]
 tags: [Tutorials]
 weight: 100
@@ -9,9 +9,8 @@ weight: 100
 ## Prerequisites
 
 For this tutorial, we will be using:
-- [Spin](https://developer.fermyon.com/spin/v2/install) to build and deploy our event-driven WebAssembly application,
-- [Redis](https://redis.io/docs/install/install-redis/) to generate events in our real-time messaging scenario, and
-- [Rancher Desktop](https://rancherdesktop.io/) to manage Kubernetes on our Desktop. ([This page](../../spin-operator/tutorials/integrating-with-rancher-desktop.md) documents integrating Rancher Desktop and SpinKube.)
+- [Spin](https://developer.fermyon.com/spin/v2/install) to build and deploy our event-driven WebAssembly application, and
+- [Redis](https://redis.io/docs/install/install-redis/) to generate events in our real-time messaging scenario.
 
 ## Create a Kubernetes Cluster
 
@@ -23,9 +22,10 @@ k3d cluster create wasm-cluster --image ghcr.io/spinkube/containerd-shim-spin/k3
 
 ## Install CRDs for SpinKube
 
-Next, we apply the necessary Custom Resource Definitions (CRDs) to our Kubernetes cluster:
+Next, we install cert-manager and apply the necessary Runtime Class and Custom Resource Definitions (CRDs) to our Kubernetes cluster:
 
 ```bash
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
@@ -46,12 +46,12 @@ helm install spin-operator \
 
 ## Redis
 
-Let's dive in and get Redis sorted because we are going to need information about our Redis installation in our Spin application's config. We will use the following `helm` commands to get the job done:
+Let's dive in and install Redis because we need information about the Redis instance to configure our Spin App. We will use the following helm commands to get the job done:
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-helm install my-redis bitnami/redis
+helm install my-redis bitnami/redis --set auth.enabled=false
 ```
 
 The `helm` installation process from above prints a lot of useful information to the terminal. For example, the endpoints to communicate with Redis (read/write vs read-only):
@@ -61,13 +61,13 @@ my-redis-master.default.svc.cluster.local for read/write operations (port 6379)
 my-redis-replicas.default.svc.cluster.local for read-only operations (port 6379)
 ```
 
-In addition, there are pre-written commands that you can cut and paste. For example:
+In addition, there are pre-written commands that you can copy and paste. For example:
 
 ```bash
 export REDIS_PASSWORD=$(kubectl get secret --namespace default my-redis -o jsonpath="{.data.redis-password}" | base64 -d)
 ```
 
-Go ahead and run the command above to set the password. And, if need be, you can run the following command to see the actual password printed in your terminal:
+Go ahead and run the command above to store the password as an environment variable for the current terminal session. If required, you can print the actual password using:
 
 ```bash
 echo $REDIS_PASSWORD
@@ -111,17 +111,15 @@ The above `tree .` command, produces the following output:
 If we open the application manifest (`spin.toml` file) we see that Spin has already pre-populated the [Redis trigger configuration](https://developer.fermyon.com/spin/v2/redis-trigger#the-spin-redis-trigger):
 
 ```toml
-// --snip --
+# --snip --
 [application.trigger.redis]
 address = "redis://my-redis-master.default.svc.cluster.local:6379"
 
 [[trigger.redis]]
 channel = "channel-one"
 component = "redis-message-handler"
-// --snip --
+# --snip --
 ```
-
-By default, Spin does not authenticate to Redis. You can work around this by providing the password in the `redis://` URL. For example: `address = "redis://:p4ssw0rd@localhost:6379"`
 
 > Do not use passwords in code committed to version control systems.
 
@@ -159,7 +157,9 @@ We will now push the application image to a registry. You can use any container 
 spin registry push ttl.sh/redis-message-handler:0.1.0
 ```
 
-To read the configuration we can use the `spin scaffold` command:
+> This image will be available for the default time of 24h (because we're using a server tag instead of specifying a duration for the image to live).
+
+To create the Kubernetes deployment manifest we can use the `spin kube scaffold` command:
 
 ```bash
 spin kube scaffold --from ttl.sh/redis-message-handler:0.1.0
@@ -180,21 +180,26 @@ spec:
 
 ## Deploy
 
-We deploy our application to our cluster using the `spin kube` command:
+We deploy the Spin App to our Kubernetes cluster by piping the deployment manifest to kubectl:
 
 ```bash
-spin kube deploy --from ttl.sh/redis-message-handler:0.1.0
+spin kube scaffold --from ttl.sh/redis-message-handler:0.1.0 | kubectl apply -f -
 ```
 
 ## Test
 
-We want to run the Redis server and publish a message. First, we run the Redis container image:
+To test the application, we will run an additional container for publishing messages to our Redis channel:
 
 ```bash
-kubectl run --namespace default redis-client --restart='Never'  --env REDIS_PASSWORD=$REDIS_PASSWORD  --image docker.io/bitnami/redis:7.2.4-debian-12-r9 --command -- sleep infinity
+kubectl run redis-client \
+  --namespace default  \
+  --restart='Never'  \
+  --env REDIS_PASSWORD=$REDIS_PASSWORD  \
+  --image docker.io/bitnami/redis:7.2.4-debian-12-r9 \
+  --command -- sleep infinity
 ```
 
-Then, we want to attach to the pod:
+Then, we want to jump into the container using `kubectl exec`:
 
 ```bash
 kubectl exec --tty -i redis-client --namespace default -- bash

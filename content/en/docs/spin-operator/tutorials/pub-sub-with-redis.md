@@ -51,7 +51,7 @@ Let's dive in and install Redis because we need information about the Redis inst
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-helm install my-redis bitnami/redis --set auth.enabled=false
+helm install my-redis bitnami/redis
 ```
 
 The `helm` installation process from above prints a lot of useful information to the terminal. For example, the endpoints to communicate with Redis (read/write vs read-only):
@@ -85,7 +85,7 @@ The command above will provide the prompts for you to add the Description, Redis
 
 ```bash
 Description: Redis message handler using Rust
-Redis address[redis://localhost:6379]: redis://my-redis-master.default.svc.cluster.local:6379
+Redis address[redis://localhost:6379]: redis://:<password>@my-redis-master.default.svc.cluster.local:6379
 Redis channel: channel-one
 ```
 
@@ -113,7 +113,7 @@ If we open the application manifest (`spin.toml` file) we see that Spin has alre
 ```toml
 # --snip --
 [application.trigger.redis]
-address = "redis://my-redis-master.default.svc.cluster.local:6379"
+address = "redis://:password@my-redis-master.default.svc.cluster.local:6379"
 
 [[trigger.redis]]
 channel = "channel-one"
@@ -137,6 +137,7 @@ use std::str::from_utf8;
 #[redis_component]
 fn on_message(message: Bytes) -> Result<()> {
     println!("{}", from_utf8(&message)?);
+    // Implement me ...
     Ok(())
 }
 ```
@@ -208,11 +209,11 @@ kubectl exec --tty -i redis-client --namespace default -- bash
 And, access the Redis CLI from inside the cluster:
 
 ```bash
-REDISCLI_AUTH="$REDIS_PASSWORD" redis-cli -h my-redis-master
+REDISCLI_AUTH="$REDIS_PASSWORD" redis-cli -h my-redis-master.default.svc.cluster.local
 ```
 
-Which then provides us with the prompt (`my-redis-master:6379>`) at which point we can publish our message:
+This provides us with the following prompt at which point we can publish our message:
 
 ```bash
-my-redis-master:6379> PUBLISH channel-one message-one
+my-redis-master.default.svc.cluster.local:6379> PUBLISH channel-one message-one
 ```

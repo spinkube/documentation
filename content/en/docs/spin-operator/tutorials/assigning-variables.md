@@ -139,7 +139,7 @@ Forwarding from [::1]:8080 -> 80
 When port forwarding is established, you can send an HTTP request to the variable-explorer from within an additional terminal session:
 
 ```bash
-curl http://lcoalhost:8080
+curl http://localhost:8080
 Hello from Kubernetes
 ```
 

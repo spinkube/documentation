@@ -8,7 +8,7 @@ weight: 100
 
 The following is a list of suggestions that might assist you with providing feedback to the Spin Operator project.
 
-## Discord
+## Slack
 
 For questions or support, please visit the Spin Operator [CNCF Slack channel](https://cloud-native.slack.com/archives/C06PC7JA1EE). 
 

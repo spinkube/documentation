@@ -43,13 +43,13 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector` that matches nodes that have the shim installed. However, in the K3d example, they're installed on every node. 
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
 ```
 
 4. Apply the [Custom Resource Definitions]({{< ref "glossary#custom-resource-definition-crd" >}}) used by the Spin Operator:
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 ```
 
 ## Deploy the Spin Operator
@@ -61,7 +61,7 @@ Execute the following command to install the Spin Operator on the K3d cluster us
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.1.0 \
+  --version 0.2.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -69,7 +69,7 @@ helm install spin-operator \
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}):
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
 ```
 
 ## Run the Sample Application

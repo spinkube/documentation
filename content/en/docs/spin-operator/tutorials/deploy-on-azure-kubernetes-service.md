@@ -75,10 +75,10 @@ First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#
 
 ```shell
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 
 # Install the Runtime Class
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
 ```
 
 The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by the admission webhook system of Spin Operator)
@@ -135,7 +135,7 @@ The following installs the chart with the release name `spin-operator` in the `s
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.1.0 \
+  --version 0.2.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -143,7 +143,7 @@ helm install spin-operator \
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}})::
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
 ```
 
 ## Deploying a Spin App to AKS

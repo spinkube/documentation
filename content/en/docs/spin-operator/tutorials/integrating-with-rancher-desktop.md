@@ -35,14 +35,14 @@ The following commands install all of the necessary items that can be found in t
 
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
 
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.1.0 \
+  --version 0.2.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 helm repo add kwasm http://kwasm.sh/kwasm-operator/

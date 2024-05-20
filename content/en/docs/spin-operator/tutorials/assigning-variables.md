@@ -85,7 +85,7 @@ When creating a `SpinApp`, you can choose from different approaches for specifyi
 
 The `SpinApp` specification contains the `variables` array, that you use for specifying variables (See `kubectl explain spinapp.spec.variables`).
 
-The deployment manifest (`config/samples/variable-explorer.yaml`) specifies a static value for `platform_name`. The value of `log_level` is read from the `ConfigMap` called `spinapp-cfg`, and the `db_password` is read from the `Secert` called `spinapp-secret`:
+The deployment manifest (`config/samples/variable-explorer.yaml`) specifies a static value for `platform_name`. The value of `log_level` is read from the `ConfigMap` called `spinapp-cfg`, and the `db_password` is read from the `Secret` called `spinapp-secret`:
 
 ```yaml
 kind: SpinApp

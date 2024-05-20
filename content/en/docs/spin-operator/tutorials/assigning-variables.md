@@ -55,6 +55,8 @@ platform_name = "{{ platform_name }}"
 db_password = "{{ db_password }}"
 ```
 
+For further reading on defining variables in the Spin manifest, see the [Spin Application Manifest Reference](https://developer.fermyon.com/spin/v2/manifest-reference#the-variables-table).
+
 ## Configuration data in Kubernetes
 
 In Kubernetes, you use `ConfigMaps` for storing non-sensitive, and `Secrets` for storing sensitive configuration data. The deployment manifest (`config/samples/variable-explorer.yaml`) contains specifications for both a `ConfigMap` and a `Secret`:

@@ -70,7 +70,6 @@ topic = "topic"
 qos = "1"
 [component.build]
 command = "cargo build --target wasm32-wasi --release"
-
 ```
 
 To build the application we use the `spin build` command:

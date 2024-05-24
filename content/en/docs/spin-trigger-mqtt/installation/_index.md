@@ -32,7 +32,6 @@ Install MQTT Template:
 
 ```bash
 $ spin templates install --git https://github.com/spinkube/spin-trigger-mqtt --upgrade
-
 ```
 
 ## Create Spin App

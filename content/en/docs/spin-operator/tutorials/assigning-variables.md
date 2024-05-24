@@ -55,6 +55,8 @@ platform_name = "{{ platform_name }}"
 db_password = "{{ db_password }}"
 ```
 
+For further reading on defining variables in the Spin manifest, see the [Spin Application Manifest Reference](https://developer.fermyon.com/spin/v2/manifest-reference#the-variables-table).
+
 ## Configuration data in Kubernetes
 
 In Kubernetes, you use `ConfigMaps` for storing non-sensitive, and `Secrets` for storing sensitive configuration data. The deployment manifest (`config/samples/variable-explorer.yaml`) contains specifications for both a `ConfigMap` and a `Secret`:
@@ -85,7 +87,7 @@ When creating a `SpinApp`, you can choose from different approaches for specifyi
 
 The `SpinApp` specification contains the `variables` array, that you use for specifying variables (See `kubectl explain spinapp.spec.variables`).
 
-The deployment manifest (`config/samples/variable-explorer.yaml`) specifies a static value for `platform_name`. The value of `log_level` is read from the `ConfigMap` called `spinapp-cfg`, and the `db_password` is read from the `Secert` called `spinapp-secret`:
+The deployment manifest (`config/samples/variable-explorer.yaml`) specifies a static value for `platform_name`. The value of `log_level` is read from the `ConfigMap` called `spinapp-cfg`, and the `db_password` is read from the `Secret` called `spinapp-secret`:
 
 ```yaml
 kind: SpinApp

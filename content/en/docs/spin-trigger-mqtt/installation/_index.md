@@ -11,7 +11,6 @@ tags: [plugins, MQTT, spin]
 If you haven’t already, please go ahead and [install the latest version of Spin](https://developer.fermyon.com/spin/install).
 
 > Upgrading Spin: If you have an older version of Spin, please see the Spin [upgrade](https://developer.fermyon.com/spin/v2/upgrade) page.
-> 
 
 ## Install Plugin
 

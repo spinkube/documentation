@@ -64,7 +64,7 @@ To execute the installation step-by-step, do the following:
 
     ```
 
-1. Deploy a Spin app to your cluster with the specified `RuntimeClass` name matching the "wasmtime-spin-v2" runtime class from step 3. The [Spin Operator](../spin-operator/_index.md) does this for you, translating `SpinApp` custom resources into Kubernetes deployments.
+1. Deploy a Spin app to your cluster with the specified `RuntimeClass` name matching the "wasmtime-spin-v2" runtime class from step 3. The [Spin Operator](../spin-operator/_index.md) does this for you, translating `SpinApp` custom resources into Kubernetes deployments:
 
     ```yaml
     apiVersion: apps/v1

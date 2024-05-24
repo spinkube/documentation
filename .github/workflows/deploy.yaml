@@ -19,7 +19,7 @@ concurrency:
 
 env:
   CANONICAL_DOMAIN: www.spinkube.dev
-  SPIN_OPERATOR_RELEASE: v0.1.0
+  SPIN_OPERATOR_RELEASE: v0.2.0
 
 jobs:
   # TODO: place into separate build.yaml (and add PR support?) and then call here?

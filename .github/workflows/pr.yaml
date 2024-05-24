@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 env:
-  SPIN_OPERATOR_RELEASE: v0.1.0
+  SPIN_OPERATOR_RELEASE: v0.2.0
 
 jobs:
   build:

@@ -116,6 +116,24 @@ createDeployment is true.
 as part of a deployment.<br/>
         </td>
         <td>true</td>
+      </tr><tr>
+        <td><b>caCertSecret</b></td>
+        <td>string</td>
+        <td>
+          CACertSecret specifies the name of the secret containing the CA
+certificates to be mounted to the deployment.<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
+        <td><b>installDefaultCACerts</b></td>
+        <td>boolean</td>
+        <td>
+          InstallDefaultCACerts specifies whether the default CA
+certificate bundle should be generated. When set a new secret
+will be created containing the certificates. If no secret name is
+defined in `CACertSecret` the secret name will be `spin-ca`.<br/>
+        </td>
+        <td>false</td>
       </tr></tbody>
 </table>
 

@@ -4,7 +4,7 @@ description: Learn how to setup a Kubernetes cluser, install the Spin Operator a
 weight: 2
 manualLinkRelref: ../spin-operator/quickstart
 categories: [Spin Operator]
-tags: [Quickstart]
+tags: []
 ---
 
 <!--- This page is used to render a link to the Spin Operator Quickstart in the TOC -->

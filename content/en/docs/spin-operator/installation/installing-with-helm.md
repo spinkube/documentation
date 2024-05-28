@@ -4,7 +4,7 @@ description: This guide walks you through the process of installing Spin Operato
 date: 2024-02-16
 weight: 100
 categories: [Spin Operator]
-tags: [Installing with Helm]
+tags: [Installation]
 ---
 
 ## Prerequisites
@@ -22,51 +22,16 @@ The following instructions are for installing Spin Operator using a Helm chart (
 
 ### Prepare the Cluster
 
-Before installing the chart, you'll need to ensure the following:
-
-The [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) resources are installed. This includes the SpinApp CRD representing Spin applications to be scheduled on the cluster.
-
-```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
-```
-
-A [RuntimeClass]({{< ref "glossary#runtime-class" >}}) resource class that
-points to the `spin` handler called `wasmtime-spin-v2` will be created. If you
-are deploying to a production cluster that only has a shim on a subset of nodes,
-you'll need to modify the RuntimeClass with a `nodeSelector:`.
-
-```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
-```
-
-The `containerd-spin-shim` [SpinAppExecutor]({{< ref "glossary#spin-app-executor-crd" >}}) custom resource is installed. This
-tells Spin Operator to use the containerd shim executor to run Spin apps:
-
-```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
-```
-
-## Chart prerequisites
+Before installing the chart, you'll need to ensure the following are installed:
 
 - [cert-manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by spin-operator's admission webhook system). For detailed installation instructions see [the cert-manager documentation](https://cert-manager.io/docs/installation/).
 
 ```shell
-# Install cert-manager CRDs
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml
-
-# Add and update Jetstack repository
-helm repo add jetstack https://charts.jetstack.io
-helm repo update
-
-# Install the cert-manager Helm chart
-helm install \
-  cert-manager jetstack/cert-manager \
-  --namespace cert-manager \
-  --create-namespace \
-  --version v1.14.3
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.crds.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.yaml
 ```
 
-- [Kwasm Operator](https://github.com/kwasm/kwasm-operator) is required to install WebAssembly support on Kubernetes nodes. Note in the future this will be replaced by [runtime class manager]({{< ref "runtime-class-manager" >}}). 
+- [Kwasm Operator](https://github.com/kwasm/kwasm-operator) is required to install WebAssembly shims on Kubernetes nodes that don't already include them. Note that in the future this will be replaced by [runtime class manager]({{< ref "runtime-class-manager" >}}).
 
 ```shell
 # Add Helm repository if not already done
@@ -81,6 +46,35 @@ helm install \
 
 # Provision Nodes
 kubectl annotate node --all kwasm.sh/kwasm-node=true
+```
+
+## Chart prerequisites
+
+Now we have our dependencies installed, we can start installing the operator.
+This involves a couple of steps that allow for further customization of Spin
+Applications in the cluster over time, but here we install the defaults.
+
+- First ensure the [Custom Resource Definitions (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) are installed. This includes the SpinApp CRD representing Spin applications to be scheduled on the cluster.
+
+```shell
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
+```
+
+- Next we create a [RuntimeClass]({{< ref "glossary#runtime-class" >}}) that
+points to the `spin` handler called `wasmtime-spin-v2`. If you
+are deploying to a production cluster that only has a shim on a subset of nodes,
+you'll need to modify the RuntimeClass with a `nodeSelector:`:
+
+```shell
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
+```
+
+- Finally, we create a `containerd-spin-shim` [SpinAppExecutor]({{< ref
+  "glossary#spin-app-executor-crd" >}}). This tells the Spin Operator to use the
+  RuntimeClass we just created to run Spin Apps:
+
+```shell
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
 ```
 
 ### Installing the Spin Operator Chart
@@ -128,13 +122,11 @@ helm delete spin-operator --namespace spin-operator
 
 This will remove all Kubernetes resources associated with the chart and deletes the Helm release.
 
-To completely uninstall all resources related to spin-operator, you may want to delete the corresponding CRD resources and, optionally, the RuntimeClass:
+To completely uninstall all resources related to spin-operator, you may want to delete the corresponding CRD resources and the RuntimeClass:
 
-```console
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
-kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
+```shell
 kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
+kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 ```
-
-<!-- TODO: list out configuration options? -->
 

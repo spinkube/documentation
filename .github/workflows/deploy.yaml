@@ -40,11 +40,19 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
       - name: Install Node.js dependencies
-        run: npm install
+        run: npm ci
 
       - name: Setup Go environment
-        uses: actions/setup-go@v5.0.0
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.x'
+          cache: true
 
       - name: Generate CRD reference docs
         run: ./generate.sh

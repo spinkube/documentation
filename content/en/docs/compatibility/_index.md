@@ -4,7 +4,7 @@ weight: 98
 description: >
   Spin Operator Compatibility
 categories: [Spin Operator]
-tags: [Compatibility]
+tags: []
 ---
 
 See the following list of compatible Kubernetes distributions and platforms for running the [Spin Operator](https://github.com/spinkube/spin-operator/):

@@ -2,7 +2,7 @@
 title: Quickstart 
 description: Learn how to setup a Kubernetes cluster, install the Spin Operator and run your first Spin App
 categories: [Spin Operator]
-tags: [Quickstart]
+tags: []
 weight: 2
 ---
 

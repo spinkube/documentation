@@ -4,7 +4,7 @@ description: This guide walks you through the process of installing Spin Operato
 date: 2024-02-16
 weight: 100
 categories: [Spin Operator]
-tags: [Installing with Helm]
+tags: [Installation]
 ---
 
 ## Prerequisites

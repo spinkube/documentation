@@ -3,7 +3,7 @@ title: Overview
 description: A high level overview of the SpinKube sub-projects 
 weight: 1
 categories: [SpinKube]
-tags: [Overview]
+tags: []
 ---
 
 # Project Overview

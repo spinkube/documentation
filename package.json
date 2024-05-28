@@ -36,7 +36,7 @@
     "generate:crd:reference": "cd crd-reference && SPIN_OPERATOR_RELEASE=v0.2.0 ./generate.sh"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
     "hugo-extended": "0.126.1",
     "postcss-cli": "^11.0.0"

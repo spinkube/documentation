@@ -3,7 +3,7 @@ title: Installation
 description: Learn how to install the Spin Trigger MQTT
 weight: 1
 categories: [guides]
-tags: [plugins, MQTT, spin]
+tags: [plugins, MQTT]
 ---
 
 ## Installing Spin

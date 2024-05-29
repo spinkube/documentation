@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Local installation
 description: Learn how to install the Spin Trigger MQTT
 weight: 1
 categories: [guides]

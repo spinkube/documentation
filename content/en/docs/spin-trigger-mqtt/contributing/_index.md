@@ -4,7 +4,7 @@ weight: 5
 description: >
   Contributing to the Spin Trigger MQTT
 categories: [contributing]
-tags: [contributing, plugins, mqtt]
+tags: [plugins, mqtt]
 ---
 
 ## Prerequisites

@@ -11,7 +11,7 @@ tags: [contributing, plugins, mqtt]
 
 To compile the plugin from source, you will need to:
 
-* Open the repository in Dev Container or in the pre-configured GitHub [Codespace](https://codespaces.new/spinkube/spin-trigger-mqtt).
+* Open the repository in a Dev Container or in the pre-configured GitHub [Codespace](https://codespaces.new/spinkube/spin-trigger-mqtt).
 * Run `make` to build and install the plugin locally.
 * Update `examples/mqtt-app/spin.toml` to reflect your MQTT server details and ensure it's accessible on the network.
 * Run `spin build --up --from examples/mqtt-app/spin.toml` to run the example Spin app.

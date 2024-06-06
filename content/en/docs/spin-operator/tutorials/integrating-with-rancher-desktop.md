@@ -9,64 +9,49 @@ weight: 100
 
 [Rancher Desktop](https://rancherdesktop.io/) is an open-source application that provides all the essentials to work with containers and Kubernetes on your desktop.
 
-## Prerequisites
+### Prerequisites
 
-The prerequisites for this tutorial are Rancher Desktop and assets listed in the SpinKube quickstart. Let's dive in.
+  - An operating system compatible with Rancher Desktop (Windows, macOS, or Linux).
+  - Administrative or superuser access on your computer.
 
-### Rancher Desktop
+### Step 1: Installing Rancher Desktop
 
-First, install the latest version of [Rancher Desktop](https://rancherdesktop.io/).
+  1. **Download Rancher Desktop**:
+      - Navigate to the [Rancher Desktop releases page](https://github.com/rancher-sandbox/rancher-desktop/releases/tag/v1.14.0).
+      - Select the appropriate installer for your operating system for version 1.14.0.
+  2. **Install Rancher Desktop**:
+      - Run the downloaded installer and follow the on-screen instructions to complete the installation.
 
-### Rancher Desktop Preferences
+### Step 2: Configure Rancher Desktop
 
-Check the "Container Engine" section of your "Preferences" to ensure that `containerd` is your runtime and that "Wasm" is enabled. As shown below.
+  - Open Rancher Desktop.
+  - Navigate to the **Preferences** -> **Kubernetes** menu.
+  - Ensure that the **Enable** **Kubernetes** is selected and that the **Enable Traefik** and **Install Spin Operator** Options are checked. Make sure to **Apply** your changes.
+  
+![image](https://github.com/spinkube/documentation/assets/9831342/684b105b-842d-4e16-85db-e7765f6286ff)
 
-![Rancher Desktop Preferences Wasm](/rancher-desktop-preferences-wasm.png)
+  - Make sure to select `rancher-desktop` from the `Kubernetes Contexts` configuration in your toolbar.
+  
+![image](https://github.com/spinkube/documentation/assets/9831342/d9ce818e-9b0f-40e7-bbf1-a857681bf1a3)
+  
+  - Make sure that the Enable Wasm option is checked in the **Preferences** → **Container Engine section**. Remember to always apply your changes.
 
-Also, select `rancher-desktop` from the `Kubernetes Contexts` configuration in your toolbar.
+![image](https://github.com/spinkube/documentation/assets/9831342/745c11a6-22c0-4d48-a0e7-4dcb0959db11)
 
-![Rancher Desktop Preferences Wasm](/rancher-desktop-preferences-toolbar.png)
+  - Once your changes have been applied, go to the **Cluster Dashboard** → **More Resources** → **Cert Manager** section and click on **Certificates**. You will see the `spin-operator-serving-cert` is ready.
+  
+![image](https://github.com/spinkube/documentation/assets/9831342/e6275857-6f68-4141-9616-d62e22b329b4)
 
-### SpinKube
+### Step 3: Creating a Spin Application
 
-The following commands are from the [SpinKube Quickstart guide]({{< ref "/docs/spin-operator/quickstart" >}}). Please refer to the quickstart if you have any queries.
-
-The following commands install all of the necessary items that can be found in the quickstart:
-
-```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
-
-helm install spin-operator \
-  --namespace spin-operator \
-  --create-namespace \
-  --version 0.2.0 \
-  --wait \
-  oci://ghcr.io/spinkube/charts/spin-operator
-helm repo add kwasm http://kwasm.sh/kwasm-operator/
-
-helm install \
-  kwasm-operator kwasm/kwasm-operator \
-  --namespace kwasm \
-  --create-namespace \
-  --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.14.1
-
-kubectl annotate node --all kwasm.sh/kwasm-node=true
-```
-
-## Creating Our Spin Application
-
-Next, we create a new Spin app using the Javascript template:
+1. **Open a terminal** (Command Prompt, Terminal, or equivalent based on your OS).
+2. **Create a new Spin application**: This command creates a new Spin application using the `http-js` template, named `hello-k3s`.
 
 ```bash
-spin new -t http-js hello-k3s --accept-defaults
-cd hello-k3s
-npm install
+  $ spin new -t http-js hello-k3s --accept-defaults
+  $ cd hello-k3s
 ```
-
-We then edit the Javascript source file (the `src/index.js` file) to match the following:
+3. We can edit the `/src/index.js` file and make the workload return a string "Hello from Rancher Desktop":
 
 ```javascript
 export async function handleRequest(request) {
@@ -78,63 +63,63 @@ export async function handleRequest(request) {
 }
 ```
 
-All that’s left to do is build the app:
+### Step 4: Deploying Your Application
 
-```bash
-spin build
-```
+1. **Push the application to a registry**:
+    
+    ```bash
+    $ npm install
+    $ spin build
+    $ spin registry push ttl.sh/hello-k3s:0.1.0
+    ```
+    
+    Replace `ttl.sh/hello-k3s:0.1.0` with your registry URL and tag.
+    
+2. **Scaffold Kubernetes resources**:
+    
+    ```bash
+    $ spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
+    
+    apiVersion: core.spinoperator.dev/v1alpha1
+    kind: SpinApp
+    metadata:
+      name: hello-k3s
+    spec:
+      image: "ttl.sh/hello-k3s:0.1.0"
+      executor: containerd-shim-spin
+      replicas: 2
+    
+    ```
+    
+    This command prepares the necessary Kubernetes deployment configurations.
+    
+3. **Deploy the application to Kubernetes**:
+    
+    ```bash
+    $ spin kube deploy --from ttl.sh/hello-k3s:0.1.0
+    ```
+    
+    If we click on the Rancher Desktop’s “Cluster Dashboard”, we can see hello-k3s:0.1.0 running inside the “Workloads” dropdown section:
+    
+    ![Rancher Desktop Preferences Wasm](/rancher-desktop-cluster.png)
+    
+    To access our app outside of the cluster, we can forward the port so that we access the application from our host machine:
+    
+    ```bash
+    $ kubectl port-forward svc/hello-k3s 8083:80
+    ```
+    
+    To test locally, we can make a request as follows:
+    
+    ```bash
+    $ curl localhost:8083
+    ```
+    
+    The above `curl` command or a quick visit to your browser at locahost:8083 will return the "Hello from Rancher Desktop" message:
 
-## Deploying Our Spin App to Rancher Desktop with SpinKube
+   <img width="567" alt="Screenshot 2024-06-06 at 15 52 58" src="https://github.com/spinkube/documentation/assets/9831342/bbdeee26-59a1-4766-b685-e827fce152d1">
 
-We publish our application using the `spin registry` command:
-
-```bash
-spin registry push ttl.sh/hello-k3s:0.1.0
-```
-
-Once published, we can read the configuration of our published application using the `spin kube scaffold` command:
-
-```bash
-spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
-```
-
-The above command will return something similar to the following YAML:
-
-```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
-kind: SpinApp
-metadata:
-  name: hello-k3s
-spec:
-  image: "ttl.sh/hello-k3s:0.1.0"
-  executor: containerd-shim-spin
-  replicas: 2
-```
-
-Now, we can deploy the app into our cluster:
-
-```bash
-spin kube deploy --from ttl.sh/hello-k3s:0.1.0
-```
-
-If we click on the Rancher Desktop’s “Cluster Dashboard”, we can see hello-k3s:0.1.0 running inside the “Workloads” dropdown section:
-
-![Rancher Desktop Preferences Wasm](/rancher-desktop-cluster.png)
-
-To access our app outside of the cluster, we can forward the port so that we access the application from our host machine:
-
-```bash
-kubectl port-forward svc/hello-k3s 8083:80
-```
-
-To test locally, we can make a request as follows:
-
-```bash
-curl localhost:8083
-```
-
-The above `curl` command will return the following:
-
-```bash
-Hello from Rancher Desktop
-```
+    
+    ```bash
+    Hello from Rancher Desktop
+    ```

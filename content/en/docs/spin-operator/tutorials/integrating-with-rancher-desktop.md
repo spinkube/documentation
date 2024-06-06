@@ -105,7 +105,10 @@ weight: 100
     $ curl localhost:8083
     ```
     
-    The above `curl` command will return the following:
+    The above `curl` command or a quick visit to your browser at locahost:8083 will return the "Hello from Rancher Desktop" message:
+
+   <img width="567" alt="Screenshot 2024-06-06 at 15 52 58" src="https://github.com/spinkube/documentation/assets/9831342/bbdeee26-59a1-4766-b685-e827fce152d1">
+
     
     ```bash
     Hello from Rancher Desktop

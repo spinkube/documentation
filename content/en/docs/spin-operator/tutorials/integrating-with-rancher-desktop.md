@@ -28,29 +28,40 @@ weight: 100
   - Navigate to the **Preferences** -> **Kubernetes** menu.
   - Ensure that the **Enable** **Kubernetes** is selected and that the **Enable Traefik** and **Install Spin Operator** Options are checked. Make sure to **Apply** your changes.
   
-  ![Screenshot 2024-06-06 at 15.19.43.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/31e034a4-a26c-43fa-b601-5bed6930579d/b12da13e-770f-408d-9c6c-105d348ac97f/Screenshot_2024-06-06_at_15.19.43.png)
+<img width="1039" alt="Screenshot 2024-06-06 at 15 19 43" src="https://github.com/spinkube/documentation/assets/9831342/655dca70-cd38-491b-84e1-f8e599c107bf">
   
   - Make sure to select `rancher-desktop` from the `Kubernetes Contexts` configuration in your toolbar.
   
-  ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/31e034a4-a26c-43fa-b601-5bed6930579d/8c14498e-2fc7-4747-9c02-a6a1977bfa71/Untitled.png)
+![Untitled](https://github.com/spinkube/documentation/assets/9831342/9a841292-acf4-4a4f-bc53-d5327cf7f439)
   
   - Make sure that the Enable Wasm option is checked in the **Preferences** → **Container Engine section**. Remember to always apply your changes.
   
-  ![Screenshot 2024-06-06 at 15.21.21.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/31e034a4-a26c-43fa-b601-5bed6930579d/9309760c-3408-438f-ad84-3a97130e7f8f/Screenshot_2024-06-06_at_15.21.21.png)
+<img width="1088" alt="Screenshot 2024-06-06 at 15 21 21" src="https://github.com/spinkube/documentation/assets/9831342/f0539dc4-3325-4a93-aa50-8b9e260ce99b">
   
   - Once your changes have been applied, go to the **Cluster Dashboard** → **More Resources** → **Cert Manager** section and click on **Certificates**. You will see the `spin-operator-serving-cert` is ready.
   
-  ![Screenshot 2024-06-06 at 15.23.42.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/31e034a4-a26c-43fa-b601-5bed6930579d/e8246d1c-a9c2-4d3e-ad80-1f13bd6c134f/Screenshot_2024-06-06_at_15.23.42.png)
+<img width="1049" alt="Screenshot 2024-06-06 at 15 23 42" src="https://github.com/spinkube/documentation/assets/9831342/28e4674e-7b68-44fc-a18d-f1e16215bf39">
 
 ### Step 3: Creating a Spin Application
 
 1. **Open a terminal** (Command Prompt, Terminal, or equivalent based on your OS).
 2. **Create a new Spin application**:This command creates a new Spin application using the HTTP-JS template, named `hello-k3s`.
-    
-    ```bash
-    $ spin new -t http-js hello-k3s --accept-defaults
-    $ cd hello-k3s
-    ```
+
+```bash
+  $ spin new -t http-js hello-k3s --accept-defaults
+  $ cd hello-k3s
+```
+3. We can edit the `/src/index.js` file and make the workload return a string "Hello from Rancher Desktop":
+
+```javascript
+export async function handleRequest(request) {
+    return {
+        status: 200,
+        headers: {"content-type": "text/plain"},
+        body: "Hello from Rancher Desktop" // <-- This changed
+    }
+}
+```
 
 ### Step 4: Deploying Your Application
 

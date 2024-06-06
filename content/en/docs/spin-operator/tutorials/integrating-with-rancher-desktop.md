@@ -32,7 +32,7 @@ weight: 100
 
   - Make sure to select `rancher-desktop` from the `Kubernetes Contexts` configuration in your toolbar.
   
-![image](https://github.com/spinkube/documentation/assets/9831342/f3a2e7c3-cb4a-4ce4-9619-16b0b9635611)
+![image](https://github.com/spinkube/documentation/assets/9831342/d9ce818e-9b0f-40e7-bbf1-a857681bf1a3)
   
   - Make sure that the Enable Wasm option is checked in the **Preferences** → **Container Engine section**. Remember to always apply your changes.
 

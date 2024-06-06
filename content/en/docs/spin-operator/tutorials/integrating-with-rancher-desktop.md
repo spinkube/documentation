@@ -45,7 +45,7 @@ weight: 100
 ### Step 3: Creating a Spin Application
 
 1. **Open a terminal** (Command Prompt, Terminal, or equivalent based on your OS).
-2. **Create a new Spin application**:This command creates a new Spin application using the HTTP-JS template, named `hello-k3s`.
+2. **Create a new Spin application**: This command creates a new Spin application using the `http-js` template, named `hello-k3s`.
 
 ```bash
   $ spin new -t http-js hello-k3s --accept-defaults
@@ -78,7 +78,6 @@ export async function handleRequest(request) {
 2. **Scaffold Kubernetes resources**:
     
     ```bash
-    $ spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
     $ spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
     
     apiVersion: core.spinoperator.dev/v1alpha1

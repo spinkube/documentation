@@ -1,4 +1,4 @@
----
+![image](https://github.com/spinkube/documentation/assets/9831342/4b20d892-e640-4c49-8216-8655c361d8e2)---
 title: Integrating With Rancher Desktop
 description: This tutorial shows how to integrate SpinKube and Rancher Desktop
 date: 2024-02-16
@@ -28,19 +28,19 @@ weight: 100
   - Navigate to the **Preferences** -> **Kubernetes** menu.
   - Ensure that the **Enable** **Kubernetes** is selected and that the **Enable Traefik** and **Install Spin Operator** Options are checked. Make sure to **Apply** your changes.
   
-![](/assets/9831342/655dca70-cd38-491b-84e1-f8e599c107bf)
-  
+![image](https://github.com/spinkube/documentation/assets/9831342/684b105b-842d-4e16-85db-e7765f6286ff)
+
   - Make sure to select `rancher-desktop` from the `Kubernetes Contexts` configuration in your toolbar.
   
-![Untitled](https://github.com/spinkube/documentation/assets/9831342/9a841292-acf4-4a4f-bc53-d5327cf7f439)
+![image](https://github.com/spinkube/documentation/assets/9831342/f3a2e7c3-cb4a-4ce4-9619-16b0b9635611)
   
   - Make sure that the Enable Wasm option is checked in the **Preferences** → **Container Engine section**. Remember to always apply your changes.
-  
-<img width="1088" alt="Screenshot 2024-06-06 at 15 21 21" src="https://github.com/spinkube/documentation/assets/9831342/f0539dc4-3325-4a93-aa50-8b9e260ce99b">
-  
+
+![image](https://github.com/spinkube/documentation/assets/9831342/745c11a6-22c0-4d48-a0e7-4dcb0959db11)
+
   - Once your changes have been applied, go to the **Cluster Dashboard** → **More Resources** → **Cert Manager** section and click on **Certificates**. You will see the `spin-operator-serving-cert` is ready.
   
-<img width="1049" alt="Screenshot 2024-06-06 at 15 23 42" src="https://github.com/spinkube/documentation/assets/9831342/28e4674e-7b68-44fc-a18d-f1e16215bf39">
+![image](https://github.com/spinkube/documentation/assets/9831342/e6275857-6f68-4141-9616-d62e22b329b4)
 
 ### Step 3: Creating a Spin Application
 

@@ -1,4 +1,4 @@
-![image](https://github.com/spinkube/documentation/assets/9831342/4b20d892-e640-4c49-8216-8655c361d8e2)---
+---
 title: Integrating With Rancher Desktop
 description: This tutorial shows how to integrate SpinKube and Rancher Desktop
 date: 2024-02-16

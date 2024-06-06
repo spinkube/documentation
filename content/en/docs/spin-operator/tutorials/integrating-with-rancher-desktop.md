@@ -28,7 +28,7 @@ weight: 100
   - Navigate to the **Preferences** -> **Kubernetes** menu.
   - Ensure that the **Enable** **Kubernetes** is selected and that the **Enable Traefik** and **Install Spin Operator** Options are checked. Make sure to **Apply** your changes.
   
-<img width="1039" alt="Screenshot 2024-06-06 at 15 19 43" src="https://github.com/spinkube/documentation/assets/9831342/655dca70-cd38-491b-84e1-f8e599c107bf">
+[](/assets/9831342/655dca70-cd38-491b-84e1-f8e599c107bf)
   
   - Make sure to select `rancher-desktop` from the `Kubernetes Contexts` configuration in your toolbar.
   

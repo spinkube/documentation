@@ -90,14 +90,14 @@ helm install \
   --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.14.0
 ```
 
-Reissuing the above command with the new version `v0.14.1` will result in the following error - `Error: INSTALLATION FAILED: cannot re-use a name that is still in use`. To use the same command when installing and upgrading a release, use `upgrade --install` ([as referenced here in the official Helm documentation](https://v2.helm.sh/docs/developing_charts/#upgrade-a-release-idempotently)). For example: 
+Reissuing the above command with the new version `v0.15.0` will result in the following error - `Error: INSTALLATION FAILED: cannot re-use a name that is still in use`. To use the same command when installing and upgrading a release, use `upgrade --install` ([as referenced here in the official Helm documentation](https://v2.helm.sh/docs/developing_charts/#upgrade-a-release-idempotently)). For example: 
 
 ```console
 helm upgrade --install \
   kwasm-operator kwasm/kwasm-operator \
   --namespace kwasm \
   --create-namespace \
-  --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.14.1
+  --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.15.0
 ```
 
 ## Cluster Already Exists

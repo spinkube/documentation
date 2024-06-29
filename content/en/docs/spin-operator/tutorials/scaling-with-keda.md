@@ -178,11 +178,11 @@ Let’s deploy the SpinApp and the KEDA ScaledObject instance onto our cluster w
 
 ```console
 # Deploy the SpinApp
-kubectl apply -f config/samples/keda-app.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
 spinapp.core.spinoperator.dev/keda-spinapp created
 
 # Deploy the ScaledObject
-kubectl apply -f config/samples/keda-scaledobject.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-scaledobject.yaml
 scaledobject.keda.sh/cpu-scaling created
 ```
 

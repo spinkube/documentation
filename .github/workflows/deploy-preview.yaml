@@ -1,4 +1,4 @@
-name: Build
+name: Deploy Preview
 
 on:
   pull_request:
@@ -9,13 +9,17 @@ permissions:
   contents: read
 
 env:
-  SPIN_OPERATOR_RELEASE: v0.2.0
+  SPIN_OPERATOR_RELEASE: "v0.2.0"
+  HUGO_VERSION: "0.123.0"
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.123.0
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,7 +50,22 @@ jobs:
           SPIN_OPERATOR_RELEASE: ${{ env.SPIN_OPERATOR_RELEASE }}
 
       - name: Build
-        run: |
-          hugo \
-            --gc \
-            --minify
+        run: npm run build:preview
+
+      - name: Upload Pages
+        id: deploy-preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-preview
+          path: ./public
+
+      - name: Make a comment
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Your deploy preview is ready at ${{ steps.deploy-preview.outputs.artifact-url }}'

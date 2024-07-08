@@ -61,7 +61,7 @@ jobs:
           path: ./public
 
       - name: Make a comment
-        uses: actions/github-script@v4
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |

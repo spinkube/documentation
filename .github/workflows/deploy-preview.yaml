@@ -69,4 +69,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Your deploy preview is ready at ${{ steps.deploy-preview.outputs.artifact-url }}'
+              body: "Your deploy preview is ready at ${{ steps.deploy-preview.outputs.artifact-url }}"
+            })

@@ -50,7 +50,7 @@ jobs:
           SPIN_OPERATOR_RELEASE: ${{ env.SPIN_OPERATOR_RELEASE }}
 
       - name: Build
-        run: npm run build:preview
+        run: npm run build:production
 
       - name: Upload Pages
         id: deploy-preview

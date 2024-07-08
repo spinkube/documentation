@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 env:
   SPIN_OPERATOR_RELEASE: "v0.2.0"
@@ -50,7 +51,7 @@ jobs:
           SPIN_OPERATOR_RELEASE: ${{ env.SPIN_OPERATOR_RELEASE }}
 
       - name: Build
-        run: npm run build:production
+        run: hugo --gc --minify
 
       - name: Upload Pages
         id: deploy-preview

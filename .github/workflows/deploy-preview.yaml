@@ -72,7 +72,7 @@ jobs:
 
             // Find any comment already made by the bot.
             const botComment = comments.find(comment => comment.user.id === 41898282)
-            const commentBody = "Your deploy preview is ready at https://${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}/artifacts/${{ steps.deploy-preview.outputs.artifact_id }}"
+            const commentBody = `Your deploy preview is ready at https://${context.serverUrl}}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}/artifacts/${{ steps.deploy-preview.outputs.artifact_id }}`
 
             if (botComment) {
               await github.rest.issues.updateComment({

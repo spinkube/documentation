@@ -53,11 +53,10 @@ jobs:
       - name: Build
         run: hugo --gc --minify
 
-      - name: Upload Pages
+      - name: Upload pages
         id: deploy-preview
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: deploy-preview
           path: ./public
 
       - name: Make a comment
@@ -68,5 +67,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "Your deploy preview is ready at ${{ steps.deploy-preview.outputs.artifact-url }}"
+              body: "Your deploy preview is ready at https://${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_RUN_ID }}/artifacts/${{ steps.deploy-preview.outputs.artifact_id }}"
             })

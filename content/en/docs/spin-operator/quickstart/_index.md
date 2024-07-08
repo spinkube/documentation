@@ -25,7 +25,7 @@ For this Quickstart in particular, you will need:
 
 ```console  { data-plausible="copy-quick-create-k3d" }
 k3d cluster create wasm-cluster \
-  --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.15.0 \
+  --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.15.1 \
   --port "8081:80@loadbalancer" \
   --agents 2
 ```

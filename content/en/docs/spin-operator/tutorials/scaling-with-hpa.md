@@ -27,7 +27,7 @@ Run the following command to create a Kubernetes cluster that has [the container
 
 ```console
 k3d cluster create wasm-cluster-scale \
-  --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.15.0 \
+  --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.15.1 \
   -p "8081:80@loadbalancer" \
   --agents 2
 ```

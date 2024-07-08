@@ -53,21 +53,29 @@ The `address`, `username`, `password` and `topic` support the ability to b
 The application manifest will look similar to the following:
 
 ```
-spin_manifest_version = "1"
+spin_manifest_version = 2
+
+[application]
+name = "mqtt-app"
+version = "0.1.0"
 authors = ["Fermyon Engineering <engineering@fermyon.com>"]
 description = "Demo app to receive MQTT messages."
-name = "mqtt-app"
-trigger = { type = "mqtt", address = "mqtt://localhost:1883", username = "user", password = "password", keep_alive_interval = "30" }
-version = "0.1.0"
 
-[[component]]
-id = "mqtt-app"
+[application.trigger.mqtt]
+address = "mqtt://localhost:1883"
+username = "user"
+password = "password"
+keep_alive_interval = "30"
+
+[[trigger.mqtt]]
+component = "mqtt-app"
+topic = "mytopic"
+qos = "1"
+
+[component.mqtt-app]
 source = "target/wasm32-wasi/release/mqtt_app.wasm"
 allowed_outbound_hosts = ["mqtt://localhost:1883"]
-[component.trigger]
-topic = "topic"
-qos = "1"
-[component.build]
+[component.mqtt-app.build]
 command = "cargo build --target wasm32-wasi --release"
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Using the `spin kube` plugin
-description: A tutorial to show how autoscaler support can be enabled via the spin kube command
+description: A tutorial to show how autoscaler support can be enabled via the `spin kube` command.
 date: 2024-02-26
 categories: [guides]
 tags: [tutorial, autoscaling]

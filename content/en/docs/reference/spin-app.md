@@ -1,7 +1,7 @@
 ---
 title: SpinApp
 weight: 1
-description: Custom Resource Definition (CRD) reference for `SpinApp`
+description: Custom Resource Definition (CRD) reference for `SpinApp`.
 categories: [Spin Operator]
 tags: [reference]
 ---
@@ -57,7 +57,7 @@ SpinApp is the Schema for the spinapps API
 </table>
 
 
-### `SpinApp.spec` 
+### `SpinApp.spec`
 <small>[back to parent](#spinapp)</small>
 
 
@@ -186,7 +186,7 @@ cannot be defined if this is enabled. By default EnableAutoscaling is false.<br/
 </table>
 
 
-### `SpinApp.spec.checks` 
+### `SpinApp.spec.checks`
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -219,7 +219,7 @@ Checks defines health checks that should be used by Kubernetes to monitor the ap
 </table>
 
 
-### `SpinApp.spec.checks.liveness` 
+### `SpinApp.spec.checks.liveness`
 <small>[back to parent](#spinappspecchecks)</small>
 
 
@@ -300,7 +300,7 @@ Defaults to 1 second. Minimum value is 1.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.liveness.httpGet` 
+### `SpinApp.spec.checks.liveness.httpGet`
 <small>[back to parent](#spinappspecchecksliveness)</small>
 
 
@@ -334,7 +334,7 @@ health check, e.g /healthz.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.liveness.httpGet.httpHeaders[index]` 
+### `SpinApp.spec.checks.liveness.httpGet.httpHeaders[index]`
 <small>[back to parent](#spinappspeccheckslivenesshttpget)</small>
 
 
@@ -367,7 +367,7 @@ HTTPHealthProbeHeader is an abstraction around a http header key/value pair.
 </table>
 
 
-### `SpinApp.spec.checks.readiness` 
+### `SpinApp.spec.checks.readiness`
 <small>[back to parent](#spinappspecchecks)</small>
 
 
@@ -448,7 +448,7 @@ Defaults to 1 second. Minimum value is 1.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.readiness.httpGet` 
+### `SpinApp.spec.checks.readiness.httpGet`
 <small>[back to parent](#spinappspecchecksreadiness)</small>
 
 
@@ -482,7 +482,7 @@ health check, e.g /healthz.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.readiness.httpGet.httpHeaders[index]` 
+### `SpinApp.spec.checks.readiness.httpGet.httpHeaders[index]`
 <small>[back to parent](#spinappspecchecksreadinesshttpget)</small>
 
 
@@ -515,7 +515,7 @@ HTTPHealthProbeHeader is an abstraction around a http header key/value pair.
 </table>
 
 
-### `SpinApp.spec.imagePullSecrets[index]` 
+### `SpinApp.spec.imagePullSecrets[index]`
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -544,7 +544,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.resources` 
+### `SpinApp.spec.resources`
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -579,7 +579,7 @@ otherwise to an implementation-defined value. Requests cannot exceed Limits.<br/
 </table>
 
 
-### `SpinApp.spec.runtimeConfig` 
+### `SpinApp.spec.runtimeConfig`
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -630,7 +630,7 @@ e.g on-disk or turso.<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index]` 
+### `SpinApp.spec.runtimeConfig.keyValueStores[index]`
 <small>[back to parent](#spinappspecruntimeconfig)</small>
 
 
@@ -670,7 +670,7 @@ e.g on-disk or turso.<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index]` 
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index]`
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindex)</small>
 
 
@@ -710,7 +710,7 @@ e.g on-disk or turso.<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom` 
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom`
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindexoptionsindex)</small>
 
 
@@ -743,7 +743,7 @@ ValueFrom is a reference to dynamically bind the variable to.
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.configMapKeyRef` 
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.configMapKeyRef`
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindexoptionsindexvaluefrom)</small>
 
 
@@ -785,7 +785,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.secretKeyRef` 
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.secretKeyRef`
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindexoptionsindexvaluefrom)</small>
 
 
@@ -827,7 +827,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute` 
+### `SpinApp.spec.runtimeConfig.llmCompute`
 <small>[back to parent](#spinappspecruntimeconfig)</small>
 
 
@@ -860,7 +860,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index]` 
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index]`
 <small>[back to parent](#spinappspecruntimeconfigllmcompute)</small>
 
 
@@ -900,7 +900,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom` 
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom`
 <small>[back to parent](#spinappspecruntimeconfigllmcomputeoptionsindex)</small>
 
 
@@ -933,7 +933,7 @@ ValueFrom is a reference to dynamically bind the variable to.
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.configMapKeyRef` 
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.configMapKeyRef`
 <small>[back to parent](#spinappspecruntimeconfigllmcomputeoptionsindexvaluefrom)</small>
 
 
@@ -975,7 +975,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.secretKeyRef` 
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.secretKeyRef`
 <small>[back to parent](#spinappspecruntimeconfigllmcomputeoptionsindexvaluefrom)</small>
 
 
@@ -1017,7 +1017,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index]` 
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index]`
 <small>[back to parent](#spinappspecruntimeconfig)</small>
 
 
@@ -1057,7 +1057,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index]` 
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index]`
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindex)</small>
 
 
@@ -1097,7 +1097,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom` 
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom`
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindexoptionsindex)</small>
 
 
@@ -1130,7 +1130,7 @@ ValueFrom is a reference to dynamically bind the variable to.
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.configMapKeyRef` 
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.configMapKeyRef`
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindexoptionsindexvaluefrom)</small>
 
 
@@ -1172,7 +1172,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.secretKeyRef` 
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.secretKeyRef`
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindexoptionsindexvaluefrom)</small>
 
 
@@ -1214,7 +1214,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.variables[index]` 
+### `SpinApp.spec.variables[index]`
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -1254,7 +1254,7 @@ SpinVar defines a binding between a spin variable and a static or dynamic value.
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom` 
+### `SpinApp.spec.variables[index].valueFrom`
 <small>[back to parent](#spinappspecvariablesindex)</small>
 
 
@@ -1303,7 +1303,7 @@ spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podI
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.configMapKeyRef` 
+### `SpinApp.spec.variables[index].valueFrom.configMapKeyRef`
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
@@ -1345,7 +1345,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.fieldRef` 
+### `SpinApp.spec.variables[index].valueFrom.fieldRef`
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
@@ -1379,7 +1379,7 @@ spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podI
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.resourceFieldRef` 
+### `SpinApp.spec.variables[index].valueFrom.resourceFieldRef`
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
@@ -1420,7 +1420,7 @@ Selects a resource of the container: only resources limits and requests
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.secretKeyRef` 
+### `SpinApp.spec.variables[index].valueFrom.secretKeyRef`
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
@@ -1462,7 +1462,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumeMounts[index]` 
+### `SpinApp.spec.volumeMounts[index]`
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -1560,7 +1560,7 @@ SubPathExpr and SubPath are mutually exclusive.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index]` 
+### `SpinApp.spec.volumes[index]`
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -1843,7 +1843,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#secret<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].awsElasticBlockStore` 
+### `SpinApp.spec.volumes[index].awsElasticBlockStore`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -1903,7 +1903,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockst
 </table>
 
 
-### `SpinApp.spec.volumes[index].azureDisk` 
+### `SpinApp.spec.volumes[index].azureDisk`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -1967,7 +1967,7 @@ the ReadOnly setting in VolumeMounts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].azureFile` 
+### `SpinApp.spec.volumes[index].azureFile`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2008,7 +2008,7 @@ the ReadOnly setting in VolumeMounts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cephfs` 
+### `SpinApp.spec.volumes[index].cephfs`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2075,7 +2075,7 @@ More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cephfs.secretRef` 
+### `SpinApp.spec.volumes[index].cephfs.secretRef`
 <small>[back to parent](#spinappspecvolumesindexcephfs)</small>
 
 
@@ -2104,7 +2104,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cinder` 
+### `SpinApp.spec.volumes[index].cinder`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2159,7 +2159,7 @@ to OpenStack.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cinder.secretRef` 
+### `SpinApp.spec.volumes[index].cinder.secretRef`
 <small>[back to parent](#spinappspecvolumesindexcinder)</small>
 
 
@@ -2188,7 +2188,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].configMap` 
+### `SpinApp.spec.volumes[index].configMap`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2251,7 +2251,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].configMap.items[index]` 
+### `SpinApp.spec.volumes[index].configMap.items[index]`
 <small>[back to parent](#spinappspecvolumesindexconfigmap)</small>
 
 
@@ -2301,7 +2301,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].csi` 
+### `SpinApp.spec.volumes[index].csi`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2364,7 +2364,7 @@ driver. Consult your driver's documentation for supported values.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].csi.nodePublishSecretRef` 
+### `SpinApp.spec.volumes[index].csi.nodePublishSecretRef`
 <small>[back to parent](#spinappspecvolumesindexcsi)</small>
 
 
@@ -2396,7 +2396,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI` 
+### `SpinApp.spec.volumes[index].downwardAPI`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2438,7 +2438,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI.items[index]` 
+### `SpinApp.spec.volumes[index].downwardAPI.items[index]`
 <small>[back to parent](#spinappspecvolumesindexdownwardapi)</small>
 
 
@@ -2493,7 +2493,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI.items[index].fieldRef` 
+### `SpinApp.spec.volumes[index].downwardAPI.items[index].fieldRef`
 <small>[back to parent](#spinappspecvolumesindexdownwardapiitemsindex)</small>
 
 
@@ -2526,7 +2526,7 @@ Required: Selects a field of the pod: only annotations, labels, name, namespace 
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI.items[index].resourceFieldRef` 
+### `SpinApp.spec.volumes[index].downwardAPI.items[index].resourceFieldRef`
 <small>[back to parent](#spinappspecvolumesindexdownwardapiitemsindex)</small>
 
 
@@ -2567,7 +2567,7 @@ Selects a resource of the container: only resources limits and requests
 </table>
 
 
-### `SpinApp.spec.volumes[index].emptyDir` 
+### `SpinApp.spec.volumes[index].emptyDir`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2609,7 +2609,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral` 
+### `SpinApp.spec.volumes[index].ephemeral`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2685,7 +2685,7 @@ Required, must not be nil.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate` 
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate`
 <small>[back to parent](#spinappspecvolumesindexephemeral)</small>
 
 
@@ -2746,7 +2746,7 @@ validation.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec` 
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec`
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplate)</small>
 
 
@@ -2878,7 +2878,7 @@ Value of Filesystem is implied when not included in claim spec.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSource` 
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSource`
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
@@ -2927,7 +2927,7 @@ For any other third-party types, APIGroup is required.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSourceRef` 
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSourceRef`
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
@@ -3000,7 +3000,7 @@ Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGr
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.resources` 
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.resources`
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
@@ -3041,7 +3041,7 @@ More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-co
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector` 
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector`
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
@@ -3076,7 +3076,7 @@ operator is "In", and the values array contains only "value". The requirements a
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector.matchExpressions[index]` 
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector.matchExpressions[index]`
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespecselector)</small>
 
 
@@ -3121,7 +3121,7 @@ merge patch.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].fc` 
+### `SpinApp.spec.volumes[index].fc`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3182,7 +3182,7 @@ Either wwids or combination of targetWWNs and lun must be set, but not both simu
 </table>
 
 
-### `SpinApp.spec.volumes[index].flexVolume` 
+### `SpinApp.spec.volumes[index].flexVolume`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3244,7 +3244,7 @@ scripts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].flexVolume.secretRef` 
+### `SpinApp.spec.volumes[index].flexVolume.secretRef`
 <small>[back to parent](#spinappspecvolumesindexflexvolume)</small>
 
 
@@ -3276,7 +3276,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].flocker` 
+### `SpinApp.spec.volumes[index].flocker`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3310,7 +3310,7 @@ should be considered as deprecated<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].gcePersistentDisk` 
+### `SpinApp.spec.volumes[index].gcePersistentDisk`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3372,7 +3372,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 </table>
 
 
-### `SpinApp.spec.volumes[index].gitRepo` 
+### `SpinApp.spec.volumes[index].gitRepo`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3418,7 +3418,7 @@ the subdirectory with the given name.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].glusterfs` 
+### `SpinApp.spec.volumes[index].glusterfs`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3463,7 +3463,7 @@ More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].hostPath` 
+### `SpinApp.spec.volumes[index].hostPath`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3507,7 +3507,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].iscsi` 
+### `SpinApp.spec.volumes[index].iscsi`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3617,7 +3617,7 @@ Defaults to false.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].iscsi.secretRef` 
+### `SpinApp.spec.volumes[index].iscsi.secretRef`
 <small>[back to parent](#spinappspecvolumesindexiscsi)</small>
 
 
@@ -3645,7 +3645,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].nfs` 
+### `SpinApp.spec.volumes[index].nfs`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3690,7 +3690,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].persistentVolumeClaim` 
+### `SpinApp.spec.volumes[index].persistentVolumeClaim`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3727,7 +3727,7 @@ Default false.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].photonPersistentDisk` 
+### `SpinApp.spec.volumes[index].photonPersistentDisk`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3762,7 +3762,7 @@ Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].portworxVolume` 
+### `SpinApp.spec.volumes[index].portworxVolume`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3805,7 +3805,7 @@ the ReadOnly setting in VolumeMounts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected` 
+### `SpinApp.spec.volumes[index].projected`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3845,7 +3845,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index]` 
+### `SpinApp.spec.volumes[index].projected.sources[index]`
 <small>[back to parent](#spinappspecvolumesindexprojected)</small>
 
 
@@ -3914,7 +3914,7 @@ may change the order over time.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle` 
+### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -3993,7 +3993,7 @@ ClusterTrustBundles will be unified and deduplicated.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector` 
+### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexclustertrustbundle)</small>
 
 
@@ -4031,7 +4031,7 @@ operator is "In", and the values array contains only "value". The requirements a
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector.matchExpressions[index]` 
+### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector.matchExpressions[index]`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexclustertrustbundlelabelselector)</small>
 
 
@@ -4076,7 +4076,7 @@ merge patch.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].configMap` 
+### `SpinApp.spec.volumes[index].projected.sources[index].configMap`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4124,7 +4124,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].configMap.items[index]` 
+### `SpinApp.spec.volumes[index].projected.sources[index].configMap.items[index]`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexconfigmap)</small>
 
 
@@ -4174,7 +4174,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI` 
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4200,7 +4200,7 @@ downwardAPI information about the downwardAPI data to project
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index]` 
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index]`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexdownwardapi)</small>
 
 
@@ -4255,7 +4255,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].fieldRef` 
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].fieldRef`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexdownwardapiitemsindex)</small>
 
 
@@ -4288,7 +4288,7 @@ Required: Selects a field of the pod: only annotations, labels, name, namespace 
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].resourceFieldRef` 
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].resourceFieldRef`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexdownwardapiitemsindex)</small>
 
 
@@ -4329,7 +4329,7 @@ Selects a resource of the container: only resources limits and requests
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].secret` 
+### `SpinApp.spec.volumes[index].projected.sources[index].secret`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4377,7 +4377,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].secret.items[index]` 
+### `SpinApp.spec.volumes[index].projected.sources[index].secret.items[index]`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexsecret)</small>
 
 
@@ -4427,7 +4427,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].serviceAccountToken` 
+### `SpinApp.spec.volumes[index].projected.sources[index].serviceAccountToken`
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4478,7 +4478,7 @@ and must be at least 10 minutes.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].quobyte` 
+### `SpinApp.spec.volumes[index].quobyte`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4545,7 +4545,7 @@ Defaults to serivceaccount user<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].rbd` 
+### `SpinApp.spec.volumes[index].rbd`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4638,7 +4638,7 @@ More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].rbd.secretRef` 
+### `SpinApp.spec.volumes[index].rbd.secretRef`
 <small>[back to parent](#spinappspecvolumesindexrbd)</small>
 
 
@@ -4669,7 +4669,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].scaleIO` 
+### `SpinApp.spec.volumes[index].scaleIO`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4765,7 +4765,7 @@ that is associated with this volume source.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].scaleIO.secretRef` 
+### `SpinApp.spec.volumes[index].scaleIO.secretRef`
 <small>[back to parent](#spinappspecvolumesindexscaleio)</small>
 
 
@@ -4794,7 +4794,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].secret` 
+### `SpinApp.spec.volumes[index].secret`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4857,7 +4857,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#secret<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].secret.items[index]` 
+### `SpinApp.spec.volumes[index].secret.items[index]`
 <small>[back to parent](#spinappspecvolumesindexsecret)</small>
 
 
@@ -4907,7 +4907,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].storageos` 
+### `SpinApp.spec.volumes[index].storageos`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4971,7 +4971,7 @@ Namespaces that do not pre-exist within StorageOS will be created.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].storageos.secretRef` 
+### `SpinApp.spec.volumes[index].storageos.secretRef`
 <small>[back to parent](#spinappspecvolumesindexstorageos)</small>
 
 
@@ -5000,7 +5000,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].vsphereVolume` 
+### `SpinApp.spec.volumes[index].vsphereVolume`
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -5049,7 +5049,7 @@ Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.<br/>
 </table>
 
 
-### `SpinApp.status` 
+### `SpinApp.status`
 <small>[back to parent](#spinapp)</small>
 
 
@@ -5098,7 +5098,7 @@ For further information see: https://github.com/kubernetes/community/blob/master
 </table>
 
 
-### `SpinApp.status.conditions[index]` 
+### `SpinApp.status.conditions[index]`
 <small>[back to parent](#spinappstatus)</small>
 
 
@@ -5192,5 +5192,3 @@ with respect to the current state of the instance.<br/>
         <td>false</td>
       </tr></tbody>
 </table>
-
-

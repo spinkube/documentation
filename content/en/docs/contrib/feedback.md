@@ -1,6 +1,6 @@
 ---
 title: Feedback
-description: How to provide feedback to the SpinKube project
+description: How to provide feedback to the SpinKube project.
 weight: 10
 ---
 

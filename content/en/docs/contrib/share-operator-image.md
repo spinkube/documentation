@@ -1,6 +1,6 @@
 ---
 title: Share Spin Operator Image
-description: Discover how to build and push the Spin Operator image
+description: Discover how to build and push the Spin Operator image.
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]

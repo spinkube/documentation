@@ -1,7 +1,7 @@
 ---
 title: SpinAppExecutor
 weight: 2
-description: Custom Resource Definition (CRD) reference for `SpinAppExecutor`
+description: Custom Resource Definition (CRD) reference for `SpinAppExecutor`.
 categories: [Spin Operator]
 tags: [reference]
 ---
@@ -57,7 +57,7 @@ SpinAppExecutor is the Schema for the spinappexecutors API
 </table>
 
 
-### `SpinAppExecutor.spec` 
+### `SpinAppExecutor.spec`
 <small>[back to parent](#spinappexecutor)</small>
 
 
@@ -92,7 +92,7 @@ createDeployment is true.<br/>
 </table>
 
 
-### `SpinAppExecutor.spec.deploymentConfig` 
+### `SpinAppExecutor.spec.deploymentConfig`
 <small>[back to parent](#spinappexecutorspec)</small>
 
 
@@ -136,5 +136,3 @@ defined in `CACertSecret` the secret name will be `spin-ca`.<br/>
         <td>false</td>
       </tr></tbody>
 </table>
-
-

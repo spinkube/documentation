@@ -1,6 +1,6 @@
 ---
 title: Assigning variables
-description: Configure Spin Apps using values from Kubernetes ConfigMaps and Secrets
+description: Configure Spin Apps using values from Kubernetes ConfigMaps and Secrets.
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]

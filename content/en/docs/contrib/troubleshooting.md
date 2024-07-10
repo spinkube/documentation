@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: How to troubleshoot SpinKube
+description: Troubleshooting common errors and issues with SpinKube.
 weight: 15
 ---
 

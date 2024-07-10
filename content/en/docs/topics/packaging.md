@@ -1,6 +1,6 @@
 ---
 title: Packaging and deploying apps
-description: Learn how to package and distribute Spin Apps using either public or private OCI compliant registries
+description: Learn how to package and distribute Spin Apps using either public or private OCI compliant registries.
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]

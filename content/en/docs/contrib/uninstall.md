@@ -1,6 +1,6 @@
 ---
 title: Uninstall
-description: How to uninstall custom resources and Spin Operator from your Cluster
+description: How to uninstall custom resources and Spin Operator from your Cluster.
 categories: [Spin Operator]
 tags: [Tutorials]
 ---

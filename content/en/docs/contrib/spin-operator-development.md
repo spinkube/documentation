@@ -1,6 +1,6 @@
 ---
 title: Spin Operator development
-description:
+description: Learn how to develop and deploy Spin Operator on a Kubernetes cluster.
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]

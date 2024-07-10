@@ -1,8 +1,6 @@
 ---
 title: containerd-shim-spin
 description: The Containerd Shim Spin is a project that enables running Spin applications on Kubernetes.
-categories: [Containerd Shim Spin]
-tags: [containerd-shim-spin]
 weight: 60
 ---
 
@@ -37,7 +35,7 @@ To execute the installation step-by-step, do the following:
 
 1. Install the shim on each Node that should support Spin apps
 
-    Install a [release of the shim](https://github.com/spinkube/containerd-shim-spin/releases) somewhere on the path of your Kubernetes worker nodes. For example, copy `containerd-shim-spin-v2` to `/bin`. Shims are additive, so once the `containerd-shim-spin` is installed on a Node, it can support Spin WebAssembly apps alongside traditional containerized deployments. 
+    Install a [release of the shim](https://github.com/spinkube/containerd-shim-spin/releases) somewhere on the path of your Kubernetes worker nodes. For example, copy `containerd-shim-spin-v2` to `/bin`. Shims are additive, so once the `containerd-shim-spin` is installed on a Node, it can support Spin WebAssembly apps alongside traditional containerized deployments.
 
 1. Add the following to the containerd config.toml that maps the runtime type to the shim binary from step 1:
 

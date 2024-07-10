@@ -2,8 +2,7 @@
 title: Contributing
 weight: 100
 description: >
-  Contributing to Runtime Class Manager 
-categories: [Runtime Class Manager]
+  Contributing to Runtime Class Manager
 tags: [Contributing]
 ---
 

@@ -2,8 +2,7 @@
 title: Contributing
 weight: 100
 description: >
-  Contributing to Containerd Shim Spin 
-categories: [Containerd Shim Spin]
+  Contributing to Containerd Shim Spin
 tags: [Contributing]
 ---
 

@@ -129,4 +129,3 @@ kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0
 kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
 kubectl delete -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 ```
-

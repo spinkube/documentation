@@ -103,7 +103,7 @@ All that’s left to do is build the app:
 spin build
 ```
 
-## Deploying Our Spin App to Docker 
+## Deploying Our Spin App to Docker
 
 We publish our application using the `spin registry` command:
 
@@ -159,4 +159,3 @@ Which returns the following:
 ```bash
 Hello from Docker Desktop
 ```
-

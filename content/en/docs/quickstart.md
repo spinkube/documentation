@@ -8,14 +8,12 @@ This Quickstart guide demonstrates how to set up a new Kubernetes cluster, insta
 
 ## Prerequisites
 
-Ensure necessary [prerequisites]({{< ref "prerequisites" >}}) are installed.
+For this Quickstart guide, you will need:
 
-For this Quickstart in particular, you will need:
-
-- [kubectl]({{< ref "prerequisites#kubectl" >}}) - the Kubernetes CLI
-- [Rancher Desktop]({{< ref "prerequisites#rancher-desktop" >}}) or [Docker Desktop]({{< ref "prerequisites#docker" >}}) for managing containers and Kubernetes on your desktop
-- [k3d]({{< ref "prerequisites#k3d" >}}) - a lightweight Kubernetes distribution that runs on Docker
-- [Helm]({{< ref "prerequisites#helm" >}}) - the package manager for Kubernetes
+- [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes CLI
+- [Rancher Desktop](https://rancherdesktop.io/) or [Docker Desktop](https://docs.docker.com/get-docker/) for managing containers and Kubernetes on your desktop
+- [k3d](https://k3d.io/v5.6.0/?h=installation#installation) - a lightweight Kubernetes distribution that runs on Docker
+- [Helm](https://helm.sh/docs/intro/install/) - the package manager for Kubernetes
 
 ### Set up Your Kubernetes Cluster
 
@@ -103,5 +101,5 @@ Hello world from Spin!
 
 Congrats on deploying your first SpinApp! Recommended next steps:
 
-- Scale your [Spin Apps with Horizontal Pod Autoscaler (HPA)]({{< ref "scaling-with-hpa.md" >}})
-- Scale your [Spin Apps with Kubernetes Event Driven Autoscaler (KEDA)]({{< ref "scaling-with-keda.md" >}})
+- Scale your [Spin Apps with Horizontal Pod Autoscaler (HPA)]({{< ref "scaling-with-hpa" >}})
+- Scale your [Spin Apps with Kubernetes Event Driven Autoscaler (KEDA)]({{< ref "scaling-with-keda" >}})

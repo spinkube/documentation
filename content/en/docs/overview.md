@@ -22,4 +22,4 @@ Thanks to Spin Operator, we can do all of this while integrating with Kubernetes
 
 Spin Operator watches [Spin App Custom Resources]({{< ref "glossary#spinapp-manifest" >}}) and realizes the desired state in the Kubernetes cluster. The foundation of this project was built using the kubebuilder framework and contains a Spin App Custom Resource Definition (CRD) and controller.
 
-To get started, check out our [Spin Operator quickstart]({{< ref "/docs/spin-operator/quickstart" >}}).
+To get started, check out our [Quickstart guide]({{< ref "quickstart" >}}).

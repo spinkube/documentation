@@ -30,4 +30,4 @@ Once an application deployment begins, Spin Operator handles scheduling the work
 
 For application developers interested in writing their first Spin App, check out the [`spin kube` plugin]({{< ref "spin-plugin-kube" >}}) documentation. By the end of the quickstart, you'll have an application ready to deploy to your Kubernetes cluster of choice.
 
-For platform engineers interested in cluster operations and working with Spin Operator, visit our [Spin Operator quickstart]({{< ref "/docs/spin-operator/quickstart" >}}). We provide you with a simple quickstart SpinApp to use alongside spin operator.
+For platform engineers interested in cluster operations and working with Spin Operator, visit our [Quickstart Guide]({{< ref "quickstart" >}}). We provide you with a simple quickstart SpinApp to use alongside spin operator.

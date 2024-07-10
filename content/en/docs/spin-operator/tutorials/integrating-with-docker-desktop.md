@@ -48,7 +48,7 @@ Select docker-desktop from the Kubernetes Contexts configuration in your toolbar
 
 ### SpinKube
 
-The following commands are from the [SpinKube Quickstart guide]({{< ref "/docs/spin-operator/quickstart" >}}). Please refer to the quickstart if you have any queries.
+The following commands are from the [Quickstart guide]({{< ref "quickstart" >}}). Please refer to the guide if you have any questions.
 
 The following commands install all of the necessary items that can be found in the quickstart:
 

@@ -114,50 +114,7 @@ Hit enter to create the ingress resource.
 
 Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of the Spin Operator repository.
 
-We can take a look at the SpinApp and HPA definitions in our deployment file below/. As you can see, we have set our `resources` -> `limits` to `500m` of `cpu` and `500Mi` of `memory` per Spin application and we will scale the instance count when we’ve reached a 50% utilization in `cpu` and `memory`. We’ve also defined support a maximum [replica](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas) count of 10 and a minimum replica count of 1:
-
-```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
-kind: SpinApp
-metadata:
-  name: hpa-spinapp
-spec:
-  image: ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986
-  enableAutoscaling: true
-  resources:
-    limits:
-      cpu: 500m
-      memory: 500Mi
-    requests:
-      cpu: 100m
-      memory: 400Mi
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: spinapp-autoscaler
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: hpa-spinapp
-  minReplicas: 1
-  maxReplicas: 10
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
-```
-
-For more information about HPA, please visit the following links:
-- [Kubernetes Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
-- [Kubernetes HorizontalPodAutoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
-- [HPA Container Resource Metrics](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics)
-
-Below is an example of the configuration to scale resources:
+We can take a look at the SpinApp and HPA definitions in our deployment file below. As you can see, we have set our `resources` -> `limits` to `500m` of `cpu` and `500Mi` of `memory` per Spin application and we will scale the instance count when we’ve reached a 50% utilization in `cpu` and `memory`. We’ve also defined support a maximum [replica](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas) count of 10 and a minimum replica count of 1:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1alpha1
@@ -167,7 +124,7 @@ metadata:
 spec:
   image: ghcr.io/spinkube/spin-operator/cpu-load-gen:20240311-163328-g1121986
   executor: containerd-shim-spin
-  enableAutoscaling: true
+  replicas: 1
   resources:
     limits:
       cpu: 500m
@@ -182,8 +139,8 @@ metadata:
   name: spinapp-autoscaler
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
+    apiVersion: core.spinoperator.dev/v1alpha1
+    kind: SpinApp
     name: hpa-spinapp
   minReplicas: 1
   maxReplicas: 10
@@ -195,6 +152,12 @@ spec:
         type: Utilization
         averageUtilization: 50
 ```
+
+For more information about HPA, please visit the following links:
+- [Kubernetes Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+- [Kubernetes HorizontalPodAutoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+- [HPA Container Resource Metrics](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics)
+
 
 Let’s deploy the SpinApp and the HPA instance onto our cluster (using the above `.yaml` configuration). To apply the above configuration we use the following `kubectl apply` command:
 

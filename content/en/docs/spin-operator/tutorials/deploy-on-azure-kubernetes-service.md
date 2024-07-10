@@ -71,7 +71,7 @@ kube-system       Active   3m
 
 ## Deploying the Spin Operator
 
-First, the [Custom Resource Definition (CRD)]({{< ref "/docs/glossary/_index.md#custom-resource-definition-crd" >}}) and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be installed.
+First, the [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be installed.
 
 ```shell
 # Install the CRDs
@@ -100,7 +100,7 @@ helm install cert-manager jetstack/cert-manager \
 
 The Spin Operator chart also has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):
 
-<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.  
+<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.
 -->
 
 ```shell

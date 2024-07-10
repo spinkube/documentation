@@ -1,33 +1,36 @@
 #! /bin/bash
 
-set -e 
+set -eo pipefail
 
-if [[ -z "$SPIN_OPERATOR_RELEASE" ]]; then
-    echo "Must provide SPIN_OPERATOR_RELEASE in environment" 1>&2
-    exit 1
-fi
+script_dir=$(dirname "$0")
+root_dir=$(dirname ${script_dir})
+
+cd $script_dir
+
+SPIN_OPERATOR_RELEASE=${SPIN_OPERATOR_RELEASE:-v0.2.0}
 
 echo "Installing crdoc"
 go install fybrik.io/crdoc@latest
 
-echo "Downloading Spin Operator CRDs ($SPIN_OPERATOR_RELEASE) "
-wget https://github.com/spinkube/spin-operator/releases/download/$SPIN_OPERATOR_RELEASE/spin-operator.crds.yaml
+echo "Downloading Spin Operator CRDs ($SPIN_OPERATOR_RELEASE)"
+spin_operator_crds_file=$(mktemp)
+wget https://github.com/spinkube/spin-operator/releases/download/$SPIN_OPERATOR_RELEASE/spin-operator.crds.yaml -O ${spin_operator_crds_file}
 
 # Generate SpinAppExecutor Reference Docs
 echo "Generating CRD reference docs for SpinAppExecutor"
-crdoc -r spin-operator.crds.yaml \
-    -o ../content/en/docs/spin-operator/reference/spin-app-executor.md \
+crdoc -r ${spin_operator_crds_file} \
+    -o ${root_dir}/content/en/docs/spin-operator/reference/spin-app-executor.md \
     --toc ./spin-app-executor-toc.yaml \
     --template ./spin-operator.tmpl
 
 echo "Generating CRD reference docs for SpinApp"
 # Generate SpinApp Reference Docs
-crdoc -r spin-operator.crds.yaml \
-    -o ../content/en/docs/spin-operator/reference/spin-app.md \
+crdoc -r ${spin_operator_crds_file} \
+    -o ${root_dir}/content/en/docs/spin-operator/reference/spin-app.md \
     --toc ./spin-app-toc.yaml \
     --template ./spin-operator.tmpl
 
-# Remove spin-operator.crds.yaml
-rm spin-operator.crds.yaml
+# Remove temporary file
+rm ${spin_operator_crds_file}
 
 echo "Done."

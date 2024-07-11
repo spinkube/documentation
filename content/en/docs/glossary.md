@@ -1,6 +1,6 @@
 ---
-title: Glossary of Terms
-description: Glossary of Terms
+title: Glossary
+description: Glossary of terms used by the SpinKube project.
 weight: 100
 categories: [SpinKube]
 ---

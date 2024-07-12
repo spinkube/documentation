@@ -20,4 +20,4 @@ View the website at <http://localhost:1313>. Any changes made to the source code
 
 ## Screenshots
 
-![Screenshot 2024-02-19 at 14 51 24](https://github.com/spinkube/documentation/assets/9831342/98fef78c-3770-42c4-be1c-88d7282130e7)
+![Screenshot of the SpinKube documentation, taken 2024-02-19](assets/images/docs-screenshot-2024-02-19.png)

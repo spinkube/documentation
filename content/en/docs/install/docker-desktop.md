@@ -20,7 +20,7 @@ First, install the latest version of [Docker Desktop](https://docs.docker.com/de
 
 WebAssembly (Wasm) support is still an in-development (Beta) feature of Docker Desktop. Wasm support is disabled by default. To turn it on, open your Docker Desktop settings menu and click the gear icon in the top right corner of the navigation bar. Click Extensions from the menu on the left and ensure that boxes relating to Docker Marketplace and Docker Extensions system containers are checked (as shown in the image below). Checking these boxes enables the "Features in development" extension.
 
-![Docker Desktop Extensions](/docker-desktop-extensions.png)
+![Docker Desktop Extensions](../docker-desktop-extensions.png)
 
 Please ensure that you press "Apply & restart" to save any changes.
 
@@ -29,7 +29,7 @@ Click on Features in development from the menu on the left, and enable the follo
 - "Use containerd for pulling and storing images": This turns on `containerd` support, which is necessary for Wasm.
 - "Enable Wasm": This installs the Wasm subsystem, which includes `containerd` shims and Spin (among other things).
 
-![Docker Desktop Enable Wasm](/docker-desktop-enable-wasm.png)
+![Docker Desktop Enable Wasm](../docker-desktop-enable-wasm.png)
 
 Make sure you press "Apply & restart" to save the changes.
 
@@ -37,13 +37,13 @@ Docker Desktop is Wasm-ready!
 
 Click on "Kubernetes" and check the "Enable Kubernetes" box, as shown below.
 
-![Enable Kubernetes](/docker-desktop-enable-kubernetes.png)
+![Enable Kubernetes](../docker-desktop-enable-kubernetes.png)
 
 Make sure you press "Apply & restart" to save the changes.
 
 Select docker-desktop from the Kubernetes Contexts configuration in your toolbar.
 
-![Kubernetes Context](/docker-desktop-context.png)
+![Kubernetes Context](../docker-desktop-context.png)
 
 ### SpinKube
 
@@ -145,7 +145,7 @@ spin kube deploy --from docker.io/tpmccallum/hello-docker
 
 If we look at the "Images" section of Docker Desktop we see `tpmccallum/hello-docker`:
 
-![Docker Desktop Images](/docker-desktop-images.png)
+![Docker Desktop Images](../docker-desktop-images.png)
 
 We can test the Wasm-powered Spin app that is running via Docker using the following request:
 

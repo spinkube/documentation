@@ -27,19 +27,19 @@ tags: [Tutorials]
   - Navigate to the **Preferences** -> **Kubernetes** menu.
   - Ensure that the **Enable** **Kubernetes** is selected and that the **Enable Traefik** and **Install Spin Operator** Options are checked. Make sure to **Apply** your changes.
 
-![image](https://github.com/spinkube/documentation/assets/9831342/684b105b-842d-4e16-85db-e7765f6286ff)
+![Rancher Desktop](../rancher-desktop-kubernetes.png)
 
   - Make sure to select `rancher-desktop` from the `Kubernetes Contexts` configuration in your toolbar.
 
-![image](https://github.com/spinkube/documentation/assets/9831342/d9ce818e-9b0f-40e7-bbf1-a857681bf1a3)
+![Kubernetes contexts](../rancher-desktop-contexts.png)
 
   - Make sure that the Enable Wasm option is checked in the **Preferences** → **Container Engine section**. Remember to always apply your changes.
 
-![image](https://github.com/spinkube/documentation/assets/9831342/745c11a6-22c0-4d48-a0e7-4dcb0959db11)
+![Rancher preferences](../rancher-desktop-preferences.png)
 
   - Once your changes have been applied, go to the **Cluster Dashboard** → **More Resources** → **Cert Manager** section and click on **Certificates**. You will see the `spin-operator-serving-cert` is ready.
 
-![image](https://github.com/spinkube/documentation/assets/9831342/e6275857-6f68-4141-9616-d62e22b329b4)
+![Certificates tab](../rancher-desktop-certificates.png)
 
 ### Step 3: Creating a Spin Application
 
@@ -66,59 +66,54 @@ export async function handleRequest(request) {
 
 1. **Push the application to a registry**:
 
-    ```bash
-    $ npm install
-    $ spin build
-    $ spin registry push ttl.sh/hello-k3s:0.1.0
-    ```
+```bash
+$ npm install
+$ spin build
+$ spin registry push ttl.sh/hello-k3s:0.1.0
+```
 
-    Replace `ttl.sh/hello-k3s:0.1.0` with your registry URL and tag.
+Replace `ttl.sh/hello-k3s:0.1.0` with your registry URL and tag.
 
 2. **Scaffold Kubernetes resources**:
 
-    ```bash
-    $ spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
+```bash
+$ spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
 
-    apiVersion: core.spinoperator.dev/v1alpha1
-    kind: SpinApp
-    metadata:
-      name: hello-k3s
-    spec:
-      image: "ttl.sh/hello-k3s:0.1.0"
-      executor: containerd-shim-spin
-      replicas: 2
+apiVersion: core.spinoperator.dev/v1alpha1
+kind: SpinApp
+metadata:
+  name: hello-k3s
+spec:
+  image: "ttl.sh/hello-k3s:0.1.0"
+  executor: containerd-shim-spin
+  replicas: 2
+```
 
-    ```
-
-    This command prepares the necessary Kubernetes deployment configurations.
+This command prepares the necessary Kubernetes deployment configurations.
 
 3. **Deploy the application to Kubernetes**:
 
-    ```bash
-    $ spin kube deploy --from ttl.sh/hello-k3s:0.1.0
-    ```
+```bash
+$ spin kube deploy --from ttl.sh/hello-k3s:0.1.0
+```
 
-    If we click on the Rancher Desktop’s “Cluster Dashboard”, we can see hello-k3s:0.1.0 running inside the “Workloads” dropdown section:
+If we click on the Rancher Desktop’s “Cluster Dashboard”, we can see hello-k3s:0.1.0 running inside the “Workloads” dropdown section:
 
-    ![Rancher Desktop Preferences Wasm](/rancher-desktop-cluster.png)
+![Rancher Desktop Preferences Wasm](../rancher-desktop-cluster.png)
 
-    To access our app outside of the cluster, we can forward the port so that we access the application from our host machine:
+To access our app outside of the cluster, we can forward the port so that we access the application from our host machine:
 
-    ```bash
-    $ kubectl port-forward svc/hello-k3s 8083:80
-    ```
+```bash
+$ kubectl port-forward svc/hello-k3s 8083:80
+```
 
-    To test locally, we can make a request as follows:
+To test locally, we can make a request as follows:
 
-    ```bash
-    $ curl localhost:8083
-    ```
+```bash
+$ curl localhost:8083
+Hello from Rancher Desktop
+```
 
-    The above `curl` command or a quick visit to your browser at locahost:8083 will return the "Hello from Rancher Desktop" message:
+The above `curl` command or a quick visit to your browser at localhost:8083 will return the "Hello from Rancher Desktop" message:
 
-   <img width="567" alt="Screenshot 2024-06-06 at 15 52 58" src="https://github.com/spinkube/documentation/assets/9831342/bbdeee26-59a1-4766-b685-e827fce152d1">
-
-
-    ```bash
-    Hello from Rancher Desktop
-    ```
+![Hello from Rancher Desktop](../rancher-desktop-hello.png)

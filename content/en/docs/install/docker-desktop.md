@@ -91,6 +91,7 @@ kubectl annotate node --all kwasm.sh/kwasm-node=true
 Next, we create a new application using the Javascript template:
 
 ```bash
+spin templates install --git https://github.com/fermyon/spin-js-sdk
 spin new -t http-js hello-docker --accept-defaults
 cd hello-docker
 npm install
@@ -100,9 +101,10 @@ We then edit the Javascript source file (the `src/index.js` file) to match the f
 
 ```javascript
 export async function handleRequest(request) {
+
     return {
         status: 200,
-        headers: {"content-type": "text/plain"},
+        headers: { "content-type": "text/plain" },
         body: "Hello from Docker Desktop" // <-- This changed
     }
 }
@@ -122,10 +124,11 @@ First we must log into our container registry. In this example, we'll be using D
 spin registry login docker.io
 ```
 
-Now we can publish our application using the `spin registry push` command:
+Now we can publish our application using the `spin registry push` command (substitute `tpmccallum` with your own Docker Hub username):
 
 ```bash
-spin registry push tpmccallum/hello-docker
+export DOCKER_USERNAME=tpmccallum
+spin registry push $DOCKER_USERNAME/hello-docker
 ```
 
 The command above will return output similar to the following:
@@ -140,7 +143,7 @@ Once published, we can generate a SpinApp manifest of our published application 
 scaffold` command:
 
 ```bash
-spin kube scaffold --from tpmccallum/hello-docker --out hello-docker.yaml
+spin kube scaffold --from $DOCKER_USERNAME/hello-docker --out hello-docker.yaml
 ```
 
 If we read `hello-docker.yaml`, it will return something similar to the following YAML:

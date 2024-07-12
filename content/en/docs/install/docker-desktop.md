@@ -6,19 +6,26 @@ categories: [Spin Operator]
 tags: [Tutorials]
 ---
 
-[Docker Desktop](https://docs.docker.com/desktop/) is an open-source application that provides all the essentials to work with containers and Kubernetes on your desktop.
+[Docker Desktop](https://docs.docker.com/desktop/) is an open-source application that provides all
+the essentials to work with containers and Kubernetes on your desktop.
 
 ## Prerequisites
 
-The prerequisites for this tutorial are the Docker Desktop and assets listed in the SpinKube quickstart. Let's dive in.
+For this guide, you will need:
 
-### Docker Desktop
+- [Docker Desktop](https://docs.docker.com/get-docker/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes CLI
+- [Helm](https://helm.sh/docs/intro/install/) - the package manager for Kubernetes
+- [`spin kube`]({{< ref "spin-kube-plugin" >}}) - the Kubernetes plugin for Spin
+- An account on [Docker Hub](https://hub.docker.com/) or another container registry
 
-First, install the latest version of [Docker Desktop](https://docs.docker.com/desktop/).
+### Enable Webassembly support
 
-### Docker Desktop Preferences
-
-WebAssembly (Wasm) support is still an in-development (Beta) feature of Docker Desktop. Wasm support is disabled by default. To turn it on, open your Docker Desktop settings menu and click the gear icon in the top right corner of the navigation bar. Click Extensions from the menu on the left and ensure that boxes relating to Docker Marketplace and Docker Extensions system containers are checked (as shown in the image below). Checking these boxes enables the "Features in development" extension.
+WebAssembly (Wasm) support is still an in-development (Beta) feature of Docker Desktop. Wasm support
+is disabled by default. To turn it on, open your Docker Desktop settings menu and click the gear
+icon in the top right corner of the navigation bar. Click Extensions from the menu on the left and
+ensure that boxes relating to Docker Marketplace and Docker Extensions system containers are checked
+(as shown in the image below). Checking these boxes enables the "Features in development" extension.
 
 ![Docker Desktop Extensions](../docker-desktop-extensions.png)
 
@@ -26,8 +33,10 @@ Please ensure that you press "Apply & restart" to save any changes.
 
 Click on Features in development from the menu on the left, and enable the following two options:
 
-- "Use containerd for pulling and storing images": This turns on `containerd` support, which is necessary for Wasm.
-- "Enable Wasm": This installs the Wasm subsystem, which includes `containerd` shims and Spin (among other things).
+- "Use containerd for pulling and storing images": This turns on `containerd` support, which is
+  necessary for Wasm.
+- "Enable Wasm": This installs the Wasm subsystem, which includes `containerd` shims and Spin (among
+  other things).
 
 ![Docker Desktop Enable Wasm](../docker-desktop-enable-wasm.png)
 
@@ -45,14 +54,16 @@ Select docker-desktop from the Kubernetes Contexts configuration in your toolbar
 
 ![Kubernetes Context](../docker-desktop-context.png)
 
-### SpinKube
+## Install SpinKube
 
-The following commands are from the [Quickstart guide]({{< ref "quickstart" >}}). Please refer to the guide if you have any questions.
+The following commands are from the [Quickstart guide]({{< ref "quickstart" >}}). Please refer to
+the guide if you have any questions.
 
 The following commands install all of the necessary items that can be found in the quickstart:
 
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
+kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-webhook -n cert-manager
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
@@ -63,6 +74,7 @@ helm install spin-operator \
   --version 0.2.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
+
 helm repo add kwasm http://kwasm.sh/kwasm-operator/
 
 helm install \
@@ -74,11 +86,12 @@ helm install \
 kubectl annotate node --all kwasm.sh/kwasm-node=true
 ```
 
-## Creating Our Spin Application
+## Scaffold a new application
 
-Next, we create a new Spin app using the Javascript template:
+Next, we create a new application using the Javascript template:
 
 ```bash
+spin templates install --git https://github.com/fermyon/spin-js-sdk
 spin new -t http-js hello-docker --accept-defaults
 cd hello-docker
 npm install
@@ -88,9 +101,10 @@ We then edit the Javascript source file (the `src/index.js` file) to match the f
 
 ```javascript
 export async function handleRequest(request) {
+
     return {
         status: 200,
-        headers: {"content-type": "text/plain"},
+        headers: { "content-type": "text/plain" },
         body: "Hello from Docker Desktop" // <-- This changed
     }
 }
@@ -102,12 +116,19 @@ All that’s left to do is build the app:
 spin build
 ```
 
-## Deploying Our Spin App to Docker
+## Deploying our application to SpinKube
 
-We publish our application using the `spin registry` command:
+First we must log into our container registry. In this example, we'll be using Docker Hub:
 
 ```bash
-docker push tpmccallum/hello-docker
+spin registry login docker.io
+```
+
+Now we can publish our application using the `spin registry push` command (substitute `tpmccallum` with your own Docker Hub username):
+
+```bash
+export DOCKER_USERNAME=tpmccallum
+spin registry push $DOCKER_USERNAME/hello-docker
 ```
 
 The command above will return output similar to the following:
@@ -118,13 +139,14 @@ The push refers to repository [docker.io/tpmccallum/hello-docker]
 latest: digest: sha256:f24bf4fae2dc7dd80cad25b3d3a6bceb566b257c03b7ff5b9dd9fe36b05f06e0 size: 695
 ```
 
-Once published, we can read the configuration of our published application using the `spin kube scaffold` command:
+Once published, we can generate a SpinApp manifest of our published application using the `spin kube
+scaffold` command:
 
 ```bash
-spin kube scaffold -f tpmccallum/hello-docker
+spin kube scaffold --from $DOCKER_USERNAME/hello-docker --out hello-docker.yaml
 ```
 
-The above command will return something similar to the following YAML:
+If we read `hello-docker.yaml`, it will return something similar to the following YAML:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1alpha1
@@ -140,7 +162,7 @@ spec:
 We can run this using the following command:
 
 ```bash
-spin kube deploy --from docker.io/tpmccallum/hello-docker
+kubectl apply -f hello-docker.yaml
 ```
 
 If we look at the "Images" section of Docker Desktop we see `tpmccallum/hello-docker`:

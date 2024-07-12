@@ -18,7 +18,7 @@ SpinKube combines the <a href="https://github.com/spinkube/spin-operator">Spin o
 
 ### Made with Contributions from:
 
-|![Microsoft](logo-microsoft.png)|![Liquid Reply](logo-liquidreply.png)|![SUSE](logo-suse.png)|![Fermyon](logo-fermyon.png)|
+|![Microsoft](../logo-microsoft.png)|![Liquid Reply](../logo-liquidreply.png)|![SUSE](../logo-suse.png)|![Fermyon](../logo-fermyon.png)|
 |---|---|---|---|
 
 ### Overview

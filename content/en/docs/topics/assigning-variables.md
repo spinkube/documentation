@@ -10,6 +10,8 @@ weight: 11
 
 By using variables, you can alter application behavior without recompiling your SpinApp. When running in Kubernetes, you can either provide constant values for variables, or reference them from Kubernetes primitives such as `ConfigMaps` and `Secrets`. This tutorial guides your through the process of assigning variables to your `SpinApp`.
 
+> Note: If you'd like to learn how to configure your application with an external variable provider like [Vault](https://vaultproject.io) or [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault), see the [External Variable Provider guide](./external-variable-providers.md)
+
 ## Prerequisites
 
 For this tutorial in particular, you should either have the Spin Operator [running locally]({{< ref "running-locally" >}}) or [running on your Kubernetes cluster]({{< ref "running-on-a-cluster" >}}).

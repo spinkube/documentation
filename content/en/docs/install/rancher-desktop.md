@@ -4,6 +4,8 @@ description: This tutorial shows how to integrate SpinKube and Rancher Desktop.
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+aliases:
+- /docs/spin-operator/tutorials/integrating-with-rancher-desktop
 ---
 
 [Rancher Desktop](https://rancherdesktop.io/) is an open-source application that provides all the essentials to work with containers and Kubernetes on your desktop.

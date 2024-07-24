@@ -5,7 +5,7 @@ date: 2024-06-19
 tags: [Installation]
 ---
 
-This guide walks through the process of installing and configuring Microk8s and SpinKube. 
+This guide walks through the process of installing and configuring Microk8s and SpinKube.
 
 ## Prerequisites
 
@@ -138,7 +138,7 @@ The easiest way to test our Spin app is to port forward from the Spin app to the
 $ microk8s kubectl port-forward services/simple-spinapp 8080:80
 ```
 
-You can then run `curl localhost:8080` 
+You can then run `curl localhost:8080`
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ curl localhost:8080

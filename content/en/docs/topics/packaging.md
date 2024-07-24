@@ -5,6 +5,8 @@ date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
 weight: 10
+aliases:
+- /docs/spin-operator/tutorials/package-and-deploy
 ---
 
 This article explains how Spin Apps are packaged and distributed via both public and private registries. You will learn how to:

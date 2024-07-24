@@ -4,6 +4,8 @@ description: Learn how to develop and deploy Spin Operator on a Kubernetes clust
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+aliases:
+- /docs/spin-operator/tutorials/spin-operator-development
 ---
 
 ## To Deploy on the Cluster

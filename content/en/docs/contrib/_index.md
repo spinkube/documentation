@@ -2,6 +2,8 @@
 title: Contributing
 description: How to contribute to the SpinKube project.
 weight: 99
+aliases:
+- /docs/contribution-guidelines
 ---
 
 ## Contributing to SpinKube documentation

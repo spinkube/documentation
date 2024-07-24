@@ -3,6 +3,8 @@ title: Running locally
 description: Learn how to run Spin Operator on your local machine.
 categories: [Spin Operator]
 tags: [Tutorials]
+aliases:
+- /docs/spin-operator/tutorials/running-locally
 ---
 
 ## Prerequisites

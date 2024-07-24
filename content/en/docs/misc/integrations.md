@@ -3,6 +3,8 @@ title: Integrations
 description: A high level overview of the SpinKube integrations.
 categories: [SpinKube]
 tags: [Integrations]
+aliases:
+- /docs/integrations
 ---
 
 # SpinKube Integrations

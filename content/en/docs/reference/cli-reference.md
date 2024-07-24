@@ -4,6 +4,8 @@ description: Spin Plugin kube CLI Reference.
 weight: 3
 categories: [reference]
 tags: [plugins]
+aliases:
+- /docs/spin-plugin-kube/reference
 ---
 
 ## spin kube completion

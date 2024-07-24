@@ -5,6 +5,8 @@ date: 2024-02-26
 categories: [guides]
 tags: [tutorial, autoscaling]
 weight: 12
+aliases:
+- /docs/spin-plugin-kube/tutorials/autoscaler-support
 ---
 
 ## Horizontal autoscaling support

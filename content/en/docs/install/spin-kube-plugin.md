@@ -3,6 +3,8 @@ title: Installing the `spin kube` plugin
 description: Learn how to install the `kube` plugin.
 categories: [guides]
 tags: [plugins, kubernetes, spin]
+aliases:
+- /docs/spin-plugin-kube/installation
 ---
 
 The `kube` plugin for `spin` (The Spin CLI) provides first class experience for working with Spin apps in the context of Kubernetes.

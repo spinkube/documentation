@@ -2,6 +2,8 @@
 title: Troubleshooting
 description: Troubleshooting common errors and issues with SpinKube.
 weight: 15
+aliases:
+- /docs/spin-operator/support/troubleshooting
 ---
 
 The following is a list of common error messages and potential troubleshooting suggestions that might assist you with your work.

@@ -3,6 +3,8 @@ title: Installing with Helm
 description: This guide walks you through the process of installing SpinKube using [Helm](https://helm.sh).
 date: 2024-02-16
 tags: [Installation]
+aliases:
+- /docs/spin-operator/installation/installing-with-helm
 ---
 
 ## Prerequisites

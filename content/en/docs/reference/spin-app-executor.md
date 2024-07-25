@@ -4,6 +4,8 @@ weight: 2
 description: Custom Resource Definition (CRD) reference for `SpinAppExecutor`.
 categories: [Spin Operator]
 tags: [reference]
+aliases:
+- /docs/spin-operator/reference/spin-app-executor
 ---
 Resource Types:
 

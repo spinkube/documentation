@@ -2,6 +2,8 @@
 title: Feedback
 description: How to provide feedback to the SpinKube project.
 weight: 10
+aliases:
+- /docs/spin-operator/support/feedback
 ---
 
 The following is a list of suggestions that might assist you with providing feedback to the Spin Operator project.

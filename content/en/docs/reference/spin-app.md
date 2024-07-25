@@ -4,6 +4,8 @@ weight: 1
 description: Custom Resource Definition (CRD) reference for `SpinApp`.
 categories: [Spin Operator]
 tags: [reference]
+aliases:
+- /docs/spin-operator/reference/spin-app
 ---
 Resource Types:
 

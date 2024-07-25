@@ -3,6 +3,8 @@ title: Compatibility
 description: A list of compatible Kubernetes distributions and platforms for running SpinKube.
 categories: [Spin Operator]
 tags: []
+aliases:
+- /docs/compatibility
 ---
 
 See the following list of compatible Kubernetes distributions and platforms for running the [Spin Operator](https://github.com/spinkube/spin-operator/):

@@ -4,6 +4,8 @@ description: This tutorial shows how to install SpinKube with Docker Desktop.
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+aliases:
+- /docs/spin-operator/tutorials/integrating-with-docker-desktop
 ---
 
 [Docker Desktop](https://docs.docker.com/desktop/) is an open-source application that provides all

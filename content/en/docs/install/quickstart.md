@@ -2,6 +2,9 @@
 title: Quickstart
 description: Learn how to setup a Kubernetes cluser, install SpinKube and run your first Spin App.
 weight: 2
+aliases:
+- /docs/quickstart
+- /docs/spin-operator/quickstart
 ---
 
 This Quickstart guide demonstrates how to set up a new Kubernetes cluster, install the SpinKube and deploy your first Spin application.

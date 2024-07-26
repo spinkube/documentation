@@ -4,6 +4,9 @@ description: Learn how to connect to your application.
 weight: 13
 ---
 
+This topic guide shows you how to connect to your application deployed to SpinKube, including how to
+use port-forwarding for local development, or Ingress rules for a production setup.
+
 ## Run the sample application
 
 Let's deploy a sample application to your Kubernetes cluster. We will use this application
@@ -16,12 +19,29 @@ yet.
 kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
 ```
 
+When SpinKube deploys the application, it creates a Kubernetes Service that exposes the application
+to the cluster. You can check the status of the deployment with the following command:
+
+```shell
+kubectl get services
+```
+
+You should see a service named `simple-spinapp` with a type of `ClusterIP`. This means that the
+service is only accessible from within the cluster.
+
+```shell
+NAME             TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+simple-spinapp   ClusterIP   10.43.152.184    <none>        80/TCP    1m
+```
+
+We will use this service to connect to your application.
+
 ## Port forwarding
 
 This option is useful for debugging and development. It allows you to forward a local port to the
-application.
+service.
 
-Forward port 8083 to the application so that it can be reached from your computer:
+Forward port 8083 to the service so that it can be reached from your computer:
 
 ```shell
 kubectl port-forward svc/simple-spinapp 8083:80
@@ -34,6 +54,10 @@ curl http://localhost:8083
 ```
 
 You should see a message like "Hello world from Spin!".
+
+This is one of the simplest ways to test your application. However, it is not suitable for
+production use. The next section will show you how to expose your application to the internet using
+an Ingress controller.
 
 ## Ingress
 

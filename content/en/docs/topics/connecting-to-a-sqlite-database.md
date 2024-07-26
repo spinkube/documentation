@@ -4,7 +4,7 @@ description: Connect your Spin App to an external SQLite database
 date: 2024-07-17
 categories: [Spin Operator]
 tags: [Tutorials]
-weight: 13
+weight: 14
 ---
 
 Spin applications can utilize a [standardized API for persisting data in a SQLite database](https://developer.fermyon.com/spin/v2/sqlite-api-guide). A default database is created by the Spin runtime on the local filesystem, which is great for getting an application up and running. However, this on-disk solution may not be preferable for an app running in the context of SpinKube, where apps are often scaled beyond just one replica.
@@ -40,7 +40,7 @@ spin registry push ${IMAGE_NAME}
 
 ## Create a LibSQL database
 
-If you don't already have a LibSQL database that can be used over HTTPS, you can follow along as we set one up via [Turso](https://turso.tech/). 
+If you don't already have a LibSQL database that can be used over HTTPS, you can follow along as we set one up via [Turso](https://turso.tech/).
 
 Before proceeding, install the [turso CLI](https://docs.turso.tech/quickstart) and sign up for an account, if you haven't done so already.
 
@@ -172,6 +172,5 @@ $ curl -X GET http://localhost:8080/items
     "name": "Engage Thrusters",
     "active": true
   }
-] 
+]
 ```
-

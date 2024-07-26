@@ -1,6 +1,7 @@
 ---
 title: Connecting to your app
 description: Learn how to connect to your application.
+weight: 13
 ---
 
 ## Run the sample application

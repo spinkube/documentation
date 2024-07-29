@@ -1,6 +1,7 @@
 ---
 title: SpinKube at a glance
 description: A high level overview of the SpinKube sub-projects.
+weight: 80
 ---
 
 ## spin-operator

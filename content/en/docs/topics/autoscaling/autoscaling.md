@@ -4,7 +4,6 @@ description: A tutorial to show how autoscaler support can be enabled via the `s
 date: 2024-02-26
 categories: [guides]
 tags: [tutorial, autoscaling]
-weight: 12
 aliases:
 - /docs/spin-plugin-kube/tutorials/autoscaler-support
 ---

@@ -70,7 +70,7 @@ $ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/downloa
 error: error validating "https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml": error validating data: failed to download openapi: Get "https://127.0.0.1:6443/openapi/v2?timeout=32s": dial tcp 127.0.0.1:6443: connect: connection refused; if you choose to ignore these errors, turn validation off with --validate=false
 ```
 
-This is because no cluster exists. You can create a cluster using the `k3d` [command](https://k3d.io) or install and configure a client like [Rancher Desktop]({{< ref "/docs/install/rancher-desktop" >}}) or [Docker Desktop]({{< ref "/docs/install/docker-desktop" >}}) to manage Kubernetes clusters on your behalf.
+This is because no cluster exists. You can create a cluster following the [Quickstart guide]({{< ref "quickstart" >}}).
 
 ## Installation Failed
 

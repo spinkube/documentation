@@ -1,5 +1,9 @@
 let codeListings = document.querySelectorAll('.highlight > pre');
 
+const copyCode = (codeSample) => {
+    navigator.clipboard.writeText(codeSample.textContent.trim() + '\n');
+};
+
 for (let index = 0; index < codeListings.length; index++) {
     const parentWrapper = codeListings[index].parentElement
     const plausibleClass = parentWrapper.dataset.plausible
@@ -30,7 +34,7 @@ for (let index = 0; index < codeListings.length; index++) {
 
     copyButton.onclick = () => {
         copyCode(codeSample);
-        copyButton.setAttribute('data-bs-original-title', 'Copied');
+        copyButton.setAttribute('data-bs-original-title', 'Copied!');
         tooltip.show();
     };
 
@@ -44,7 +48,3 @@ for (let index = 0; index < codeListings.length; index++) {
     buttonDiv.append(copyButton);
     codeListings[index].insertBefore(buttonDiv, codeSample);
 }
-
-const copyCode = (codeSample) => {
-    navigator.clipboard.writeText(codeSample.textContent.trim() + '\n');
-};

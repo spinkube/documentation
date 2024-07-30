@@ -125,3 +125,10 @@ $spkb-bg: #F8EFFD;
 
     }
 }
+
+button.td-click-to-copy {
+
+    &::before {
+        color: rgba($secondary, 0.5);
+    }
+}

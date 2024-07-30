@@ -27,9 +27,13 @@ for (let index = 0; index < codeListings.length; index++) {
         'btn',
         'btn-dark',
         'btn-sm',
-        'td-click-to-copy',
-        plausibleClass ? `plausible-event-name=${plausibleClass}` : ""
+        'td-click-to-copy'
     );
+
+    if (plausibleClass) {
+        copyButton.classList.add(`plausible-event-name=${plausibleClass}`);
+    }
+
     const tooltip = new bootstrap.Tooltip(copyButton);
 
     copyButton.onclick = () => {

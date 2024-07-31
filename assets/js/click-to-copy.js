@@ -1,7 +1,8 @@
 let codeListings = document.querySelectorAll('.highlight > pre');
 
 const copyCode = (codeSample) => {
-    navigator.clipboard.writeText(codeSample.textContent.trim() + '\n');
+    const fullText = codeSample.textContent.trim();
+    navigator.clipboard.writeText(fullText.replace('$ ', '') + '\n');
 };
 
 for (let index = 0; index < codeListings.length; index++) {

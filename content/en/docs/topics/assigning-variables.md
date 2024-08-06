@@ -14,10 +14,6 @@ By using variables, you can alter application behavior without recompiling your 
 
 > Note: If you'd like to learn how to configure your application with an external variable provider like [Vault](https://vaultproject.io) or [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault), see the [External Variable Provider guide](./external-variable-providers.md)
 
-## Prerequisites
-
-For this tutorial in particular, you should either have the Spin Operator [running locally]({{< ref "running-locally" >}}) or [running on your Kubernetes cluster]({{< ref "running-on-a-cluster" >}}).
-
 ## Build and Store SpinApp in an OCI Registry
 
 We’re going to build the SpinApp and store it inside of a [ttl.sh](http://ttl.sh) registry. Move into the [apps/variable-explorer](https://github.com/spinkube/spin-operator/blob/main/apps/variable-explorer) directory and build the SpinApp we’ve provided:

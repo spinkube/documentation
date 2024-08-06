@@ -20,7 +20,6 @@ This article explains how Spin Apps are packaged and distributed via both public
 
 For this tutorial in particular, you need
 
-- Spin Operator [running locally]({{< ref "running-locally" >}}) or [running on your Kubernetes cluster]({{< ref "running-on-a-cluster" >}})
 - [TinyGo](https://tinygo.org/) - for building the Spin app
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes CLI
 - [spin](https://developer.fermyon.com/spin/v2/install) - the Spin CLI

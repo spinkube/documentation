@@ -8,7 +8,8 @@ aliases:
 - /docs/spin-operator/tutorials/deploy-on-azure-kubernetes-service
 ---
 
-In this tutorial, you install Spin Operator on an Azure Kubernetes Service (AKS) cluster and deploy a simple Spin application. You will learn how to:
+In this tutorial, you install Spin Operator on an Azure Kubernetes Service (AKS) cluster and deploy
+a simple Spin application. You will learn how to:
 
 - Deploy an AKS cluster
 - Install Spin Operator Custom Resource Definition and Runtime Class
@@ -23,11 +24,15 @@ Please ensure you have the following tools installed before continuing:
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes CLI
 - [Helm](https://helm.sh) - the package manager for Kubernetes
-- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) - cross-platform CLI for managing Azure resources
+- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) - cross-platform CLI
+  for managing Azure resources
 
 ## Provisioning the necessary Azure Infrastructure
 
-Before you dive into deploying Spin Operator on Azure Kubernetes Service (AKS), the underlying cloud infrastructure must be provisioned. For the sake of this article, you will provision a simple AKS cluster. (Alternatively, you can setup the AKS cluster following [this guide from Microsoft](https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster?tabs=azure-cli).)
+Before you dive into deploying Spin Operator on Azure Kubernetes Service (AKS), the underlying cloud
+infrastructure must be provisioned. For the sake of this article, you will provision a simple AKS
+cluster. (Alternatively, you can setup the AKS cluster following [this guide from
+Microsoft](https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster?tabs=azure-cli).)
 
 ```shell
 # Login with Azure CLI
@@ -49,7 +54,8 @@ az aks create --name aks-spin-operator \
     --generate-ssh-keys
 ```
 
-Once the AKS cluster has been provisioned, use the `aks get-credentials` command to download credentials for `kubectl`:
+Once the AKS cluster has been provisioned, use the `aks get-credentials` command to download
+credentials for `kubectl`:
 
 ```shell
 # Download credentials for kubectl
@@ -72,7 +78,9 @@ kube-system       Active   3m
 
 ## Deploying the Spin Operator
 
-First, the [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}}) and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be installed.
+First, the [Custom Resource Definition (CRD)]({{< ref "glossary#custom-resource-definition-crd" >}})
+and the [Runtime Class]({{< ref "glossary#runtime-class" >}}) for `wasmtime-spin-v2` must be
+installed.
 
 ```shell
 # Install the CRDs
@@ -82,7 +90,9 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
 ```
 
-The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is required to automatically provision and manage TLS certificates (used by the admission webhook system of Spin Operator)
+The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is
+required to automatically provision and manage TLS certificates (used by the admission webhook
+system of Spin Operator)
 
 ```shell
 # Install cert-manager CRDs
@@ -99,7 +109,8 @@ helm install cert-manager jetstack/cert-manager \
   --version v1.14.3
 ```
 
-The Spin Operator chart also has a dependency on [Kwasm](https://kwasm.sh/), which you use to install `containerd-wasm-shim` on the Kubernetes node(s):
+The Spin Operator chart also has a dependency on [Kwasm](https://kwasm.sh/), which you use to
+install `containerd-wasm-shim` on the Kubernetes node(s):
 
 <!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.
 -->
@@ -130,7 +141,8 @@ kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
 {"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
 ```
 
-The following installs the chart with the release name `spin-operator` in the `spin-operator` namespace:
+The following installs the chart with the release name `spin-operator` in the `spin-operator`
+namespace:
 
 ```shell
 helm install spin-operator \
@@ -149,7 +161,9 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 
 ## Deploying a Spin App to AKS
 
-To validate the Spin Operator deployment, you will deploy a simple Spin App to the AKS cluster. The following command will install a simple Spin App using the `SpinApp` CRD you provisioned in the previous section:
+To validate the Spin Operator deployment, you will deploy a simple Spin App to the AKS cluster. The
+following command will install a simple Spin App using the `SpinApp` CRD you provisioned in the
+previous section:
 
 ```shell
 # Deploy a sample Spin app
@@ -158,7 +172,8 @@ kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/c
 
 ## Verifying the Spin App
 
-Configure port forwarding from port `8080` of your local machine to port `80` of the Kubernetes service which points to the Spin App you installed in the previous section:
+Configure port forwarding from port `8080` of your local machine to port `80` of the Kubernetes
+service which points to the Spin App you installed in the previous section:
 
 ```shell
 kubectl port-forward services/simple-spinapp 8080:80
@@ -166,7 +181,8 @@ Forwarding from 127.0.0.1:8080 -> 80
 Forwarding from [::1]:8080 -> 80
 ```
 
-Send a HTTP request to [http://127.0.0.1:8080/hello](http://127.0.0.1:8080/hello) using [`curl`](https://curl.se/):
+Send a HTTP request to [http://127.0.0.1:8080/hello](http://127.0.0.1:8080/hello) using
+[`curl`](https://curl.se/):
 
 ```shell
 # Send an HTTP GET request to the Spin App

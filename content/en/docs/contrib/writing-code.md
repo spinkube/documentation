@@ -161,4 +161,5 @@ See the guide on [writing documentation]({{< ref "writing-documentation" >}}) fo
 Congratulations! You've made a contribution to SpinKube.
 
 After a pull request has been submitted, it needs to be reviewed by a maintainer. Reach out on the
-`#spinkube` channel on the [CNCF Slack](https://cloud-native.slack.com/archives/C06PC7JA1EE) to ask for a review.
+`#spinkube` channel on the [CNCF Slack](https://cloud-native.slack.com/archives/C06PC7JA1EE) to ask
+for a review.

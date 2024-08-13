@@ -9,12 +9,16 @@ This guide walks through the process of installing and configuring Microk8s and 
 
 ## Prerequisites
 
-This guide assumes you are running Ubuntu 24.04, and that you have Snap enabled (which is the default).
+This guide assumes you are running Ubuntu 24.04, and that you have Snap enabled (which is the
+default).
 
-> The testing platform for this installation was an Akamai Edge Linode running 4G of memory and 2 cores.
+> The testing platform for this installation was an Akamai Edge Linode running 4G of memory and 2
+> cores.
 
 ## Installing Spin
-You will need to [install Spin](https://developer.fermyon.com/spin/quickstart). The easiest way is to just use the following one-liner to get the latest version of Spin:
+
+You will need to [install Spin](https://developer.fermyon.com/spin/quickstart). The easiest way is
+to just use the following one-liner to get the latest version of Spin:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ curl -fsSL https://developer.fermyon.com/downloads/install.sh | bash
@@ -26,11 +30,14 @@ Typically you will then want to move `spin` to `/usr/local/bin` or somewhere els
 $ sudo mv spin /usr/local/bin/spin
 ```
 
-You can test that it's on your `$PATH` with `which spin`. If this returns blank, you will need to adjust your `$PATH` variable or put Spin somewhere that is already on `$PATH`.
+You can test that it's on your `$PATH` with `which spin`. If this returns blank, you will need to
+adjust your `$PATH` variable or put Spin somewhere that is already on `$PATH`.
 
 ## A Script To Do This
 
-If you would rather work with a shell script, you may find [this Gist](https://gist.github.com/kate-goldenring/47950ccb30be2fa0180e276e82ac3593#file-spinkube-on-microk8s-sh) a great place to start. It installs Microk8s and SpinKube, and configures both.
+If you would rather work with a shell script, you may find [this
+Gist](https://gist.github.com/kate-goldenring/47950ccb30be2fa0180e276e82ac3593#file-spinkube-on-microk8s-sh)
+a great place to start. It installs Microk8s and SpinKube, and configures both.
 
 ## Installing Microk8s on Ubuntu
 
@@ -40,7 +47,9 @@ Use `snap` to install microk8s:
 $ sudo snap install microk8s --classic
 ```
 
-This will install Microk8s and start it. You may want to read the [official installation instructions](https://microk8s.io/docs/getting-started) before proceeding. Wait for a moment or two, and then ensure Microk8s is running with the `microk8s status` command.
+This will install Microk8s and start it. You may want to read the [official installation
+instructions](https://microk8s.io/docs/getting-started) before proceeding. Wait for a moment or two,
+and then ensure Microk8s is running with the `microk8s status` command.
 
 Next, enable the TLS certificate manager:
 
@@ -52,7 +61,9 @@ Now we’re ready to install the SpinKube environment for running Spin applicati
 
 ### Installing SpinKube
 
-SpinKube provides the entire toolkit for running Spin serverless apps.  You may want to familiarize yourself with the [SpinKube quickstart](https://www.spinkube.dev/docs/install/quickstart/) guide before proceeding.
+SpinKube provides the entire toolkit for running Spin serverless apps.  You may want to familiarize
+yourself with the [SpinKube quickstart](https://www.spinkube.dev/docs/install/quickstart/) guide
+before proceeding.
 
 First, we need to apply a runtime class and a CRD for SpinKube:
 
@@ -72,7 +83,8 @@ $ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
 
 ```
 
-> The last line above tells Microk8s that all nodes on the cluster (which is just one node in this case) can run Spin applications.
+> The last line above tells Microk8s that all nodes on the cluster (which is just one node in this
+> case) can run Spin applications.
 
 Next, we need to install SpinKube’s operator using Helm (which is included with Microk8s).
 
@@ -81,7 +93,8 @@ $ microk8s helm install spin-operator --namespace spin-operator --create-namespa
 
 ```
 
-Now we have the main operator installed. There is just one more step. We need to install the shim executor, which is a special CRD that allows us to use multiple executors for WebAssembly.
+Now we have the main operator installed. There is just one more step. We need to install the shim
+executor, which is a special CRD that allows us to use multiple executors for WebAssembly.
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ microk8s kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
@@ -94,7 +107,8 @@ Now SpinKube is installed!
 
 Next, we can run a simple Spin application inside of Microk8s.
 
-While we could write regular deployments or pod specifications, the easiest way to deploy a Spin app is by creating a simple `SpinApp` resource. Let's use the simple example from SpinKube:
+While we could write regular deployments or pod specifications, the easiest way to deploy a Spin app
+is by creating a simple `SpinApp` resource. Let's use the simple example from SpinKube:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ microk8s kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
@@ -112,9 +126,11 @@ spec:
   executor: containerd-shim-spin
 ```
 
-You can read up on the definition [in the documentation](https://www.spinkube.dev/docs/reference/spin-app/).
+You can read up on the definition [in the
+documentation](https://www.spinkube.dev/docs/reference/spin-app/).
 
-It may take a moment or two to get started, but you should be able to see the app with `microk8s kubectl get pods`.
+It may take a moment or two to get started, but you should be able to see the app with `microk8s
+kubectl get pods`.
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ microk8s kubectl get po
@@ -124,7 +140,9 @@ simple-spinapp-5c7b66f576-9v9fd   1/1     Running   0          45m
 
 ### Troubleshooting
 
-If `STATUS` gets stuck in `ContainerCreating`, it is possible that KWasm did not install correctly. Try doing a `microk8s stop`, waiting a few minutes, and then running `microk8s start`. You can also try the command:
+If `STATUS` gets stuck in `ContainerCreating`, it is possible that KWasm did not install correctly.
+Try doing a `microk8s stop`, waiting a few minutes, and then running `microk8s start`. You can also
+try the command:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ microk8s kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
@@ -147,11 +165,15 @@ Hello world from Spin!
 
 ### Where to go from here
 
-So far, we installed Microk8s, SpinKube, and a single Spin app. To have a more production-ready version, you might want to:
+So far, we installed Microk8s, SpinKube, and a single Spin app. To have a more production-ready
+version, you might want to:
 
-- Generate TLS certificates and attach them to your Spin app to add HTTPS support. If you are using an ingress controller (see below), [here is the documentation for TLS config](https://kubernetes.github.io/ingress-nginx/user-guide/tls/).
+- Generate TLS certificates and attach them to your Spin app to add HTTPS support. If you are using
+  an ingress controller (see below), [here is the documentation for TLS
+  config](https://kubernetes.github.io/ingress-nginx/user-guide/tls/).
 - Configure a [cluster ingress](https://microk8s.io/docs/addon-ingress)
-- Set up another Linode Edge instsance and create a [two-node Microk8s cluster](https://microk8s.io/docs/clustering).
+- Set up another Linode Edge instsance and create a [two-node Microk8s
+  cluster](https://microk8s.io/docs/clustering).
 
 ### Bonus: Configuring Microk8s ingress
 
@@ -159,7 +181,9 @@ Microk8s includes an NGINX-based ingress controller that works great with Spin a
 
 Enable the ingress controller: `microk8s enable ingress`
 
-Now we can create an ingress that routes our traffic to the `simple-spinapp` app. Create the file `ingress.yaml` with the following content. Note that the [`service.name`](http://service.name) is the name of our Spin app.
+Now we can create an ingress that routes our traffic to the `simple-spinapp` app. Create the file
+`ingress.yaml` with the following content. Note that the [`service.name`](http://service.name) is
+the name of our Spin app.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -179,12 +203,16 @@ spec:
                number: 80
 ```
 
-Install the above with `microk8s kubectl -f ingress.yaml`. After a moment or two, you should be able to run `curl [localhost](http://localhost)` and see `Hello World!`.
+Install the above with `microk8s kubectl -f ingress.yaml`. After a moment or two, you should be able
+to run `curl [localhost](http://localhost)` and see `Hello World!`.
 
 ## Conclusion
 
 In this guide we've installed Spin, Microk8s, and SpinKube and then run a Spin application.
 
-To learn more about the many things you can do with Spin apps, go to [the Spin developer docs](https://developer.fermyon.com/spin). You can also look at a variety of examples at [Spin Up Hub](https://developer.fermyon.com/hub).
+To learn more about the many things you can do with Spin apps, go to [the Spin developer
+docs](https://developer.fermyon.com/spin). You can also look at a variety of examples at [Spin Up
+Hub](https://developer.fermyon.com/hub).
 
-Or to try out different Kubernetes configurations, check out [other installation guides](https://www.spinkube.dev/docs/install/).
+Or to try out different Kubernetes configurations, check out [other installation
+guides](https://www.spinkube.dev/docs/install/).

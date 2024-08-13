@@ -44,8 +44,8 @@ of your application.
 #### Horizontal Pod Autoscaling (HPA)
 
 Horizontal Pod Autoscaler (HPA) scales Kubernetes pods based on CPU or memory utilization. This HPA
-scaling can be implemented via the Kubernetes plugin for Spin by setting the `--autoscaler hpa` option. This
-page deals exclusively with autoscaling via the Kubernetes plugin for Spin.
+scaling can be implemented via the Kubernetes plugin for Spin by setting the `--autoscaler hpa`
+option. This page deals exclusively with autoscaling via the Kubernetes plugin for Spin.
 
 ```sh
 spin kube scaffold --from user-name/app-name:latest --autoscaler hpa --cpu-limit 100m --memory-limit 128Mi
@@ -69,8 +69,8 @@ spin kube scaffold --from user-name/app-name:latest --autoscaler keda --cpu-limi
 
 Using KEDA to autoscale your Spin applications requires the installation of the [KEDA
 runtime](https://keda.sh/) into your Kubernetes cluster. For more information about scaling with
-KEDA in general, please see the Spin Operator's [Scaling with KEDA
-section]({{< ref "scaling-with-keda" >}})
+KEDA in general, please see the Spin Operator's [Scaling with KEDA section]({{< ref
+"scaling-with-keda" >}})
 
 ### Setting min/max replicas
 

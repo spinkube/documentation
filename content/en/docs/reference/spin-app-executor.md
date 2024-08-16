@@ -136,5 +136,58 @@ will be created containing the certificates. If no secret name is
 defined in `CACertSecret` the secret name will be `spin-ca`.<br/>
         </td>
         <td>false</td>
+      </tr><tr>
+        <td><b>otel</b></td>
+        <td>string</td>
+        <td>
+          Otel creates environment variables which configure where and how telemetry data is exported from the Spin app.
+        </td>
+        <td>false</td>
       </tr></tbody>
 </table>
+
+### `SpinAppExecutor.spec.deploymentConfig.otel`
+
+<small>[back to parent](#spinappexecutorspecdeploymentconfig)</small>
+
+Otel creates environment variables which configure where and how telemetry data is exported from the Spin app.
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Required</th>
+        </tr>
+    </thead>
+    <tbody><tr>
+      <td><b>exporter_otlp_endpoint</b></td>
+      <td>string</td>
+      <td>
+        Defines an endpoint to where all metrics, log, and trace data are exported.
+      </td>
+      <td>false</td>
+    </tr><tr>
+      <td><b>exporter_otlp_traces_endpoint</b></td>
+      <td>string</td>
+      <td>
+        Defines an endpoint to where all trace data are exported.
+      </td>
+      <td>false</td>
+    </tr><tr>
+      <td><b>exporter_otlp_metrics_endpoint</b></td>
+      <td>string</td>
+      <td>
+        Defines an endpoint to where all metrics data are exported.
+      </td>
+      <td>false</td>
+    </tr><tr>
+      <td><b>exporter_otlp_logs_endpoint</b></td>
+      <td>string</td>
+      <td>
+        Defines an endpoint to where all log data are exported.
+      </td>
+      <td>false</td>
+    </tr>
+

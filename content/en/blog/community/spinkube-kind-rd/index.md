@@ -10,7 +10,9 @@ resources:
     title: "Image #:counter"
 ---
 
-The goal of this guide is show a way to bring [SpinKube](https://www.spinkube.dev/) to [KinD](https://kind.sigs.k8s.io/) without the need of a custom image, like the [SpinKube on k3d](https://www.spinkube.dev/docs/spin-operator/quickstart/) example.
+The goal of this guide is show a way to bring [SpinKube](https://www.spinkube.dev/) to
+[KinD](https://kind.sigs.k8s.io/) without the need of a custom image, like the [SpinKube on
+k3d](https://www.spinkube.dev/docs/spin-operator/quickstart/) example.
 
 Instead, the Rancher Desktop (RD) Spin plugin will be used alongside KinD cluster configuration.
 
@@ -34,15 +36,18 @@ In order to follow this guide, the following applications need to be installed:
       - Kubernetes is disabled
 - KinD v0.23
   - This is the first version with the `nerdctl` provider
-  - If not yet available, you might need to build it (see [Bonus 1: build KinD](#bonus-1-build-kind))
+  - If not yet available, you might need to build it (see [Bonus 1: build
+    KinD](#bonus-1-build-kind))
 
 Concerning the Kubernetes tooling, Rancher Desktop already covers it.
 
 ### Connecting the Dots
 
-The reason KinD v0.23 is needed with the `nerdctl` provider is because the Spin plugin only works on Rancher Desktop when `containerd` runtime is selected, instead of `docker`.
+The reason KinD v0.23 is needed with the `nerdctl` provider is because the Spin plugin only works on
+Rancher Desktop when `containerd` runtime is selected, instead of `docker`.
 
-If it's still "obscure", keep reading and hopefully it will make sense (yes, not yet spoiling how the Spin plugin will be leveraged).
+If it's still "obscure", keep reading and hopefully it will make sense (yes, not yet spoiling how
+the Spin plugin will be leveraged).
 
 ## KinD Configurations
 
@@ -50,10 +55,12 @@ This section should clarify how the Spin plugin will be leveraged.
 
 ### Containerd Configuration File
 
-The first configuration is related to `containerd`, and more precisely, the one running inside the KinD container(s):
+The first configuration is related to `containerd`, and more precisely, the one running inside the
+KinD container(s):
 
 - Create a file in your `$HOME` directory called `config.toml`
-  - You can create it inside a directory, however it still should be located in your `$HOME` directory
+  - You can create it inside a directory, however it still should be located in your `$HOME`
+    directory
   - The location will be important when creating the KinD cluster
 - Paste the following content inside the `config.toml` file:
 
@@ -100,20 +107,22 @@ version = 2
   tolerate_missing_hugepages_controller = true
   # restrict_oom_score_adj needs to be true when running inside UserNS (rootless)
   restrict_oom_score_adj = false
-  
+
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.spin]
   runtime_type = "/usr/local/bin/containerd-shim-spin-v2"
 
 ```
 
-> NOTE: this file is a copy of the original one that can be found inside the KinD container. The only addition to the file is the declaration of the `spin` plugin (the last 2 lines)
+> NOTE: this file is a copy of the original one that can be found inside the KinD container. The
+> only addition to the file is the declaration of the `spin` plugin (the last 2 lines)
 
 ### KinD Configuration File
 
 The second configuration file is related to KinD and will be used when creating a new cluster:
 
 - Create a file in your `$HOME` directory called `kind-spin.yaml` (for example)
-  - You can create it inside a directory, however it still should be located in your `$HOME` directory
+  - You can create it inside a directory, however it still should be located in your `$HOME`
+    directory
   - The location will be important when creating the KinD cluster
 
 **Windows Users ONLY**
@@ -152,15 +161,22 @@ EOF
 
 Rancher Desktop leverages two different technologies depending on the OS its installed.
 
-On Windows, [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) will be used and for Linux and MacOS, [Lima](https://lima-vm.io/docs/) is the preferred choice.
+On Windows, [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) will be used and for Linux
+and MacOS, [Lima](https://lima-vm.io/docs/) is the preferred choice.
 
-While both technologies run Linux in a microVM, the behaviors differ in some parts. And the mountpoints with the host system are one of these differences.
+While both technologies run Linux in a microVM, the behaviors differ in some parts. And the
+mountpoints with the host system are one of these differences.
 
-In the case of RD on WSL, the file generated is created **inside** the microVM, as nerdctl will need to have acceess to the file's path. Technically speaking, the mountpoint `/mnt/c` could also be used, however sometimes it's not available due to WSL main configuration. This way should be a bit more generic.
+In the case of RD on WSL, the file generated is created **inside** the microVM, as nerdctl will need
+to have acceess to the file's path. Technically speaking, the mountpoint `/mnt/c` could also be
+used, however sometimes it's not available due to WSL main configuration. This way should be a bit
+more generic.
 
-Concerning RD on Lima, `$HOME` is mounted inside the microVM, therefore nerdctl will already see the files, and there's not need on copying the files over like it's done for WSL.
+Concerning RD on Lima, `$HOME` is mounted inside the microVM, therefore nerdctl will already see the
+files, and there's not need on copying the files over like it's done for WSL.
 
-Finally, on both cases, the binary `containerd-shim-spin-v2` is already accessible inside the microVMs.
+Finally, on both cases, the binary `containerd-shim-spin-v2` is already accessible inside the
+microVMs.
 
 ## Create KinD Cluster
 
@@ -190,15 +206,20 @@ kind create cluster --config=$HOME/kind-spin.yaml
 
 ![KinD create cluster on *nix](lima-kind-create-cluster.png)
 
-Now that you have a KinD cluster running with the spin plugin enabled for `containerd`. However, it is not yet used by Kubernetes (`runtimeClass`). This will be done on the next section.
+Now that you have a KinD cluster running with the spin plugin enabled for `containerd`. However, it
+is not yet used by Kubernetes (`runtimeClass`). This will be done on the next section.
 
 ## Deploy SpinKube
 
-From here, you can reference the [excellent quickstart to deploy SpinKube](https://www.spinkube.dev/docs/spin-operator/quickstart/) for a detailed explanation of each step.
+From here, you can reference the [excellent quickstart to deploy
+SpinKube](https://www.spinkube.dev/docs/spin-operator/quickstart/) for a detailed explanation of
+each step.
 
-To avoid repetition, and to encourage you to go read the quickstart (and the overall SpinKube docs), the steps below will only include short descriptions:
+To avoid repetition, and to encourage you to go read the quickstart (and the overall SpinKube docs),
+the steps below will only include short descriptions:
 
->  **IMPORTANT:** the following commands are "universal", working on both powershell and bash/zsh. The "multiline characters" have been removed on purpose (\` for powershell and \\ for bash).
+>  **IMPORTANT:** the following commands are "universal", working on both powershell and bash/zsh.
+>  The "multiline characters" have been removed on purpose (\` for powershell and \\ for bash).
 
 ```shell
 # Install cert-manager
@@ -243,13 +264,19 @@ Congratulations! You have a cluster with SpinKube running.
 
 ## Conclusion
 
-First of all, THANK YOU to all the projects maintainers and contributors! Without you, there wouldn't be blogs like this one.
+First of all, THANK YOU to all the projects maintainers and contributors! Without you, there
+wouldn't be blogs like this one.
 
-Secondly, as you may know or not, this is **highly experimental**, and the main purpose was more a proof-of-concept rather than a real solution.
+Secondly, as you may know or not, this is **highly experimental**, and the main purpose was more a
+proof-of-concept rather than a real solution.
 
-Lastly, SpinKube on Rancher Desktop has been tested, both by Fermyon and SUSE, and it's suggested that you [follow this howto](https://www.spinkube.dev/docs/spin-operator/tutorials/integrating-with-rancher-desktop/) for a long-term environment.
+Lastly, SpinKube on Rancher Desktop has been tested, both by Fermyon and SUSE, and it's suggested
+that you [follow this
+howto](https://www.spinkube.dev/docs/spin-operator/tutorials/integrating-with-rancher-desktop/) for
+a long-term environment.
 
-Special thanks to Fermyon for hosting this (first) blog on SpinKube and thanks to anyone reaching this last line, you mean the world to me.
+Special thanks to Fermyon for hosting this (first) blog on SpinKube and thanks to anyone reaching
+this last line, you mean the world to me.
 
 > \>>> The Corsair <<<
 

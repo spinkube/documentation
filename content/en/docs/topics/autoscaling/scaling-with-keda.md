@@ -8,7 +8,11 @@ aliases:
 - /docs/spin-operator/tutorials/scaling-with-keda
 ---
 
-[KEDA](https://keda.sh) extends Kubernetes to provide event-driven scaling capabilities, allowing it to react to events from Kubernetes internal and external sources using [KEDA scalers](https://keda.sh/docs/2.13/scalers/). KEDA provides a wide variety of scalers to define scaling behavior base on sources like CPU, Memory, Azure Event Hubs, Kafka, RabbitMQ, and more. We use a `ScaledObject` to dynamically scale the instance count of our SpinApp to meet the demand.
+[KEDA](https://keda.sh) extends Kubernetes to provide event-driven scaling capabilities, allowing it
+to react to events from Kubernetes internal and external sources using [KEDA
+scalers](https://keda.sh/docs/2.13/scalers/). KEDA provides a wide variety of scalers to define
+scaling behavior base on sources like CPU, Memory, Azure Event Hubs, Kafka, RabbitMQ, and more. We
+use a `ScaledObject` to dynamically scale the instance count of our SpinApp to meet the demand.
 
 ## Prerequisites
 
@@ -18,13 +22,17 @@ Please ensure the following tools are installed on your local machine:
 - [Helm](https://helm.sh) - the package manager for Kubernetes
 - [Docker](https://docs.docker.com/engine/install/) - for running k3d
 - [k3d](https://k3d.io) - a lightweight Kubernetes distribution that runs on Docker
-- [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) - cross-platform HTTP benchmarking CLI
+- [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) - cross-platform HTTP
+  benchmarking CLI
 
-> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these steps to configure KEDA autoscaling on your desired Kubernetes environment.
+> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these
+> steps to configure KEDA autoscaling on your desired Kubernetes environment.
 
 ## Setting Up Kubernetes Cluster
 
-Run the following command to create a Kubernetes cluster that has [the containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed: If you have a Kubernetes cluster already, please feel free to use it:
+Run the following command to create a Kubernetes cluster that has [the
+containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed: If
+you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
 k3d cluster create wasm-cluster-scale \
@@ -35,7 +43,10 @@ k3d cluster create wasm-cluster-scale \
 
 ### Deploying Spin Operator and its dependencies
 
-First, you have to install [cert-manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by Spin Operator's admission webhook system). For detailed installation instructions see [the cert-manager documentation](https://cert-manager.io/docs/installation/).
+First, you have to install [cert-manager](https://github.com/cert-manager/cert-manager) to
+automatically provision and manage TLS certificates (used by Spin Operator's admission webhook
+system). For detailed installation instructions see [the cert-manager
+documentation](https://cert-manager.io/docs/installation/).
 
 ```console
 # Install cert-manager CRDs
@@ -53,9 +64,13 @@ helm install \
   --version v1.14.3
 ```
 
-Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class" >}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref "glossary#custom-resource-definition-crd">}}):
+Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class"
+>}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
+"glossary#custom-resource-definition-crd">}}):
 
-> Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector` that matches nodes that have the shim installed. However, in the K3d example, they're installed on every node.
+> Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector`
+> that matches nodes that have the shim installed. However, in the K3d example, they're installed on
+> every node.
 
 ```console
 # Install the RuntimeClass
@@ -65,7 +80,8 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 ```
 
-Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}) with the following commands:
+Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
+"glossary#spin-app-executor-crd" >}}) with the following commands:
 
 ```console
 # Install Spin Operator
@@ -80,11 +96,13 @@ helm install spin-operator \
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
 ```
 
-Great, now you have Spin Operator up and running on your cluster. This means you’re set to create and deploy SpinApps later on in the tutorial.
+Great, now you have Spin Operator up and running on your cluster. This means you’re set to create
+and deploy SpinApps later on in the tutorial.
 
 ## Set Up Ingress
 
-Use the following command to set up ingress on your Kubernetes cluster. This ensures traffic can reach your Spin App once we’ve created it in future steps:
+Use the following command to set up ingress on your Kubernetes cluster. This ensures traffic can
+reach your Spin App once we’ve created it in future steps:
 
 ```console
 # Setup ingress following this tutorial https://k3d.io/v5.4.6/usage/exposing_services/
@@ -113,7 +131,8 @@ Hit enter to create the ingress resource.
 
 ## Setting Up KEDA
 
-Use the following command to setup KEDA on your Kubernetes cluster using Helm. Different deployment methods are described at [Deploying KEDA on keda.sh](https://keda.sh/docs/2.13/deploy/):
+Use the following command to setup KEDA on your Kubernetes cluster using Helm. Different deployment
+methods are described at [Deploying KEDA on keda.sh](https://keda.sh/docs/2.13/deploy/):
 
 ```console
 # Add the Helm repository
@@ -128,10 +147,16 @@ helm install keda kedacore/keda --namespace keda --create-namespace
 
 ## Deploy Spin App and the KEDA ScaledObject
 
-Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of the Spin Operator repository.
+Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the
+Spin App in the
+[apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of
+the Spin Operator repository.
 
 
-We can take a look at the `SpinApp` and the KEDA `ScaledObject` definitions in our deployment files below. As you can see, we have explicitly specified resource limits to `500m` of `cpu` (`spec.resources.limits.cpu`) and `500Mi` of `memory` (`spec.resources.limits.memory`) per `SpinApp`:
+We can take a look at the `SpinApp` and the KEDA `ScaledObject` definitions in our deployment files
+below. As you can see, we have explicitly specified resource limits to `500m` of `cpu`
+(`spec.resources.limits.cpu`) and `500Mi` of `memory` (`spec.resources.limits.memory`) per
+`SpinApp`:
 
 ```yaml
 # https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
@@ -153,7 +178,9 @@ spec:
 ---
 ```
 
-We will scale the instance count when we’ve reached a 50% utilization in `cpu` (`spec.triggers[cpu].metadata.value`). We’ve also instructed KEDA to scale our SpinApp horizontally within the range of 1 (`spec.minReplicaCount`) and 20 (`spec.maxReplicaCount`).:
+We will scale the instance count when we’ve reached a 50% utilization in `cpu`
+(`spec.triggers[cpu].metadata.value`). We’ve also instructed KEDA to scale our SpinApp horizontally
+within the range of 1 (`spec.minReplicaCount`) and 20 (`spec.maxReplicaCount`).:
 
 ```yaml
 # https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-scaledobject.yaml
@@ -173,9 +200,14 @@ spec:
         value: "50"
 ```
 
-> The Kubernetes documentation is the place to learn more about [limits and requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits). Consult the KEDA documentation to learn more about [ScaledObject](https://keda.sh/docs/2.13/concepts/scaling-deployments/#scaledobject-spec) and [KEDA's built-in scalers](https://keda.sh/docs/2.13/scalers/).
+> The Kubernetes documentation is the place to learn more about [limits and
+> requests](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits).
+> Consult the KEDA documentation to learn more about
+> [ScaledObject](https://keda.sh/docs/2.13/concepts/scaling-deployments/#scaledobject-spec) and
+> [KEDA's built-in scalers](https://keda.sh/docs/2.13/scalers/).
 
-Let’s deploy the SpinApp and the KEDA ScaledObject instance onto our cluster with the following command:
+Let’s deploy the SpinApp and the KEDA ScaledObject instance onto our cluster with the following
+command:
 
 ```console
 # Deploy the SpinApp
@@ -207,7 +239,9 @@ cpu-scaling   apps/v1.Deployment   keda-spinapp      1     20    cpu        True
 
 ## Generate Load to Test Autoscale
 
-Now let’s use Bombardier to generate traffic to test how well KEDA scales our SpinApp. The following Bombardier command will attempt to establish 40 connections during a period of 3 minutes (or less). If a request is not responded to within 5 seconds that request will timeout:
+Now let’s use Bombardier to generate traffic to test how well KEDA scales our SpinApp. The following
+Bombardier command will attempt to establish 40 connections during a period of 3 minutes (or less).
+If a request is not responded to within 5 seconds that request will timeout:
 
 ```console
 # Generate a bunch of load

@@ -9,7 +9,8 @@ aliases:
 - /docs/spin-operator/tutorials/package-and-deploy
 ---
 
-This article explains how Spin Apps are packaged and distributed via both public and private registries. You will learn how to:
+This article explains how Spin Apps are packaged and distributed via both public and private
+registries. You will learn how to:
 
 - Package and distribute Spin Apps
 - Deploy Spin Apps
@@ -27,7 +28,9 @@ For this tutorial in particular, you need
 
 ## Creating a new Spin App
 
-You use the `spin` CLI, to create a new Spin App. The `spin` CLI provides different templates, which you can use to quickly create different kinds of Spin Apps. For demonstration purposes, you will use the `http-go` template to create a simple Spin App.
+You use the `spin` CLI, to create a new Spin App. The `spin` CLI provides different templates, which
+you can use to quickly create different kinds of Spin Apps. For demonstration purposes, you will use
+the `http-go` template to create a simple Spin App.
 
 ```shell
 # Create a new Spin App using the http-go template
@@ -37,7 +40,8 @@ spin new --accept-defaults -t http-go hello-spin
 cd hello-spin
 ```
 
-The `spin` CLI created all necessary files within `hello-spin`. Besides the Spin Manifest (`spin.toml`), you can find the actual implementation of the app in `main.go`:
+The `spin` CLI created all necessary files within `hello-spin`. Besides the Spin Manifest
+(`spin.toml`), you can find the actual implementation of the app in `main.go`:
 
 ```go
 package main
@@ -59,26 +63,36 @@ func init() {
 func main() {}
 ```
 
-This implementation will respond to any incoming HTTP request, and return an HTTP response with a status code of 200 (`Ok`) and send `Hello Fermyon` as the response body.
+This implementation will respond to any incoming HTTP request, and return an HTTP response with a
+status code of 200 (`Ok`) and send `Hello Fermyon` as the response body.
 
-You can test the app on your local machine by invoking the `spin up` command from within the `hello-spin` folder.
+You can test the app on your local machine by invoking the `spin up` command from within the
+`hello-spin` folder.
 
 ## Packaging and Distributing Spin Apps
 
-Spin Apps are packaged and distributed as OCI artifacts. By leveraging OCI artifacts, Spin Apps can be distributed using any registry that implements the [Open Container Initiative Distribution Specification](https://github.com/opencontainers/distribution-spec) (a.k.a. "OCI Distribution Spec").
+Spin Apps are packaged and distributed as OCI artifacts. By leveraging OCI artifacts, Spin Apps can
+be distributed using any registry that implements the [Open Container Initiative Distribution
+Specification](https://github.com/opencontainers/distribution-spec) (a.k.a. "OCI Distribution
+Spec").
 
-The `spin` CLI simplifies packaging and distribution of Spin Apps and provides an atomic command for this (`spin registry push`). You can package and distribute the `hello-spin` app that you created as part of the previous section like this:
+The `spin` CLI simplifies packaging and distribution of Spin Apps and provides an atomic command for
+this (`spin registry push`). You can package and distribute the `hello-spin` app that you created as
+part of the previous section like this:
 
 ```shell
 # Package and Distribute the hello-spin app
 spin registry push --build ttl.sh/hello-spin:24h
 ```
 
-> It is a good practice to add the `--build` flag to `spin registry push`. It prevents you from accidentally pushing an outdated version of your Spin App to your registry of choice.
+> It is a good practice to add the `--build` flag to `spin registry push`. It prevents you from
+> accidentally pushing an outdated version of your Spin App to your registry of choice.
 
 ## Deploying Spin Apps
 
-To deploy Spin Apps to a Kubernetes cluster which has Spin Operator running, you use the `kube` plugin for `spin`. Use the `spin kube deploy` command as shown here to deploy the `hello-spin` app to your Kubernetes cluster:
+To deploy Spin Apps to a Kubernetes cluster which has Spin Operator running, you use the `kube`
+plugin for `spin`. Use the `spin kube deploy` command as shown here to deploy the `hello-spin` app
+to your Kubernetes cluster:
 
 ```shell
 # Deploy the hello-spin app to your Kubernetes Cluster
@@ -89,7 +103,9 @@ spinapp.core.spinoperator.dev/hello-spin created
 
 ## Scaffolding Spin Apps
 
-In the previous section, you deployed the `hello-spin` app using the `spin kube deploy` command. Although this is handy, you may want to inspect, or alter the Kubernetes manifests before applying them. You use the `spin kube scaffold` command to generate Kubernetes manifests:
+In the previous section, you deployed the `hello-spin` app using the `spin kube deploy` command.
+Although this is handy, you may want to inspect, or alter the Kubernetes manifests before applying
+them. You use the `spin kube scaffold` command to generate Kubernetes manifests:
 
 ```shell
 spin kube scaffold --from ttl.sh/hello-spin:24h
@@ -102,7 +118,8 @@ spec:
   replicas: 2
 ```
 
-By default, the command will print all Kubernetes menifests to `STDOUT`. Alternatively, you can specify the `out` argument to store the manifests to a file:
+By default, the command will print all Kubernetes menifests to `STDOUT`. Alternatively, you can
+specify the `out` argument to store the manifests to a file:
 
 ```shell
 # Scaffold manifests to spinapp.yaml
@@ -122,9 +139,14 @@ spec:
 
 ## Distributing and Deploying Spin Apps via private registries
 
-It is quite common to distribute Spin Apps through private registries that require some sort of authentication. To publish a Spin App to a private registry, you have to authenticate using the `spin registry login` command.
+It is quite common to distribute Spin Apps through private registries that require some sort of
+authentication. To publish a Spin App to a private registry, you have to authenticate using the
+`spin registry login` command.
 
-For demonstration purposes, you will now distribute the Spin App via GitHub Container Registry (GHCR). You can follow [this guide by GitHub](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic) to create a new personal access token (PAT), which is required for authentication.
+For demonstration purposes, you will now distribute the Spin App via GitHub Container Registry
+(GHCR). You can follow [this guide by
+GitHub](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
+to create a new personal access token (PAT), which is required for authentication.
 
 ```shell
 # Store PAT and GitHub username as environment variables
@@ -147,7 +169,9 @@ Pushing app to the Registry...
 Pushed with digest sha256:1611d51b296574f74b99df1391e2dc65f210e9ea695fbbce34d770ecfcfba581
 ```
 
-In Kubernetes you store authentication information as secret of type `docker-registry`. The following snippet shows how to create such a secret with `kubectl` leveraging the environment variables, you specified in the previous section:
+In Kubernetes you store authentication information as secret of type `docker-registry`. The
+following snippet shows how to create such a secret with `kubectl` leveraging the environment
+variables, you specified in the previous section:
 
 ```shell
 # Create Secret in Kubernetes
@@ -167,7 +191,9 @@ spin kube scaffold --from ghcr.io/$GH_USER/hello-spin:0.0.1 \
     --out spinapp.yaml
 ```
 
-Before deploying the manifest with `kubectl`, update `spinapp.yaml` and link the `ghcr` secret you previously created using the `imagePullSecrets` property. Your `SpinApp` manifest should look like this:
+Before deploying the manifest with `kubectl`, update `spinapp.yaml` and link the `ghcr` secret you
+previously created using the `imagePullSecrets` property. Your `SpinApp` manifest should look like
+this:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1alpha1
@@ -182,7 +208,8 @@ spec:
   executor: containerd-shim-spin
 ```
 
-> `$GH_USER` should match the actual username provided while running through the previous sections of this article
+> `$GH_USER` should match the actual username provided while running through the previous sections
+> of this article
 
 Finally, you can deploy the app using `kubectl apply`:
 

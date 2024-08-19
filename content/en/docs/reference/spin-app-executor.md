@@ -98,8 +98,7 @@ createDeployment is true.<br/>
 <small>[back to parent](#spinappexecutorspec)</small>
 
 
-DeploymentConfig specifies how the deployment should be configured when
-createDeployment is true.
+DeploymentConfig specifies how the deployment should be configured when createDeployment is true.
 
 <table>
     <thead>

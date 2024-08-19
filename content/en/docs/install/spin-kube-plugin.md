@@ -7,15 +7,18 @@ aliases:
 - /docs/spin-plugin-kube/installation
 ---
 
-The `kube` plugin for `spin` (The Spin CLI) provides first class experience for working with Spin apps in the context of Kubernetes.
+The `kube` plugin for `spin` (The Spin CLI) provides first class experience for working with Spin
+apps in the context of Kubernetes.
 
 ## Prerequisites
 
-Ensure you have the Spin CLI ([version 2.3.1 or newer](https://developer.fermyon.com/spin/v2/upgrade)) installed on your machine.
+Ensure you have the Spin CLI ([version 2.3.1 or
+newer](https://developer.fermyon.com/spin/v2/upgrade)) installed on your machine.
 
 ## Install the plugin
 
-Before you install the plugin, you should fetch the list of latest Spin plugins from the spin-plugins repository:
+Before you install the plugin, you should fetch the list of latest Spin plugins from the
+spin-plugins repository:
 
 ```sh
 # Update the list of latest Spin plugins

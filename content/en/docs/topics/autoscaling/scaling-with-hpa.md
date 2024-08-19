@@ -8,7 +8,11 @@ aliases:
 - /docs/spin-operator/tutorials/scaling-with-hpa
 ---
 
-Horizontal scaling, in the Kubernetes sense, means deploying more pods to meet demand (different from vertical scaling whereby more memory and CPU resources are assigned to already running pods). In this tutorial, we configure [HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to dynamically scale the instance count of our SpinApps to meet the demand.
+Horizontal scaling, in the Kubernetes sense, means deploying more pods to meet demand (different
+from vertical scaling whereby more memory and CPU resources are assigned to already running pods).
+In this tutorial, we configure
+[HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) to dynamically
+scale the instance count of our SpinApps to meet the demand.
 
 ## Prerequisites
 
@@ -18,13 +22,17 @@ Ensure you have the following tools installed:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes CLI
 - [k3d](https://k3d.io) - a lightweight Kubernetes distribution that runs on Docker
 - [Helm](https://helm.sh) - the package manager for Kubernetes
-- [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) - cross-platform HTTP benchmarking CLI
+- [Bombardier](https://pkg.go.dev/github.com/codesenberg/bombardier) - cross-platform HTTP
+  benchmarking CLI
 
-> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these steps to configure HPA autoscaling on your desired Kubernetes environment.
+> We use k3d to run a Kubernetes cluster locally as part of this tutorial, but you can follow these
+> steps to configure HPA autoscaling on your desired Kubernetes environment.
 
 ## Setting Up Kubernetes Cluster
 
-Run the following command to create a Kubernetes cluster that has [the containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed: If you have a Kubernetes cluster already, please feel free to use it:
+Run the following command to create a Kubernetes cluster that has [the
+containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed: If
+you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
 k3d cluster create wasm-cluster-scale \
@@ -35,7 +43,10 @@ k3d cluster create wasm-cluster-scale \
 
 ### Deploying Spin Operator and its dependencies
 
-First, you have to install [cert-manager](https://github.com/cert-manager/cert-manager) to automatically provision and manage TLS certificates (used by Spin Operator's admission webhook system). For detailed installation instructions see [the cert-manager documentation](https://cert-manager.io/docs/installation/).
+First, you have to install [cert-manager](https://github.com/cert-manager/cert-manager) to
+automatically provision and manage TLS certificates (used by Spin Operator's admission webhook
+system). For detailed installation instructions see [the cert-manager
+documentation](https://cert-manager.io/docs/installation/).
 
 ```console
 # Install cert-manager CRDs
@@ -53,9 +64,13 @@ helm install \
   --version v1.14.3
 ```
 
-Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class" >}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref "glossary#custom-resource-definition-crd">}}):
+Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class"
+>}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
+"glossary#custom-resource-definition-crd">}}):
 
-> Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector` that matches nodes that have the shim installed. However, in the K3d example, they're installed on every node.
+> Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector`
+> that matches nodes that have the shim installed. However, in the K3d example, they're installed on
+> every node.
 
 ```console
 # Install the RuntimeClass
@@ -65,7 +80,8 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 ```
 
-Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}) with the following commands:
+Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
+"glossary#spin-app-executor-crd" >}}) with the following commands:
 
 ```console
 # Install Spin Operator
@@ -80,11 +96,13 @@ helm install spin-operator \
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
 ```
 
-Great, now you have Spin Operator up and running on your cluster. This means you’re set to create and deploy SpinApps later on in the tutorial.
+Great, now you have Spin Operator up and running on your cluster. This means you’re set to create
+and deploy SpinApps later on in the tutorial.
 
 ## Set Up Ingress
 
-Use the following command to set up ingress on your Kubernetes cluster. This ensures traffic can reach your SpinApp once we’ve created it in future steps:
+Use the following command to set up ingress on your Kubernetes cluster. This ensures traffic can
+reach your SpinApp once we’ve created it in future steps:
 
 ```console
 # Setup ingress following this tutorial https://k3d.io/v5.4.6/usage/exposing_services/
@@ -113,9 +131,17 @@ Hit enter to create the ingress resource.
 
 ## Deploy Spin App and HorizontalPodAutoscaler (HPA)
 
-Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the Spin App in the [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of the Spin Operator repository.
+Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the
+Spin App in the
+[apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of
+the Spin Operator repository.
 
-We can take a look at the SpinApp and HPA definitions in our deployment file below/. As you can see, we have set our `resources` -> `limits` to `500m` of `cpu` and `500Mi` of `memory` per Spin application and we will scale the instance count when we’ve reached a 50% utilization in `cpu` and `memory`. We’ve also defined support a maximum [replica](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas) count of 10 and a minimum replica count of 1:
+We can take a look at the SpinApp and HPA definitions in our deployment file below/. As you can see,
+we have set our `resources` -> `limits` to `500m` of `cpu` and `500Mi` of `memory` per Spin
+application and we will scale the instance count when we’ve reached a 50% utilization in `cpu` and
+`memory`. We’ve also defined support a maximum
+[replica](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#replicas) count of
+10 and a minimum replica count of 1:
 
 ```yaml
 apiVersion: core.spinoperator.dev/v1alpha1
@@ -154,9 +180,12 @@ spec:
 ```
 
 For more information about HPA, please visit the following links:
-- [Kubernetes Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
-- [Kubernetes HorizontalPodAutoscaler Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
-- [HPA Container Resource Metrics](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics)
+- [Kubernetes Horizontal Pod
+  Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+- [Kubernetes HorizontalPodAutoscaler
+  Walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+- [HPA Container Resource
+  Metrics](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#container-resource-metrics)
 
 Below is an example of the configuration to scale resources:
 
@@ -197,7 +226,8 @@ spec:
         averageUtilization: 50
 ```
 
-Let’s deploy the SpinApp and the HPA instance onto our cluster (using the above `.yaml` configuration). To apply the above configuration we use the following `kubectl apply` command:
+Let’s deploy the SpinApp and the HPA instance onto our cluster (using the above `.yaml`
+configuration). To apply the above configuration we use the following `kubectl apply` command:
 
 ```console
 # Install SpinApp and HPA
@@ -220,11 +250,18 @@ NAME                 REFERENCE                TARGETS   MINPODS   MAXPODS   REPL
 spinapp-autoscaler   Deployment/hpa-spinapp   6%/50%    1         10        1          97m
 ```
 
-> Please note: The [Kubernetes Plugin for Spin](https://www.spinkube.dev/docs/spin-plugin-kube/installation/) is a tool designed for Kubernetes integration with the Spin command-line interface. The [Kubernetes Plugin for Spin has a scaling tutorial](https://www.spinkube.dev/docs/spin-plugin-kube/tutorials/autoscaler-support/) that demonstrates how to use the `spin kube` command to tell Kubernetes when to scale your Spin application up or down based on demand).
+> Please note: The [Kubernetes Plugin for
+> Spin](https://www.spinkube.dev/docs/spin-plugin-kube/installation/) is a tool designed for
+> Kubernetes integration with the Spin command-line interface. The [Kubernetes Plugin for Spin has a
+> scaling tutorial](https://www.spinkube.dev/docs/spin-plugin-kube/tutorials/autoscaler-support/)
+> that demonstrates how to use the `spin kube` command to tell Kubernetes when to scale your Spin
+> application up or down based on demand).
 
 ## Generate Load to Test Autoscale
 
-Now let’s use Bombardier to generate traffic to test how well HPA scales our SpinApp. The following Bombardier command will attempt to establish 40 connections during a period of 3 minutes (or less). If a request is not responded to within 5 seconds that request will timeout:
+Now let’s use Bombardier to generate traffic to test how well HPA scales our SpinApp. The following
+Bombardier command will attempt to establish 40 connections during a period of 3 minutes (or less).
+If a request is not responded to within 5 seconds that request will timeout:
 
 ```console
 # Generate a bunch of load

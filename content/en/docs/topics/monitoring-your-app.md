@@ -1,18 +1,18 @@
 ---
-title: Observing SpinKube
+title: Monitoring your app
 description: How to view telemetry data from your Spin apps running in SpinKube.
 weight: 13
 ---
 
-This topic guide shows you how to configure SpinKube so your Spin apps export telemetry data to OpenTelemetry collector and Jaeger.
+This topic guide shows you how to configure SpinKube so your Spin apps export observability data. This data will export to an OpenTelemetry collector which will send it to Jaeger.
 
 ## Prerequisites
 
 Please ensure you have the following tools installed before continuing:
 
-- [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes CLI
-- [Helm](https://helm.sh) - the package manager for Kubernetes
-- [SpinKube](https://www.spinkube.dev/docs/spin-plugin-kube/installation) - the Kubernetes plugin for Spin
+- A Kubernetes cluster running SpinKube. See the [installation guides](https://www.spinkube.dev/docs/install/) for more information
+- The [kubectl CLI](https://kubernetes.io/docs/tasks/tools/)
+- The [Helm CLI](https://helm.sh)
 
 ## About OpenTelemetry Collector
 

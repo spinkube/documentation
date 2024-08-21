@@ -46,10 +46,10 @@ helm upgrade --install otel-collector open-telemetry/opentelemetry-collector \
     --set mode=deployment \
     --set config.exporters.otlp.endpoint=http://jaeger-collector.default.svc.cluster.local:4317 \
     --set config.exporters.otlp.tls.insecure=true \
-    --set config.service.pipelines.traces.exporters[0]=otlp \
-    --set config.service.pipelines.traces.processors[0]=batch \
-    --set config.service.pipelines.traces.receivers[0]=otlp \
-    --set config.service.pipelines.traces.receivers[1]=jaeger
+    --set config.service.pipelines.traces.exporters\[0\]=otlp \
+    --set config.service.pipelines.traces.processors\[0\]=batch \
+    --set config.service.pipelines.traces.receivers\[0\]=otlp \
+    --set config.service.pipelines.traces.receivers\[1\]=jaeger
 ```
 
 ## Deploy Jaeger

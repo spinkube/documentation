@@ -221,7 +221,7 @@ cloud-native environment or a containerized legacy application.
 
 ## Spin
 
-Spin is a framework designed for building and running event-driven microservice applications using
+[Spin](https://developer.fermyon.com/spin/v2/) is a framework designed for building and running event-driven microservice applications using
 WebAssembly (Wasm) components.
 
 ## `SpinApp` Manifest

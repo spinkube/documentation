@@ -12,11 +12,11 @@ might assist you with your work.
 ## No endpoints available for service "spin-operator-webhook-service"
 
 When following the quickstart guide the following error can occur when running the `kubectl apply -f
-https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml`
+https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml`
 command:
 
 ```console
-Error from server (InternalError): error when creating "https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml": Internal error occurred: failed calling webhook "mspinappexecutor.kb.io": failed to call webhook: Post "https://spin-operator-webhook-service.spin-operator.svc:443/mutate-core-spinoperator-dev-v1alpha1-spinappexecutor?timeout=10s": no endpoints available for service "spin-operator-webhook-service"
+Error from server (InternalError): error when creating "https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml": Internal error occurred: failed calling webhook "mspinappexecutor.kb.io": failed to call webhook: Post "https://spin-operator-webhook-service.spin-operator.svc:443/mutate-core-spinoperator-dev-v1alpha1-spinappexecutor?timeout=10s": no endpoints available for service "spin-operator-webhook-service"
 ```
 
 To address the error above, first look to see if Spin Operator is running:
@@ -62,13 +62,13 @@ To resolve this issue, please try to install the Spin Operator again. Except thi
 helm upgrade --install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.2.0 \
+  --version 0.3.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
 
 Once the Spin Operator is installed you can try and run the `kubectl apply -f
-https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml`
+https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml`
 command again. The issue should be resolved now.
 
 ## Error Validating Data: Connection Refused

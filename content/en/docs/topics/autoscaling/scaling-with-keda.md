@@ -74,10 +74,10 @@ Next, run the following commands to install the Spin [Runtime Class]({{<ref "glo
 
 ```console
 # Install the RuntimeClass
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.runtime-class.yaml
 
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.crds.yaml
 ```
 
 Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
@@ -88,12 +88,12 @@ Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.2.0 \
+  --version 0.3.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 
 # Install the shim executor
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml
 ```
 
 Great, now you have Spin Operator up and running on your cluster. This means you’re set to create

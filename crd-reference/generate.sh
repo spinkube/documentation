@@ -7,7 +7,7 @@ root_dir=$(dirname ${script_dir})
 
 cd $script_dir
 
-SPIN_OPERATOR_RELEASE=${SPIN_OPERATOR_RELEASE:-v0.2.0}
+SPIN_OPERATOR_RELEASE=${SPIN_OPERATOR_RELEASE:-v0.3.0}
 
 echo "Installing crdoc"
 go install fybrik.io/crdoc@latest

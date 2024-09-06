@@ -84,10 +84,10 @@ installed.
 
 ```shell
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.crds.yaml
 
 # Install the Runtime Class
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.runtime-class.yaml
 ```
 
 The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is
@@ -156,7 +156,7 @@ helm install spin-operator \
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}})::
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml
 ```
 
 ## Deploying a Spin App to AKS

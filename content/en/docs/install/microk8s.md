@@ -89,7 +89,7 @@ $ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
 Next, we need to install SpinKube’s operator using Helm (which is included with Microk8s).
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.2.0 --wait oci://ghcr.io/spinkube/charts/spin-operator
+$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.3.0 --wait oci://ghcr.io/spinkube/charts/spin-operator
 
 ```
 

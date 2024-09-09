@@ -91,7 +91,7 @@ The following installs the chart with the release name `spin-operator`:
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.2.0 \
+  --version 0.3.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -111,7 +111,7 @@ To upgrade the `spin-operator` release, run the following:
 # Upgrade Spin Operator using Helm
 helm upgrade spin-operator \
   --namespace spin-operator \
-  --version 0.2.0 \
+  --version 0.3.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```

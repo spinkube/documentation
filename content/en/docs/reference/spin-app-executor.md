@@ -98,7 +98,8 @@ createDeployment is true.<br/>
 <small>[back to parent](#spinappexecutorspec)</small>
 
 
-DeploymentConfig specifies how the deployment should be configured when createDeployment is true.
+DeploymentConfig specifies how the deployment should be configured when
+createDeployment is true.
 
 <table>
     <thead>
@@ -136,10 +137,10 @@ defined in `CACertSecret` the secret name will be `spin-ca`.<br/>
         </td>
         <td>false</td>
       </tr><tr>
-        <td><b>otel</b></td>
-        <td>string</td>
+        <td><b><a href="#spinappexecutorspecdeploymentconfigotel">otel</a></b></td>
+        <td>object</td>
         <td>
-          Otel creates environment variables which configure where and how telemetry data is exported from the Spin app.
+          Otel provides Kubernetes Bindings to Otel Variables.<br/>
         </td>
         <td>false</td>
       </tr></tbody>
@@ -149,7 +150,7 @@ defined in `CACertSecret` the secret name will be `spin-ca`.<br/>
 
 <small>[back to parent](#spinappexecutorspecdeploymentconfig)</small>
 
-Otel creates environment variables which configure where and how telemetry data is exported from the Spin app.
+Otel provides Kubernetes Bindings to Otel Variables.
 
 <table>
     <thead>
@@ -161,32 +162,32 @@ Otel creates environment variables which configure where and how telemetry data 
         </tr>
     </thead>
     <tbody><tr>
-      <td><b>exporter_otlp_endpoint</b></td>
-      <td>string</td>
-      <td>
-        Defines an endpoint to where all metrics, log, and trace data are exported.
-      </td>
-      <td>false</td>
-    </tr><tr>
-      <td><b>exporter_otlp_traces_endpoint</b></td>
-      <td>string</td>
-      <td>
-        Defines an endpoint to where all trace data are exported.
-      </td>
-      <td>false</td>
-    </tr><tr>
-      <td><b>exporter_otlp_metrics_endpoint</b></td>
-      <td>string</td>
-      <td>
-        Defines an endpoint to where all metrics data are exported.
-      </td>
-      <td>false</td>
-    </tr><tr>
-      <td><b>exporter_otlp_logs_endpoint</b></td>
-      <td>string</td>
-      <td>
-        Defines an endpoint to where all log data are exported.
-      </td>
-      <td>false</td>
-    </tr>
-
+        <td><b>exporter_otlp_endpoint</b></td>
+        <td>string</td>
+        <td>
+          ExporterOtlpEndpoint configures the default combined otlp endpoint for sending telemetry<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
+        <td><b>exporter_otlp_logs_endpoint</b></td>
+        <td>string</td>
+        <td>
+          ExporterOtlpLogsEndpoint configures the logs-specific otlp endpoint<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
+        <td><b>exporter_otlp_metrics_endpoint</b></td>
+        <td>string</td>
+        <td>
+          ExporterOtlpMetricsEndpoint configures the metrics-specific otlp endpoint<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
+        <td><b>exporter_otlp_traces_endpoint</b></td>
+        <td>string</td>
+        <td>
+          ExporterOtlpTracesEndpoint configures the trace-specific otlp endpoint<br/>
+        </td>
+        <td>false</td>
+      </tr></tbody>
+</table>

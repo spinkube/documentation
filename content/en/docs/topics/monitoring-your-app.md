@@ -17,14 +17,16 @@ Please ensure you have the following tools installed before continuing:
 ## About OpenTelemetry Collector
 
 From the OpenTelemetry [documentation](https://opentelemetry.io/docs/collector/):
->> The OpenTelemetry Collector offers a vendor-agnostic implementation of how to receive, process and export telemetry data. It removes the need to run, operate, and maintain multiple agents/collectors. This works with improved scalability and supports open source observability data formats (e.g. Jaeger, Prometheus, Fluent Bit, etc.) sending to one or more open source or commercial backends.
+
+> The OpenTelemetry Collector offers a vendor-agnostic implementation of how to receive, process and export telemetry data. It removes the need to run, operate, and maintain multiple agents/collectors. This works with improved scalability and supports open source observability data formats (e.g. Jaeger, Prometheus, Fluent Bit, etc.) sending to one or more open source or commercial backends.
 
 In our case, the OpenTelemetry collector serves as a single endpoint to receive and route telemetry data, letting us to monitor metrics, traces, and logs via our preferred UIs.
 
 ## About Jaeger
 
 From the Jaeger [documentation](https://www.jaegertracing.io/docs/):
->> Jaeger is a distributed tracing platform released as open source by Uber Technologies. With Jaeger you can: Monitor and troubleshoot distributed workflows, Identify performance bottlenecks, Track down root causes, Analyze service dependencies
+
+> Jaeger is a distributed tracing platform released as open source by Uber Technologies. With Jaeger you can: Monitor and troubleshoot distributed workflows, Identify performance bottlenecks, Track down root causes, Analyze service dependencies
 
 Here, we have the OpenTelemetry collector send the trace data to Jaeger.
 

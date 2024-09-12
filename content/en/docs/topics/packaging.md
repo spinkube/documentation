@@ -118,7 +118,7 @@ spec:
   replicas: 2
 ```
 
-By default, the command will print all Kubernetes menifests to `STDOUT`. Alternatively, you can
+By default, the command will print all Kubernetes manifests to `STDOUT`. Alternatively, you can
 specify the `out` argument to store the manifests to a file:
 
 ```shell
@@ -135,6 +135,12 @@ metadata:
 spec:
   image: "ttl.sh/hello-spin:24h"
   replicas: 2
+```
+
+You can then deploy the Spin App by applying the manifest with the `kubectl` CLI:
+
+```shell
+kubectl apply -f spinapp.yaml
 ```
 
 ## Distributing and Deploying Spin Apps via private registries

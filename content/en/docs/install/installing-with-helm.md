@@ -28,7 +28,6 @@ Before installing the chart, you'll need to ensure the following are installed:
   instructions see [the cert-manager documentation](https://cert-manager.io/docs/installation/).
 
 ```shell
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.crds.yaml
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.yaml
 ```
 

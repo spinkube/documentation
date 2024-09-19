@@ -46,8 +46,8 @@ jobs:
           go-version: '1.22.x'
           cache: true
 
-      - name: Generate CRD reference docs
-        run: npm run generate:crd:reference
+      - name: Check CRD reference docs
+        run: npm run check:crd:reference
 
       - name: Build
         run: |

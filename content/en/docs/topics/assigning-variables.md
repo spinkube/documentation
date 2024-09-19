@@ -110,7 +110,7 @@ The deployment manifest (`config/samples/variable-explorer.yaml`) specifies a st
 
 ```yaml
 kind: SpinApp
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 metadata:
   name: variable-explorer
 spec:
@@ -145,7 +145,7 @@ kubectl apply -f config/samples/variable-explorer.yaml
 
 configmap/spinapp-cfg created
 secret/spinapp-secret created
-spinapp.core.spinoperator.dev/variable-explorer created
+spinapp.core.spinkube.dev/variable-explorer created
 ```
 
 ## Inspecting runtime logs of your SpinApp
@@ -171,7 +171,7 @@ Hello from Kubernetes
 Finally, you can use `kubectl logs` to see all logs produced by the variable-explorer at runtime:
 
 ```bash
-kubectl logs -l core.spinoperator.dev/app-name=variable-explorer
+kubectl logs -l core.spinkube.dev/app-name=variable-explorer
 
 # Log Level: INFO
 # Platform Name: Kubernetes

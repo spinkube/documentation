@@ -114,7 +114,7 @@ $ spin kube scaffold --from ghcr.io/spinkube/containerd-shim-spin/examples/spin-
 This will write the following to `hello-world.yaml`:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: spin-rust-hello
@@ -128,7 +128,7 @@ Using `kubectl apply`, we can deploy that app:
 
 ```console
 $ kubectl apply -f hello-world.yaml
-spinapp.core.spinoperator.dev/spin-rust-hello created
+spinapp.core.spinkube.dev/spin-rust-hello created
 ```
 
 With SpinKube, SpinApps will be deployed as `Pod` resources, so we can see the app using `kubectl
@@ -157,7 +157,7 @@ metadata:
   annotations:
     service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
   labels:
-    core.spinoperator.dev/app-name: spin-rust-hello
+    core.spinkube.dev/app-name: spin-rust-hello
 spec:
   type: LoadBalancer
   ports:
@@ -166,7 +166,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    core.spinoperator.dev/app.spin-rust-hello.status: ready
+    core.spinkube.dev/app.spin-rust-hello.status: ready
   sessionAffinity: None
 ```
 
@@ -209,7 +209,7 @@ To delete this sample app, we will first delete the NodeBalancer, and then delet
 $ kubectl delete service spin-rust-hello-nodebalancer
 service "spin-rust-hello-nodebalancer" deleted
 $ kubectl delete spinapp spin-rust-hello
-spinapp.core.spinoperator.dev "spin-rust-hello" deleted
+spinapp.core.spinkube.dev "spin-rust-hello" deleted
 ```
 
 > If you delete the NodeBalancer out of the Linode console, it will not automatically delete the

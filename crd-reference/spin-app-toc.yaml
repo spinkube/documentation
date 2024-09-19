@@ -3,7 +3,7 @@ metadata:
   weight: 1
   description: "Custom Resource Definition (CRD) reference for `SpinApp`"
 groups:
-  - group: core.spinoperator.dev
+  - group: core.spinkube.dev
     version: v1alpha1
     kinds:
       - name: SpinApp

@@ -74,7 +74,7 @@ SpinApp CRD consists of several key fields that define the desired state of a Sp
 Here's an example of a SpinApp custom resource that uses the SpinApp CRD schema:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: simple-spinapp
@@ -91,7 +91,7 @@ You can modify the example above to customize the SpinApp via a YAML file. Here'
 file with additional customization options:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: simple-spinapp

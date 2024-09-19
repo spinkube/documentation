@@ -25,7 +25,7 @@ SpinApp is the Schema for the spinapps API
     <tbody><tr>
       <td><b>apiVersion</b></td>
       <td>string</td>
-      <td>core.spinoperator.dev/v1alpha1</td>
+      <td>core.spinkube.dev/v1alpha1</td>
       <td>true</td>
       </tr>
       <tr>

@@ -91,7 +91,7 @@ Replace `ttl.sh/hello-k3s:0.1.0` with your registry URL and tag.
 ```bash
 $ spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
 
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hello-k3s

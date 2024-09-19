@@ -147,7 +147,7 @@ Hello from Kubernetes
 Finally, you can use `kubectl logs` to see all logs produced by the variable-explorer at runtime:
 
 ```bash
-kubectl logs -l core.spinoperator.dev/app-name=variable-explorer
+kubectl logs -l core.spinkube.dev/app-name=variable-explorer
 
 # Log Level: INFO
 # Platform Name: Kubernetes

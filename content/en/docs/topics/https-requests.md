@@ -18,7 +18,7 @@ If you make a request without properly configured certificates, you'll encounter
 SpinKube can generate a default CA certificate bundle by setting `installDefaultCACerts` to `true`. This creates a secret named `spin-ca` populated with curl's [default bundle](https://curl.se/ca/cacert.pem). You can specify a custom secret name by setting `caCertSecret`.
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinAppExecutor
 metadata:
   name: containerd-shim-spin
@@ -46,7 +46,7 @@ kubectl create secret generic my-custom-ca --from-file=ca-certificates.crt
 Configure the executor to use the custom certificate secret:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinAppExecutor
 metadata:
   name: containerd-shim-spin

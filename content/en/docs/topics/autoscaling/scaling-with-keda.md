@@ -160,7 +160,7 @@ below. As you can see, we have explicitly specified resource limits to `500m` of
 
 ```yaml
 # https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: keda-spinapp
@@ -212,7 +212,7 @@ command:
 ```console
 # Deploy the SpinApp
 kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
-spinapp.core.spinoperator.dev/keda-spinapp created
+spinapp.core.spinkube.dev/keda-spinapp created
 
 # Deploy the ScaledObject
 kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-scaledobject.yaml

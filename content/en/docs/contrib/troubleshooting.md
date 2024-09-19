@@ -16,7 +16,7 @@ https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator
 command:
 
 ```console
-Error from server (InternalError): error when creating "https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml": Internal error occurred: failed calling webhook "mspinappexecutor.kb.io": failed to call webhook: Post "https://spin-operator-webhook-service.spin-operator.svc:443/mutate-core-spinoperator-dev-v1alpha1-spinappexecutor?timeout=10s": no endpoints available for service "spin-operator-webhook-service"
+Error from server (InternalError): error when creating "https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml": Internal error occurred: failed calling webhook "mspinappexecutor.kb.io": failed to call webhook: Post "https://spin-operator-webhook-service.spin-operator.svc:443/mutate-core-spinkube-dev-v1alpha1-spinappexecutor?timeout=10s": no endpoints available for service "spin-operator-webhook-service"
 ```
 
 To address the error above, first look to see if Spin Operator is running:

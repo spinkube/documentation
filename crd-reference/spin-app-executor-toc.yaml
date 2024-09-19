@@ -4,7 +4,7 @@ metadata:
   description: "Custom Resource Definition (CRD) reference for `SpinAppExecutor`"
   category: Spin Operator
 groups:
-  - group: core.spinoperator.dev
+  - group: core.spinkube.dev
     version: v1alpha1
     kinds:
       - name: SpinAppExecutor

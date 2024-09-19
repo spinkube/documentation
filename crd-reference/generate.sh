@@ -1,9 +1,11 @@
 #! /bin/bash
 
+# Generates the CRD reference docs for SpinAppExecutor and SpinApp and places them in the
+# content/en/docs/reference directory
+
 set -eo pipefail
 
 script_dir=$(dirname "$0")
-root_dir=$(dirname ${script_dir})
 
 cd $script_dir
 
@@ -19,14 +21,14 @@ wget https://github.com/spinkube/spin-operator/releases/download/$SPIN_OPERATOR_
 # Generate SpinAppExecutor Reference Docs
 echo "Generating CRD reference docs for SpinAppExecutor"
 crdoc -r ${spin_operator_crds_file} \
-    -o ${root_dir}/content/en/docs/spin-operator/reference/spin-app-executor.md \
+    -o ../content/en/docs/reference/spin-app-executor.md \
     --toc ./spin-app-executor-toc.yaml \
     --template ./spin-operator.tmpl
 
 echo "Generating CRD reference docs for SpinApp"
 # Generate SpinApp Reference Docs
 crdoc -r ${spin_operator_crds_file} \
-    -o ${root_dir}/content/en/docs/spin-operator/reference/spin-app.md \
+    -o ../content/en/docs/reference/spin-app.md \
     --toc ./spin-app-toc.yaml \
     --template ./spin-operator.tmpl
 

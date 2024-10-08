@@ -1,11 +1,9 @@
 ---
 title: SpinApp
 weight: 1
-description: Custom Resource Definition (CRD) reference for `SpinApp`.
+description: Custom Resource Definition (CRD) reference for `SpinApp`
 categories: [Spin Operator]
 tags: [reference]
-aliases:
-- /docs/spin-operator/reference/spin-app
 ---
 Resource Types:
 
@@ -59,7 +57,7 @@ SpinApp is the Schema for the spinapps API
 </table>
 
 
-### `SpinApp.spec`
+### `SpinApp.spec` 
 <small>[back to parent](#spinapp)</small>
 
 
@@ -81,9 +79,9 @@ SpinAppSpec defines the desired state of SpinApp
           Executor controls how this app is executed in the cluster.
 
 
-Defaults to whatever executor is available on the cluster. If multiple executors are available then
-the first executor in alphabetical order will be chosen. If no executors are available then no
-default will be set.<br/>
+Defaults to whatever executor is available on the cluster. If multiple
+executors are available then the first executor in alphabetical order
+will be chosen. If no executors are available then no default will be set.<br/>
         </td>
         <td>true</td>
       </tr><tr>
@@ -112,9 +110,9 @@ default will be set.<br/>
         <td>boolean</td>
         <td>
           EnableAutoscaling indicates whether the app is allowed to autoscale. If
-true then the operator leaves the replica count of the underlying deployment to be managed by an
-external autoscaler (HPA/KEDA). Replicas cannot be defined if this is enabled. By default
-EnableAutoscaling is false.<br/>
+true then the operator leaves the replica count of the underlying
+deployment to be managed by an external autoscaler (HPA/KEDA). Replicas
+cannot be defined if this is enabled. By default EnableAutoscaling is false.<br/>
           <br/>
             <i>Default</i>: false<br/>
         </td>
@@ -131,6 +129,13 @@ EnableAutoscaling is false.<br/>
         <td>map[string]string</td>
         <td>
           PodAnnotations defines annotations to be applied to the underlying pods.<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
+        <td><b>podLabels</b></td>
+        <td>map[string]string</td>
+        <td>
+          PodLabels defines labels to be applied to the underlying pods.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -188,7 +193,7 @@ EnableAutoscaling is false.<br/>
 </table>
 
 
-### `SpinApp.spec.checks`
+### `SpinApp.spec.checks` 
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -221,7 +226,7 @@ Checks defines health checks that should be used by Kubernetes to monitor the ap
 </table>
 
 
-### `SpinApp.spec.checks.liveness`
+### `SpinApp.spec.checks.liveness` 
 <small>[back to parent](#spinappspecchecks)</small>
 
 
@@ -302,7 +307,7 @@ Defaults to 1 second. Minimum value is 1.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.liveness.httpGet`
+### `SpinApp.spec.checks.liveness.httpGet` 
 <small>[back to parent](#spinappspecchecksliveness)</small>
 
 
@@ -336,7 +341,7 @@ health check, e.g /healthz.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.liveness.httpGet.httpHeaders[index]`
+### `SpinApp.spec.checks.liveness.httpGet.httpHeaders[index]` 
 <small>[back to parent](#spinappspeccheckslivenesshttpget)</small>
 
 
@@ -369,7 +374,7 @@ HTTPHealthProbeHeader is an abstraction around a http header key/value pair.
 </table>
 
 
-### `SpinApp.spec.checks.readiness`
+### `SpinApp.spec.checks.readiness` 
 <small>[back to parent](#spinappspecchecks)</small>
 
 
@@ -450,7 +455,7 @@ Defaults to 1 second. Minimum value is 1.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.readiness.httpGet`
+### `SpinApp.spec.checks.readiness.httpGet` 
 <small>[back to parent](#spinappspecchecksreadiness)</small>
 
 
@@ -484,7 +489,7 @@ health check, e.g /healthz.<br/>
 </table>
 
 
-### `SpinApp.spec.checks.readiness.httpGet.httpHeaders[index]`
+### `SpinApp.spec.checks.readiness.httpGet.httpHeaders[index]` 
 <small>[back to parent](#spinappspecchecksreadinesshttpget)</small>
 
 
@@ -517,12 +522,12 @@ HTTPHealthProbeHeader is an abstraction around a http header key/value pair.
 </table>
 
 
-### `SpinApp.spec.imagePullSecrets[index]`
+### `SpinApp.spec.imagePullSecrets[index]` 
 <small>[back to parent](#spinappspec)</small>
 
 
-LocalObjectReference contains enough information to let you locate the referenced object inside the
-same namespace.
+LocalObjectReference contains enough information to let you locate the
+referenced object inside the same namespace.
 
 <table>
     <thead>
@@ -538,15 +543,21 @@ same namespace.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.resources`
+### `SpinApp.spec.resources` 
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -581,7 +592,7 @@ otherwise to an implementation-defined value. Requests cannot exceed Limits.<br/
 </table>
 
 
-### `SpinApp.spec.runtimeConfig`
+### `SpinApp.spec.runtimeConfig` 
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -632,7 +643,7 @@ e.g on-disk or turso.<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index]`
+### `SpinApp.spec.runtimeConfig.keyValueStores[index]` 
 <small>[back to parent](#spinappspecruntimeconfig)</small>
 
 
@@ -672,7 +683,7 @@ e.g on-disk or turso.<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index]`
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index]` 
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindex)</small>
 
 
@@ -712,7 +723,7 @@ e.g on-disk or turso.<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom`
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom` 
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindexoptionsindex)</small>
 
 
@@ -745,7 +756,7 @@ ValueFrom is a reference to dynamically bind the variable to.
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.configMapKeyRef`
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.configMapKeyRef` 
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindexoptionsindexvaluefrom)</small>
 
 
@@ -772,8 +783,14 @@ Selects a key of a ConfigMap.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -787,7 +804,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.secretKeyRef`
+### `SpinApp.spec.runtimeConfig.keyValueStores[index].options[index].valueFrom.secretKeyRef` 
 <small>[back to parent](#spinappspecruntimeconfigkeyvaluestoresindexoptionsindexvaluefrom)</small>
 
 
@@ -814,8 +831,14 @@ Selects a key of a secret in the apps namespace
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -829,7 +852,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute`
+### `SpinApp.spec.runtimeConfig.llmCompute` 
 <small>[back to parent](#spinappspecruntimeconfig)</small>
 
 
@@ -862,7 +885,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index]`
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index]` 
 <small>[back to parent](#spinappspecruntimeconfigllmcompute)</small>
 
 
@@ -902,7 +925,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom`
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom` 
 <small>[back to parent](#spinappspecruntimeconfigllmcomputeoptionsindex)</small>
 
 
@@ -935,7 +958,7 @@ ValueFrom is a reference to dynamically bind the variable to.
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.configMapKeyRef`
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.configMapKeyRef` 
 <small>[back to parent](#spinappspecruntimeconfigllmcomputeoptionsindexvaluefrom)</small>
 
 
@@ -962,8 +985,14 @@ Selects a key of a ConfigMap.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -977,7 +1006,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.secretKeyRef`
+### `SpinApp.spec.runtimeConfig.llmCompute.options[index].valueFrom.secretKeyRef` 
 <small>[back to parent](#spinappspecruntimeconfigllmcomputeoptionsindexvaluefrom)</small>
 
 
@@ -1004,8 +1033,14 @@ Selects a key of a secret in the apps namespace
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1019,7 +1054,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index]`
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index]` 
 <small>[back to parent](#spinappspecruntimeconfig)</small>
 
 
@@ -1059,7 +1094,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index]`
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index]` 
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindex)</small>
 
 
@@ -1099,7 +1134,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom`
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom` 
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindexoptionsindex)</small>
 
 
@@ -1132,7 +1167,7 @@ ValueFrom is a reference to dynamically bind the variable to.
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.configMapKeyRef`
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.configMapKeyRef` 
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindexoptionsindexvaluefrom)</small>
 
 
@@ -1159,8 +1194,14 @@ Selects a key of a ConfigMap.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1174,7 +1215,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.secretKeyRef`
+### `SpinApp.spec.runtimeConfig.sqliteDatabases[index].options[index].valueFrom.secretKeyRef` 
 <small>[back to parent](#spinappspecruntimeconfigsqlitedatabasesindexoptionsindexvaluefrom)</small>
 
 
@@ -1201,8 +1242,14 @@ Selects a key of a secret in the apps namespace
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1216,7 +1263,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.variables[index]`
+### `SpinApp.spec.variables[index]` 
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -1256,7 +1303,7 @@ SpinVar defines a binding between a spin variable and a static or dynamic value.
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom`
+### `SpinApp.spec.variables[index].valueFrom` 
 <small>[back to parent](#spinappspecvariablesindex)</small>
 
 
@@ -1305,7 +1352,7 @@ spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podI
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.configMapKeyRef`
+### `SpinApp.spec.variables[index].valueFrom.configMapKeyRef` 
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
@@ -1332,8 +1379,14 @@ Selects a key of a ConfigMap.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1347,13 +1400,12 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.fieldRef`
+### `SpinApp.spec.variables[index].valueFrom.fieldRef` 
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
-Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`,
-`metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP,
-status.podIP, status.podIPs.
+Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
+spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
 <table>
     <thead>
@@ -1382,13 +1434,12 @@ status.podIP, status.podIPs.
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.resourceFieldRef`
+### `SpinApp.spec.variables[index].valueFrom.resourceFieldRef` 
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
-Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory,
-limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are
-currently supported.
+Selects a resource of the container: only resources limits and requests
+(limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
 <table>
     <thead>
@@ -1424,7 +1475,7 @@ currently supported.
 </table>
 
 
-### `SpinApp.spec.variables[index].valueFrom.secretKeyRef`
+### `SpinApp.spec.variables[index].valueFrom.secretKeyRef` 
 <small>[back to parent](#spinappspecvariablesindexvaluefrom)</small>
 
 
@@ -1451,8 +1502,14 @@ Selects a key of a secret in the pod's namespace
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1466,7 +1523,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumeMounts[index]`
+### `SpinApp.spec.volumeMounts[index]` 
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -1527,15 +1584,16 @@ recursively.
 If ReadOnly is false, this field has no meaning and must be unspecified.
 
 
-If ReadOnly is true, and this field is set to Disabled, the mount is not made recursively read-only.
-If this field is set to IfPossible, the mount is made recursively read-only, if it is supported by
-the container runtime.  If this field is set to Enabled, the mount is made recursively read-only if
-it is supported by the container runtime, otherwise the pod will not be started and an error will be
-generated to indicate the reason.
+If ReadOnly is true, and this field is set to Disabled, the mount is not made
+recursively read-only.  If this field is set to IfPossible, the mount is made
+recursively read-only, if it is supported by the container runtime.  If this
+field is set to Enabled, the mount is made recursively read-only if it is
+supported by the container runtime, otherwise the pod will not be started and
+an error will be generated to indicate the reason.
 
 
-If this field is set to IfPossible or Enabled, MountPropagation must be set to None (or be
-unspecified, which defaults to None).
+If this field is set to IfPossible or Enabled, MountPropagation must be set to
+None (or be unspecified, which defaults to None).
 
 
 If this field is not specified, it is treated as an equivalent of Disabled.<br/>
@@ -1554,16 +1612,16 @@ Defaults to "" (volume's root).<br/>
         <td>string</td>
         <td>
           Expanded path within the volume from which the container's volume should be mounted.
-Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the
-container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually
-exclusive.<br/>
+Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.
+Defaults to "" (volume's root).
+SubPathExpr and SubPath are mutually exclusive.<br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index]`
+### `SpinApp.spec.volumes[index]` 
 <small>[back to parent](#spinappspec)</small>
 
 
@@ -1663,22 +1721,29 @@ The volume's lifecycle is tied to the pod that defines it - it will be created b
 and deleted when the pod is removed.
 
 
-Use this if: a) the volume is only needed while the pod runs, b) features of normal volumes like
-restoring from snapshot or capacity tracking are needed, c) the storage driver is specified through
-a storage class, and d) the storage driver supports dynamic volume provisioning through a
-   PersistentVolumeClaim (see EphemeralVolumeSource for more information on the connection between
-this volume type and PersistentVolumeClaim).
+Use this if:
+a) the volume is only needed while the pod runs,
+b) features of normal volumes like restoring from snapshot or capacity
+   tracking are needed,
+c) the storage driver is specified through a storage class, and
+d) the storage driver supports dynamic volume provisioning through
+   a PersistentVolumeClaim (see EphemeralVolumeSource for more
+   information on the connection between this volume type
+   and PersistentVolumeClaim).
 
 
-Use PersistentVolumeClaim or one of the vendor-specific APIs for volumes that persist for longer
-than the lifecycle of an individual pod.
+Use PersistentVolumeClaim or one of the vendor-specific
+APIs for volumes that persist for longer than the lifecycle
+of an individual pod.
 
 
-Use CSI for light-weight local ephemeral volumes if the CSI driver is meant to be used that way -
-see the documentation of the driver for more information.
+Use CSI for light-weight local ephemeral volumes if the CSI driver is meant to
+be used that way - see the documentation of the driver for
+more information.
 
 
-A pod can use both types of ephemeral volumes and persistent volumes at the same time.<br/>
+A pod can use both types of ephemeral volumes and
+persistent volumes at the same time.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1708,8 +1773,8 @@ provisioned/attached using an exec based plugin.<br/>
         <td>object</td>
         <td>
           gcePersistentDisk represents a GCE Disk resource that is attached to a
-kubelet's host machine and then exposed to the pod. More info:
-https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk<br/>
+kubelet's host machine and then exposed to the pod.
+More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1717,9 +1782,9 @@ https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk<br/>
         <td>object</td>
         <td>
           gitRepo represents a git repository at a particular revision.
-DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into
-an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's
-container.<br/>
+DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
+EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
+into the Pod's container.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1735,12 +1800,13 @@ More info: https://examples.k8s.io/volumes/glusterfs/README.md<br/>
         <td>object</td>
         <td>
           hostPath represents a pre-existing file or directory on the host
-machine that is directly exposed to the container. This is generally used for system agents or other
-privileged things that are allowed to see the host machine. Most containers will NOT need this. More
-info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+machine that is directly exposed to the container. This is generally
+used for system agents or other privileged things that are allowed
+to see the host machine. Most containers will NOT need this.
+More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
 ---
-TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host
-directories as read/write.<br/>
+TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not
+mount host directories as read/write.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1748,8 +1814,8 @@ directories as read/write.<br/>
         <td>object</td>
         <td>
           iscsi represents an ISCSI Disk resource that is attached to a
-kubelet's host machine and then exposed to the pod. More info:
-https://examples.k8s.io/volumes/iscsi/README.md<br/>
+kubelet's host machine and then exposed to the pod.
+More info: https://examples.k8s.io/volumes/iscsi/README.md<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1765,8 +1831,8 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs<br/>
         <td>object</td>
         <td>
           persistentVolumeClaimVolumeSource represents a reference to a
-PersistentVolumeClaim in the same namespace. More info:
-https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims<br/>
+PersistentVolumeClaim in the same namespace.
+More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1838,13 +1904,13 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#secret<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].awsElasticBlockStore`
+### `SpinApp.spec.volumes[index].awsElasticBlockStore` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine
-and then exposed to the pod. More info:
-https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+awsElasticBlockStore represents an AWS Disk resource that is attached to a
+kubelet's host machine and then exposed to the pod.
+More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
 <table>
     <thead>
@@ -1898,7 +1964,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockst
 </table>
 
 
-### `SpinApp.spec.volumes[index].azureDisk`
+### `SpinApp.spec.volumes[index].azureDisk` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -1962,7 +2028,7 @@ the ReadOnly setting in VolumeMounts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].azureFile`
+### `SpinApp.spec.volumes[index].azureFile` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2003,7 +2069,7 @@ the ReadOnly setting in VolumeMounts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cephfs`
+### `SpinApp.spec.volumes[index].cephfs` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2070,12 +2136,12 @@ More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cephfs.secretRef`
+### `SpinApp.spec.volumes[index].cephfs.secretRef` 
 <small>[back to parent](#spinappspecvolumesindexcephfs)</small>
 
 
-secretRef is Optional: SecretRef is reference to the authentication secret for User, default is
-empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty.
+More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
 <table>
     <thead>
@@ -2091,20 +2157,26 @@ empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cinder`
+### `SpinApp.spec.volumes[index].cinder` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-cinder represents a cinder volume attached and mounted on kubelets host machine. More info:
-https://examples.k8s.io/mysql-cinder-pd/README.md
+cinder represents a cinder volume attached and mounted on kubelets host machine.
+More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
 <table>
     <thead>
@@ -2154,11 +2226,12 @@ to OpenStack.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].cinder.secretRef`
+### `SpinApp.spec.volumes[index].cinder.secretRef` 
 <small>[back to parent](#spinappspecvolumesindexcinder)</small>
 
 
-secretRef is optional: points to a secret object containing parameters used to connect to OpenStack.
+secretRef is optional: points to a secret object containing parameters used to connect
+to OpenStack.
 
 <table>
     <thead>
@@ -2174,15 +2247,21 @@ secretRef is optional: points to a secret object containing parameters used to c
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].configMap`
+### `SpinApp.spec.volumes[index].configMap` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2230,8 +2309,14 @@ relative and may not contain the '..' path or start with '..'.<br/>
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -2245,7 +2330,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].configMap.items[index]`
+### `SpinApp.spec.volumes[index].configMap.items[index]` 
 <small>[back to parent](#spinappspecvolumesindexconfigmap)</small>
 
 
@@ -2295,12 +2380,11 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].csi`
+### `SpinApp.spec.volumes[index].csi` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-csi (Container Storage Interface) represents ephemeral storage that is handled by certain external
-CSI drivers (Beta feature).
+csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).
 
 <table>
     <thead>
@@ -2359,14 +2443,15 @@ driver. Consult your driver's documentation for supported values.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].csi.nodePublishSecretRef`
+### `SpinApp.spec.volumes[index].csi.nodePublishSecretRef` 
 <small>[back to parent](#spinappspecvolumesindexcsi)</small>
 
 
-nodePublishSecretRef is a reference to the secret object containing sensitive information to pass to
-the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is
-optional, and  may be empty if no secret is required. If the secret object contains more than one
-secret, all secret references are passed.
+nodePublishSecretRef is a reference to the secret object containing
+sensitive information to pass to the CSI driver to complete the CSI
+NodePublishVolume and NodeUnpublishVolume calls.
+This field is optional, and  may be empty if no secret is required. If the
+secret object contains more than one secret, all secret references are passed.
 
 <table>
     <thead>
@@ -2382,15 +2467,21 @@ secret, all secret references are passed.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI`
+### `SpinApp.spec.volumes[index].downwardAPI` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -2432,7 +2523,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI.items[index]`
+### `SpinApp.spec.volumes[index].downwardAPI.items[index]` 
 <small>[back to parent](#spinappspecvolumesindexdownwardapi)</small>
 
 
@@ -2487,12 +2578,11 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI.items[index].fieldRef`
+### `SpinApp.spec.volumes[index].downwardAPI.items[index].fieldRef` 
 <small>[back to parent](#spinappspecvolumesindexdownwardapiitemsindex)</small>
 
 
-Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are
-supported.
+Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
 <table>
     <thead>
@@ -2521,12 +2611,12 @@ supported.
 </table>
 
 
-### `SpinApp.spec.volumes[index].downwardAPI.items[index].resourceFieldRef`
+### `SpinApp.spec.volumes[index].downwardAPI.items[index].resourceFieldRef` 
 <small>[back to parent](#spinappspecvolumesindexdownwardapiitemsindex)</small>
 
 
-Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory,
-requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests
+(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 <table>
     <thead>
@@ -2562,12 +2652,12 @@ requests.cpu and requests.memory) are currently supported.
 </table>
 
 
-### `SpinApp.spec.volumes[index].emptyDir`
+### `SpinApp.spec.volumes[index].emptyDir` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-emptyDir represents a temporary directory that shares a pod's lifetime. More info:
-https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+emptyDir represents a temporary directory that shares a pod's lifetime.
+More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
 <table>
     <thead>
@@ -2604,31 +2694,38 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral`
+### `SpinApp.spec.volumes[index].ephemeral` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-ephemeral represents a volume that is handled by a cluster storage driver. The volume's lifecycle is
-tied to the pod that defines it - it will be created before the pod starts, and deleted when the pod
-is removed.
+ephemeral represents a volume that is handled by a cluster storage driver.
+The volume's lifecycle is tied to the pod that defines it - it will be created before the pod starts,
+and deleted when the pod is removed.
 
 
-Use this if: a) the volume is only needed while the pod runs, b) features of normal volumes like
-restoring from snapshot or capacity tracking are needed, c) the storage driver is specified through
-a storage class, and d) the storage driver supports dynamic volume provisioning through a
-   PersistentVolumeClaim (see EphemeralVolumeSource for more information on the connection between
-this volume type and PersistentVolumeClaim).
+Use this if:
+a) the volume is only needed while the pod runs,
+b) features of normal volumes like restoring from snapshot or capacity
+   tracking are needed,
+c) the storage driver is specified through a storage class, and
+d) the storage driver supports dynamic volume provisioning through
+   a PersistentVolumeClaim (see EphemeralVolumeSource for more
+   information on the connection between this volume type
+   and PersistentVolumeClaim).
 
 
-Use PersistentVolumeClaim or one of the vendor-specific APIs for volumes that persist for longer
-than the lifecycle of an individual pod.
+Use PersistentVolumeClaim or one of the vendor-specific
+APIs for volumes that persist for longer than the lifecycle
+of an individual pod.
 
 
-Use CSI for light-weight local ephemeral volumes if the CSI driver is meant to be used that way -
-see the documentation of the driver for more information.
+Use CSI for light-weight local ephemeral volumes if the CSI driver is meant to
+be used that way - see the documentation of the driver for
+more information.
 
 
-A pod can use both types of ephemeral volumes and persistent volumes at the same time.
+A pod can use both types of ephemeral volumes and
+persistent volumes at the same time.
 
 <table>
     <thead>
@@ -2652,15 +2749,18 @@ entry. Pod validation will reject the pod if the concatenated name
 is not valid for a PVC (for example, too long).
 
 
-An existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid
-using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is
-removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an
-owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be
-useful when manually reconstructing a broken cluster.
+An existing PVC with that name that is not owned by the pod
+will *not* be used for the pod to avoid using an unrelated
+volume by mistake. Starting the pod is then blocked until
+the unrelated PVC is removed. If such a pre-created PVC is
+meant to be used by the pod, the PVC has to updated with an
+owner reference to the pod once the pod exists. Normally
+this should not be necessary, but it may be useful when
+manually reconstructing a broken cluster.
 
 
-This field is read-only and no changes will be made by Kubernetes to the PVC after it has been
-created.
+This field is read-only and no changes will be made by Kubernetes
+to the PVC after it has been created.
 
 
 Required, must not be nil.<br/>
@@ -2670,26 +2770,31 @@ Required, must not be nil.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate`
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate` 
 <small>[back to parent](#spinappspecvolumesindexephemeral)</small>
 
 
-Will be used to create a stand-alone PVC to provision the volume. The pod in which this
-EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted
-together with the pod.  The name of the PVC will be `<pod name>-<volume name>` where `<volume name>`
-is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the
-concatenated name is not valid for a PVC (for example, too long).
+Will be used to create a stand-alone PVC to provision the volume.
+The pod in which this EphemeralVolumeSource is embedded will be the
+owner of the PVC, i.e. the PVC will be deleted together with the
+pod.  The name of the PVC will be `<pod name>-<volume name>` where
+`<volume name>` is the name from the `PodSpec.Volumes` array
+entry. Pod validation will reject the pod if the concatenated name
+is not valid for a PVC (for example, too long).
 
 
-An existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid
-using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is
-removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an
-owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be
-useful when manually reconstructing a broken cluster.
+An existing PVC with that name that is not owned by the pod
+will *not* be used for the pod to avoid using an unrelated
+volume by mistake. Starting the pod is then blocked until
+the unrelated PVC is removed. If such a pre-created PVC is
+meant to be used by the pod, the PVC has to updated with an
+owner reference to the pod once the pod exists. Normally
+this should not be necessary, but it may be useful when
+manually reconstructing a broken cluster.
 
 
-This field is read-only and no changes will be made by Kubernetes to the PVC after it has been
-created.
+This field is read-only and no changes will be made by Kubernetes
+to the PVC after it has been created.
 
 
 Required, must not be nil.
@@ -2726,13 +2831,14 @@ validation.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec`
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec` 
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplate)</small>
 
 
-The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC
-that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid
-here.
+The specification for the PersistentVolumeClaim. The entire content is
+copied unchanged into the PVC that gets created from this
+template. The same fields as in a PersistentVolumeClaim
+are also valid here.
 
 <table>
     <thead>
@@ -2857,18 +2963,18 @@ Value of Filesystem is implied when not included in claim spec.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSource`
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSource` 
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
 dataSource field can be used to specify either:
 * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
-* An existing PVC (PersistentVolumeClaim) If the provisioner or an external controller can support
-the specified data source, it will create a new volume based on the contents of the specified data
-source. When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to
-dataSourceRef, and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace
-is not specified. If the namespace is specified, then dataSourceRef will not be copied to
-dataSource.
+* An existing PVC (PersistentVolumeClaim)
+If the provisioner or an external controller can support the specified data source,
+it will create a new volume based on the contents of the specified data source.
+When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef,
+and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified.
+If the namespace is specified, then dataSourceRef will not be copied to dataSource.
 
 <table>
     <thead>
@@ -2906,28 +3012,33 @@ For any other third-party types, APIGroup is required.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSourceRef`
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.dataSourceRef` 
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
 dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
-volume is desired. This may be any object from a non-empty API group (non core object) or a
-PersistentVolumeClaim object. When this field is specified, volume binding will only succeed if the
-type of the specified object matches some installed volume populator or dynamic provisioner. This
-field will replace the functionality of the dataSource field and as such if both fields are
-non-empty, they must have the same value. For backwards compatibility, when namespace isn't
-specified in dataSourceRef, both fields (dataSource and dataSourceRef) will be set to the same value
-automatically if one of them is empty and the other is non-empty. When namespace is specified in
-dataSourceRef, dataSource isn't set to the same value and must be empty. There are three important
-differences between dataSource and dataSourceRef:
-* While dataSource only allows two specific types of objects, dataSourceRef allows any non-core
-  object, as well as PersistentVolumeClaim objects.
-* While dataSource ignores disallowed values (dropping them), dataSourceRef preserves all values,
-  and generates an error if a disallowed value is specified.
-* While dataSource only allows local objects, dataSourceRef allows objects in any namespaces. (Beta)
-  Using this field requires the AnyVolumeDataSource feature gate to be enabled. (Alpha) Using the
-namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be
-enabled.
+volume is desired. This may be any object from a non-empty API group (non
+core object) or a PersistentVolumeClaim object.
+When this field is specified, volume binding will only succeed if the type of
+the specified object matches some installed volume populator or dynamic
+provisioner.
+This field will replace the functionality of the dataSource field and as such
+if both fields are non-empty, they must have the same value. For backwards
+compatibility, when namespace isn't specified in dataSourceRef,
+both fields (dataSource and dataSourceRef) will be set to the same
+value automatically if one of them is empty and the other is non-empty.
+When namespace is specified in dataSourceRef,
+dataSource isn't set to the same value and must be empty.
+There are three important differences between dataSource and dataSourceRef:
+* While dataSource only allows two specific types of objects, dataSourceRef
+  allows any non-core object, as well as PersistentVolumeClaim objects.
+* While dataSource ignores disallowed values (dropping them), dataSourceRef
+  preserves all values, and generates an error if a disallowed value is
+  specified.
+* While dataSource only allows local objects, dataSourceRef allows objects
+  in any namespaces.
+(Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
+(Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
 
 <table>
     <thead>
@@ -2974,14 +3085,15 @@ Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGr
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.resources`
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.resources` 
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
-resources represents the minimum resources the volume should have. If RecoverVolumeExpansionFailure
-feature is enabled users are allowed to specify resource requirements that are lower than previous
-value but must still be higher than capacity recorded in the status field of the claim. More info:
-https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+resources represents the minimum resources the volume should have.
+If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
+that are lower than previous value but must still be higher than capacity recorded in the
+status field of the claim.
+More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 
 <table>
     <thead>
@@ -3014,7 +3126,7 @@ More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-co
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector`
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector` 
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespec)</small>
 
 
@@ -3049,12 +3161,12 @@ operator is "In", and the values array contains only "value". The requirements a
 </table>
 
 
-### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector.matchExpressions[index]`
+### `SpinApp.spec.volumes[index].ephemeral.volumeClaimTemplate.spec.selector.matchExpressions[index]` 
 <small>[back to parent](#spinappspecvolumesindexephemeralvolumeclaimtemplatespecselector)</small>
 
 
-A label selector requirement is a selector that contains values, a key, and an operator that relates
-the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that
+relates the key and values.
 
 <table>
     <thead>
@@ -3094,12 +3206,11 @@ merge patch.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].fc`
+### `SpinApp.spec.volumes[index].fc` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed
-to the pod.
+fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
 <table>
     <thead>
@@ -3156,12 +3267,12 @@ Either wwids or combination of targetWWNs and lun must be set, but not both simu
 </table>
 
 
-### `SpinApp.spec.volumes[index].flexVolume`
+### `SpinApp.spec.volumes[index].flexVolume` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-flexVolume represents a generic volume resource that is provisioned/attached using an exec based
-plugin.
+flexVolume represents a generic volume resource that is
+provisioned/attached using an exec based plugin.
 
 <table>
     <thead>
@@ -3218,13 +3329,15 @@ scripts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].flexVolume.secretRef`
+### `SpinApp.spec.volumes[index].flexVolume.secretRef` 
 <small>[back to parent](#spinappspecvolumesindexflexvolume)</small>
 
 
-secretRef is Optional: secretRef is reference to the secret object containing sensitive information
-to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret
-object contains more than one secret, all secrets are passed to the plugin scripts.
+secretRef is Optional: secretRef is reference to the secret object containing
+sensitive information to pass to the plugin scripts. This may be
+empty if no secret object is specified. If the secret object
+contains more than one secret, all secrets are passed to the plugin
+scripts.
 
 <table>
     <thead>
@@ -3240,20 +3353,25 @@ object contains more than one secret, all secrets are passed to the plugin scrip
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].flocker`
+### `SpinApp.spec.volumes[index].flocker` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the
-Flocker control service being running
+flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
 <table>
     <thead>
@@ -3283,13 +3401,13 @@ should be considered as deprecated<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].gcePersistentDisk`
+### `SpinApp.spec.volumes[index].gcePersistentDisk` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and
-then exposed to the pod. More info:
-https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+gcePersistentDisk represents a GCE Disk resource that is attached to a
+kubelet's host machine and then exposed to the pod.
+More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
 <table>
     <thead>
@@ -3345,13 +3463,14 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 </table>
 
 
-### `SpinApp.spec.volumes[index].gitRepo`
+### `SpinApp.spec.volumes[index].gitRepo` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-gitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To
-provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo
-using git, then mount the EmptyDir into the Pod's container.
+gitRepo represents a git repository at a particular revision.
+DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
+EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
+into the Pod's container.
 
 <table>
     <thead>
@@ -3390,12 +3509,12 @@ the subdirectory with the given name.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].glusterfs`
+### `SpinApp.spec.volumes[index].glusterfs` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info:
-https://examples.k8s.io/volumes/glusterfs/README.md
+glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
+More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
 <table>
     <thead>
@@ -3435,17 +3554,18 @@ More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].hostPath`
+### `SpinApp.spec.volumes[index].hostPath` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-hostPath represents a pre-existing file or directory on the host machine that is directly exposed to
-the container. This is generally used for system agents or other privileged things that are allowed
-to see the host machine. Most containers will NOT need this. More info:
-https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+hostPath represents a pre-existing file or directory on the host
+machine that is directly exposed to the container. This is generally
+used for system agents or other privileged things that are allowed
+to see the host machine. Most containers will NOT need this.
+More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
 ---
-TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host
-directories as read/write.
+TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not
+mount host directories as read/write.
 
 <table>
     <thead>
@@ -3478,12 +3598,13 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].iscsi`
+### `SpinApp.spec.volumes[index].iscsi` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then
-exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
+iscsi represents an ISCSI Disk resource that is attached to a
+kubelet's host machine and then exposed to the pod.
+More info: https://examples.k8s.io/volumes/iscsi/README.md
 
 <table>
     <thead>
@@ -3587,7 +3708,7 @@ Defaults to false.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].iscsi.secretRef`
+### `SpinApp.spec.volumes[index].iscsi.secretRef` 
 <small>[back to parent](#spinappspecvolumesindexiscsi)</small>
 
 
@@ -3607,20 +3728,26 @@ secretRef is the CHAP Secret for iSCSI target and initiator authentication
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].nfs`
+### `SpinApp.spec.volumes[index].nfs` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-nfs represents an NFS mount on the host that shares a pod's lifetime More info:
-https://kubernetes.io/docs/concepts/storage/volumes#nfs
+nfs represents an NFS mount on the host that shares a pod's lifetime
+More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
 <table>
     <thead>
@@ -3660,13 +3787,13 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].persistentVolumeClaim`
+### `SpinApp.spec.volumes[index].persistentVolumeClaim` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-persistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same
-namespace. More info:
-https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+persistentVolumeClaimVolumeSource represents a reference to a
+PersistentVolumeClaim in the same namespace.
+More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 <table>
     <thead>
@@ -3697,12 +3824,11 @@ Default false.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].photonPersistentDisk`
+### `SpinApp.spec.volumes[index].photonPersistentDisk` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets
-host machine
+photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
 <table>
     <thead>
@@ -3733,7 +3859,7 @@ Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].portworxVolume`
+### `SpinApp.spec.volumes[index].portworxVolume` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3776,7 +3902,7 @@ the ReadOnly setting in VolumeMounts.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected`
+### `SpinApp.spec.volumes[index].projected` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -3816,7 +3942,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index]`
+### `SpinApp.spec.volumes[index].projected.sources[index]` 
 <small>[back to parent](#spinappspecvolumesindexprojected)</small>
 
 
@@ -3842,14 +3968,15 @@ of ClusterTrustBundle objects in an auto-updating file.
 Alpha, gated by the ClusterTrustBundleProjection feature gate.
 
 
-ClusterTrustBundle objects can either be selected by name, or by the combination of signer name and
-a label selector.
+ClusterTrustBundle objects can either be selected by name, or by the
+combination of signer name and a label selector.
 
 
-Kubelet performs aggressive normalization of the PEM contents written into the pod filesystem.
-Esoteric PEM features such as inter-block comments and block headers are stripped.  Certificates are
-deduplicated. The ordering of certificates within the file is arbitrary, and Kubelet may change the
-order over time.<br/>
+Kubelet performs aggressive normalization of the PEM contents written
+into the pod filesystem.  Esoteric PEM features such as inter-block
+comments and block headers are stripped.  Certificates are deduplicated.
+The ordering of certificates within the file is arbitrary, and Kubelet
+may change the order over time.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -3884,25 +4011,26 @@ order over time.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle`
+### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
-ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field of ClusterTrustBundle
-objects in an auto-updating file.
+ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field
+of ClusterTrustBundle objects in an auto-updating file.
 
 
 Alpha, gated by the ClusterTrustBundleProjection feature gate.
 
 
-ClusterTrustBundle objects can either be selected by name, or by the combination of signer name and
-a label selector.
+ClusterTrustBundle objects can either be selected by name, or by the
+combination of signer name and a label selector.
 
 
-Kubelet performs aggressive normalization of the PEM contents written into the pod filesystem.
-Esoteric PEM features such as inter-block comments and block headers are stripped.  Certificates are
-deduplicated. The ordering of certificates within the file is arbitrary, and Kubelet may change the
-order over time.
+Kubelet performs aggressive normalization of the PEM contents written
+into the pod filesystem.  Esoteric PEM features such as inter-block
+comments and block headers are stripped.  Certificates are deduplicated.
+The ordering of certificates within the file is arbitrary, and Kubelet
+may change the order over time.
 
 <table>
     <thead>
@@ -3962,13 +4090,14 @@ ClusterTrustBundles will be unified and deduplicated.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector`
+### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexclustertrustbundle)</small>
 
 
-Select all ClusterTrustBundles that match this label selector.  Only has effect if signerName is
-set.  Mutually-exclusive with name.  If unset, interpreted as "match nothing".  If set but empty,
-interpreted as "match everything".
+Select all ClusterTrustBundles that match this label selector.  Only has
+effect if signerName is set.  Mutually-exclusive with name.  If unset,
+interpreted as "match nothing".  If set but empty, interpreted as "match
+everything".
 
 <table>
     <thead>
@@ -3999,13 +4128,12 @@ operator is "In", and the values array contains only "value". The requirements a
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector.matchExpressions[index]`
-<small>[back to
-parent](#spinappspecvolumesindexprojectedsourcesindexclustertrustbundlelabelselector)</small>
+### `SpinApp.spec.volumes[index].projected.sources[index].clusterTrustBundle.labelSelector.matchExpressions[index]` 
+<small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexclustertrustbundlelabelselector)</small>
 
 
-A label selector requirement is a selector that contains values, a key, and an operator that relates
-the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that
+relates the key and values.
 
 <table>
     <thead>
@@ -4045,7 +4173,7 @@ merge patch.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].configMap`
+### `SpinApp.spec.volumes[index].projected.sources[index].configMap` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4078,8 +4206,14 @@ relative and may not contain the '..' path or start with '..'.<br/>
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -4093,7 +4227,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].configMap.items[index]`
+### `SpinApp.spec.volumes[index].projected.sources[index].configMap.items[index]` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexconfigmap)</small>
 
 
@@ -4143,7 +4277,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI`
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4169,7 +4303,7 @@ downwardAPI information about the downwardAPI data to project
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index]`
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index]` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexdownwardapi)</small>
 
 
@@ -4224,12 +4358,11 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].fieldRef`
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].fieldRef` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexdownwardapiitemsindex)</small>
 
 
-Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are
-supported.
+Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
 <table>
     <thead>
@@ -4258,12 +4391,12 @@ supported.
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].resourceFieldRef`
+### `SpinApp.spec.volumes[index].projected.sources[index].downwardAPI.items[index].resourceFieldRef` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexdownwardapiitemsindex)</small>
 
 
-Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory,
-requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests
+(limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 <table>
     <thead>
@@ -4299,7 +4432,7 @@ requests.cpu and requests.memory) are currently supported.
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].secret`
+### `SpinApp.spec.volumes[index].projected.sources[index].secret` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4332,8 +4465,14 @@ relative and may not contain the '..' path or start with '..'.<br/>
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -4347,7 +4486,7 @@ TODO: Add other useful fields. apiVersion, kind, uid?<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].secret.items[index]`
+### `SpinApp.spec.volumes[index].projected.sources[index].secret.items[index]` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindexsecret)</small>
 
 
@@ -4397,7 +4536,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].projected.sources[index].serviceAccountToken`
+### `SpinApp.spec.volumes[index].projected.sources[index].serviceAccountToken` 
 <small>[back to parent](#spinappspecvolumesindexprojectedsourcesindex)</small>
 
 
@@ -4448,7 +4587,7 @@ and must be at least 10 minutes.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].quobyte`
+### `SpinApp.spec.volumes[index].quobyte` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4515,12 +4654,12 @@ Defaults to serivceaccount user<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].rbd`
+### `SpinApp.spec.volumes[index].rbd` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. More info:
-https://examples.k8s.io/volumes/rbd/README.md
+rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.
+More info: https://examples.k8s.io/volumes/rbd/README.md
 
 <table>
     <thead>
@@ -4608,12 +4747,14 @@ More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].rbd.secretRef`
+### `SpinApp.spec.volumes[index].rbd.secretRef` 
 <small>[back to parent](#spinappspecvolumesindexrbd)</small>
 
 
-secretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default
-is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+secretRef is name of the authentication secret for RBDUser. If provided
+overrides keyring.
+Default is nil.
+More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
 
 <table>
     <thead>
@@ -4629,15 +4770,21 @@ is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].scaleIO`
+### `SpinApp.spec.volumes[index].scaleIO` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4733,12 +4880,12 @@ that is associated with this volume source.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].scaleIO.secretRef`
+### `SpinApp.spec.volumes[index].scaleIO.secretRef` 
 <small>[back to parent](#spinappspecvolumesindexscaleio)</small>
 
 
-secretRef references to the secret for ScaleIO user and other sensitive information. If this is not
-provided, Login operation will fail.
+secretRef references to the secret for ScaleIO user and other
+sensitive information. If this is not provided, Login operation will fail.
 
 <table>
     <thead>
@@ -4754,20 +4901,26 @@ provided, Login operation will fail.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].secret`
+### `SpinApp.spec.volumes[index].secret` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-secret represents a secret that should populate this volume. More info:
-https://kubernetes.io/docs/concepts/storage/volumes#secret
+secret represents a secret that should populate this volume.
+More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
 <table>
     <thead>
@@ -4825,7 +4978,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#secret<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].secret.items[index]`
+### `SpinApp.spec.volumes[index].secret.items[index]` 
 <small>[back to parent](#spinappspecvolumesindexsecret)</small>
 
 
@@ -4875,7 +5028,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].storageos`
+### `SpinApp.spec.volumes[index].storageos` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -4939,12 +5092,12 @@ Namespaces that do not pre-exist within StorageOS will be created.<br/>
 </table>
 
 
-### `SpinApp.spec.volumes[index].storageos.secretRef`
+### `SpinApp.spec.volumes[index].storageos.secretRef` 
 <small>[back to parent](#spinappspecvolumesindexstorageos)</small>
 
 
-secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not
-specified, default values will be attempted.
+secretRef specifies the secret to use for obtaining the StorageOS API
+credentials.  If not specified, default values will be attempted.
 
 <table>
     <thead>
@@ -4960,15 +5113,21 @@ specified, default values will be attempted.
         <td>string</td>
         <td>
           Name of the referent.
+This field is effectively required, but due to backwards compatibility is
+allowed to be empty. Instances of this type with an empty value here are
+almost certainly wrong.
+TODO: Add other useful fields. apiVersion, kind, uid?
 More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-TODO: Add other useful fields. apiVersion, kind, uid?<br/>
+TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.<br/>
+          <br/>
+            <i>Default</i>: <br/>
         </td>
         <td>false</td>
       </tr></tbody>
 </table>
 
 
-### `SpinApp.spec.volumes[index].vsphereVolume`
+### `SpinApp.spec.volumes[index].vsphereVolume` 
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
@@ -5017,7 +5176,7 @@ Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.<br/>
 </table>
 
 
-### `SpinApp.status`
+### `SpinApp.status` 
 <small>[back to parent](#spinapp)</small>
 
 
@@ -5066,21 +5225,23 @@ For further information see: https://github.com/kubernetes/community/blob/master
 </table>
 
 
-### `SpinApp.status.conditions[index]`
+### `SpinApp.status.conditions[index]` 
 <small>[back to parent](#spinappstatus)</small>
 
 
 Condition contains details for one aspect of the current state of this API Resource.
 ---
-This struct is intended for direct use as an array at the field path .status.conditions.  For
-example,
+This struct is intended for direct use as an array at the field path .status.conditions.  For example,
 
 
-	type FooStatus struct{ // Represents the observations of a foo's current state. // Known
-	    .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type
-	    // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition
-	    `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type"
-	    protobuf:"bytes,1,rep,name=conditions"`
+	type FooStatus struct{
+	    // Represents the observations of a foo's current state.
+	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
+	    // +patchMergeKey=type
+	    // +patchStrategy=merge
+	    // +listType=map
+	    // +listMapKey=type
+	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
 
 
 	    // other fields
@@ -5158,3 +5319,5 @@ with respect to the current state of the instance.<br/>
         <td>false</td>
       </tr></tbody>
 </table>
+
+

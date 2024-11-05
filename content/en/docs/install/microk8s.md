@@ -116,7 +116,7 @@ $ microk8s kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-oper
 The above installs a simple `SpinApp` YAML that looks like this:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: simple-spinapp

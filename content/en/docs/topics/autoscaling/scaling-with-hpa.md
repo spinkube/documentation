@@ -144,7 +144,7 @@ application and we will scale the instance count when we’ve reached a 50% util
 10 and a minimum replica count of 1:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hpa-spinapp
@@ -190,7 +190,7 @@ For more information about HPA, please visit the following links:
 Below is an example of the configuration to scale resources:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hpa-spinapp

@@ -82,7 +82,7 @@ The `SpinAppExecutor` resource determines how Spin applications are deployed in 
 Create a file called `executor.yaml` with the following content:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinAppExecutor
 metadata:
   name: otel-shim-executor
@@ -108,7 +108,7 @@ With everything in place, we can now deploy a `SpinApp` resource that uses the e
 Create a file called `app.yaml` with the following content:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: otel-spinapp

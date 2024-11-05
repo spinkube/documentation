@@ -25,7 +25,7 @@ SpinAppExecutor is the Schema for the spinappexecutors API
     <tbody><tr>
       <td><b>apiVersion</b></td>
       <td>string</td>
-      <td>core.spinoperator.dev/v1alpha1</td>
+      <td>core.spinkube.dev/v1alpha1</td>
       <td>true</td>
       </tr>
       <tr>
@@ -109,14 +109,6 @@ createDeployment is true.
         </tr>
     </thead>
     <tbody><tr>
-        <td><b>runtimeClassName</b></td>
-        <td>string</td>
-        <td>
-          RuntimeClassName is the runtime class name that should be used by pods created
-as part of a deployment.<br/>
-        </td>
-        <td>true</td>
-      </tr><tr>
         <td><b>caCertSecret</b></td>
         <td>string</td>
         <td>
@@ -139,6 +131,25 @@ defined in `CACertSecret` the secret name will be `spin-ca`.<br/>
         <td>object</td>
         <td>
           Otel provides Kubernetes Bindings to Otel Variables.<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
+        <td><b>runtimeClassName</b></td>
+        <td>string</td>
+        <td>
+          RuntimeClassName is the runtime class name that should be used by pods created
+as part of a deployment. This should only be defined when SpintainerImage is not defined.<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
+        <td><b>spinImage</b></td>
+        <td>string</td>
+        <td>
+          SpinImage points to an image that will run Spin in a container to execute
+your SpinApp. This is an alternative to using the shim to execute your
+SpinApp. This should only be defined when RuntimeClassName is not
+defined. When specified, application images must be available without
+authentication.<br/>
         </td>
         <td>false</td>
       </tr></tbody>

@@ -98,7 +98,7 @@ to your Kubernetes cluster:
 # Deploy the hello-spin app to your Kubernetes Cluster
 spin kube deploy --from ttl.sh/hello-spin:24h
 
-spinapp.core.spinoperator.dev/hello-spin created
+spinapp.core.spinkube.dev/hello-spin created
 ```
 
 ## Scaffolding Spin Apps
@@ -109,7 +109,7 @@ them. You use the `spin kube scaffold` command to generate Kubernetes manifests:
 
 ```shell
 spin kube scaffold --from ttl.sh/hello-spin:24h
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hello-spin
@@ -128,7 +128,7 @@ spin kube scaffold --from ttl.sh/hello-spin:24h \
 
 # Print contents of spinapp.yaml
 cat spinapp.yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hello-spin
@@ -202,7 +202,7 @@ previously created using the `imagePullSecrets` property. Your `SpinApp` manifes
 this:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hello-spin
@@ -222,6 +222,6 @@ Finally, you can deploy the app using `kubectl apply`:
 ```shell
 # Deploy the spinapp.yaml using kubectl
 kubectl apply -f spinapp.yaml
-spinapp.core.spinoperator.dev/hello-spin created
+spinapp.core.spinkube.dev/hello-spin created
 ```
 ```

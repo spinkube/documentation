@@ -95,7 +95,7 @@ You're now ready to assemble the SpinApp custom resource manifest.
 Plug the `$IMAGE_NAME` and `$DB_URL` values into the manifest below and save as `spinapp.yaml`:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: http-crud-go-sqlite

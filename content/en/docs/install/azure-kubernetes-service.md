@@ -5,7 +5,7 @@ date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
 aliases:
-- /docs/spin-operator/tutorials/deploy-on-azure-kubernetes-service
+  - /docs/spin-operator/tutorials/deploy-on-azure-kubernetes-service
 ---
 
 In this tutorial, you install Spin Operator on an Azure Kubernetes Service (AKS) cluster and deploy
@@ -84,10 +84,10 @@ installed.
 
 ```shell
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
 
 # Install the Runtime Class
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
 ```
 
 The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is
@@ -130,6 +130,7 @@ helm install \
 # Provision Nodes
 kubectl annotate node --all kwasm.sh/kwasm-node=true
 ```
+
 To verify `containerd-wasm-shim` installation, you can inspect the logs from the Kwasm Operator:
 
 ```shell
@@ -148,7 +149,7 @@ namespace:
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.3.0 \
+  --version 0.4.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -156,7 +157,7 @@ helm install spin-operator \
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}})::
 
 ```console
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
 ```
 
 ## Deploying a Spin App to AKS

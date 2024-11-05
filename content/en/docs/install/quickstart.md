@@ -122,4 +122,4 @@ Congrats on deploying your first SpinApp! Recommended next steps:
 
 - Scale your [Spin Apps with Horizontal Pod Autoscaler (HPA)]({{< ref "scaling-with-hpa" >}})
 - Scale your [Spin Apps with Kubernetes Event Driven Autoscaler (KEDA)]({{< ref "scaling-with-keda"
-  > }})
+  >}})

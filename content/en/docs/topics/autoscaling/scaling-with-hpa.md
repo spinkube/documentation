@@ -64,10 +64,9 @@ helm install \
   --version v1.14.3
 ```
 
-Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class"
-
-> }}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
-> "glossary#custom-resource-definition-crd">}}):
+Next, run the following commands to install the Spin [Runtime Class]({{<ref
+"glossary#runtime-class">}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
+"glossary#custom-resource-definition-crd">}}):
 
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector`
 > that matches nodes that have the shim installed. However, in the K3d example, they're installed on

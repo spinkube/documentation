@@ -3,8 +3,8 @@ title: Quickstart
 description: Learn how to setup a Kubernetes cluser, install SpinKube and run your first Spin App.
 weight: 2
 aliases:
-- /docs/quickstart
-- /docs/spin-operator/quickstart
+  - /docs/quickstart
+  - /docs/spin-operator/quickstart
 ---
 
 This Quickstart guide demonstrates how to set up a new Kubernetes cluster, install the SpinKube and
@@ -28,7 +28,7 @@ For this Quickstart guide, you will need:
    [containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) prerequisite already
    installed:
 
-```console  { data-plausible="copy-quick-create-k3d" }
+```console { data-plausible="copy-quick-create-k3d" }
 k3d cluster create wasm-cluster \
   --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.16.0 \
   --port "8081:80@loadbalancer" \
@@ -55,14 +55,14 @@ kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-we
 > every node.
 
 ```console { data-plausible="copy-quick-apply-runtime-class" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
 ```
 
 4. Apply the [Custom Resource Definitions]({{< ref "glossary#custom-resource-definition-crd" >}})
    used by the Spin Operator:
 
 ```console { data-plausible="copy-quick-apply-crd" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
 ```
 
 ## Deploy the Spin Operator
@@ -77,7 +77,7 @@ and pods are spinning up.
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.3.0 \
+  --version 0.4.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -85,7 +85,7 @@ helm install spin-operator \
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}):
 
 ```console { data-plausible="copy-quick-create-shim-executor" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
 ```
 
 ## Run the Sample Application
@@ -122,4 +122,4 @@ Congrats on deploying your first SpinApp! Recommended next steps:
 
 - Scale your [Spin Apps with Horizontal Pod Autoscaler (HPA)]({{< ref "scaling-with-hpa" >}})
 - Scale your [Spin Apps with Kubernetes Event Driven Autoscaler (KEDA)]({{< ref "scaling-with-keda"
-  >}})
+  > }})

@@ -5,7 +5,7 @@ date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials, Autoscaling]
 aliases:
-- /docs/spin-operator/tutorials/scaling-with-hpa
+  - /docs/spin-operator/tutorials/scaling-with-hpa
 ---
 
 Horizontal scaling, in the Kubernetes sense, means deploying more pods to meet demand (different
@@ -64,8 +64,8 @@ helm install \
   --version v1.14.3
 ```
 
-Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class"
->}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
+Next, run the following commands to install the Spin [Runtime Class]({{<ref
+"glossary#runtime-class">}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
 "glossary#custom-resource-definition-crd">}}):
 
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector`
@@ -74,10 +74,10 @@ Next, run the following commands to install the Spin [Runtime Class]({{<ref "glo
 
 ```console
 # Install the RuntimeClass
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
 
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
 ```
 
 Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
@@ -88,12 +88,12 @@ Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.3.0 \
+  --version 0.4.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 
 # Install the shim executor
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
 ```
 
 Great, now you have Spin Operator up and running on your cluster. This means you’re set to create
@@ -144,7 +144,7 @@ application and we will scale the instance count when we’ve reached a 50% util
 10 and a minimum replica count of 1:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hpa-spinapp
@@ -180,6 +180,7 @@ spec:
 ```
 
 For more information about HPA, please visit the following links:
+
 - [Kubernetes Horizontal Pod
   Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 - [Kubernetes HorizontalPodAutoscaler
@@ -190,7 +191,7 @@ For more information about HPA, please visit the following links:
 Below is an example of the configuration to scale resources:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: hpa-spinapp
@@ -218,12 +219,12 @@ spec:
   minReplicas: 1
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 50
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
 ```
 
 Let’s deploy the SpinApp and the HPA instance onto our cluster (using the above `.yaml`

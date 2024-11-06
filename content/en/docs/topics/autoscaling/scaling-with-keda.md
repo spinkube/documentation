@@ -5,7 +5,7 @@ date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials, Autoscaling]
 aliases:
-- /docs/spin-operator/tutorials/scaling-with-keda
+  - /docs/spin-operator/tutorials/scaling-with-keda
 ---
 
 [KEDA](https://keda.sh) extends Kubernetes to provide event-driven scaling capabilities, allowing it
@@ -64,8 +64,8 @@ helm install \
   --version v1.14.3
 ```
 
-Next, run the following commands to install the Spin [Runtime Class]({{<ref "glossary#runtime-class"
->}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
+Next, run the following commands to install the Spin [Runtime Class]({{<ref
+"glossary#runtime-class">}}) and Spin Operator [Custom Resource Definitions (CRDs)]({{<ref
 "glossary#custom-resource-definition-crd">}}):
 
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector`
@@ -74,10 +74,10 @@ Next, run the following commands to install the Spin [Runtime Class]({{<ref "glo
 
 ```console
 # Install the RuntimeClass
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
 
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
 ```
 
 Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
@@ -88,12 +88,12 @@ Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.3.0 \
+  --version 0.4.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 
 # Install the shim executor
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
 ```
 
 Great, now you have Spin Operator up and running on your cluster. This means you’re set to create
@@ -152,7 +152,6 @@ Spin App in the
 [apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of
 the Spin Operator repository.
 
-
 We can take a look at the `SpinApp` and the KEDA `ScaledObject` definitions in our deployment files
 below. As you can see, we have explicitly specified resource limits to `500m` of `cpu`
 (`spec.resources.limits.cpu`) and `500Mi` of `memory` (`spec.resources.limits.memory`) per
@@ -160,7 +159,7 @@ below. As you can see, we have explicitly specified resource limits to `500m` of
 
 ```yaml
 # https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: keda-spinapp
@@ -212,7 +211,7 @@ command:
 ```console
 # Deploy the SpinApp
 kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
-spinapp.core.spinoperator.dev/keda-spinapp created
+spinapp.core.spinkube.dev/keda-spinapp created
 
 # Deploy the ScaledObject
 kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-scaledobject.yaml

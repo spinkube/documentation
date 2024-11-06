@@ -61,15 +61,15 @@ Now we’re ready to install the SpinKube environment for running Spin applicati
 
 ### Installing SpinKube
 
-SpinKube provides the entire toolkit for running Spin serverless apps.  You may want to familiarize
+SpinKube provides the entire toolkit for running Spin serverless apps. You may want to familiarize
 yourself with the [SpinKube quickstart](https://www.spinkube.dev/docs/install/quickstart/) guide
 before proceeding.
 
 First, we need to apply a runtime class and a CRD for SpinKube:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.runtime-class.yaml
-$ microk8s kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.crds.yaml
+$ microk8s kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
+$ microk8s kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
 ```
 
 Both of these should apply immediately.
@@ -89,7 +89,7 @@ $ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
 Next, we need to install SpinKube’s operator using Helm (which is included with Microk8s).
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.3.0 --wait oci://ghcr.io/spinkube/charts/spin-operator
+$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.4.0 --wait oci://ghcr.io/spinkube/charts/spin-operator
 
 ```
 
@@ -97,7 +97,7 @@ Now we have the main operator installed. There is just one more step. We need to
 executor, which is a special CRD that allows us to use multiple executors for WebAssembly.
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.3.0/spin-operator.shim-executor.yaml
+$ microk8s kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
 
 ```
 
@@ -113,10 +113,11 @@ is by creating a simple `SpinApp` resource. Let's use the simple example from Sp
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ microk8s kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
 ```
+
 The above installs a simple `SpinApp` YAML that looks like this:
 
 ```yaml
-apiVersion: core.spinoperator.dev/v1alpha1
+apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
   name: simple-spinapp
@@ -192,15 +193,15 @@ metadata:
   name: http-ingress
 spec:
   rules:
-  - http:
-      paths:
-       - path: /
-         pathType: Prefix
-         backend:
-           service:
-             name: simple-spinapp
-             port:
-               number: 80
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: simple-spinapp
+                port:
+                  number: 80
 ```
 
 Install the above with `microk8s kubectl -f ingress.yaml`. After a moment or two, you should be able

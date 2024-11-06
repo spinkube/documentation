@@ -9,6 +9,10 @@ aliases:
 The following is a list of common error messages and potential troubleshooting suggestions that
 might assist you with your work.
 
+## SpinKube Support Policy
+
+SpinKube provides support on a best-effort basis. For users who installed SpinKube manually following the documentation, please report issues in the [Spin Operator repository](https://github.com/spinkube/spin-operator/issues/new). For installations via the Azure Marketplace, please open an issue in the [Azure repository](https://github.com/spinkube/azure/issues/new) for assistance. If your issue is urgent, feel free to raise it in [Slack](https://cloud-native.slack.com/archives/C06PC7JA1EE). 
+
 ## No endpoints available for service "spin-operator-webhook-service"
 
 When following the quickstart guide the following error can occur when running the `kubectl apply -f

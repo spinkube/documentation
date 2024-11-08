@@ -100,6 +100,7 @@ spin kube deploy --from ttl.sh/hello-spin:24h
 
 spinapp.core.spinkube.dev/hello-spin created
 ```
+> You can deploy a subset of components in your Spin Application using [Selective Deployments](./selective-deployments.md).
 
 ## Scaffolding Spin Apps
 

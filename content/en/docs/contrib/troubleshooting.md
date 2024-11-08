@@ -11,7 +11,21 @@ might assist you with your work.
 
 ## SpinKube Support Policy
 
-SpinKube provides support on a best-effort basis. For users who installed SpinKube manually following the documentation, please report issues in the [Spin Operator repository](https://github.com/spinkube/spin-operator/issues/new). For installations via the Azure Marketplace, please open an issue in the [Azure repository](https://github.com/spinkube/azure/issues/new) for assistance. If your issue is urgent, feel free to raise it in [Slack](https://cloud-native.slack.com/archives/C06PC7JA1EE). 
+SpinKube provides support on a best-effort basis. For users who installed SpinKube manually following the documentation, please report issues in the [Spin Operator repository](https://github.com/spinkube/spin-operator/issues/new). For installations via the Azure Marketplace, please open an issue in the [Azure repository](https://github.com/spinkube/azure/issues/new) for assistance. If your issue is urgent, feel free to raise it in [Slack](https://cloud-native.slack.com/archives/C06PC7JA1EE).
+
+## Failure downloading the Helm chart
+
+While the [Spin Operator Helm chart](https://github.com/spinkube/spin-operator/pkgs/container/charts%2Fspin-operator) is public and can be fetched anonymously, you may run into errors pulling the chart if you've previously authenticated with the ghcr.io registry but the authentication token has since expired.
+
+The error would look something like the following:
+
+```console
+helm install spin-operator \
+ --namespace spin-operator --create-namespace --version 0.4.0 --wait oci://ghcr.io/spinkube/charts/spin-operator 
+Error: INSTALLATION FAILED: failed to download "oci://ghcr.io/spinkube/charts/spin-operator" at version "0.4.0"
+```
+
+To fix, either re-authenticate with the registry with a valid token (e.g. `docker login ghcr.io`) or log out of the registry and pull the chart anonymously (e.g. `docker logout ghcr.io`).
 
 ## No endpoints available for service "spin-operator-webhook-service"
 

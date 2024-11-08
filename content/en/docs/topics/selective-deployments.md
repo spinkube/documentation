@@ -21,12 +21,12 @@ Selective Deployments allow you to control which components within a Spin app ar
 For this tutorial, you’ll need:
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) - the Kubernetes CLI
-- Kubernetes cluster with the Spin Operator v0.4 and Containerd Spin Shim v0.16 - follow the [Quickstart](../install/quickstart.md) if needed
-- `spin kube` plugin - follow [Installing the `spin kube` plugin](../install/spin-kube-plugin.md) if needed
+- Kubernetes cluster with the Spin Operator v0.4 and Containerd Spin Shim v0.17 - follow the [Quickstart](../install/quickstart.md) if needed
+- `spin kube` plugin v0.3 - follow [Installing the `spin kube` plugin](../install/spin-kube-plugin.md) if needed
 
 ## Scaffold a Specific Component from a Spin Application into a Custom Resource
 
-We’ll use a sample application called "Salutations," which demonstrates greetings via two components, each responding to a unique HTTP route. If we take a look at the [application manifest](https://github.com/spinkube/spin-operator/blob/main/apps/salutations/spin.toml), we’ll see that this Spin application is comprised of two components:
+We’ll use a sample application called "Salutations", which demonstrates greetings via two components, each responding to a unique HTTP route. If we take a look at the [application manifest](https://github.com/spinkube/spin-operator/blob/main/apps/salutations/spin.toml), we’ll see that this Spin application is comprised of two components:
 
 - `Hello` component triggered by the `/hi` route
 - `Goodbye` component triggered by the `/bye` route
@@ -91,7 +91,7 @@ spec:
 
 ## Run a Selective Deployment
 
-Now you can deploy your app using kubectl apply -f as you normally would:
+Now you can deploy your app using `kubectl` as you normally would:
 
 ```bash
 # Deploy the spinapp.yaml using kubectl
@@ -100,7 +100,7 @@ kubectl apply -f spinapp.yaml
 spinapp.core.spinkube.dev/salutations created
 ```
 
-Optionally, let’s test that only our hello component is running. We’ll use port-forwarding to access our service locally:
+We can test that only our `hello` component is running by port-forwarding its service.
 
 ```bash
 kubectl port-forward svc/salutations 8083:80
@@ -120,4 +120,4 @@ curl localhost:8083/bye
 # TODO include output
 ```
 
-And there you have it! A subset of your Spin application deployed on SpinKube with no modifications to your source code. This approach lets you quickly deploy only the components you need, which can improve efficiency in environments where only specific services are required.
+And there you have it! You selectively deployed a subset of your Spin application to SpinKube with no modifications to your source code. This approach lets you easily deploy only the components you need, which can improve efficiency in environments where only specific services are required.

@@ -1,12 +1,10 @@
 ---
 title: Selective Deployments in Spin
 description: Learn how to deploy a subset of components from your SpinApp using Selective Deployments.
-date: 2024-11-12
+date: 2024-11-10
 categories: [Spin Operator]
 tags: [Tutorials]
 weight: 10
-aliases:
-- /docs/spin-operator/tutorials/selective-deployments
 ---
 
 This article explains how to selectively deploy a subset of components from your Spin App using Selective Deployments. You will learn how to:

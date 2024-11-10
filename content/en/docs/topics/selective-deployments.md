@@ -81,7 +81,6 @@ kind: SpinApp
 metadata:
   name: salutations
 spec:
-  ## TODO update image
   image: "ghcr.io/spinkube/spin-operator/salutations:20241105-223428-g4da3171"
   executor: containerd-shim-spin
   replicas: 1
@@ -96,7 +95,6 @@ Now you can deploy your app using `kubectl` as you normally would:
 ```bash
 # Deploy the spinapp.yaml using kubectl
 kubectl apply -f spinapp.yaml
-# TODO make sure that's the right domain
 spinapp.core.spinkube.dev/salutations created
 ```
 
@@ -106,18 +104,22 @@ We can test that only our `hello` component is running by port-forwarding its se
 kubectl port-forward svc/salutations 8083:80
 ```
 
-Now let’s call the `/hi` route. If the hello component is running correctly, we should see a response of "hello":
+Now let’s call the `/hi` route in a seperate terminal:
 
 ```bash
 curl localhost:8083/hi
-# TODO include output
 ```
 
-Next, let’s try the `/bye` route. This should fail, confirming that only the hello component was deployed:
+If the hello component is running correctly, we should see a response of "Hello Fermyon!":
+
+```bash
+Hello Fermyon!
+```
+
+Next, let’s try the `/bye` route. This should return nothing, confirming that only the `hello` component was deployed:
 
 ```bash
 curl localhost:8083/bye
-# TODO include output
 ```
 
-And there you have it! You selectively deployed a subset of your Spin application to SpinKube with no modifications to your source code. This approach lets you easily deploy only the components you need, which can improve efficiency in environments where only specific services are required.
+There you have it! You selectively deployed a subset of your Spin application to SpinKube with no modifications to your source code. This approach lets you easily deploy only the components you need, which can improve efficiency in environments where only specific services are required.

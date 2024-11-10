@@ -1,7 +1,7 @@
 ---
 title: Executor Compatibility Matrices
 description: A set of compatibility matrices for each SpinKube executor
-date: 2024-10-31
+date: 2024-11-08
 categories: [Spin Operator]
 tags: [reference]
 ---
@@ -30,6 +30,6 @@ For tracking the availability of Spin features and compatibility of Spin SDKs, t
 indicates which versions of the Spin runtime the [Spin containerd
 shim](https://github.com/spinkube/containerd-shim-spin) uses.
 
-| **shim version** | v0.12.0                                                       | v0.13.0                                                       | v0.14.0                                                       | v0.14.1                                                       | v0.15.0                                                       | v0.15.1                                                       | v0.16.0                                                       |
-|------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|
-| **spin**         | [v2.2.0](https://github.com/fermyon/spin/releases/tag/v2.2.0) | [v2.3.1](https://github.com/fermyon/spin/releases/tag/v2.3.1) | [v2.4.2](https://github.com/fermyon/spin/releases/tag/v2.4.2) | [v2.4.3](https://github.com/fermyon/spin/releases/tag/v2.4.3) | [v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) | [v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) | [v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) |
+| **shim version** | v0.12.0                                                       | v0.13.0                                                       | v0.14.0                                                       | v0.14.1                                                       | v0.15.0                                                       | v0.15.1                                                       | v0.16.0                                                       | v0.17.0 |
+|------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|
+| **spin**         | [v2.2.0](https://github.com/fermyon/spin/releases/tag/v2.2.0) | [v2.3.1](https://github.com/fermyon/spin/releases/tag/v2.3.1) | [v2.4.2](https://github.com/fermyon/spin/releases/tag/v2.4.2) | [v2.4.3](https://github.com/fermyon/spin/releases/tag/v2.4.3) | [v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) | [v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) | [v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) | [v3.0.0](https://github.com/fermyon/spin/releases/tag/v3.0.0)

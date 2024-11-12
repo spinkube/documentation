@@ -1,5 +1,5 @@
 ---
-date: 2024-11-08
+date: 2024-11-12
 title: Five New Things in SpinKube
 linkTitle: Five New Things in SpinKube
 description: >

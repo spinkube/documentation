@@ -51,4 +51,10 @@ thats aim to ease the experience for scaffolding, deploying and inspecting Spin 
 between Spin and MQTT-based systems, allowing you to automate workflows and trigger actions based on MQTT
 messages.
 
+### Get Involved
+
+We have bi-weekly [community calls](https://docs.google.com/document/d/10is2YoNC0NpXw4_5lSyTfpPph9_A9wBissKGrpFaIrI/edit?usp=sharing) and a [Slack channel](https://cloud-native.slack.com/archives/C06PC7JA1EE). We would love to have you join us! <br>
+
+Check out the [contribution guidelines](/docs/contrib/) to learn how to get involved with the project.
+
 {{% /blocks/lead %}}

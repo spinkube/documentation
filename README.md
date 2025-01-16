@@ -6,7 +6,7 @@ This project contains the source code for spinkube.dev.
 
 ## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and [Go](https://golang.org) installed.
+Make sure you have [Node.js](http://nodejs.org/) (v14 or later) and [Go](https://golang.org) installed.
 
 Clone this repository and run the following commands:
 

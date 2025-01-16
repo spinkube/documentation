@@ -45,10 +45,6 @@ runtime class. Spin Operator introduces a host of functionality such as resource
 event-driven scaling and much more.
 
 [**Spin Kube Plugin**](https://github.com/spinkube/spin-plugin-kube) is a plugin for the [Spin](https://developer.fermyon.com/spin/v3/index) CLI
-thats aim to ease the experience for scaffolding, deploying and inspecting Spin workloads in Kubernetes.
-
-[**Spin Trigger MQTT**](https://github.com/spinkube/spin-trigger-mqtt/) trigger enables seamless integration
-between Spin and MQTT-based systems, allowing you to automate workflows and trigger actions based on MQTT
-messages.
+that aims to ease the experience for scaffolding, deploying and inspecting Spin workloads in Kubernetes.
 
 {{% /blocks/lead %}}

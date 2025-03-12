@@ -53,4 +53,13 @@ We have bi-weekly [community calls](https://docs.google.com/document/d/10is2YoNC
 
 Check out the [contribution guidelines](/docs/contrib/) to learn how to get involved with the project.
 
+---
+
+<img class="responsive mx-auto d-block"
+    width="300"
+    alt="cloud-native computing"
+    src="../cloud-native-computing.svg">
+
+<div class="text-center">We are a <a href="https://www.cncf.io">Cloud Native Computing Foundation</a> sandbox project.</div>
+
 {{% /blocks/lead %}}
